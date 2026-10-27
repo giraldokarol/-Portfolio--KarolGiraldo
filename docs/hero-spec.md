@@ -50,13 +50,9 @@ Eso basta para el parpadeo y para mover los ojos.
 
 ❗ Lo que hay que corregir (en orden de importancia):
 
-1. **Separar el pelo en dos capas.** Hoy `Hair` es un único vector con el pelo largo y el flequillo juntos,
-   y el parallax "pelo trasero en sentido contrario" lo necesita separado:
-   - `Hair Back`: el pelo largo que cae detrás. Colócalo **al fondo** de `Girl`, debajo de orejas y cuello.
-   - `Bangs`: el flequillo sobre la frente, **encima** de `Face`. Mueve `Shine Hair` dentro de `Bangs`
-     y las sombras (`Small/Long Shadow Hair`) dentro de `Hair Back`.
-   - Cómo: duplica `Hair`, y en cada copia borra con el lápiz o la tijera la parte que no corresponde,
-     o usa `Outline` → `Flatten` → `Boolean: Subtract` con una forma que cubra la cara.
+1. ~~Separar el pelo~~ **No hace falta**: al exportar se vio que `Hair` ya es solo la silueta del pelo
+   de atrás, y el flequillo forma parte del contorno de la cara (`Face`). Pelo trasero y flequillo
+   ya se mueven por separado.
 2. **Añadir un relleno blanco detrás de la cara** (`Face Skin`, mismo contorno que `Face`, relleno `#FFFFFF`,
    justo debajo de las líneas de la cara). Hoy la cara es transparente: cuando el pelo de atrás se mueva,
    sus líneas se verían *a través* de la cara. Lo mismo para las orejas si el pelo pasa por detrás.
@@ -92,9 +88,24 @@ Cada línea actual es el contorno de un trazo con puntas redondeadas: dos bordes
 2. Redibujarla como `<path stroke-width="…" stroke-linecap="round" fill="none">`.
 3. Formas que son anillos (contorno de la cara, círculo, cuadrado, puntos del ancla) → línea central del anillo.
 4. Lo que es relleno de verdad se queda como relleno: pupilas, mejillas, nariz, círculos amarillos.
-5. Aplicar las correcciones: pelo separado (`Hair Back` / `Bangs`), relleno blanco de la cara, grupos
-   `Eyeball`, nombres limpios, un solo avatar.
+5. Aplicar las correcciones: relleno blanco de cara, orejas y cuello, grupos `eyeball-*`, nombres limpios, un solo avatar.
 6. **Verificar**: renderizar original y versión con trazos superpuestos y compararlos píxel a píxel con Playwright.
+
+**Resultado (hecho):** `src/assets/avatar/avatar.svg` — 23 trazos, **97,8 % de coincidencia** con el original
+(cada forma entre 94 % y 100 %). Grosores: líneas 5,3 px · pestañas 4,4 px · cejas 6,6 px · círculo y ancla 4,39 px.
+Diferencias aceptadas: las cejas del original se afinan levemente en una punta (un trazo tiene grosor constante).
+
+Capas (ids) para animar:
+```
+avatar
+├─ girl
+│  ├─ hair-back      hair · hair-shadow-small · hair-shadow-long · hair-shine   (parallax contrario)
+│  ├─ ears           ear-right / ear-left  (skin blanco + line + shadow)
+│  ├─ neck           neck-skin · neck-shadow · neck-line
+│  └─ face           face-skin · cheek-* · face-outline (incluye flequillo) · nose · mouth
+│                    eye-right / eye-left → eyebrow-* + eyeball-* (pupil-* + lashes-*)  ← parpadeo
+└─ frame             frame-circle · anchor (line-left/right · handle · point-left/right)
+```
 
 ## 4. Escena 1 — inicio, sin scroll
 
