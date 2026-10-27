@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ========================================
+   FONT
+======================================== */
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/JakartaSans-Variable.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================
+   THEME
+======================================== */
+
+:root {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --background: #ffffff;
+  --foreground: #1f2937;
+
+  --primary: #3475F7;
+  --primary-foreground: #ffffff;
+
+  --accent: #FFD332;
+  --accent-foreground: #1f2937;
+
+  --muted: #f5f7fa;
+  --muted-foreground: #6b7280;
+
+  --border: #e5e7eb;
+
+  --shadow-soft: 0 1px 2px rgba(31, 41, 55, 0.04),
+    0 12px 32px -12px rgba(31, 41, 55, 0.12);
+
+  --shadow-lift: 0 2px 4px rgba(31, 41, 55, 0.05),
+    0 24px 48px -18px rgba(52, 117, 247, 0.28);
+}
+
+
+/* ========================================
+   TAILWIND THEME MAPPING
+======================================== */
+
+@theme inline {
+  --font-sans: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+}
+
+
+/* ========================================
+   BASE
+======================================== */
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  /* Scroll animado al pulsar enlaces #ancla, solo si el visitante no pide menos movimiento. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+}
+
+
+/* ========================================
+   CUSTOM UTILITIES
+======================================== */
+
+@utility max-width-page {
+  max-width: 1490px;
+}
+
+
+
+@utility btn-primary {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  border-radius: 999px;
+  color: var(--primary-foreground);
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+@utility btn-secondary {
+  border: 1px solid var(--primary);
+  background-color: #ffffff;
+  color: var(--primary);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+}
+
+@utility link-functions {
+  color: #6b7280;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: #1f2937;
+  }
+}
