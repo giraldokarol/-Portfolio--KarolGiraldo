@@ -32,8 +32,13 @@ docs/                      specs y pendientes
 - No instalar/eliminar dependencias, no borrar archivos y no hacer cambios grandes sin confirmación explícita de Karol.
 - Trabajar por fases; detenerse al final de cada una para validación.
 - Explicar decisiones técnicas en lenguaje simple.
-- Commits pequeños y descriptivos (en inglés, formato `tipo: descripción`, p. ej. `feat: add hero gradient`).
 - Coordinación entre agentes: no editar archivos que el otro agente tenga "en curso" (lista en `docs/pendientes.md`).
+
+## Git (solo Claude)
+- **Solo Claude usa git**: commits, ramas y push.
+- **Codex NO usa git nunca** (ni `git add`, `commit`, `checkout`, `stash`, `reset`, etc.); solo modifica archivos.
+- Cuando Codex termina una tarea, Claude revisa sus cambios con `git diff`, corrige lo necesario y hace el commit.
+- Commits pequeños y descriptivos (en inglés, formato `tipo: descripción`, p. ej. `feat: add hero gradient`).
 - Mejoras de diseño, accesibilidad o SEO no pedidas: proponerlas, no aplicarlas.
 
 ## Textos e idiomas
