@@ -235,11 +235,11 @@ src/styles/components/_avatar.scss, _selection-box.scss
 
 | # | Tarea | Quién | Depende de |
 |---|---|---|---|
-| T0 | Reconstruir el avatar con trazos + correcciones (sección 3.1), verificado píxel a píxel | Claude | — |
+| ~~T0~~ | Avatar con trazos + correcciones — **hecho**: `src/assets/avatar/avatar.svg` (97,8 %) | Claude | — |
 | T1 | `Avatar.tsx` estático desde el SVG de T0, con `data-part` por capa + `_avatar.scss` | **Codex** | T0 |
 | T2 | Escena 2 estática fiel a Figma: tipografía `clamp()`, `--color-ink`, redes, "Designer" `#fbfbfb`; sin animación | **Codex** | T1 |
 | ~~T3~~ | Icono de mouse en SVG — **hecho** por Claude (Lottie eliminado) | — | — |
-| T0b | Guardar el avatar con trazos en Figma como componente `Avatar / Strokes` (sin tocar el original) | Claude | T0 |
+| ~~T0b~~ | Componente `Avatar / Strokes` en Figma — **hecho** ([nodo 2058:76](https://www.figma.com/design/6gbzMRMGQDCcRvv2e5EEjm/Marca-Personal?node-id=2058-76)), colores enlazados a `Primary Color` y `Yellow` | Claude | T0 |
 | T4 | Infraestructura: `lib/gsap.ts`, script `has-motion`, estados iniciales | Claude | T2 |
 | T5 | Gradiente con mouse + deriva en móvil | Claude | T4 |
 | T6 | Avatar: parallax por capas + parpadeo + "mira alrededor" | Claude | T1, T4 |
