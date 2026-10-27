@@ -6,8 +6,8 @@ import { gsap, useGSAP, MEDIA } from "@/lib/gsap";
 // range: cuánto se desplaza como fracción del ancho/alto de la pantalla.
 // lag: segundos que tarda en alcanzar al puntero (distinto = efecto líquido).
 const BLOBS = [
-  { selector: ".hero__blob--yellow", range: 0.16, lag: 1.2, drift: { x: 0.06, y: 0.05, duration: 9 } },
-  { selector: ".hero__blob--blue", range: 0.11, lag: 1.8, drift: { x: -0.05, y: -0.06, duration: 11 } },
+  { selector: ".hero__blob--yellow", range: 0.34, lag: 0.9, drift: { x: 0.06, y: 0.05, duration: 9 } },
+  { selector: ".hero__blob--blue", range: 0.24, lag: 1.3, drift: { x: -0.05, y: -0.06, duration: 11 } },
 ];
 
 // Mueve una mancha escribiendo sus variables CSS --blob-x / --blob-y en píxeles.

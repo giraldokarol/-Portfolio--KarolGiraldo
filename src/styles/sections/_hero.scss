@@ -30,7 +30,7 @@
   // 574 / 1728 = 33,22vw, con un mínimo para que en móvil siga viéndose.
   --blob-size: max(33.22vw, #{rem(320)});
   // Intensidad del color. Figma usa 0.1; Karol la subió para que el movimiento se note.
-  --blob-opacity: 0.35;
+  --blob-opacity: 0.2;
 
   position: absolute;
   width: var(--blob-size);

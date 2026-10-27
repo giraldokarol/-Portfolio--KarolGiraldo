@@ -119,13 +119,13 @@ es el **gradiente** y la **muñeca**.
 No se anima.
 
 ### 4.1 Gradiente que sigue al mouse
-- Dos "manchas" (`div`) como en Figma: círculo Ø574 px, `filter: blur(100px)`, pero con **opacidad 35 %** (Figma: 10 %; decisión de Karol para que el movimiento se note, variable `--blob-opacity`), (en vw, con mínimo
+- Dos "manchas" (`div`) como en Figma: círculo Ø574 px, `filter: blur(100px)`, pero con **opacidad 20 %** (Figma: 10 %; decisión de Karol, variable `--blob-opacity`), (en vw, con mínimo
   de 320 px en móvil). Moverlas con `transform` es barato: el desenfoque se pinta una vez y la capa solo se desplaza
   (medido: 8,3 ms/fotograma). Un `radial-gradient` mostraba más bandas de color.
 - Se mueven con `transform: translate(var(--blob-x), var(--blob-y))`. GSAP actualiza esas variables
   con `gsap.quickTo` (una función reutilizable que anima suavemente hacia el último valor).
-- Retraso distinto por mancha (amarilla 1,2s; azul 1,8s) para que se sientan "líquidas".
-- Recorrido limitado (amarilla ±8 %, azul ±5,5 % de la pantalla) para que nunca dejen el centro vacío.
+- Retraso distinto por mancha (amarilla 0,9s; azul 1,3s) para que se sientan "líquidas".
+- Recorrido amplio para que se note (amarilla ±17 %, azul ±12 % de la pantalla; decisión de Karol) para que nunca dejen el centro vacío.
 - **Hecho** en `src/components/hero/useHeroGradient.ts`.
 
 ### 4.2 Avatar vivo
