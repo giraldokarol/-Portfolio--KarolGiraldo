@@ -8,7 +8,7 @@ import { gsap, useGSAP, MEDIA } from "@/lib/gsap";
 // lag: segundos hasta alcanzar al puntero → capas con distinto retraso = profundidad.
 // Cabeza = cara + orejas (se mueven juntas para no despegarse).
 const LAYERS = [
-  { part: "hair-back", move: -6, lag: 0.9 }, // contrario: está "detrás"
+  { part: "hair-back", move: -10, lag: 0.9 }, // contrario: está "detrás"
   { part: "neck", move: 2.5, lag: 0.7 },
   { part: "ears", move: 7, lag: 0.6 },
   { part: "face", move: 7, lag: 0.6 }, // incluye el flequillo
@@ -18,18 +18,19 @@ const LAYERS = [
   { part: "eyeball-left", move: 4, lag: 0.3 },
 ] as const;
 
-// Las formas de la máscara siguen a su capa, pero la máscara vive dentro de hair-back
-// (que se mueve al revés): su desplazamiento es capa − pelo.
+// Las formas de cada máscara siguen a su capa, pero la máscara vive dentro de la capa que oculta
+// (pelo o cuello), que también se mueve: su desplazamiento es capa − contenedor.
 const MASKS = [
-  { part: "mask-face", follows: "face" },
-  { part: "mask-ears", follows: "ears" },
-  { part: "mask-neck", follows: "neck" },
+  { part: "mask-face", follows: "face", inside: "hair-back" },
+  { part: "mask-ears", follows: "ears", inside: "hair-back" },
+  { part: "mask-neck", follows: "neck", inside: "hair-back" },
+  { part: "mask-neck-face", follows: "face", inside: "neck" },
 ] as const;
 
 const HEAD_TILT = 4; // grados máximos de inclinación de la cabeza
 const NECK_POINT = "178 300"; // punto de giro de la cabeza (base del cuello, en unidades SVG)
 
-const BLINK = { min: 2.5, max: 6, double: 0.15 }; // segundos entre parpadeos, probabilidad de doble
+const BLINK = { min: 1.2, max: 3.5, double: 0.2 }; // segundos entre parpadeos, probabilidad de doble
 const LOOK_AROUND = { min: 1.8, max: 4.5 }; // móvil: cada cuánto mira a otro sitio
 
 // Muñeca viva:
@@ -59,21 +60,20 @@ export function useHeroAvatar(scope: RefObject<HTMLElement | null>) {
         const tilt = gsap.quickTo(girl, "rotation", { duration: 0.8, ease: "power3.out" });
         gsap.set(girl, { svgOrigin: NECK_POINT });
 
-        // Cada fotograma, las formas de la máscara copian su capa (menos el pelo).
-        const hair = q("hair-back");
-        const syncMasks = MASKS.map(({ part, follows }) => ({
+        // Cada fotograma, las formas de cada máscara copian su capa (menos su contenedor).
+        const syncMasks = MASKS.map(({ part, follows, inside }) => ({
           setX: gsap.quickSetter(q(part), "x"),
           setY: gsap.quickSetter(q(part), "y"),
           layer: q(follows),
+          container: q(inside),
         }));
-        const onTick = () => {
-          const hx = gsap.getProperty(hair, "x") as number;
-          const hy = gsap.getProperty(hair, "y") as number;
-          syncMasks.forEach(({ setX, setY, layer }) => {
-            setX((gsap.getProperty(layer, "x") as number) - hx);
-            setY((gsap.getProperty(layer, "y") as number) - hy);
+        const offset = (layer: Element, container: Element, axis: "x" | "y") =>
+          (gsap.getProperty(layer, axis) as number) - (gsap.getProperty(container, axis) as number);
+        const onTick = () =>
+          syncMasks.forEach(({ setX, setY, layer, container }) => {
+            setX(offset(layer, container, "x"));
+            setY(offset(layer, container, "y"));
           });
-        };
         gsap.ticker.add(onTick);
 
         const lookAt = (nx: number, ny: number) => {
