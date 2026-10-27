@@ -119,12 +119,14 @@ es el **gradiente** y la **muñeca**.
 No se anima.
 
 ### 4.1 Gradiente que sigue al mouse
-- Dos "manchas" (`div`) con `radial-gradient` suave que imita el desenfoque de 100px de Figma.
-  **Sin `filter: blur()`**: mover un elemento con blur es caro para el navegador.
+- Dos "manchas" (`div`) idénticas a Figma: círculo Ø574 px, opacidad 10 %, `filter: blur(100px)` (en vw, con mínimo
+  de 320 px en móvil). Moverlas con `transform` es barato: el desenfoque se pinta una vez y la capa solo se desplaza
+  (medido: 8,3 ms/fotograma). Un `radial-gradient` mostraba más bandas de color.
 - Se mueven con `transform: translate(var(--blob-x), var(--blob-y))`. GSAP actualiza esas variables
   con `gsap.quickTo` (una función reutilizable que anima suavemente hacia el último valor).
 - Retraso distinto por mancha (amarilla 1,2s; azul 1,8s) para que se sientan "líquidas".
-- Recorrido limitado (±12% del ancho) para que nunca dejen el centro vacío.
+- Recorrido limitado (amarilla ±8 %, azul ±5,5 % de la pantalla) para que nunca dejen el centro vacío.
+- **Hecho** en `src/components/hero/useHeroGradient.ts`.
 
 ### 4.2 Avatar vivo
 - **Parallax por capas** (solo con ratón: `(hover: hover) and (pointer: fine)`). Posición del puntero
