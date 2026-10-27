@@ -34,7 +34,6 @@ Para conectarlo:
 ## Limpieza (con confirmación)
 - Borrar `src/assets/img/logo.png` (reemplazado por los SVG de Figma `logo-karolg.svg` + `logo-point.svg`).
 - Desinstalar dependencias que ya no se usan: `@vitejs/plugin-react`, `vite-tsconfig-paths`, `embla-carousel-react` (+ `Carousel.tsx`, único archivo con clases de Tailwind), `clsx`, `tailwind-merge`, `class-variance-authority`.
-- Aprobar o denegar el script de instalación de `@parcel/watcher` (dependencia opcional de Sass; hoy no hace falta).
 
 ## Más adelante
 - Imágenes de las cards: WebP/AVIF, `width`/`height`, `loading="lazy"` (cover-tulindero pesa 3,6 MB).
