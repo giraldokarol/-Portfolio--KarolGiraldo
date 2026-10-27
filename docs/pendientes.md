@@ -32,7 +32,6 @@ Para conectarlo:
 - Estado activo del menú (subrayado azul al hacer scroll): se mantiene del sitio anterior, no está en Figma.
 
 ## Limpieza (con confirmación)
-- Borrar `_legacy/` (antiguos `main.tsx`, `App.tsx`, `index.html`, ya reemplazados).
 - Borrar `src/assets/img/logo.png` (reemplazado por los SVG de Figma `logo-karolg.svg` + `logo-point.svg`).
 - Desinstalar dependencias que ya no se usan: `@vitejs/plugin-react`, `vite-tsconfig-paths`, `embla-carousel-react` (+ `Carousel.tsx`, único archivo con clases de Tailwind), `clsx`, `tailwind-merge`, `class-variance-authority`.
 - Aprobar o denegar el script de instalación de `@parcel/watcher` (dependencia opcional de Sass; hoy no hace falta).
