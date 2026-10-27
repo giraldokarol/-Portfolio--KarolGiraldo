@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useParams } from "react-router";
 import { I18nextProvider } from "react-i18next";
 
-import "./App.css";
+import "./styles/main.scss";
 import fontUrl from "./assets/fonts/JakartaSans-Variable.ttf?url";
 import { DEFAULT_LOCALE, isLocale } from "./i18n/config";
 import { i18nByLocale } from "./i18n/instances";
@@ -45,14 +45,12 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const is404 = isRouteErrorResponse(error) && error.status === 404;
 
   return (
-    <main className="grid min-h-dvh place-items-center p-6 text-center">
+    <main className="system-page">
       <div>
         <p className="pretitle">{is404 ? "404" : "Error"}</p>
-        <p className="mt-4">
-          <a className="link-functions underline" href="/">
-            karolgiraldo.com
-          </a>
-        </p>
+        <a className="system-page__link link-muted" href="/">
+          karolgiraldo.com
+        </a>
       </div>
     </main>
   );

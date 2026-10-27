@@ -1,0 +1,23 @@
+// Hoja de estilos principal. Solo importa; el orden importa:
+// base → layout → componentes → secciones → páginas.
+// Vite la compila y minifica en un solo archivo al hacer `npm run build`.
+
+@use "base/fonts";
+@use "base/root";
+@use "base/reset";
+
+@use "layout/container";
+
+@use "components/buttons";
+@use "components/links";
+@use "components/logo";
+@use "components/header";
+@use "components/section-heading";
+@use "components/project-card";
+
+@use "sections/hero";
+@use "sections/projects";
+@use "sections/about";
+@use "sections/footer";
+
+@use "pages/system";

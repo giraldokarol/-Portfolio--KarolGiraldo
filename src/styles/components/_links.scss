@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+// Enlace gris discreto que se oscurece al pasar el ratón (redes sociales, idiomas).
+.link-muted {
+  color: var(--color-muted);
+  transition: color $duration-fast ease;
+
+  @include hover {
+    color: var(--color-foreground);
+  }
+}

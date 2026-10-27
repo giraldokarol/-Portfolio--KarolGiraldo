@@ -1,0 +1,50 @@
+// Tokens de Sass: valores que solo existen al compilar (no llegan al navegador).
+// Los colores y todo lo que cambie en vivo (GSAP, temas) van en base/_root.scss como variables CSS.
+
+// Tamaño base del navegador: 1rem = 16px.
+$base-font-size: 16px;
+
+// Puntos de corte (mismos valores que usaba Tailwind, para no cambiar el diseño).
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+// Anchos máximos de contenido.
+$page-max-width: 1490px;
+$nav-max-width: 1501px; // ancho del menú en Figma
+$gutter: 24px; // margen lateral de la página
+
+// Escala tipográfica: tamaño + interlineado.
+$font-sizes: (
+  sm: (14px, 20px),
+  base: (16px, 24px),
+  lg: (18px, 28px),
+  xl: (20px, 28px),
+  4xl: (36px, 40px),
+  5xl: (48px, 1),
+  7xl: (72px, 1),
+  8xl: (96px, 1),
+);
+
+$font-weights: (
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+);
+
+// Duraciones y curvas de las transiciones CSS (las animaciones GSAP tienen las suyas).
+$duration-fast: 0.25s;
+$duration-base: 0.3s;
+$duration-slow: 0.5s;
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+// Capas (z-index) con nombre, para no inventar números sueltos.
+$z-layers: (
+  content: 1,
+  header: 50,
+);

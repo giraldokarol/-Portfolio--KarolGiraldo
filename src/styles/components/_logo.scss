@@ -1,0 +1,21 @@
+@use "../abstracts" as *;
+
+// Figma "Text Blue Logo": 130 × 48, el punto va superpuesto a la derecha del texto.
+.logo {
+  position: relative;
+  display: block;
+  width: rem(130.376);
+  height: rem(47.994);
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: none;
+  }
+
+  .logo__point {
+    top: rem(21.63);
+    left: rem(120.98);
+  }
+}

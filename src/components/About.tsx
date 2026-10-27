@@ -8,27 +8,21 @@ import { LINKEDIN_URL } from "@/config/site";
 // <Trans> convierte el <strong> escrito dentro del JSON en negrita real.
 const richText = { strong: <strong /> };
 
+// Estilos: styles/sections/_about.scss
 export default function About() {
   const { t } = useTranslation();
 
   return (
-    <section id="about" className="pb-12 lg:pt-32 bg-white">
-      <div className="max-width-page mx-auto px-6 flex flex-col xl:flex-row gap-12 items-center">
+    <section id="about" className="about">
+      <div className="about__inner container">
 
-        <div className="order-2 w-full lg:order-1 xl:w-1/2 text-center xl:text-left">
+        <div className="about__text">
           <p className="pretitle">{t("about.pretitle")}</p>
+          <h2 className="section-title">{t("about.title")}</h2>
 
-          <h2 className="max-w-5xl mx-auto xl:mx-0 text-5xl font-extrabold tracking-tight text-balance sm:text-7xl mb-2">
-            {t("about.title")}
-          </h2>
+          <img src={Portrait} alt={t("about.portraitAlt")} className="about__portrait about__portrait--inline" />
 
-          <img
-            src={Portrait}
-            alt={t("about.portraitAlt")}
-            className="block xl:hidden w-full max-h-[420px] object-contain mb-8 mt-8"
-          />
-
-          <div className="mt-5 text-lg text-muted-foreground xl:max-w-2xl mb-8 space-y-6">
+          <div className="about__body section-intro">
             <p>
               <Trans i18nKey="about.paragraph1" components={richText} />
             </p>
@@ -37,29 +31,20 @@ export default function About() {
             </p>
           </div>
 
-          <div className="flex gap-4 justify-center xl:justify-start">
-            <a href={cvUrl} download className="btn-primary inline-flex items-center gap-2">
+          <div className="about__actions">
+            <a href={cvUrl} download className="btn btn--primary">
               <Download size={18} aria-hidden="true" /> {t("cta.downloadCv")}
             </a>
 
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-secondary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-m font-semibold"
-            >
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="btn btn--secondary">
               <ContactRound size={18} aria-hidden="true" /> {t("cta.linkedin")}
             </a>
           </div>
         </div>
 
-        <div className="order-1 w-full lg:order-2 xl:w-1/2 flex justify-center relative">
+        <div className="about__media">
           {/* Misma imagen que la de móvil: decorativa aquí para no anunciarla dos veces. */}
-          <img
-            src={Portrait}
-            alt=""
-            className="w-full max-h-[420px] object-contain xl:max-h-none lg:object-fill hidden xl:block"
-          />
+          <img src={Portrait} alt="" className="about__portrait about__portrait--side" />
         </div>
 
       </div>

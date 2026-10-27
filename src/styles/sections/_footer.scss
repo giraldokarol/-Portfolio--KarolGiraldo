@@ -1,0 +1,103 @@
+@use "../abstracts" as *;
+
+// FOOTER — contacto y redes.
+.site-footer {
+  background: var(--color-background);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: rem(40);
+  padding-block: rem(64);
+  border-top: 1px solid rgb(31 41 55 / 0.1);
+
+  @include mq(lg) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-footer__brand {
+  display: flex;
+  justify-content: center;
+
+  @include mq(lg) {
+    min-width: rem(200);
+  }
+}
+
+.site-footer__logo {
+  width: rem(70);
+
+  @include mq(lg) {
+    width: rem(90);
+  }
+}
+
+// En escritorio las columnas pasan a ser hijas directas de la fila (display: contents).
+.site-footer__columns {
+  display: flex;
+  flex-direction: column;
+  gap: rem(40);
+
+  @include mq(md) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: rem(64);
+  }
+
+  @include mq(lg) {
+    display: contents;
+  }
+}
+
+.site-footer__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @include mq(md) {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.site-footer__title {
+  margin-bottom: rem(8);
+  @include text(4xl);
+  font-weight: weight(bold);
+  letter-spacing: -0.025em;
+  color: var(--color-primary);
+
+  @include mq(lg) {
+    @include text(5xl);
+  }
+}
+
+.site-footer__subtitle {
+  margin-bottom: rem(8);
+  @include text(xl);
+  font-weight: weight(bold);
+  letter-spacing: -0.025em;
+  color: var(--color-primary);
+}
+
+.site-footer__text {
+  color: var(--color-muted);
+}
+
+.site-footer__email {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+}
+
+.site-footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: rem(4);
+}

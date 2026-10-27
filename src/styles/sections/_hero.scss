@@ -1,0 +1,130 @@
+@use "../abstracts" as *;
+
+// HERO — estado estático actual. Se reconstruye en la Fase 3 (docs/hero-spec.md).
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(to bottom, transparent 70%, rgb(255 255 255 / 0.75) 88%, #fff 100%),
+    radial-gradient(
+      ellipse 35% 65% at 32% 28%,
+      rgb(255 211 50 / 0.14) 0%,
+      rgb(255 211 50 / 0.06) 45%,
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 32% 52% at 72% 58%,
+      rgb(52 117 247 / 0.18) 0%,
+      rgb(52 117 247 / 0.07) 42%,
+      transparent 72%
+    ),
+    var(--color-background);
+}
+
+// Palabra gigante decorativa ("Designer"), oculta a lectores de pantalla.
+.hero__bg-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24vw;
+  font-weight: weight(extrabold);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.03;
+}
+
+// Redes sociales en vertical a la izquierda (solo escritorio).
+.hero__social {
+  position: absolute;
+  top: 50%;
+  left: rem(48);
+  display: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+
+  @include mq(lg) {
+    display: block;
+  }
+}
+
+.hero__social-list {
+  display: flex;
+  align-items: center;
+  gap: rem(48);
+  white-space: nowrap;
+}
+
+.hero__social-link {
+  @include text(sm);
+  text-transform: uppercase;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: var(--header-height) rem($gutter) 0;
+}
+
+.hero__intro {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__sticker {
+  width: rem(256);
+  margin-bottom: rem(16);
+}
+
+.hero__title {
+  position: relative;
+  z-index: z(content);
+  max-width: rem(1024);
+  @include text(5xl);
+  font-weight: weight(extrabold);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-align: center;
+  text-wrap: balance;
+
+  @include mq(sm) {
+    font-size: rem(72);
+  }
+
+  @include mq(lg) {
+    font-size: rem(96);
+  }
+}
+
+.hero__role {
+  color: var(--color-primary);
+}
+
+.hero__subtitle {
+  position: relative;
+  z-index: z(content);
+  max-width: rem(672);
+  margin-top: rem(32);
+  @include text(xl);
+  text-align: center;
+}
+
+.hero__scroll {
+  display: none;
+  justify-content: center;
+  margin-bottom: rem(32);
+
+  @include mq(lg) {
+    display: flex;
+  }
+}
+
+.hero__scroll-icon {
+  width: rem(60);
+}

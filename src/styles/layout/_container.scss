@@ -1,0 +1,6 @@
+@use "../abstracts" as *;
+
+// Contenedor de página: centrado, máx. 1490px, con margen lateral.
+.container {
+  @include container;
+}

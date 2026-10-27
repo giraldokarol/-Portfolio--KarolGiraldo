@@ -1,0 +1,73 @@
+@use "../abstracts" as *;
+
+// Header fijo con el menú principal (Figma: "Principal Menu").
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z(header);
+  background: transparent;
+  backdrop-filter: blur(rem(12));
+  transition: background-color $duration-base ease;
+}
+
+.site-header--scrolled {
+  background-color: rgb(255 255 255 / 0.6);
+}
+
+.site-nav {
+  @include container($nav-max-width + $gutter * 2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  transition: height $duration-base ease;
+
+  // Al hacer scroll el header se compacta.
+  .site-header--scrolled & {
+    height: rem(80);
+  }
+}
+
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: rem(70);
+}
+
+.site-nav__links {
+  display: none;
+  gap: rem(70);
+  align-items: center;
+
+  @include mq(md) {
+    display: flex;
+  }
+}
+
+.site-nav__link {
+  position: relative;
+  padding-block: rem(4);
+  color: var(--color-foreground);
+  font-size: rem(16);
+  transition: color $duration-fast ease;
+
+  @include hover {
+    color: var(--color-primary);
+  }
+
+  // Sección visible en pantalla.
+  &[aria-current] {
+    color: var(--color-primary);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: rem(-4);
+      left: 50%;
+      width: rem(32);
+      height: rem(2);
+      background-color: var(--color-primary);
+      transform: translateX(-50%);
+    }
+  }
+}

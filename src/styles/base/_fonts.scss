@@ -1,0 +1,9 @@
+// Plus Jakarta Sans, fuente variable: un solo archivo cubre todos los pesos (200–800).
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  // Ruta relativa a ESTE archivo (Vite la reescribe al compilar; el alias @/ no funciona en url() de Sass).
+  src: url("../../assets/fonts/JakartaSans-Variable.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}

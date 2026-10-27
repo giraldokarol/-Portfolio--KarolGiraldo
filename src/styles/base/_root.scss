@@ -1,0 +1,34 @@
+@use "../abstracts" as *;
+
+// Variables CSS (custom properties): existen en el navegador y se pueden
+// cambiar en vivo (GSAP, JavaScript, media queries). Úsalas para colores
+// y para cualquier valor que una animación necesite leer o modificar.
+:root {
+  // Tipografía
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  // Colores de marca
+  --color-primary: #3475f7;
+  --color-primary-hover: #1f5fe0;
+  --color-on-primary: #ffffff;
+  --color-on-primary-soft: #f6faff; // "Third Color" en Figma
+  --color-accent: #ffd332;
+  --color-on-accent: #1f2937;
+
+  // Neutros
+  --color-background: #ffffff;
+  --color-foreground: #1f2937;
+  --color-muted: #6b7280;
+  --color-surface: #f8f8f8;
+  --color-border: #e5e7eb;
+
+  // Sombras
+  --shadow-card-hover: 0 #{rem(12)} #{rem(30)} rgb(0 0 0 / 0.08);
+
+  // Layout
+  --header-height: #{rem(80)};
+
+  @include mq(lg) {
+    --header-height: #{rem(142)}; // 47 + 48 (logo) + 47, como en Figma
+  }
+}

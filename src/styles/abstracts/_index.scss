@@ -1,0 +1,6 @@
+// Punto de entrada de las herramientas. Cada parcial lo importa con:
+//   @use "../abstracts" as *;
+// No genera CSS: solo da acceso a tokens, funciones y mixins.
+@forward "tokens";
+@forward "functions";
+@forward "mixins";

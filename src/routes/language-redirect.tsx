@@ -24,13 +24,13 @@ export default function LanguageRedirect() {
 
   // Respaldo visible si JavaScript está desactivado o tarda.
   return (
-    <main className="grid min-h-dvh place-items-center">
+    <main className="system-page">
       <nav aria-label={en.languagePicker.label}>
-        <ul className="flex gap-3 text-sm tracking-widest">
+        <ul className="language-list">
           {LOCALES.map((locale, i) => (
-            <li key={locale} className="flex gap-3">
+            <li key={locale} className="language-list__item">
               {i > 0 && <span aria-hidden="true">·</span>}
-              <a className="link-functions uppercase" href={`/${locale}`} hrefLang={locale} lang={locale}>
+              <a className="link-muted" href={`/${locale}`} hrefLang={locale} lang={locale}>
                 {locale}
               </a>
             </li>

@@ -1,0 +1,69 @@
+@use "../abstracts" as *;
+
+// Botón base: forma de píldora con icono opcional.
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(8);
+  padding: rem(10 20);
+  border-radius: rem(999);
+  font-size: rem(16);
+  font-weight: weight(semibold);
+  transition:
+    background-color $duration-fast ease,
+    color $duration-fast ease;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+
+  @include hover {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+}
+
+.btn--secondary {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+
+  @include hover {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+}
+
+// "Say Hello" del header (Figma: 40px de alto, radio 24, texto #F6FAFF).
+// Sin ancho fijo: el texto cambia de largo según el idioma.
+.btn--hello {
+  justify-content: center;
+  height: rem(40);
+  padding: rem(0 16);
+  border-radius: rem(24);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary-soft);
+  font-weight: weight(regular);
+  white-space: nowrap;
+
+  @include hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .btn__icon {
+    @include motion-safe {
+      transition: transform $duration-fast ease;
+    }
+  }
+
+  @include hover {
+    .btn__icon {
+      transform: translateX(rem(3));
+    }
+  }
+}

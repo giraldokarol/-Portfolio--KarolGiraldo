@@ -1,0 +1,102 @@
+@use "../abstracts" as *;
+
+// ABOUT — sobre mí.
+.about {
+  padding-bottom: rem(48);
+  background: var(--color-background);
+
+  @include mq(lg) {
+    padding-top: rem(128);
+  }
+}
+
+.about__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(48);
+
+  @include mq(xl) {
+    flex-direction: row;
+  }
+}
+
+.about__text {
+  order: 2;
+  width: 100%;
+  text-align: center;
+
+  @include mq(lg) {
+    order: 1;
+  }
+
+  @include mq(xl) {
+    width: 50%;
+    text-align: left;
+  }
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: rem(24);
+  margin-bottom: rem(32);
+
+  @include mq(xl) {
+    max-width: rem(672);
+  }
+}
+
+.about__actions {
+  display: flex;
+  justify-content: center;
+  gap: rem(16);
+
+  @include mq(xl) {
+    justify-content: flex-start;
+  }
+}
+
+// El retrato aparece dentro del texto en móvil/tablet y en su propia columna en escritorio.
+.about__portrait {
+  width: 100%;
+  max-height: rem(420);
+  object-fit: contain;
+}
+
+.about__portrait--inline {
+  margin-block: rem(32);
+
+  @include mq(xl) {
+    display: none;
+  }
+}
+
+.about__media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  order: 1;
+  width: 100%;
+
+  @include mq(lg) {
+    order: 2;
+  }
+
+  @include mq(xl) {
+    width: 50%;
+  }
+}
+
+.about__portrait--side {
+  display: none;
+
+  @include mq(lg) {
+    object-fit: fill;
+  }
+
+  @include mq(xl) {
+    display: block;
+    max-height: none;
+  }
+}

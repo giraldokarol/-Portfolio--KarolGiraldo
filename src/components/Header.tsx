@@ -6,7 +6,7 @@ import Logo from "./Logo";
 import ArrowRightCircle from "@/assets/icons/arrow-right-circle.svg";
 import { CONTACT_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
 
-// Menú principal (Figma: "Principal Menu").
+// Menú principal (Figma: "Principal Menu"). Estilos: styles/components/_header.scss
 export default function Header() {
   const { t } = useTranslation();
   const { lang } = useParams();
@@ -40,19 +40,19 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`main-header ${isScrolled ? "main-header--scrolled" : ""}`}>
-      <nav className="main-nav mx-auto flex items-center justify-between px-6" aria-label={t("a11y.mainNav")}>
+    <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
+      <nav className="site-nav" aria-label={t("a11y.mainNav")}>
         <a href={`/${lang}`} aria-label={t("a11y.homeLink")}>
           <Logo />
         </a>
 
-        <div className="flex items-center gap-[70px]">
-          <ul className="hidden items-center gap-[70px] md:flex">
+        <div className="site-nav__actions">
+          <ul className="site-nav__links">
             {NAV_LINKS.map(({ section, label }) => (
               <li key={section}>
                 <a
                   href={`#${section}`}
-                  className={`nav-link ${activeSection === section ? "nav-link--active" : ""}`}
+                  className="site-nav__link"
                   aria-current={activeSection === section ? "true" : undefined}
                 >
                   {t(`nav.${label}`)}
@@ -61,9 +61,9 @@ export default function Header() {
             ))}
           </ul>
 
-          <a href={`#${CONTACT_SECTION}`} className="btn-hello">
+          <a href={`#${CONTACT_SECTION}`} className="btn btn--hello">
             {t("cta.sayHello")}
-            <img src={ArrowRightCircle} alt="" width={24} height={24} className="btn-hello__icon" />
+            <img src={ArrowRightCircle} alt="" width={24} height={24} className="btn__icon" />
           </a>
         </div>
       </nav>

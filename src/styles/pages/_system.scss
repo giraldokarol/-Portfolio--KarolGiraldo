@@ -1,0 +1,29 @@
+@use "../abstracts" as *;
+
+// Páginas auxiliares: selector de idioma de "/" y página de error.
+.system-page {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: rem($gutter);
+  text-align: center;
+}
+
+.language-list {
+  display: flex;
+  gap: rem(12);
+  @include text(sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.language-list__item {
+  display: flex;
+  gap: rem(12);
+}
+
+.system-page__link {
+  display: inline-block;
+  margin-top: rem(16);
+  text-decoration: underline;
+}
