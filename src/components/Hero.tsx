@@ -1,15 +1,21 @@
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import ScrollHint from "./ScrollHint";
 import Avatar from "./Avatar";
+import { useHeroGradient } from "./hero/useHeroGradient";
 import { SOCIAL_LINKS } from "@/config/site";
 
-// Escena 2 estática. Estilos: styles/sections/_hero.scss
+// HTML = escena 2 (la que se prerenderiza y ve quien tiene reduced-motion).
+// Las animaciones viven en components/hero/*. Estilos: styles/sections/_hero.scss
 export default function Hero() {
   const { t } = useTranslation();
+  const root = useRef<HTMLDivElement>(null);
+
+  useHeroGradient(root);
 
   return (
-    <div className="hero">
+    <div className="hero" ref={root}>
       <span aria-hidden="true" className="hero__bg-word">
         {t("hero.backgroundWord")}
       </span>
