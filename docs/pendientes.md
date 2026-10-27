@@ -3,7 +3,7 @@
 ## En curso (no tocar si lo tiene otro agente)
 | Archivo / zona | Agente | Desde |
 |---|---|---|
-| `src/components/Header.tsx`, `src/components/Hero.tsx`, `src/styles/sections/_hero.scss`, `src/styles/components/_header.scss` | Claude | 2026-10-27 |
+| T1–T2 (ver `docs/codex/T1-T2.md`): `src/components/Avatar.tsx` (nuevo), `src/components/Hero.tsx`, `src/components/ScrollHint.tsx`, `src/styles/components/_avatar.scss` (nuevo), `src/styles/sections/_hero.scss`, `src/styles/base/_root.scss` (solo añadir tokens), `src/styles/abstracts/_functions.scss` (solo añadir `fluid()`), `src/styles/main.scss` (solo añadir el `@use`), `src/locales/*/common.json` (solo `hero.avatarAlt`) | Codex | 2026-10-27 |
 
 ## Footer: selector de idioma
 Selector discreto y minimalista en el footer: texto `EN · FR · ES`, sin banderas ni desplegable.
