@@ -21,10 +21,18 @@ export function Layout({ children }: { children: ReactNode }) {
   const locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
 
   return (
-    <html lang={locale}>
+    // suppressHydrationWarning: el script de abajo añade una clase a <html> antes de que React cargue.
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Antes del primer pintado: si el visitante acepta animaciones, el CSS prepara la escena 1
+            del hero (sin que se vea un instante la escena 2). Sin JS o con reduced-motion no hace nada. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(matchMedia("(prefers-reduced-motion: no-preference)").matches)document.documentElement.classList.add("has-motion")`,
+          }}
+        />
         <Meta />
         <Links />
       </head>

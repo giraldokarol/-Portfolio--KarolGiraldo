@@ -148,6 +148,115 @@
   color: var(--color-black);
 }
 
+// ─── Animación de scroll (components/hero/useHeroScroll.ts) ───────────────────────────
+// .has-motion la pone un script en <head> si el visitante acepta animaciones.
+// .is-ready la pone el JS cuando ya colocó la escena 1: hasta entonces se oculta el contenido
+// para que no se vea un instante la escena 2. Si el JS fallara, se muestra igual a los 3 s.
+.has-motion .hero:not(.is-ready) {
+  .hero__avatar,
+  .hero__title,
+  .hero__subtitle {
+    visibility: hidden;
+    animation: hero-fallback 0s 3s forwards;
+  }
+}
+
+@keyframes hero-fallback {
+  to {
+    visibility: visible;
+  }
+}
+
+// "Product Designer" se escribe en contorno y luego cada letra se rellena.
+.has-motion .hero__role {
+  -webkit-text-stroke: rem(2) var(--color-primary);
+}
+
+// Caja de selección estilo Figma alrededor de la muñeca (la posiciona el JS).
+.hero__selection,
+.hero__caret {
+  display: none;
+
+  .has-motion & {
+    display: block;
+  }
+}
+
+.hero__selection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero__selection-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+
+  rect {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke; // 1,5 px siempre, aunque la caja cambie de tamaño
+  }
+}
+
+.hero__handle {
+  position: absolute;
+  width: rem(10);
+  height: rem(10);
+  border: 1.5px solid var(--color-primary);
+  background: var(--color-background);
+  transform: translate(-50%, -50%);
+}
+
+.hero__handle--tl { top: 0; left: 0; }
+.hero__handle--tr { top: 0; left: 100%; }
+.hero__handle--bl { top: 100%; left: 0; }
+.hero__handle--br { top: 100%; left: 100%; }
+
+// Etiqueta de medidas "355 × 380", como la de Figma.
+.hero__selection-size {
+  position: absolute;
+  top: calc(100% + #{rem(12)});
+  left: 50%;
+  padding: rem(2 6);
+  border-radius: rem(4);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: rem(12);
+  font-weight: weight(medium);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+// Cursor de texto que acompaña a la escritura del título.
+.hero__caret {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: rem(3);
+  border-radius: rem(2);
+  background: var(--color-primary);
+  opacity: 0;
+  pointer-events: none;
+
+  @include motion-safe {
+    animation: hero-caret-blink 1s steps(1) infinite;
+  }
+}
+
+@keyframes hero-caret-blink {
+  50% {
+    background: transparent;
+  }
+}
+
 .hero__scroll {
   position: absolute;
   bottom: rem(32);

@@ -5,9 +5,11 @@ import ScrollHint from "./ScrollHint";
 import Avatar from "./Avatar";
 import { useHeroGradient } from "./hero/useHeroGradient";
 import { useHeroAvatar } from "./hero/useHeroAvatar";
+import { useHeroScroll } from "./hero/useHeroScroll";
 import { SOCIAL_LINKS } from "@/config/site";
 
 // HTML = escena 2 (la que se prerenderiza y ve quien tiene reduced-motion).
+// La escena 1 (muñeca grande) es el estado inicial que crea useHeroScroll.
 // Las animaciones viven en components/hero/*. Estilos: styles/sections/_hero.scss
 export default function Hero() {
   const { t } = useTranslation();
@@ -15,6 +17,7 @@ export default function Hero() {
 
   useHeroGradient(root);
   useHeroAvatar(root);
+  useHeroScroll(root);
 
   return (
     <div className="hero" ref={root}>
@@ -48,6 +51,19 @@ export default function Hero() {
 
           <p className="hero__subtitle">{t("hero.subtitle")}</p>
         </div>
+
+        {/* Caja de selección estilo Figma y cursor de texto: solo los usa la animación de scroll. */}
+        <div className="hero__selection" aria-hidden="true">
+          <svg className="hero__selection-frame">
+            <rect x="0" y="0" width="100%" height="100%" />
+          </svg>
+          <span className="hero__handle hero__handle--tl" />
+          <span className="hero__handle hero__handle--tr" />
+          <span className="hero__handle hero__handle--bl" />
+          <span className="hero__handle hero__handle--br" />
+          <span className="hero__selection-size" />
+        </div>
+        <span className="hero__caret" aria-hidden="true" />
 
         <div className="hero__scroll">
           <a href="#projects" aria-label={t("a11y.scrollToProjects")}>
