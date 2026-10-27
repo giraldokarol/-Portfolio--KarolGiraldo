@@ -148,6 +148,9 @@ No se anima.
   Si el puntero sale de la ventana, el avatar vuelve al centro.
 - **Parpadeo aleatorio**: cada 2,5–6s se aplasta `Eyeball` en vertical (0,12s). A veces doble parpadeo.
   Se pausa cuando el hero no está en pantalla o la pestaña está oculta.
+- **Hecho** en `src/components/hero/useHeroAvatar.ts`, con valores más expresivos que la tabla (decisión de Karol:
+  que se note): cara + orejas 7, ojos +5,5 (total 12,5), cuello 2,5, pelo −6, inclinación ±4°. Las orejas se mueven
+  con la cara para no despegarse. El pelo se oculta tras la cara con una **máscara SVG** sincronizada cada fotograma.
 - **Separación técnica clave**: el *tracking* mueve las capas internas y el *scroll* mueve el contenedor
   exterior. Así no se pelean por la misma propiedad `transform`.
 

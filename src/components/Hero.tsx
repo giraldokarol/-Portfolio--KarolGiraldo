@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import ScrollHint from "./ScrollHint";
 import Avatar from "./Avatar";
 import { useHeroGradient } from "./hero/useHeroGradient";
+import { useHeroAvatar } from "./hero/useHeroAvatar";
 import { SOCIAL_LINKS } from "@/config/site";
 
 // HTML = escena 2 (la que se prerenderiza y ve quien tiene reduced-motion).
@@ -13,6 +14,7 @@ export default function Hero() {
   const root = useRef<HTMLDivElement>(null);
 
   useHeroGradient(root);
+  useHeroAvatar(root);
 
   return (
     <div className="hero" ref={root}>
