@@ -3,7 +3,9 @@
 ## En curso (no tocar si lo tiene otro agente)
 | Archivo / zona | Agente | Desde |
 |---|---|---|
-| Hero (Fase 3): `src/components/Hero.tsx`, `src/components/hero/*`, `src/lib/gsap.ts`, `src/styles/sections/_hero.scss` | Claude | 2026-10-27 |
+| Hero (Fase 3, animaciones): `src/components/Hero.tsx`, `src/components/Avatar.tsx`, `src/components/hero/*`, `src/lib/gsap.ts`, `src/styles/sections/_hero.scss`, `src/styles/components/_avatar.scss` | Claude | 2026-10-27 |
+
+Todo lo demás está **libre** para Codex. Si necesita tocar alguno de los archivos de arriba, que lo pida y espere a que Claude los libere.
 
 ## Footer: selector de idioma
 Selector discreto y minimalista en el footer: texto `EN · FR · ES`, sin banderas ni desplegable.
