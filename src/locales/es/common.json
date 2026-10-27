@@ -4,8 +4,8 @@
     "note": "Traducción provisional escrita por Claude. Karol debe revisarla y cambiar status a \"final\". Las claves que empiezan por _ son notas y nunca se muestran."
   },
   "seo": {
-    "title": "Karol Giraldo — Diseñadora de Producto (UX/UI)",
-    "description": "Diseñadora de Producto con más de 8 años de experiencia en movilidad, banca y servicios digitales: UX/UI, investigación de usuarios y sistemas de diseño."
+    "title": "Karol Giraldo — Product Designer (UX/UI)",
+    "description": "Product Designer con más de 8 años de experiencia en movilidad, banca y servicios digitales: UX/UI, investigación de usuarios y sistemas de diseño."
   },
   "a11y": {
     "mainNav": "Navegación principal",
@@ -22,9 +22,9 @@
     "linkedin": "LinkedIn"
   },
   "hero": {
-    "backgroundWord": "Diseñadora",
+    "backgroundWord": "Designer",
     "greeting": "¡Hola! Soy Karol",
-    "role": "Diseñadora de Producto",
+    "role": "Product Designer",
     "subtitle": "Curiosa por las personas y los productos digitales, trabajo entre UX y UI para hacerlos más fáciles de usar.",
     "stickerAlt": "Product Thinking"
   },
@@ -77,7 +77,7 @@
     "pretitle": "un poco sobre mí",
     "title": "De interfaces a productos",
     "portraitAlt": "Retrato de Karol Giraldo",
-    "paragraph1": "Soy Diseñadora de Producto con <strong>más de 8 años de experiencia</strong> en movilidad, banca y servicios digitales, diseñando plataformas B2B y aplicaciones web y móviles.",
+    "paragraph1": "Soy Product Designer con <strong>más de 8 años de experiencia</strong> en movilidad, banca y servicios digitales, diseñando plataformas B2B y aplicaciones web y móviles.",
     "paragraph2": "Mi trabajo abarca <strong>UX/UI, investigación de usuarios y sistemas de diseño,</strong> con un fuerte enfoque en accesibilidad, flujos complejos y productos con muchos datos. Uno pensamiento de producto y oficio de UI para crear experiencias claras, coherentes y preparadas para crecer."
   },
   "footer": {

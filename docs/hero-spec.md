@@ -79,14 +79,31 @@ Eso basta para el parpadeo y para mover los ojos.
    con instancias en las dos escenas. Así hay una sola fuente y la escena 2 es la misma a escala 0,58.
 7. **Exportar como SVG** con `Include "id" attribute` activado (en Export → ⋯).
 
-ℹ️ Las líneas del avatar son **rellenos**, no trazos (se convirtieron con "Outline stroke"). Está bien para
-moverlas y parpadear, pero DrawSVG (animación de "dibujar la línea") solo funciona con trazos.
-No lo necesitamos para el avatar: usaremos DrawSVG en la caja de selección, que construimos en código.
+ℹ️ Las líneas del avatar son **rellenos**, no trazos (se convirtieron con "Outline stroke").
+**Decisión:** Claude reconstruye el avatar con **trazos** (`stroke`) aplicando las correcciones 1–6
+(ver sección 3.1). Así se puede animar con DrawSVG y las líneas se mantienen nítidas al escalar.
+
+### 3.1 Reconstrucción con trazos (Claude)
+Cada línea actual es el contorno de un trazo con puntas redondeadas: dos bordes paralelos + dos semicírculos.
+1. Leer cada forma, separar sus dos bordes y calcular la **línea central** (el punto medio entre ambos)
+   y el **grosor** (la distancia entre ambos).
+2. Redibujarla como `<path stroke-width="…" stroke-linecap="round" fill="none">`.
+3. Formas que son anillos (contorno de la cara, círculo, cuadrado, puntos del ancla) → línea central del anillo.
+4. Lo que es relleno de verdad se queda como relleno: pupilas, mejillas, nariz, círculos amarillos.
+5. Aplicar las correcciones: pelo separado (`Hair Back` / `Bangs`), relleno blanco de la cara, grupos
+   `Eyeball`, nombres limpios, un solo avatar.
+6. **Verificar**: renderizar original y versión con trazos superpuestos y compararlos píxel a píxel con Playwright.
 
 ## 4. Escena 1 — inicio, sin scroll
 
 Visible: header, avatar grande centrado, "Designer" gigante detrás (decorativo, `aria-hidden`),
 gradientes, redes en vertical, indicador de scroll.
+
+**Sin cursor personalizado:** el puntero del ratón es el normal del sistema. Lo que reacciona a él
+es el **gradiente** y la **muñeca**.
+
+**"Designer" de fondo es fijo:** siempre presente, en `#fbfbfb`, en las dos escenas y en los tres idiomas.
+No se anima.
 
 ### 4.1 Gradiente que sigue al mouse
 - Dos "manchas" (`div`) con `radial-gradient` suave que imita el desenfoque de 100px de Figma.
@@ -135,62 +152,43 @@ durante **+150% de la altura de pantalla** en escritorio y +100% en móvil.
 progreso   0 ──── 0,15 ──────── 0,45 ────────── 0,8 ──── 1
 caja       dibuja ▸ redimensiona ▸·····················▸ deselecciona
 avatar             ▸ 355×380 → 206×220, sube ▸
-"Designer"                 ▸ vuela y aterriza en el título ▸
-h1 / caret                       ▸ se escribe letra a letra ▸
-rol                                          ▸ contorno → relleno ▸
+saludo                           ▸ se escribe letra a letra ▸
+Product Designer                       ▸ se escribe ▸ contorno → relleno azul ▸
 subtítulo                                             ▸ aparece ▸
+"Designer" fondo   (fijo, no se anima)
 ```
 
 1. **Selección (0–0,15).** Aparece una caja de selección de Figma alrededor del avatar: borde azul de 1px
    dibujado con **DrawSVG**, cuadraditos en las esquinas y una etiqueta con las medidas `355 × 380`.
-2. **Redimensionar (0,15–0,45).** El avatar se encoge y sube hasta su sitio en la escena 2. La etiqueta
-   cuenta las medidas hasta `206 × 220` y un cursor de redimensionar (↘) acompaña a la esquina.
+2. **Redimensionar (0,15–0,45).** El avatar se encoge y sube hasta su sitio en la escena 2, y la etiqueta
+   cuenta las medidas hasta `206 × 220`.
    Técnica **FLIP**: el HTML está en la escena 2; medimos dónde estaría el avatar en la escena 1
    y lo "invertimos" hasta ahí. El scroll lo devuelve a su sitio. Funciona con cualquier tamaño de pantalla.
-3. **"Designer" aterriza (0,3–0,55).** *(Alternativa a que las letras converjan; ver 6.2.)*
-   La palabra gigante de fondo se encoge y vuela hasta **su misma palabra dentro del título**
-   ("Product **Designer**", "**Diseñadora** de Producto"), pasando de casi blanca a contorno azul.
-4. **Escritura (0,45–0,8).** "Hey! I'm Karol" y el resto del rol se escriben letra a letra con un
-   **cursor de texto** azul (barra de 3px que parpadea, como en Figma). SplitText separa en letras.
+3. **Escritura (0,45–0,8).** El saludo ("Hey! I'm Karol" / "¡Hola! Soy Karol" / "Hello ! Moi c'est Karol")
+   y después "Product Designer" se escriben letra a letra con un **cursor de texto** (la barra vertical
+   que parpadea al escribir en Figma; *no* es un cursor de ratón). SplitText separa en letras.
    Las letras existen siempre y solo cambia su visibilidad, así que el tamaño del título no cambia
-   mientras se escribe, sea cual sea el idioma.
-5. **Relleno (0,75–0,92).** "Product Designer" pasa de contorno (`-webkit-text-stroke`) a relleno azul
-   con un barrido de izquierda a derecha.
-6. **Cierre (0,85–1).** El subtítulo aparece por líneas (SplitText `lines` + `mask`), la caja de selección
+   mientras se escribe.
+4. **Relleno (0,7–0,92).** El texto azul **"Product Designer"** se escribe primero en **contorno** azul
+   (`-webkit-text-stroke`) y luego se rellena de azul con un barrido de izquierda a derecha.
+5. **Cierre (0,85–1).** El subtítulo aparece por líneas (SplitText `lines` + `mask`), la caja de selección
    desaparece (como al hacer clic fuera del lienzo) y aparece el indicador de scroll.
    Termina el `pin` y la página sigue hacia Projects.
 
-### 6.2 Por qué cambio "las letras convergen" por "la palabra aterriza"
-- Las letras de la palabra de fondo no coinciden con las del título en cada idioma
-  ("Diseñadora": 10 letras; "Diseñadora de Producto": 20). No hay correspondencia 1:1.
-- Con `#fbfbfb` casi blanco, las letras sueltas volando apenas se verían.
-- La palabra completa sí existe dentro del rol en los tres idiomas, y el efecto se lee mejor:
-  "la palabra de fondo *se convierte* en tu título".
-- Requisito: en los JSON se marca qué palabra es, p. ej. `"role": "Product <word>Designer</word>"`,
-  `"role": "<word>Diseñadora</word> de Producto"`. Si un idioma no la marca, la palabra se disuelve (6.3-B).
-
-### 6.3 Alternativas
-- **A (recomendada):** la de arriba.
-- **B (más simple):** igual, pero las letras de "Designer" se dispersan a distinta velocidad (profundidad)
-  y se desvanecen. Sin vuelo al título. Menos riesgo; buena para móvil.
-- **C (tu idea original):** las letras convergen al título. Solo es viable si el fondo pasa a ser la *misma
-  frase* que el rol en cada idioma, lo que cambia el diseño de fondo.
-
-### 6.4 Tres idiomas, textos de distinto largo
+### 6.2 Tres idiomas
+- **"Product Designer" es igual en los tres idiomas** (es el término que se usa al buscar trabajo),
+  y "Designer" de fondo también. Solo cambian el **saludo** y el **subtítulo**.
 - Nada tiene medidas fijas por idioma: todo se **mide en el navegador** (FLIP, SplitText).
 - `SplitText` con `autoSplit: true` y animaciones dentro de `onSplit()`: si la fuente termina de cargar
   o cambia el ancho, se vuelve a partir el texto sin romper la animación.
-- En español/francés el rol ocupa 2 líneas en pantallas medianas (`text-wrap: balance`); la escritura
-  y el cursor siguen el texto de línea en línea.
-- "Designer" de fondo en `24,5vw`: en español ("Diseñadora") se sale más por los lados, como ya ocurre
-  en Figma con "Designer". Es decorativo.
+- El saludo francés es el más largo y puede ocupar 2 líneas en pantallas medianas (`text-wrap: balance`);
+  la escritura y el cursor de texto siguen el texto de línea en línea.
 - Al cambiar el tamaño de la ventana, `ScrollTrigger.refresh()` vuelve a medir (`invalidateOnRefresh`).
 
 ## 7. Móvil y táctil (sin cursor)
 - **Gradiente**: deriva lenta y autónoma (bucle suave); se pausa fuera de pantalla.
 - **Avatar**: parpadeo + "mira alrededor" cada pocos segundos (las pupilas se mueven solas).
 - **Scroll**: misma historia más corta (+100%): selección → redimensionar → escritura → relleno.
-  "Designer" usa la alternativa B.
 - Altura con `svh` y `ScrollTrigger.config({ ignoreMobileResize: true })`, para que la barra
   del navegador no haga saltar la animación.
 
@@ -221,15 +219,15 @@ src/styles/components/_avatar.scss, _selection-box.scss
 
 | # | Tarea | Quién | Depende de |
 |---|---|---|---|
-| T0 | Correcciones de capas en Figma (sección 3) + exportar SVG | **Karol** | — |
-| T1 | `Avatar.tsx` estático desde el SVG exportado, con `data-part` por capa + `_avatar.scss` | **Codex** | T0 |
-| T2 | Escena 2 estática fiel a Figma: tipografía `clamp()`, `--color-ink`, redes, "Designer" `#fbfbfb`, claves i18n con `<word>`; sin animación | **Codex** | T1 |
+| T0 | Reconstruir el avatar con trazos + correcciones (sección 3.1), verificado píxel a píxel | Claude | — |
+| T1 | `Avatar.tsx` estático desde el SVG de T0, con `data-part` por capa + `_avatar.scss` | **Codex** | T0 |
+| T2 | Escena 2 estática fiel a Figma: tipografía `clamp()`, `--color-ink`, redes, "Designer" `#fbfbfb`; sin animación | **Codex** | T1 |
 | T3 | Icono de mouse en SVG estático (si se aprueba P5) | **Codex** | P1, P5 |
 | T4 | Infraestructura: `lib/gsap.ts`, script `has-motion`, estados iniciales | Claude | T2 |
 | T5 | Gradiente con mouse + deriva en móvil | Claude | T4 |
 | T6 | Avatar: parallax por capas + parpadeo + "mira alrededor" | Claude | T1, T4 |
 | T7 | Timeline: pin, FLIP del avatar, caja de selección con DrawSVG, medidas | Claude | T4 |
-| T8 | Texto: escritura con cursor, "Designer" aterriza, contorno → relleno, subtítulo | Claude | T7 |
+| T8 | Texto: escritura con cursor de texto, "Product Designer" contorno → relleno, subtítulo | Claude | T7 |
 | T9 | Móvil + reduced-motion + robustez al redimensionar | Claude | T5–T8 |
 | T10 | Pruebas en `/en`, `/fr`, `/es` × escritorio y móvil con Playwright | Claude | T9 |
 
@@ -240,9 +238,11 @@ gradiente (T5) → avatar (T6) → timeline (T7–T8) → móvil/reduced-motion 
 ## 11. Preguntas para Karol
 - **P1.** El icono de mouse no está en la escena 2 de Figma. ¿Va abajo en la escena 1 (invita a hacer
   scroll y desaparece en la transición), en la escena 2, o en las dos?
-- **P2.** ¿Aceptas "la palabra aterriza" (6.1-3) en lugar de "las letras convergen"?
+- ~~P2~~ Resuelta: "Designer" de fondo es fijo; "Product Designer" igual en los tres idiomas.
 - **P3.** En la escena 1 el avatar está **25px a la izquierda** del centro (en la escena 2 está centrado).
   ¿Es intencional?
 - **P4.** ¿Adoptamos `#1a1a1a` (Figma) para el texto, en lugar del `#1f2937` actual?
 - **P5.** ¿Sustituimos Lottie por un SVG (≈250 KB menos)? Implicaría desinstalar `lottie-react`.
-- **P6.** ¿Haces tú las correcciones de Figma (T0) o prefieres que las haga yo con el plugin de Figma?
+- ~~P6~~ Resuelta: Claude reconstruye el avatar con trazos (T0).
+- **P7.** ¿Guardo también el avatar con trazos en tu archivo de Figma (como componente nuevo `Avatar / Strokes`,
+  sin tocar el original), para que diseño y código tengan la misma fuente?
