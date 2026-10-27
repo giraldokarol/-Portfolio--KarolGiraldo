@@ -4,7 +4,7 @@ Reglas compartidas por todos los agentes (Claude Code lee este archivo vía CLAU
 
 ## Proyecto
 Portafolio de Product Designer (UI/UX).
-- React 19 + TypeScript + Vite 8 + Tailwind CSS v4.
+- React 19 + TypeScript + Vite 8 + Sass (SCSS). **Sin Tailwind** (se retiró: no es compatible con Sass).
 - React Router v8 en modo framework, `ssr: false` + `prerender` → un HTML estático por idioma.
 - Animaciones con GSAP (`@gsap/react`, ScrollTrigger, SplitText, DrawSVG — todos incluidos en `gsap`).
 - Textos con i18next + react-i18next.
@@ -19,6 +19,7 @@ src/components/            componentes (Header, Hero, Projects, About, Footer…
 src/i18n/                  config de idiomas, detección, instancias i18next, SEO (hreflang)
 src/locales/{en,fr,es}/    TODOS los textos visibles (common.json)
 src/config/site.ts         datos no traducibles (URLs, email, dominio)
+src/styles/                estilos SCSS (ver "Estilos")
 docs/                      specs y pendientes
 ```
 
@@ -33,13 +34,36 @@ docs/                      specs y pendientes
 - Trabajar por fases; detenerse al final de cada una para validación.
 - Explicar decisiones técnicas en lenguaje simple.
 - Coordinación entre agentes: no editar archivos que el otro agente tenga "en curso" (lista en `docs/pendientes.md`).
+- Mejoras de diseño, accesibilidad o SEO no pedidas: proponerlas, no aplicarlas.
+
+## Estilos (SCSS)
+```
+src/styles/
+  main.scss            solo @use, en orden: base → layout → components → sections → pages
+  abstracts/           NO generan CSS: _tokens (valores Sass), _functions (rem, em, z, weight), _mixins
+  base/                _fonts, _root (variables CSS), _reset
+  layout/              _container
+  components/          piezas reutilizables (_buttons, _header, _project-card…)
+  sections/            un archivo por sección de la página (_hero, _projects, _about, _footer)
+  pages/               páginas auxiliares (selector de idioma, error)
+```
+- Cada parcial empieza con `@use "../abstracts" as *;`. Nunca `@import` (obsoleto).
+- **Medidas en rem con `rem()`**: `padding: rem(10 20)` → `0.625rem 1.25rem`. Excepciones en px: bordes finos (`1px`).
+- Media queries solo con `@include mq(md|lg|xl)` (mobile first, en em). Hover solo con `@include hover { … }`.
+- Transiciones/animaciones CSS dentro de `@include motion-safe { … }`.
+- **Dos tipos de variables**:
+  - Sass (`$breakpoints`, `$font-sizes`, `$gutter`…) en `abstracts/_tokens.scss`: solo existen al compilar.
+  - CSS (`--color-primary`, `--header-height`…) en `base/_root.scss`: existen en el navegador; úsalas para colores
+    y para todo lo que GSAP o JavaScript necesite leer o cambiar.
+- Colores: siempre `var(--color-…)`, nunca hex sueltos en componentes nuevos.
+- Clases con BEM: `.bloque`, `.bloque__elemento`, `.bloque--variante` (p. ej. `.hero__title`, `.btn--primary`).
+- Cada componente indica en un comentario dónde están sus estilos.
 
 ## Git (solo Claude)
 - **Solo Claude usa git**: commits, ramas y push.
 - **Codex NO usa git nunca** (ni `git add`, `commit`, `checkout`, `stash`, `reset`, etc.); solo modifica archivos.
 - Cuando Codex termina una tarea, Claude revisa sus cambios con `git diff`, corrige lo necesario y hace el commit.
 - Commits pequeños y descriptivos (en inglés, formato `tipo: descripción`, p. ej. `feat: add hero gradient`).
-- Mejoras de diseño, accesibilidad o SEO no pedidas: proponerlas, no aplicarlas.
 
 ## Textos e idiomas
 - Ningún texto visible escrito en componentes: todo va en `src/locales/{en,fr,es}/common.json`.

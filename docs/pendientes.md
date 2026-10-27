@@ -3,7 +3,7 @@
 ## En curso (no tocar si lo tiene otro agente)
 | Archivo / zona | Agente | Desde |
 |---|---|---|
-| `src/components/Header.tsx`, `src/components/Hero.tsx`, `src/App.css` (hero/header) | Claude | 2026-10-27 |
+| `src/components/Header.tsx`, `src/components/Hero.tsx`, `src/styles/sections/_hero.scss`, `src/styles/components/_header.scss` | Claude | 2026-10-27 |
 
 ## Footer: selector de idioma
 Selector discreto y minimalista en el footer: texto `EN · FR · ES`, sin banderas ni desplegable.
@@ -34,7 +34,8 @@ Para conectarlo:
 ## Limpieza (con confirmación)
 - Borrar `_legacy/` (antiguos `main.tsx`, `App.tsx`, `index.html`, ya reemplazados).
 - Borrar `src/assets/img/logo.png` (reemplazado por los SVG de Figma `logo-karolg.svg` + `logo-point.svg`).
-- Desinstalar dependencias que ya no se usan: `@vitejs/plugin-react`, `vite-tsconfig-paths`, `embla-carousel-react` (+ `Carousel.tsx`), `clsx`, `tailwind-merge`, `class-variance-authority`.
+- Desinstalar dependencias que ya no se usan: `@vitejs/plugin-react`, `vite-tsconfig-paths`, `embla-carousel-react` (+ `Carousel.tsx`, único archivo con clases de Tailwind), `clsx`, `tailwind-merge`, `class-variance-authority`.
+- Aprobar o denegar el script de instalación de `@parcel/watcher` (dependencia opcional de Sass; hoy no hace falta).
 
 ## Más adelante
 - Imágenes de las cards: WebP/AVIF, `width`/`height`, `loading="lazy"` (cover-tulindero pesa 3,6 MB).
