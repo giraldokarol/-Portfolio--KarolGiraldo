@@ -125,6 +125,46 @@
   }
 }
 
-.hero__scroll-icon {
-  width: rem(60);
+// Icono de scroll (ScrollHint.tsx).
+.scroll-hint {
+  overflow: visible;
+}
+
+.scroll-hint__body {
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  fill: var(--color-background);
+}
+
+.scroll-hint__wheel {
+  stroke: var(--color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+
+  @include motion-safe {
+    animation: scroll-hint-wheel 2.7s cubic-bezier(0.33, 0, 0.67, 1) infinite;
+  }
+}
+
+// La ruedita baja y se desvanece, luego reaparece arriba (mismo ritmo que el Lottie original).
+@keyframes scroll-hint-wheel {
+  0%,
+  20% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateY(rem(12));
+    opacity: 0;
+  }
+
+  71% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
