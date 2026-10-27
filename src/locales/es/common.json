@@ -22,6 +22,7 @@
     "linkedin": "LinkedIn"
   },
   "hero": {
+    "avatarAlt": "Avatar ilustrado de Karol Giraldo",
     "backgroundWord": "Designer",
     "greeting": "¡Hola! Soy Karol",
     "role": "Product Designer",

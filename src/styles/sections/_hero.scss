@@ -1,127 +1,154 @@
 @use "../abstracts" as *;
 
-// HERO — estado estático actual. Se reconstruye en la Fase 3 (docs/hero-spec.md).
+// Escena 2 estática; el contenido real también se prerenderiza.
 .hero {
   position: relative;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  background:
-    linear-gradient(to bottom, transparent 70%, rgb(255 255 255 / 0.75) 88%, #fff 100%),
-    radial-gradient(
-      ellipse 35% 65% at 32% 28%,
-      rgb(255 211 50 / 0.14) 0%,
-      rgb(255 211 50 / 0.06) 45%,
-      transparent 75%
-    ),
-    radial-gradient(
-      ellipse 32% 52% at 72% 58%,
-      rgb(52 117 247 / 0.18) 0%,
-      rgb(52 117 247 / 0.07) 42%,
-      transparent 72%
-    ),
-    var(--color-background);
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--color-background);
 }
 
-// Palabra gigante decorativa ("Designer"), oculta a lectores de pantalla.
 .hero__bg-word {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24vw;
+  font-size: 24.5vw;
   font-weight: weight(extrabold);
-  line-height: 1;
+  line-height: 1.26;
+  letter-spacing: -0.02em;
   white-space: nowrap;
-  opacity: 0.03;
+  color: var(--color-bg-word);
 }
 
-// Redes sociales en vertical a la izquierda (solo escritorio).
+.hero__blob {
+  position: absolute;
+  width: 33.2vw;
+  aspect-ratio: 1;
+  margin: -16.6vw;
+  border-radius: 50%;
+  opacity: 0.16;
+  pointer-events: none;
+  transform: translate(var(--blob-x, #{rem(0)}), var(--blob-y, #{rem(0)}));
+  will-change: transform;
+}
+
+.hero__blob--yellow {
+  top: 31.2%;
+  left: 34.1%;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+}
+
+.hero__blob--blue {
+  top: 61.3%;
+  left: 56.6%;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+}
+
 .hero__social {
   position: absolute;
+  z-index: z(content);
   top: 50%;
-  left: rem(48);
+  left: rem(36);
   display: none;
   transform: translate(-50%, -50%) rotate(90deg);
 
-  @include mq(lg) {
-    display: block;
-  }
+  @include mq(lg) { display: block; }
 }
 
 .hero__social-list {
   display: flex;
   align-items: center;
-  gap: rem(48);
+  gap: rem(64);
   white-space: nowrap;
 }
 
 .hero__social-link {
   @include text(sm);
+  font-weight: weight(light);
+  line-height: 1.26;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
+  color: var(--color-gray);
 }
 
 .hero__content {
+  @include container;
+  position: relative;
+  z-index: z(content);
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100dvh;
-  margin-inline: auto;
-  padding: var(--header-height) rem($gutter) 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding-block: calc(var(--header-height) + #{rem(24)}) rem(112);
+
+  @include mq(lg) { padding-block: rem(112); }
 }
 
 .hero__intro {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  text-align: center;
+
+  @include mq(lg) { transform: translateY(rem(6)); }
 }
 
-.hero__sticker {
-  width: rem(256);
-  margin-bottom: rem(16);
+.hero__avatar {
+  width: fluid(206.29, 150);
+  flex-shrink: 0;
+  margin-bottom: rem(8);
+
+  @include mq(lg) { margin-bottom: rem(-16.4); }
 }
 
 .hero__title {
-  position: relative;
-  z-index: z(content);
-  max-width: rem(1024);
-  @include text(5xl);
   font-weight: weight(extrabold);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  text-align: center;
+  line-height: 1.26;
+  letter-spacing: -0.04em;
   text-wrap: balance;
+  color: var(--color-ink);
+}
 
-  @include mq(sm) {
-    font-size: rem(72);
-  }
-
-  @include mq(lg) {
-    font-size: rem(96);
-  }
+.hero__greeting {
+  display: block;
+  font-size: fluid(110, 44);
+  letter-spacing: -0.04em;
 }
 
 .hero__role {
+  display: block;
+  font-size: fluid(122, 48);
+  letter-spacing: -0.04em;
   color: var(--color-primary);
+
+  @include mq(lg) { margin-top: calc(-1 * #{fluid(31.6, 18)}); }
 }
 
 .hero__subtitle {
-  position: relative;
-  z-index: z(content);
-  max-width: rem(672);
-  margin-top: rem(32);
-  @include text(xl);
-  text-align: center;
+  max-width: fluid(791, 320);
+  margin-top: rem(20.28);
+  font-size: fluid(24, 18);
+  font-weight: weight(regular);
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  color: var(--color-black);
 }
 
 .hero__scroll {
-  display: none;
-  justify-content: center;
-  margin-bottom: rem(32);
+  position: absolute;
+  bottom: rem(32);
+  left: 50%;
+  transform: translateX(-50%);
 
-  @include mq(lg) {
+  a {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: rem(44);
+    min-height: rem(56);
   }
 }
 

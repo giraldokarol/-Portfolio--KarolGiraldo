@@ -55,3 +55,9 @@
 
   @return map.get($z-layers, $layer);
 }
+
+// Escala desde el ancho de Figma, con límites en rem:
+// fluid(122, 48) → clamp(3rem, 7.0602vw, 7.625rem).
+@function fluid($max-px, $min-px, $design-width: 1728) {
+  @return clamp(#{rem($min-px)}, #{math.div($max-px, $design-width) * 100vw}, #{rem($max-px)});
+}

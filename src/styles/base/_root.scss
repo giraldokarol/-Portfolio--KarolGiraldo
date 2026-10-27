@@ -22,6 +22,20 @@
   --color-surface: #f8f8f8;
   --color-border: #e5e7eb;
 
+  // Hero (Figma, escena 2)
+  --color-ink: #1a1a1a;
+  --color-black: #000000;
+  --color-gray: #757575;
+  --color-bg-word: #fbfbfb;
+
+  // Avatar
+  --avatar-line: var(--color-primary);
+  --avatar-skin: #ffffff;
+  --avatar-cheek: #f0f5fc;
+  --avatar-nose: #94b0dd;
+  --avatar-neck-shadow: #d7e4f2;
+  --avatar-accent: var(--color-accent);
+
   // Sombras
   --shadow-card-hover: 0 #{rem(12)} #{rem(30)} rgb(0 0 0 / 0.08);
 

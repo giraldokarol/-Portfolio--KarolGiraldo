@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+.avatar {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--avatar-line);
+}
+
+.avatar__ink { fill: currentColor; }
+.avatar__skin { fill: var(--avatar-skin); }
+.avatar__cheek { fill: var(--avatar-cheek); }
+.avatar__nose { fill: var(--avatar-nose); }
+.avatar__neck-shadow { fill: var(--avatar-neck-shadow); }
+.avatar__accent { fill: var(--avatar-accent); }
