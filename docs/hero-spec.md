@@ -119,7 +119,7 @@ es el **gradiente** y la **muñeca**.
 No se anima.
 
 ### 4.1 Gradiente que sigue al mouse
-- Dos "manchas" (`div`) idénticas a Figma: círculo Ø574 px, opacidad 10 %, `filter: blur(100px)` (en vw, con mínimo
+- Dos "manchas" (`div`) como en Figma: círculo Ø574 px, `filter: blur(100px)`, pero con **opacidad 35 %** (Figma: 10 %; decisión de Karol para que el movimiento se note, variable `--blob-opacity`), (en vw, con mínimo
   de 320 px en móvil). Moverlas con `transform` es barato: el desenfoque se pinta una vez y la capa solo se desplaza
   (medido: 8,3 ms/fotograma). Un `radial-gradient` mostraba más bandas de color.
 - Se mueven con `transform: translate(var(--blob-x), var(--blob-y))`. GSAP actualiza esas variables

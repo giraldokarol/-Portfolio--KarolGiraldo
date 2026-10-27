@@ -29,13 +29,15 @@
 .hero__blob {
   // 574 / 1728 = 33,22vw, con un mínimo para que en móvil siga viéndose.
   --blob-size: max(33.22vw, #{rem(320)});
+  // Intensidad del color. Figma usa 0.1; Karol la subió para que el movimiento se note.
+  --blob-opacity: 0.35;
 
   position: absolute;
   width: var(--blob-size);
   aspect-ratio: 1;
   margin: calc(var(--blob-size) / -2); // centra la mancha en su top/left
   border-radius: 50%;
-  opacity: 0.1;
+  opacity: var(--blob-opacity);
   filter: blur(calc(var(--blob-size) * 0.1742)); // 100 / 574: misma proporción que en Figma
   pointer-events: none;
   transform: translate(var(--blob-x, 0), var(--blob-y, 0));
