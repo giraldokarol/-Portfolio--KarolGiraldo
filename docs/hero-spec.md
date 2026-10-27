@@ -1,6 +1,6 @@
 # Hero — especificación
 
-> Estado: **BORRADOR para validar por Karol** · Fase 2 · 2026-10-27
+> Estado: **VALIDADA** (decisiones de Karol en la sección 11) · Fase 2 · 2026-10-27
 > Figma: [Hero 1 / escena 1](https://www.figma.com/design/6gbzMRMGQDCcRvv2e5EEjm/Marca-Personal?node-id=2055-288) ·
 > [Hero 2 / escena 2](https://www.figma.com/design/6gbzMRMGQDCcRvv2e5EEjm/Marca-Personal?node-id=2055-415)
 
@@ -20,12 +20,14 @@ El scroll *es* el proceso de diseño.
 | "Hey! I'm Karol" | — | ExtraBold 110px, `#1a1a1a`, tracking −0,04em |
 | "Product Designer" | — | ExtraBold **122px**, `#3475F7`, tracking −0,04em |
 | Subtítulo | — | Regular 24px, negro, tracking −0,04em, ancho 791px |
-| Icono de mouse | — | **no está en Figma** (ver pregunta P1) |
+| Icono de mouse | abajo, centrado, enlace a Projects | igual |
 
 Notas:
-- En escritorio los tamaños se escalan con `clamp()` desde estas medidas (Figma = 1728px de ancho).
-- Hoy el sitio usa `opacity: 0.03` para "Designer" y `#1f2937` para el texto; Figma usa `#fbfbfb` y `#1a1a1a`.
-  Propongo seguir Figma y crear el token `--color-ink: #1a1a1a` (P4).
+- **Fuente de verdad: Figma.** Colores, tamaños, pesos y espaciados del hero salen de Figma, no del CSS actual
+  (token nuevo `--color-ink: #1a1a1a`; "Designer" en `#fbfbfb` sólido, no con opacidad).
+- En pantallas distintas de 1728px los tamaños se escalan con `clamp()` desde estas medidas.
+- **Todo centrado horizontalmente** en las dos escenas (en Figma el avatar de la escena 1 está 25px
+  a la izquierda; se corrige al centro).
 
 ## 3. Revisión de capas del avatar en Figma
 
@@ -133,8 +135,11 @@ No se anima.
 - **Separación técnica clave**: el *tracking* mueve las capas internas y el *scroll* mueve el contenedor
   exterior. Así no se pelean por la misma propiedad `transform`.
 
-### 4.3 Indicador de scroll
-Abajo y centrado. Propongo sustituir Lottie por un SVG animado con CSS (P5): Lottie pesa ~250 KB.
+### 4.3 Indicador de scroll (mouse)
+- Abajo y centrado, **en las dos escenas**. Ya es un SVG + animación CSS (sustituyó a Lottie).
+- **Es un enlace a `#projects`**: quien no quiera ver la animación hace clic y salta a Projects.
+  Quien siga haciendo scroll ve la animación completa.
+- Como el `pin` añade su propio espacio, `#projects` queda *después* de la animación: el clic la salta entera.
 
 ## 5. Escena 2 — final del scroll
 Avatar pequeño arriba, `h1` ("Hey! I'm Karol" + "Product Designer" en azul), subtítulo.
@@ -171,8 +176,8 @@ subtítulo                                             ▸ aparece ▸
    mientras se escribe.
 4. **Relleno (0,7–0,92).** El texto azul **"Product Designer"** se escribe primero en **contorno** azul
    (`-webkit-text-stroke`) y luego se rellena de azul con un barrido de izquierda a derecha.
-5. **Cierre (0,85–1).** El subtítulo aparece por líneas (SplitText `lines` + `mask`), la caja de selección
-   desaparece (como al hacer clic fuera del lienzo) y aparece el indicador de scroll.
+5. **Cierre (0,85–1).** El subtítulo aparece por líneas (SplitText `lines` + `mask`) y la caja de selección
+   desaparece (como al hacer clic fuera del lienzo). El icono de mouse sigue visible durante todo el recorrido.
    Termina el `pin` y la página sigue hacia Projects.
 
 ### 6.2 Tres idiomas
@@ -222,7 +227,8 @@ src/styles/components/_avatar.scss, _selection-box.scss
 | T0 | Reconstruir el avatar con trazos + correcciones (sección 3.1), verificado píxel a píxel | Claude | — |
 | T1 | `Avatar.tsx` estático desde el SVG de T0, con `data-part` por capa + `_avatar.scss` | **Codex** | T0 |
 | T2 | Escena 2 estática fiel a Figma: tipografía `clamp()`, `--color-ink`, redes, "Designer" `#fbfbfb`; sin animación | **Codex** | T1 |
-| T3 | Icono de mouse en SVG estático (si se aprueba P5) | **Codex** | P1, P5 |
+| ~~T3~~ | Icono de mouse en SVG — **hecho** por Claude (Lottie eliminado) | — | — |
+| T0b | Guardar el avatar con trazos en Figma como componente `Avatar / Strokes` (sin tocar el original) | Claude | T0 |
 | T4 | Infraestructura: `lib/gsap.ts`, script `has-motion`, estados iniciales | Claude | T2 |
 | T5 | Gradiente con mouse + deriva en móvil | Claude | T4 |
 | T6 | Avatar: parallax por capas + parpadeo + "mira alrededor" | Claude | T1, T4 |
@@ -235,14 +241,13 @@ Codex hace lo **estático y bien definido** (T1–T3) y Claude la animación (T4
 de Codex con `git diff` y hace los commits. Orden de la Fase 3 = el que pediste:
 gradiente (T5) → avatar (T6) → timeline (T7–T8) → móvil/reduced-motion (T9) → idiomas (T10).
 
-## 11. Preguntas para Karol
-- **P1.** El icono de mouse no está en la escena 2 de Figma. ¿Va abajo en la escena 1 (invita a hacer
-  scroll y desaparece en la transición), en la escena 2, o en las dos?
-- ~~P2~~ Resuelta: "Designer" de fondo es fijo; "Product Designer" igual en los tres idiomas.
-- **P3.** En la escena 1 el avatar está **25px a la izquierda** del centro (en la escena 2 está centrado).
-  ¿Es intencional?
-- **P4.** ¿Adoptamos `#1a1a1a` (Figma) para el texto, en lugar del `#1f2937` actual?
-- **P5.** ¿Sustituimos Lottie por un SVG (≈250 KB menos)? Implicaría desinstalar `lottie-react`.
-- ~~P6~~ Resuelta: Claude reconstruye el avatar con trazos (T0).
-- **P7.** ¿Guardo también el avatar con trazos en tu archivo de Figma (como componente nuevo `Avatar / Strokes`,
-  sin tocar el original), para que diseño y código tengan la misma fuente?
+## 11. Decisiones de Karol (2026-10-27)
+- **P1.** Icono de mouse en las dos escenas, clicable → salta a Projects; el scroll sigue mostrando la animación.
+- **P2.** "Designer" de fondo fijo en `#fbfbfb`; "Product Designer" igual en los tres idiomas.
+- **P3.** Todo el hero siempre centrado en pantalla.
+- **P4.** Usar exactamente los valores de Figma, ignorando el CSS actual.
+- **P5.** Quitar lo que pese mucho manteniendo la animación del mouse → hecho (SVG + CSS).
+- **P6.** Claude reconstruye el avatar con trazos.
+- **P7.** Sí: guardar el avatar con trazos en Figma como componente nuevo, sin tocar el original.
+- **P8.** Sí al cursor de texto (barra vertical que parpadea) al escribir el título, para que se vea real.
+- Sin cursor de ratón personalizado: el gradiente y la muñeca siguen al puntero normal.
