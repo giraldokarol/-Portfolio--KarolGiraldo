@@ -1,0 +1,43 @@
+import { data } from "react-router";
+
+import { isLocale } from "@/i18n/config";
+import { i18nByLocale } from "@/i18n/instances";
+import { alternateLinks } from "@/i18n/seo";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
+import About from "@/components/About";
+import Footer from "@/components/Footer";
+import type { Route } from "./+types/home";
+
+// Corre en el build (prerender): una URL como /de no es un idioma válido → 404.
+export function loader({ params }: Route.LoaderArgs) {
+  if (!isLocale(params.lang)) throw data(null, { status: 404 });
+  return { locale: params.lang };
+}
+
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  if (!loaderData) return [];
+  const { locale } = loaderData;
+  const { t } = i18nByLocale[locale];
+
+  return [
+    { title: t("seo.title") },
+    { name: "description", content: t("seo.description") },
+    ...alternateLinks(locale),
+  ];
+};
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main id="main">
+        <Hero />
+        <Projects />
+        <About />
+      </main>
+      <Footer />
+    </>
+  );
+}

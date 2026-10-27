@@ -1,0 +1,92 @@
+{
+  "_meta": {
+    "status": "PROVISIONAL",
+    "note": "Traduction provisoire écrite par Claude. Karol doit la relire et passer status à \"final\". Les clés qui commencent par _ sont des notes et ne s'affichent jamais."
+  },
+  "seo": {
+    "title": "Karol Giraldo — Product Designer (UX/UI)",
+    "description": "Product Designer avec plus de 8 ans d’expérience dans la mobilité, la banque et les services numériques : UX/UI, recherche utilisateur et design systems."
+  },
+  "a11y": {
+    "mainNav": "Navigation principale",
+    "homeLink": "Karol Giraldo, accueil",
+    "scrollToProjects": "Aller aux projets"
+  },
+  "nav": {
+    "selectedWork": "Projets choisis",
+    "behindTheWork": "Les coulisses"
+  },
+  "cta": {
+    "sayHello": "Dire bonjour",
+    "downloadCv": "Télécharger le CV",
+    "linkedin": "LinkedIn"
+  },
+  "hero": {
+    "backgroundWord": "Designer",
+    "greeting": "Hello ! Moi c’est Karol",
+    "role": "Product Designer",
+    "subtitle": "Curieuse des gens et des produits numériques, je travaille entre UX et UI pour les rendre plus simples à utiliser.",
+    "stickerAlt": "Product Thinking"
+  },
+  "projects": {
+    "pretitle": "portfolio",
+    "title": "Études de cas",
+    "intro": "Derrière l’interface : la réflexion produit, les arbitrages et les décisions de design qui ont façonné chaque solution.",
+    "readMore": "En savoir plus",
+    "readMoreAbout": "En savoir plus sur {{title}}",
+    "items": {
+      "fleetWeb": {
+        "title": "Interface",
+        "categories": [
+          "UX/UI",
+          "Product Design"
+        ],
+        "description": "Une façon plus claire pour les gestionnaires de flotte de comprendre l’état des véhicules et d’agir sur l’essentiel.",
+        "imageAlt": "Interface de gestion de flotte"
+      },
+      "driverApp": {
+        "title": "Driver App",
+        "categories": [
+          "Produit mobile",
+          "Expérience conducteur"
+        ],
+        "description": "Une expérience mobile qui donne aux conducteurs la bonne information au bon moment, sans gêner leur travail.",
+        "imageAlt": "Interface de l’application conducteur"
+      },
+      "cmcic": {
+        "title": "Crédit Mutuel & CIC",
+        "categories": [
+          "Refonte UX/UI",
+          "Design System"
+        ],
+        "description": "Apporter clarté et cohérence à des parcours bancaires complexes, tout en préservant ce qui rend chaque marque reconnaissable.",
+        "imageAlt": "Interface bancaire Crédit Mutuel et CIC"
+      },
+      "tulindero": {
+        "title": "TuLindero.com",
+        "categories": [
+          "UX/UI",
+          "Immobilier"
+        ],
+        "description": "Repenser la recherche immobilière pour rendre la découverte de logements plus intuitive.",
+        "imageAlt": "Interface de produit immobilier"
+      }
+    }
+  },
+  "about": {
+    "pretitle": "un peu sur moi",
+    "title": "Des interfaces aux produits",
+    "portraitAlt": "Portrait de Karol Giraldo",
+    "paragraph1": "Je suis Product Designer avec <strong>plus de 8 ans d’expérience</strong> dans la mobilité, la banque et les services numériques, sur des plateformes B2B et des applications web et mobiles.",
+    "paragraph2": "Mon travail couvre <strong>l’UX/UI, la recherche utilisateur et les design systems,</strong> avec une attention forte à l’accessibilité, aux parcours complexes et aux produits riches en données. J’allie réflexion produit et exigence UI pour créer des expériences claires, cohérentes et pensées pour évoluer."
+  },
+  "footer": {
+    "logoAlt": "Logo de Karol Giraldo",
+    "title": "Parlons-en",
+    "text": "Un projet en tête ? Je serais ravie d’en discuter.",
+    "socialTitle": "Réseaux sociaux"
+  },
+  "languagePicker": {
+    "label": "Choisir une langue"
+  }
+}
