@@ -53,7 +53,10 @@ Eso basta para el parpadeo y para mover los ojos.
 1. ~~Separar el pelo~~ **No hace falta**: al exportar se vio que `Hair` ya es solo la silueta del pelo
    de atrás, y el flequillo forma parte del contorno de la cara (`Face`). Pelo trasero y flequillo
    ya se mueven por separado.
-2. **Añadir un relleno blanco detrás de la cara** (`Face Skin`, mismo contorno que `Face`, relleno `#FFFFFF`,
+2. ~~Relleno blanco detrás de la cara~~ **Descartado por Karol** (se veía raro): la cara, orejas y cuello son
+   transparentes (`--avatar-skin: transparent`). Para que el pelo trasero no se vea *a través* de la cara al moverse,
+   la parte 2 usará una **máscara SVG** (las formas `*-skin` ocultan el pelo sin pintar nada). Texto original:
+   **Añadir un relleno blanco detrás de la cara** (`Face Skin`, mismo contorno que `Face`, relleno `#FFFFFF`,
    justo debajo de las líneas de la cara). Hoy la cara es transparente: cuando el pelo de atrás se mueva,
    sus líneas se verían *a través* de la cara. Lo mismo para las orejas si el pelo pasa por detrás.
 3. **Agrupar lo que parpadea** (sin incluir la ceja, que no debe aplastarse):
