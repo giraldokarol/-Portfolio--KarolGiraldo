@@ -3,9 +3,11 @@
 ## En curso (no tocar si lo tiene otro agente)
 | Archivo / zona | Agente | Desde |
 |---|---|---|
-| Hero (Fase 3, animaciones): `src/components/Hero.tsx`, `src/components/Avatar.tsx`, `src/components/hero/*`, `src/lib/gsap.ts`, `src/styles/sections/_hero.scss`, `src/styles/components/_avatar.scss` | Claude | 2026-10-27 |
+| — | — | — |
 
-Todo lo demás está **libre** para Codex. Si necesita tocar alguno de los archivos de arriba, que lo pida y espere a que Claude los libere.
+**Todo el proyecto está libre** (2026-10-28). Hero terminado: si Codex toca sus archivos (`Hero.tsx`, `Avatar.tsx`,
+`components/hero/*`, `lib/gsap.ts`, `_hero.scss`, `_avatar.scss`), que respete la spec (`docs/hero-spec.md`) y no rompa
+las animaciones: las capas `data-part` del avatar y las clases `.hero__*` las usan los hooks de GSAP.
 
 ## Footer: selector de idioma
 Selector discreto y minimalista en el footer: texto `EN · FR · ES`, sin banderas ni desplegable.
@@ -28,14 +30,10 @@ Para conectarlo:
 - Revisar y validar las traducciones provisionales de `src/locales/fr` y `src/locales/es`.
 
 ## Header
-- Menú móvil: Figma no tiene diseño móvil del header. Hoy en móvil se ven solo logo + "Say Hello"
-  (los dos enlaces se ocultan). Falta decidir: menú hamburguesa, enlaces en fila o nada.
+- Móvil (decidido por Karol, según su Figma): logo más pequeño (~96 px) + botón de contacto reducido a icono de correo.
+  Los enlaces "Selected work" / "Behind the work" se ocultan en móvil.
 - El botón "Download CV" salió del header (no está en Figma); sigue en la sección About.
 - Estado activo del menú (subrayado azul al hacer scroll): se mantiene del sitio anterior, no está en Figma.
-
-## Limpieza (con confirmación)
-- Borrar `src/assets/img/logo.png` (reemplazado por los SVG de Figma `logo-karolg.svg` + `logo-point.svg`).
-- Desinstalar dependencias que ya no se usan: `@vitejs/plugin-react`, `vite-tsconfig-paths`, `embla-carousel-react` (+ `Carousel.tsx`, único archivo con clases de Tailwind), `clsx`, `tailwind-merge`, `class-variance-authority`.
 
 ## Más adelante
 - Imágenes de las cards: WebP/AVIF, `width`/`height`, `loading="lazy"` (cover-tulindero pesa 3,6 MB).
