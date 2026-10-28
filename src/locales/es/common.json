@@ -29,47 +29,26 @@
     "subtitle": "Me interesa entender cómo las personas interactúan con los productos digitales y qué hace que una experiencia funcione de verdad.",
     "stickerAlt": "Product Thinking"
   },
-  "projects": {
-    "pretitle": "portafolio",
+  "work": {
     "title": "Casos de estudio",
     "intro": "Detrás de la interfaz: el pensamiento de producto, las concesiones y las decisiones de diseño que dieron forma a cada solución.",
-    "readMore": "Leer más",
-    "readMoreAbout": "Leer más sobre {{title}}",
+    "listLabel": "Proyectos",
+    "openProject": "Ver el caso de estudio {{name}}",
     "items": {
-      "fleetWeb": {
-        "title": "Interface",
-        "categories": [
-          "UX/UI",
-          "Diseño de producto"
-        ],
-        "description": "Una forma más clara para que los gestores de flotas entiendan el estado de sus vehículos y actúen sobre lo importante.",
-        "imageAlt": "Interfaz de gestión de flotas"
-      },
       "driverApp": {
-        "title": "Driver App",
-        "categories": [
-          "Producto móvil",
-          "Experiencia del conductor"
-        ],
-        "description": "Una experiencia móvil que da a los conductores la información correcta en el momento justo, sin estorbar en su trabajo.",
+        "name": "Driver App - Flexis",
         "imageAlt": "Interfaz de la aplicación para conductores"
       },
+      "interface": {
+        "name": "Interface - Flexis",
+        "imageAlt": "Interfaz de gestión de flotas"
+      },
       "cmcic": {
-        "title": "Crédit Mutuel & CIC",
-        "categories": [
-          "Rediseño UX/UI",
-          "Sistema de diseño"
-        ],
-        "description": "Claridad y coherencia para experiencias bancarias complejas, conservando lo que hace reconocible a cada marca.",
+        "name": "Crédit Mutuel & CIC - Redesign",
         "imageAlt": "Interfaz bancaria de Crédit Mutuel y CIC"
       },
       "tulindero": {
-        "title": "TuLindero.com",
-        "categories": [
-          "UX/UI",
-          "Inmobiliario"
-        ],
-        "description": "Repensar la búsqueda de inmuebles para que encontrar y explorar viviendas sea más intuitivo.",
+        "name": "TuLindero.com",
         "imageAlt": "Interfaz de producto inmobiliario"
       }
     }

@@ -24,6 +24,14 @@ Para conectarlo:
 3. Un `<nav aria-label={t("languagePicker.label")}>` (la clave ya existe en los tres idiomas).
 4. Mantener la sección actual al cambiar (`/fr#projects`).
 
+## Selected work (en curso)
+- Fase 1 hecha: estructura estática (título · marco teléfono/web · lista con flecha en hover; móvil apilado con solo el proyecto actual).
+- Siguiente: fase 2 fondo con mesh gradient animado (colores de marca) · fase 3 scroll fijado que cambia de proyecto,
+  transforma el marco teléfono ↔ web y pone en negro (acumulado) los proyectos destapados · fase 4 móvil y reduced-motion ·
+  fase 5 vídeos dentro del marco (hasta entonces, las imágenes `cover-*.png` como contenido provisional).
+- Los enlaces de la lista apuntan a `/:lang/work/:slug` (`WORK_PROJECTS` en `src/config/site.ts`), pero **esas páginas
+  de caso de estudio aún no existen**: hoy dan 404.
+
 ## Configuración
 - Dominio real en `SITE_URL` (`src/config/site.ts`); hoy es provisional y se usa en canonical/hreflang.
 - Hosting: confirmar que sirve `build/client/en/index.html` en `/en` y `__spa-fallback.html` / 404 para rutas desconocidas.

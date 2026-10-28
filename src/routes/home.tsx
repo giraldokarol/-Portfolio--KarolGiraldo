@@ -5,7 +5,7 @@ import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
+import SelectedWork from "@/components/SelectedWork";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 import type { Route } from "./+types/home";
@@ -34,7 +34,7 @@ export default function Home() {
       <Header />
       <main id="main">
         <Hero />
-        <Projects />
+        <SelectedWork />
         <About />
       </main>
       <Footer />

@@ -29,47 +29,26 @@
     "subtitle": "Ce qui m’intéresse dans le design ? Comprendre les usages, questionner les évidences et concevoir des interfaces qui ont du sens.",
     "stickerAlt": "Product Thinking"
   },
-  "projects": {
-    "pretitle": "portfolio",
+  "work": {
     "title": "Études de cas",
     "intro": "Derrière l’interface : la réflexion produit, les arbitrages et les décisions de design qui ont façonné chaque solution.",
-    "readMore": "En savoir plus",
-    "readMoreAbout": "En savoir plus sur {{title}}",
+    "listLabel": "Projets",
+    "openProject": "Voir l’étude de cas {{name}}",
     "items": {
-      "fleetWeb": {
-        "title": "Interface",
-        "categories": [
-          "UX/UI",
-          "Product Design"
-        ],
-        "description": "Une façon plus claire pour les gestionnaires de flotte de comprendre l’état des véhicules et d’agir sur l’essentiel.",
-        "imageAlt": "Interface de gestion de flotte"
-      },
       "driverApp": {
-        "title": "Driver App",
-        "categories": [
-          "Produit mobile",
-          "Expérience conducteur"
-        ],
-        "description": "Une expérience mobile qui donne aux conducteurs la bonne information au bon moment, sans gêner leur travail.",
+        "name": "Driver App - Flexis",
         "imageAlt": "Interface de l’application conducteur"
       },
+      "interface": {
+        "name": "Interface - Flexis",
+        "imageAlt": "Interface de gestion de flotte"
+      },
       "cmcic": {
-        "title": "Crédit Mutuel & CIC",
-        "categories": [
-          "Refonte UX/UI",
-          "Design System"
-        ],
-        "description": "Apporter clarté et cohérence à des parcours bancaires complexes, tout en préservant ce qui rend chaque marque reconnaissable.",
+        "name": "Crédit Mutuel & CIC - Redesign",
         "imageAlt": "Interface bancaire Crédit Mutuel et CIC"
       },
       "tulindero": {
-        "title": "TuLindero.com",
-        "categories": [
-          "UX/UI",
-          "Immobilier"
-        ],
-        "description": "Repenser la recherche immobilière pour rendre la découverte de logements plus intuitive.",
+        "name": "TuLindero.com",
         "imageAlt": "Interface de produit immobilier"
       }
     }

@@ -29,47 +29,26 @@
     "subtitle": "Curious about people and digital products, working across UX and UI to make them better to use.",
     "stickerAlt": "Product Thinking"
   },
-  "projects": {
-    "pretitle": "portfolio",
-    "title": "Case Studies",
+  "work": {
+    "title": "Selected work",
     "intro": "Behind the interface: the product thinking, trade-offs and design decisions that shaped each solution.",
-    "readMore": "Read More",
-    "readMoreAbout": "Read more about {{title}}",
+    "listLabel": "Projects",
+    "openProject": "View the {{name}} case study",
     "items": {
-      "fleetWeb": {
-        "title": "Interface",
-        "categories": [
-          "UX/UI",
-          "Product Design"
-        ],
-        "description": "Designing a clearer way for fleet managers to understand vehicle status and act on what matters.",
-        "imageAlt": "Fleet management product interface"
-      },
       "driverApp": {
-        "title": "Driver App",
-        "categories": [
-          "Mobile Product",
-          "Driver Experience"
-        ],
-        "description": "Designing a mobile experience that gives drivers the right information at the right moment — without getting in the way of the job.",
+        "name": "Driver App - Flexis",
         "imageAlt": "Fleet driver application interface"
       },
+      "interface": {
+        "name": "Interface - Flexis",
+        "imageAlt": "Fleet management product interface"
+      },
       "cmcic": {
-        "title": "Crédit Mutuel & CIC",
-        "categories": [
-          "UX/UI Redesign",
-          "Design System"
-        ],
-        "description": "Bringing clarity and consistency to complex banking experiences, while preserving what makes each brand recognizable.",
+        "name": "Crédit Mutuel & CIC - Redesign",
         "imageAlt": "Crédit Mutuel and CIC banking interface"
       },
       "tulindero": {
-        "title": "TuLindero.com",
-        "categories": [
-          "UX/UI",
-          "Real Estate"
-        ],
-        "description": "Rethinking the property search experience to make finding and exploring homes more intuitive.",
+        "name": "TuLindero.com",
         "imageAlt": "Real estate product interface"
       }
     }

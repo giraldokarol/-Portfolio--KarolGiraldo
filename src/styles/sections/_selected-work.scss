@@ -1,0 +1,176 @@
+@use "../abstracts" as *;
+
+// SELECTED WORK — título · marco del proyecto (teléfono o web) · lista de proyectos.
+// Componente: components/SelectedWork.tsx. Medidas tomadas del diseño de Figma (frame de 1728 px).
+.work {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.work__inner {
+  // Más estrecho que la página (1830 px): las tres columnas respiran como en el diseño de Figma.
+  @include container(1460px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(40);
+  min-height: 100svh;
+  padding-block: calc(var(--header-height) + #{rem(24)}) rem(48);
+
+  // Escritorio: tres columnas, el marco siempre en el centro exacto.
+  @include mq(lg) {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: rem(48);
+    padding-block: rem(80);
+  }
+}
+
+// ─── Título ─────────────────────────────────────────────────────────────────────────
+.work__intro {
+  text-align: center;
+
+  @include mq(lg) {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+.work__title {
+  font-size: fluid(77, 44);
+  font-weight: weight(extrabold);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: balance;
+
+  @include mq(lg) {
+    max-width: 6ch; // "Selected / work" en dos líneas, como en Figma
+  }
+}
+
+.work__lead {
+  max-width: rem(300);
+  margin: rem(16) auto 0;
+  font-size: fluid(16, 14);
+  line-height: 1.26;
+  letter-spacing: -0.02em;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-inline: 0;
+  }
+}
+
+// ─── Marco central ─────────────────────────────────────────────────────────────────
+.work__frame {
+  position: relative;
+  overflow: hidden;
+  border: rem(3) solid var(--color-primary);
+  background: var(--color-background);
+}
+
+// Teléfono (proyectos móviles).
+.work__frame--mobile {
+  width: fluid(320, 220);
+  aspect-ratio: 320 / 520;
+  border-radius: fluid(44, 32);
+}
+
+// Web (proyectos de escritorio).
+.work__frame--web {
+  width: fluid(720, 320);
+  aspect-ratio: 16 / 10;
+  border-radius: fluid(24, 16);
+}
+
+.work__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  opacity: 0;
+
+  &.is-current {
+    opacity: 1;
+  }
+}
+
+// ─── Lista de proyectos ────────────────────────────────────────────────────────────
+.work__list-wrap {
+  width: 100%;
+
+  @include mq(lg) {
+    justify-self: end;
+    width: min(100%, #{rem(380)});
+  }
+}
+
+.work__item {
+  // Móvil: lista horizontal bajo el marco que solo muestra el proyecto actual.
+  display: none;
+  justify-content: center;
+
+  &.is-current {
+    display: flex;
+  }
+
+  @include mq(lg) {
+    display: block;
+    border-bottom: 1px solid var(--color-divider);
+  }
+}
+
+.work__link {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(12);
+  padding-block: rem(18);
+  font-size: fluid(19, 16);
+  letter-spacing: -0.02em;
+  color: var(--color-text-faded);
+  transition: color $duration-fast ease;
+
+  // Proyectos ya destapados con el scroll (se acumulan): negro.
+  .is-revealed & {
+    color: var(--color-ink);
+  }
+
+  @include mq(lg) {
+    display: flex;
+    width: 100%;
+  }
+
+  @include hover {
+    color: var(--color-ink);
+  }
+}
+
+.work__bullet {
+  font-size: rem(13);
+  letter-spacing: 0.08em;
+}
+
+// Flecha al final: aparece al pasar el ratón (o al enfocar con teclado).
+.work__arrow {
+  flex-shrink: 0;
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(rem(-6));
+
+  @include motion-safe {
+    transition:
+      opacity $duration-fast ease,
+      transform $duration-fast ease;
+  }
+
+  .work__link:hover &,
+  .work__link:focus-visible & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
