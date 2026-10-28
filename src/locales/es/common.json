@@ -37,19 +37,23 @@
     "items": {
       "driverApp": {
         "name": "Driver App - Flexis",
-        "imageAlt": "Interfaz de la aplicación para conductores"
+        "imageAlt": "Interfaz de la aplicación para conductores",
+        "description": "Repensar cómo los conductores acceden a la información del vehículo, gestionan sus tareas diarias y se mantienen conectados con su flota desde la carretera."
       },
       "interface": {
         "name": "Interface - Flexis",
-        "imageAlt": "Interfaz de gestión de flotas"
+        "imageAlt": "Interfaz de gestión de flotas",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC - Redesign",
-        "imageAlt": "Interfaz bancaria de Crédit Mutuel y CIC"
+        "imageAlt": "Interfaz bancaria de Crédit Mutuel y CIC",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       "tulindero": {
         "name": "TuLindero.com",
-        "imageAlt": "Interfaz de producto inmobiliario"
+        "imageAlt": "Interfaz de producto inmobiliario",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       }
     }
   },

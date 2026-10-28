@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: rem(40);
+  gap: rem(24);
   min-height: 100svh;
   padding-block: calc(var(--header-height) + #{rem(24)}) rem(48);
 
@@ -67,7 +67,77 @@
   }
 }
 
-// ─── Marco central ─────────────────────────────────────────────────────────────────
+// ─── Escenario central: marco + descripción ───────────────────────────────────────────
+// Móvil: el escenario "desaparece" (display: contents) para ordenar sus piezas en la columna:
+// marco → nombre del proyecto → descripción.
+.work__stage {
+  display: contents;
+
+  @include mq(lg) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(32);
+  }
+}
+
+// Caja de tamaño fijo (ancho del marco web × alto del teléfono): el marco cambia de forma
+// centrado dentro, así lo que está debajo nunca se mueve.
+.work__screen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fluid(640, 320);
+  height: var(--work-phone-height);
+}
+
+.work__descriptions {
+  display: grid;
+  order: 1; // móvil: debajo del nombre del proyecto
+  max-width: rem(500);
+  margin-top: rem(-24);
+  text-align: center;
+
+  @include mq(lg) {
+    margin-top: 0;
+  }
+}
+
+// Todas en la misma celda: el bloque mide lo que la más larga; solo se ve la actual.
+.work__description {
+  grid-area: 1 / 1;
+  font-size: fluid(18, 15);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--color-gray);
+  opacity: 0;
+  visibility: hidden;
+
+  @include motion-safe {
+    transition:
+      opacity $duration-fast ease,
+      visibility $duration-fast;
+  }
+
+  &.is-current {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// ─── Marco ─────────────────────────────────────────────────────────────────────────
+.work {
+  // Altura del teléfono: sale de la altura de la pantalla para que el marco y el texto
+  // quepan siempre (también en portátiles bajos).
+  // Móvil: la pantalla menos lo que ocupan título, nombre y descripción (~470 px).
+  --work-phone-height: clamp(#{rem(280)}, calc(100svh - #{rem(470)}), #{rem(520)});
+
+  @include mq(lg) {
+    --work-phone-height: clamp(#{rem(440)}, 62svh, #{rem(760)});
+  }
+}
+
 .work__frame {
   position: relative;
   overflow: hidden;
@@ -76,14 +146,12 @@
 }
 
 // Teléfono (proyectos móviles): proporción de un iPhone (393 × 852).
-// El tamaño sale de la altura de la pantalla para que nunca se corte en portátiles bajos.
 .work__frame--mobile {
-  height: clamp(#{rem(420)}, 58svh, #{rem(560)});
+  height: var(--work-phone-height);
   aspect-ratio: 393 / 852;
   border-radius: rem(44);
 
   @include mq(lg) {
-    height: clamp(#{rem(520)}, 78svh, #{rem(860)});
     border-radius: rem(56);
   }
 }

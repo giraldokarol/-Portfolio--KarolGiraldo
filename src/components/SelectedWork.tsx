@@ -65,22 +65,36 @@ export default function SelectedWork() {
           <p className="work__lead">{t("work.intro")}</p>
         </header>
 
-        <div className={`work__frame work__frame--${current.frame}`}>
-          {WORK_PROJECTS.map(({ id }, index) => (
-            <img
-              key={id}
-              src={MEDIA[id]}
-              alt={t(`work.items.${id}.imageAlt`)}
-              className={`work__media ${index === 0 ? "is-current" : ""}`}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
-          ))}
-        </div>
+        {/* Escenario de tamaño fijo: el marco cambia de forma centrado dentro y el texto de abajo no se mueve. */}
+        <div className="work__stage">
+          <div className="work__screen">
+            <div className={`work__frame work__frame--${current.frame}`}>
+              {WORK_PROJECTS.map(({ id }, index) => (
+                <img
+                  key={id}
+                  src={MEDIA[id]}
+                  alt={t(`work.items.${id}.imageAlt`)}
+                  className={`work__media ${index === 0 ? "is-current" : ""}`}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              ))}
+            </div>
 
-        {/* Marcos "fantasma" invisibles: el JS mide aquí el tamaño real de cada forma (teléfono / web). */}
-        <div className="work__frame-probes" aria-hidden="true">
-          <div className="work__frame work__frame--mobile" data-probe="mobile" />
-          <div className="work__frame work__frame--web" data-probe="web" />
+            {/* Marcos "fantasma" invisibles: el JS mide aquí el tamaño real de cada forma (teléfono / web). */}
+            <div className="work__frame-probes" aria-hidden="true">
+              <div className="work__frame work__frame--mobile" data-probe="mobile" />
+              <div className="work__frame work__frame--web" data-probe="web" />
+            </div>
+          </div>
+
+          {/* Descripciones apiladas en el mismo sitio: el bloque mide lo que la más larga y no salta. */}
+          <div className="work__descriptions">
+            {WORK_PROJECTS.map(({ id }, index) => (
+              <p key={id} className={`work__description ${index === 0 ? "is-current" : ""}`}>
+                {t(`work.items.${id}.description`)}
+              </p>
+            ))}
+          </div>
         </div>
 
         <nav className="work__list-wrap" aria-label={t("work.listLabel")}>

@@ -7,7 +7,8 @@ import { WORK_PROJECTS } from "@/config/site";
 // dentro del marco. Por cada cambio de proyecto:
 //   - la imagen actual sube y sale; la siguiente entra desde abajo (como hacer scroll en la pantalla);
 //   - si cambia el tipo (teléfono ↔ web), el marco se transforma a la nueva forma;
-//   - el nombre del proyecto pasa a negro en la lista y se queda así (acumulado).
+//   - el nombre del proyecto pasa a negro en la lista y se queda así (acumulado);
+//   - la descripción bajo el marco cambia a la del proyecto actual.
 const STEP = 1; // duración de cada cambio de proyecto en la línea de tiempo
 const HOLD = 0.35; // pausa al principio y al final para ver el primer y el último proyecto
 const SCROLL_PER_PROJECT = { wide: 0.9, narrow: 0.75 }; // pantallas de scroll por cada cambio
@@ -18,9 +19,10 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
       const section = scope.current;
       if (!section) return;
       const $ = <T extends Element>(selector: string) => section.querySelector<T>(selector)!;
-      const frame = $<HTMLElement>(".work__inner > .work__frame");
+      const frame = $<HTMLElement>(".work__screen > .work__frame");
       const media = gsap.utils.toArray<HTMLElement>(".work__media", frame);
       const items = gsap.utils.toArray<HTMLElement>(".work__item", section);
+      const descriptions = gsap.utils.toArray<HTMLElement>(".work__description", section);
       const probe = (type: string) => $<HTMLElement>(`[data-probe="${type}"]`);
 
       // Tamaño y radio reales de cada forma, medidos en los marcos fantasma (se recalculan al redimensionar).
@@ -30,7 +32,7 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
         return { width: box.width, height: box.height, borderRadius: getComputedStyle(el).borderTopLeftRadius };
       };
 
-      // Marca en la lista los proyectos destapados (acumulado) y cuál es el actual.
+      // Marca en la lista los proyectos destapados (acumulado), cuál es el actual y su descripción.
       let shown = -1;
       const setCurrent = (index: number) => {
         if (index === shown) return;
@@ -39,6 +41,7 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
           item.classList.toggle("is-revealed", i <= index);
           item.classList.toggle("is-current", i === index);
         });
+        descriptions.forEach((description, i) => description.classList.toggle("is-current", i === index));
       };
 
       const mm = gsap.matchMedia();
