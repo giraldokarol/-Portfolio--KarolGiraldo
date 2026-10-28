@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -6,6 +7,7 @@ import CoverInterface from "@/assets/img/cover-web-app.png";
 import CoverCMCIC from "@/assets/img/cover-cmcic.png";
 import CoverTuLindero from "@/assets/img/cover-tulindero.png";
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
+import { useWorkScroll } from "./work/useWorkScroll";
 import { WORK_PROJECTS, type WorkProject } from "@/config/site";
 
 // Contenido provisional del marco hasta tener los vídeos.
@@ -41,15 +43,18 @@ function ArrowIcon() {
 }
 
 // Sección "Selected work": título a la izquierda, marco central (teléfono o web) y lista de proyectos.
-// Estructura estática (fase 1); el scroll que cambia de proyecto llega en la fase 3.
+// El HTML muestra el primer proyecto; useWorkScroll fija la sección y recorre los demás con el scroll.
 // Estilos: styles/sections/_selected-work.scss
 export default function SelectedWork() {
   const { t } = useTranslation();
   const { lang } = useParams();
   const current = WORK_PROJECTS[0];
+  const root = useRef<HTMLElement>(null);
+
+  useWorkScroll(root);
 
   return (
-    <section id="projects" className="work" aria-labelledby="work-title">
+    <section id="projects" className="work" aria-labelledby="work-title" ref={root}>
       <MeshGradient circles={MESH_CIRCLES} mobileCircles={MESH_CIRCLES_MOBILE} />
 
       <div className="work__inner">
@@ -72,6 +77,12 @@ export default function SelectedWork() {
           ))}
         </div>
 
+        {/* Marcos "fantasma" invisibles: el JS mide aquí el tamaño real de cada forma (teléfono / web). */}
+        <div className="work__frame-probes" aria-hidden="true">
+          <div className="work__frame work__frame--mobile" data-probe="mobile" />
+          <div className="work__frame work__frame--web" data-probe="web" />
+        </div>
+
         <nav className="work__list-wrap" aria-label={t("work.listLabel")}>
           <ol className="work__list">
             {WORK_PROJECTS.map(({ id, slug }, index) => (
@@ -84,8 +95,10 @@ export default function SelectedWork() {
                   <span className="work__bullet" aria-hidden="true">
                     **
                   </span>
-                  <span className="work__name">{t(`work.items.${id}.name`)}</span>
-                  <ArrowIcon />
+                  <span className="work__name">
+                    {t(`work.items.${id}.name`)}
+                    <ArrowIcon />
+                  </span>
                 </a>
               </li>
             ))}

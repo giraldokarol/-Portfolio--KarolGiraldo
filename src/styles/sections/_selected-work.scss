@@ -11,8 +11,9 @@
 .work__inner {
   position: relative;
   z-index: z(content); // por encima del degradado de malla
-  // Más estrecho que la página (1830 px): las tres columnas respiran como en el diseño de Figma.
-  @include container(1460px);
+  // Más estrecho que la página (1830 px): las tres columnas respiran como en el diseño de Figma,
+  // y caben los nombres largos en una línea aunque el marco esté en formato web.
+  @include container(1560px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,9 +24,9 @@
   // Escritorio: tres columnas, el marco siempre en el centro exacto.
   @include mq(lg) {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    gap: rem(48);
+    gap: rem(32);
     padding-block: rem(80);
   }
 }
@@ -89,7 +90,7 @@
 
 // Web (proyectos de escritorio).
 .work__frame--web {
-  width: fluid(720, 320);
+  width: fluid(640, 320);
   aspect-ratio: 16 / 10;
   border-radius: fluid(24, 16);
 }
@@ -164,12 +165,31 @@
   letter-spacing: 0.08em;
 }
 
-// Flecha al final: aparece al pasar el ratón (o al enfocar con teclado).
+// Nombre del proyecto: en una sola línea desde 1440 px (por debajo, el más largo puede ocupar dos).
+.work__name {
+  position: relative;
+
+  @include mq(xxl) {
+    white-space: nowrap;
+  }
+}
+
+// Flecha al final del nombre: aparece al pasar el ratón (o al enfocar con teclado).
+// Por debajo de 1440 px va en línea, tras la última palabra (no se sale si el nombre ocupa dos líneas).
+// Desde 1440 px va en posición absoluta para no ocupar espacio ni partir los nombres largos.
 .work__arrow {
-  flex-shrink: 0;
-  margin-left: auto;
+  display: inline-block;
+  margin-left: rem(12);
+  vertical-align: middle;
   opacity: 0;
-  transform: translateX(rem(-6));
+  transform: translateX(#{rem(-6)});
+
+  @include mq(xxl) {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(#{rem(-6)}, -50%);
+  }
 
   @include motion-safe {
     transition:
@@ -180,6 +200,46 @@
   .work__link:hover &,
   .work__link:focus-visible & {
     opacity: 1;
-    transform: translateX(0);
+    transform: none;
+
+    @include mq(xxl) {
+      transform: translate(0, -50%);
+    }
+  }
+}
+
+// ─── Animación de scroll (components/work/useWorkScroll.ts) ─────────────────────────────
+// Marcos "fantasma": invisibles, solo sirven para que el JS mida el tamaño de cada forma.
+.work__frame-probes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  .work__frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// Con la animación activa, todas las imágenes están en el marco y el JS las desliza (yPercent).
+.work.is-animated .work__media {
+  opacity: 1;
+}
+
+// Sin animaciones (reduced-motion): la lista completa, todos los proyectos en negro.
+.work.is-static {
+  .work__item {
+    display: flex;
+
+    @include mq(lg) {
+      display: block;
+    }
+  }
+
+  .work__link {
+    color: var(--color-ink);
   }
 }

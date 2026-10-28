@@ -1,0 +1,115 @@
+import type { RefObject } from "react";
+
+import { gsap, useGSAP, ScrollTrigger, MEDIA } from "@/lib/gsap";
+import { WORK_PROJECTS } from "@/config/site";
+
+// "Selected work" con scroll: la sección se queda fija (pin) y el scroll recorre los proyectos
+// dentro del marco. Por cada cambio de proyecto:
+//   - la imagen actual sube y sale; la siguiente entra desde abajo (como hacer scroll en la pantalla);
+//   - si cambia el tipo (teléfono ↔ web), el marco se transforma a la nueva forma;
+//   - el nombre del proyecto pasa a negro en la lista y se queda así (acumulado).
+const STEP = 1; // duración de cada cambio de proyecto en la línea de tiempo
+const HOLD = 0.35; // pausa al principio y al final para ver el primer y el último proyecto
+const SCROLL_PER_PROJECT = { wide: 0.9, narrow: 0.75 }; // pantallas de scroll por cada cambio
+
+export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
+  useGSAP(
+    () => {
+      const section = scope.current;
+      if (!section) return;
+      const $ = <T extends Element>(selector: string) => section.querySelector<T>(selector)!;
+      const frame = $<HTMLElement>(".work__inner > .work__frame");
+      const media = gsap.utils.toArray<HTMLElement>(".work__media", frame);
+      const items = gsap.utils.toArray<HTMLElement>(".work__item", section);
+      const probe = (type: string) => $<HTMLElement>(`[data-probe="${type}"]`);
+
+      // Tamaño y radio reales de cada forma, medidos en los marcos fantasma (se recalculan al redimensionar).
+      const shape = (type: string) => {
+        const el = probe(type);
+        const box = el.getBoundingClientRect();
+        return { width: box.width, height: box.height, borderRadius: getComputedStyle(el).borderTopLeftRadius };
+      };
+
+      // Marca en la lista los proyectos destapados (acumulado) y cuál es el actual.
+      let shown = -1;
+      const setCurrent = (index: number) => {
+        if (index === shown) return;
+        shown = index;
+        items.forEach((item, i) => {
+          item.classList.toggle("is-revealed", i <= index);
+          item.classList.toggle("is-current", i === index);
+        });
+      };
+
+      const mm = gsap.matchMedia();
+
+      mm.add({ wide: MEDIA.wide, narrow: MEDIA.narrow }, (context) => {
+        const screens = context.conditions?.wide ? SCROLL_PER_PROJECT.wide : SCROLL_PER_PROJECT.narrow;
+        const transitions = WORK_PROJECTS.length - 1;
+
+        section.classList.add("is-animated");
+        gsap.set(media, { yPercent: (i) => (i === 0 ? 0 : 100) });
+        gsap.set(frame, shape(WORK_PROJECTS[0].frame));
+
+        const tl = gsap.timeline({
+          defaults: { ease: "power2.inOut" },
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${window.innerHeight * screens * transitions}`,
+            pin: true,
+            scrub: 0.6,
+            invalidateOnRefresh: true, // vuelve a medir los marcos fantasma al cambiar el tamaño
+            onUpdate: () => {
+              // Proyecto actual = cambios cuya mitad ya pasó.
+              const time = tl.time() - HOLD;
+              setCurrent(gsap.utils.clamp(0, transitions, Math.floor(time / STEP + 0.5)));
+            },
+          },
+        });
+
+        WORK_PROJECTS.slice(1).forEach((project, i) => {
+          const at = HOLD + i * STEP;
+          tl.to(media[i], { yPercent: -100, duration: STEP * 0.8 }, at).fromTo(
+            media[i + 1],
+            { yPercent: 100 },
+            { yPercent: 0, duration: STEP * 0.8 },
+            at,
+          );
+          if (project.frame !== WORK_PROJECTS[i].frame) {
+            const type = project.frame;
+            tl.to(
+              frame,
+              {
+                width: () => shape(type).width,
+                height: () => shape(type).height,
+                borderRadius: () => shape(type).borderRadius,
+                duration: STEP * 0.8,
+              },
+              at,
+            );
+          }
+        });
+        tl.set({}, {}, HOLD * 2 + transitions * STEP); // pausa final antes de soltar la sección
+
+        setCurrent(0);
+        ScrollTrigger.refresh();
+
+        return () => {
+          section.classList.remove("is-animated");
+          gsap.set(frame, { clearProps: "width,height,borderRadius" });
+          setCurrent(0);
+        };
+      });
+
+      // Sin animaciones: todos los proyectos visibles en la lista (en negro).
+      mm.add(`not all and ${MEDIA.motion}`, () => {
+        section.classList.add("is-static");
+        return () => section.classList.remove("is-static");
+      });
+
+      return () => mm.revert();
+    },
+    { scope },
+  );
+}
