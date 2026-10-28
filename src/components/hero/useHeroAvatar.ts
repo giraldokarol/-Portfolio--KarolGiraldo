@@ -47,7 +47,9 @@ export function useHeroAvatar(scope: RefObject<HTMLElement | null>) {
       const girl = q("girl");
 
       let visible = true;
-      const observer = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting));
+      // El navegador puede agrupar varios avisos (p. ej. al fijar el hero con ScrollTrigger se saca y se vuelve
+      // a poner en la página): manda el más reciente, no el primero.
+      const observer = new IntersectionObserver((entries) => (visible = entries[entries.length - 1].isIntersecting));
       observer.observe(svg);
 
       // Crea los "movedores" de cada capa: lookAt(nx, ny) con nx, ny entre −1 y 1.

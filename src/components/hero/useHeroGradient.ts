@@ -54,7 +54,9 @@ export function useHeroGradient(scope: RefObject<HTMLElement | null>) {
         }));
 
         let visible = true;
-        const observer = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting));
+        // El navegador puede agrupar varios avisos (p. ej. al fijar el hero con ScrollTrigger se saca y se vuelve
+        // a poner en la página): manda el más reciente, no el primero.
+        const observer = new IntersectionObserver((entries) => (visible = entries[entries.length - 1].isIntersecting));
         observer.observe(hero);
 
         // Puntero normalizado de −0,5 a 0,5 desde el centro de la pantalla.
@@ -96,9 +98,10 @@ export function useHeroGradient(scope: RefObject<HTMLElement | null>) {
         );
 
         // Pausa la deriva cuando el hero no se ve (ahorra batería).
-        const observer = new IntersectionObserver(([entry]) =>
-          timelines.forEach((tl) => (entry.isIntersecting ? tl.resume() : tl.pause())),
-        );
+        const observer = new IntersectionObserver((entries) => {
+          const visible = entries[entries.length - 1].isIntersecting; // el aviso más reciente
+          timelines.forEach((tl) => (visible ? tl.resume() : tl.pause()));
+        });
         observer.observe(hero);
 
         return () => {
