@@ -63,10 +63,9 @@
     }
   },
   "about": {
-    "pretitle": "a bit about me",
     "title": "From interfaces to products",
     "portraitAlt": "Portrait of Karol Giraldo",
-    "paragraph1": "I’m a Product Designer with <strong>8+ years of experience</strong> across mobility, banking and digital services, designing B2B platforms, web and mobile applications.",
+    "paragraph1": "I’m a Product Designer with <strong>9+ years of experience</strong> across mobility, banking and digital services, designing B2B platforms, web and mobile applications.",
     "paragraph2": "My work spans <strong>UX/UI, user research and design systems,</strong> with a strong focus on accessibility, complex workflows and data-rich products. I bring together product thinking and strong UI craft to create experiences that are clear, consistent and built to scale."
   },
   "footer": {
