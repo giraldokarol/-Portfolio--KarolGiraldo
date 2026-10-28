@@ -12,7 +12,7 @@ import { gsap, useGSAP, ScrollTrigger, SplitText, MEDIA } from "@/lib/gsap";
 //   0,45–0,75  la etiqueta de medidas se va; el saludo y "Product Designer" se escriben letra a letra con el cursor de texto
 //   0,76–0,92  cada letra de "Product Designer" pasa de contorno a relleno azul (y el contorno se retira)
 //   0,86–0,94  aparece el subtítulo
-//   0,94–1,00  la caja de selección desaparece ("clic fuera del lienzo")
+//   0,92       la caja de selección desaparece de golpe ("clic fuera del lienzo")
 const SCENES = {
   wide: { scale: 355.31 / 206.29, centerY: 0.515, length: 1.5 }, // medidas de Figma
   narrow: { scale: 1.6, centerY: 0.47, length: 1 },
@@ -145,7 +145,7 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
               .fromTo(role, { "--role-stroke": "2px" }, { "--role-stroke": "0px", duration: 0.04 }, 0.88)
               .to(subtitle, { autoAlpha: 1, y: 0, duration: 0.08, ease: "power2.out" }, 0.86)
               .to(caret, { opacity: 0, duration: 0.03 }, 0.9)
-              .to(selection, { opacity: 0, duration: 0.06 }, 0.94)
+              .set(selection, { opacity: 0 }, 0.92) // deseleccionar: instantáneo, como un clic fuera en Figma
               .set({}, {}, 1); // la línea de tiempo dura exactamente 1
 
             syncSelection();
