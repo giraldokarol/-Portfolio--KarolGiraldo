@@ -10,7 +10,8 @@
   "a11y": {
     "mainNav": "Navegación principal",
     "homeLink": "Karol Giraldo, Home",
-    "scrollToProjects": "Descubrir todos los proyectos"
+    "scrollToProjects": "Descubrir todos los proyectos",
+    "socialNav": "Redes sociales"
   },
   "nav": {
     "selectedWork": "Casos de estudio",

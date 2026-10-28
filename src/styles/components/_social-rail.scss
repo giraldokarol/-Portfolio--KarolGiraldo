@@ -1,0 +1,40 @@
+@use "../abstracts" as *;
+
+// Redes sociales en vertical (components/SocialRail.tsx): fijas a la izquierda, centradas en
+// vertical, en toda la página. Solo en escritorio (en móvil están en el footer).
+.social-rail {
+  position: fixed;
+  z-index: z(rail);
+  top: 50%;
+  left: rem(36);
+  display: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+
+  @include mq(lg) {
+    display: block;
+  }
+}
+
+.social-rail__list {
+  display: flex;
+  align-items: center;
+  gap: rem(50);
+  white-space: nowrap;
+}
+
+.social-rail__link {
+  font-size: rem(12);
+  font-weight: weight(light);
+  line-height: 1.26;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+
+  @include hover {
+    color: var(--color-ink);
+  }
+
+  @include motion-safe {
+    transition: color $duration-fast $ease-out;
+  }
+}

@@ -72,41 +72,6 @@
   background: var(--color-primary);
 }
 
-.hero__social {
-  position: absolute;
-  z-index: z(content);
-  top: 50%;
-  left: rem(36);
-  display: none;
-  transform: translate(-50%, -50%) rotate(90deg);
-
-  @include mq(lg) { display: block; }
-}
-
-.hero__social-list {
-  display: flex;
-  align-items: center;
-  gap: rem(50);
-  white-space: nowrap;
-}
-
-.hero__social-link {
-  font-size: rem(12);
-  font-weight: weight(light);
-  line-height: 1.26;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--color-gray);
-
-  @include hover {
-    color: var(--color-ink);
-  }
-
-  @include motion-safe {
-    transition: color $duration-fast $ease-out;
-  }
-}
-
 .hero__content {
   @include container;
   position: relative;

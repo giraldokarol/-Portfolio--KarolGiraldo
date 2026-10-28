@@ -10,7 +10,8 @@
   "a11y": {
     "mainNav": "Main navigation",
     "homeLink": "Karol Giraldo, home",
-    "scrollToProjects": "Go to projects"
+    "scrollToProjects": "Go to projects",
+    "socialNav": "Social networks"
   },
   "nav": {
     "selectedWork": "Selected work",

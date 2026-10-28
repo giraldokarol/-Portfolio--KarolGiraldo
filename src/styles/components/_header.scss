@@ -24,7 +24,7 @@
 }
 
 .site-nav {
-  @include container($nav-max-width + $gutter * 2);
+  @include container($nav-max-width + $gutter * 2, $rail-safe: false); // el logo no choca con las redes
   display: flex;
   align-items: center;
   justify-content: space-between;

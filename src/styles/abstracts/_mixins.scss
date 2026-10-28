@@ -49,11 +49,20 @@
 }
 
 // Contenedor centrado con margen lateral.
-@mixin container($max-width: $page-max-width) {
+// $rail-safe: en escritorio deja sitio a las redes fijas a la izquierda (SocialRail). El margen
+// solo crece lo necesario: si el contenedor ya queda lejos del borde (pantallas anchas), no cambia.
+@mixin container($max-width: $page-max-width, $rail-safe: true) {
   width: 100%;
   max-width: rem($max-width);
   margin-inline: auto;
   padding-inline: rem($gutter);
+
+  @if $rail-safe {
+    @include mq(lg) {
+      // 100% = ancho del padre; (100% − máx.) / 2 = lo que el contenedor ya está separado del borde.
+      padding-inline: max(#{rem($gutter)}, calc(#{rem($rail-space)} - max(0px, (100% - #{rem($max-width)}) / 2)));
+    }
+  }
 }
 
 // Oculto visualmente pero legible por lectores de pantalla.

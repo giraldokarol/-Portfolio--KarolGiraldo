@@ -6,7 +6,6 @@ import Avatar from "./Avatar";
 import { useHeroGradient } from "./hero/useHeroGradient";
 import { useHeroAvatar } from "./hero/useHeroAvatar";
 import { useHeroScroll } from "./hero/useHeroScroll";
-import { SOCIAL_LINKS } from "@/config/site";
 
 // HTML = escena 2 (la que se prerenderiza y ve quien tiene reduced-motion).
 // La escena 1 (muñeca grande) es el estado inicial que crea useHeroScroll.
@@ -27,18 +26,6 @@ export default function Hero() {
 
       <div className="hero__blob hero__blob--yellow" aria-hidden="true" />
       <div className="hero__blob hero__blob--blue" aria-hidden="true" />
-
-      <div className="hero__social">
-        <ul className="hero__social-list">
-          {SOCIAL_LINKS.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className="hero__social-link" target="_blank" rel="noreferrer">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
 
       <section className="hero__content" id="home">
         <div className="hero__intro">

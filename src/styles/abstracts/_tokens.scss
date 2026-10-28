@@ -17,6 +17,7 @@ $breakpoints: (
 $page-max-width: 1830px; // decisión de Karol (antes 1490px)
 $nav-max-width: 1501px; // ancho del menú en Figma
 $gutter: 24px; // margen lateral de la página
+$rail-space: 72px; // escritorio: espacio para las redes fijas a la izquierda (SocialRail)
 
 // Escala tipográfica: tamaño + interlineado.
 $font-sizes: (
@@ -48,5 +49,6 @@ $ease-out: cubic-bezier(0, 0, 0.2, 1);
 // Capas (z-index) con nombre, para no inventar números sueltos.
 $z-layers: (
   content: 1,
+  rail: 40,
   header: 50,
 );

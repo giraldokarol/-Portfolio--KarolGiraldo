@@ -4,6 +4,7 @@ import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
+import SocialRail from "@/components/SocialRail";
 import Hero from "@/components/Hero";
 import SelectedWork from "@/components/SelectedWork";
 import About from "@/components/About";
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <SocialRail />
       <main id="main">
         <Hero />
         <SelectedWork />
