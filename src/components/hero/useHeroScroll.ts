@@ -7,12 +7,12 @@ import { gsap, useGSAP, ScrollTrigger, SplitText, MEDIA } from "@/lib/gsap";
 //
 // Progreso del scroll (0 → 1):
 //   0,00–0,10  aparece la caja de selección (morada, como en Figma) con sus medidas
-//   0,10–0,47  guías de centro mientras la muñeca se mueve
+//   0,10–0,45  guías de centro mientras la muñeca se mueve
 //   0,12–0,45  la muñeca se encoge de 355 × 380 a su tamaño final y sube
-//   0,45–0,75  la etiqueta de medidas se va; el saludo y "Product Designer" se escriben letra a letra con el cursor de texto
+//   0,45       la caja de selección desaparece de golpe (deseleccionar)
+//   0,45–0,75  el saludo y "Product Designer" se escriben letra a letra con el cursor de texto
 //   0,76–0,92  cada letra de "Product Designer" pasa de contorno a relleno azul (y el contorno se retira)
 //   0,86–0,94  aparece el subtítulo
-//   0,92       la caja de selección desaparece de golpe ("clic fuera del lienzo")
 const SCENES = {
   wide: { scale: 355.31 / 206.29, centerY: 0.515, length: 1.5 }, // medidas de Figma
   narrow: { scale: 1.6, centerY: 0.47, length: 1 },
@@ -130,22 +130,22 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
               // Guías de centro: aparecen mientras la muñeca "se mueve", como en Figma.
               .to(guides, { autoAlpha: 1, duration: 0.03 }, 0.1)
               .fromTo(center, { rotation: -90, scale: 0.4 }, { rotation: 0, scale: 1, duration: 0.06 }, 0.1)
-              .to(guides, { autoAlpha: 0, duration: 0.03 }, 0.44)
               .fromTo(
                 avatar,
                 { x: flipX, y: flipY, scale: scene.scale, transformOrigin: "50% 50%" },
                 { x: 0, y: 0, scale: 1, duration: 0.33, ease: "power2.inOut" },
                 0.12,
               )
-              .to(sizeLabel, { autoAlpha: 0, duration: 0.03 }, 0.45) // medidas: solo mientras cambia de tamaño
-              .to(caret, { opacity: 1, duration: 0.01 }, 0.44)
+              // Deseleccionar justo al empezar a escribir: instantáneo, como un clic fuera en Figma
+              // (caja, medidas y guías desaparecen juntas).
+              .set(selection, { opacity: 0 }, 0.45)
+              .to(caret, { opacity: 1, duration: 0.01 }, 0.45)
               .to(typed, { greeting: greetingChars.length, duration: 0.15, onUpdate: renderTyping }, 0.45)
               .to(typed, { role: roleChars.length, duration: 0.15, onUpdate: renderTyping }, 0.6)
               .to(roleChars, { color: primary, duration: 0.04, stagger: 0.1 / roleChars.length }, 0.76)
               .fromTo(role, { "--role-stroke": "2px" }, { "--role-stroke": "0px", duration: 0.04 }, 0.88)
               .to(subtitle, { autoAlpha: 1, y: 0, duration: 0.08, ease: "power2.out" }, 0.86)
               .to(caret, { opacity: 0, duration: 0.03 }, 0.9)
-              .set(selection, { opacity: 0 }, 0.92) // deseleccionar: instantáneo, como un clic fuera en Figma
               .set({}, {}, 1); // la línea de tiempo dura exactamente 1
 
             syncSelection();
