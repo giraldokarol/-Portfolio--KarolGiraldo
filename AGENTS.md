@@ -15,7 +15,7 @@ react-router.config.ts     rutas a prerenderizar
 src/root.tsx               <html lang>, <head>, proveedor de idioma
 src/routes.ts              mapa de rutas: "/" y "/:lang"
 src/routes/                páginas (language-redirect, home)
-src/components/            componentes (Header, Hero, Projects, About, Footer…)
+src/components/            componentes (Header, Hero, SelectedWork, About, Footer…; hooks de animación en hero/, work/, about/)
 src/i18n/                  config de idiomas, detección, instancias i18next, SEO (hreflang)
 src/locales/{en,fr,es}/    TODOS los textos visibles (common.json)
 src/config/site.ts         datos no traducibles (URLs, email, dominio)
@@ -43,8 +43,8 @@ src/styles/
   abstracts/           NO generan CSS: _tokens (valores Sass), _functions (rem, em, z, weight), _mixins
   base/                _fonts, _root (variables CSS), _reset
   layout/              _container
-  components/          piezas reutilizables (_buttons, _header, _project-card…)
-  sections/            un archivo por sección de la página (_hero, _projects, _about, _footer)
+  components/          piezas reutilizables (_buttons, _header, _work-menu…)
+  sections/            un archivo por sección de la página (_hero, _selected-work, _about, _footer)
   pages/               páginas auxiliares (selector de idioma, error)
 ```
 - Cada parcial empieza con `@use "../abstracts" as *;`. Nunca `@import` (obsoleto).

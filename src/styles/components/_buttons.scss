@@ -28,17 +28,6 @@
   }
 }
 
-.btn--secondary {
-  border: 1px solid var(--color-primary);
-  background-color: var(--color-background);
-  color: var(--color-primary);
-
-  @include hover {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-  }
-}
-
 // "Say Hello" del header (Figma: 40px de alto, radio 24, texto #F6FAFF).
 // Sin ancho fijo: el texto cambia de largo según el idioma.
 .btn--hello {

@@ -19,16 +19,14 @@
   },
   "cta": {
     "sayHello": "Prendre contact",
-    "downloadCv": "Télécharger le CV",
-    "linkedin": "LinkedIn"
+    "downloadCv": "Télécharger le CV"
   },
   "hero": {
     "avatarAlt": "Avatar illustré de Karol Giraldo",
     "backgroundWord": "Designer",
     "greeting": "Hello ! Moi c’est Karol",
     "role": "Product Designer",
-    "subtitle": "Ce qui m’intéresse dans le design ? Comprendre les usages, questionner les évidences et concevoir des interfaces qui ont du sens.",
-    "stickerAlt": "Product Thinking"
+    "subtitle": "Ce qui m’intéresse dans le design ? Comprendre les usages, questionner les évidences et concevoir des interfaces qui ont du sens."
   },
   "work": {
     "title": "Études de cas",
@@ -38,22 +36,18 @@
     "items": {
       "driverApp": {
         "name": "Driver App - Flexis",
-        "imageAlt": "Interface de l’application conducteur",
         "description": "Repenser l’expérience des conducteurs pour leur permettre d’accéder aux informations du véhicule, de gérer leurs missions et de rester connectés à leur flotte, même sur la route."
       },
       "interface": {
         "name": "Interface - Flexis",
-        "imageAlt": "Interface de gestion de flotte",
         "description": "Faciliter la gestion quotidienne des flottes grâce à une interface claire et intuitive, qui rend les données opérationnelles plus accessibles et exploitables."
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC - Redesign",
-        "imageAlt": "Interface bancaire Crédit Mutuel et CIC",
         "description": "Moderniser l’expérience digitale de deux grandes enseignes bancaires en simplifiant l’accès aux contenus et aux services, tout en renforçant la cohérence des interfaces."
       },
       "tulindero": {
         "name": "TuLindero.com",
-        "imageAlt": "Interface de produit immobilier",
         "description": "Imaginer une expérience immobilière plus simple et intuitive, pour faciliter la recherche de biens et accompagner les utilisateurs dans leur parcours."
       }
     },

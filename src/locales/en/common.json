@@ -19,16 +19,14 @@
   },
   "cta": {
     "sayHello": "Say Hello",
-    "downloadCv": "Download CV",
-    "linkedin": "LinkedIn"
+    "downloadCv": "Download CV"
   },
   "hero": {
     "avatarAlt": "Illustrated avatar of Karol Giraldo",
     "backgroundWord": "Designer",
     "greeting": "Hey! I’m Karol",
     "role": "Product Designer",
-    "subtitle": "Curious about people and digital products, working across UX and UI to make them better to use.",
-    "stickerAlt": "Product Thinking"
+    "subtitle": "Curious about people and digital products, working across UX and UI to make them better to use."
   },
   "work": {
     "title": "Selected work",
@@ -38,22 +36,18 @@
     "items": {
       "driverApp": {
         "name": "Driver App - Flexis",
-        "imageAlt": "Fleet driver application interface",
         "description": "Rethinking how drivers access vehicle information, manage daily tasks and stay connected to their fleet from the road."
       },
       "interface": {
         "name": "Interface - Flexis",
-        "imageAlt": "Fleet management product interface",
         "description": "Simplifying fleet operations through a clear, data-driven interface designed around the needs of fleet managers."
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC - Redesign",
-        "imageAlt": "Crédit Mutuel and CIC banking interface",
         "description": "Redesigning two major banking websites to make complex content and services clearer, more consistent and easier to navigate."
       },
       "tulindero": {
         "name": "TuLindero.com",
-        "imageAlt": "Real estate product interface",
         "description": "A digital property experience designed to make home searching clearer, easier and more intuitive."
       }
     },

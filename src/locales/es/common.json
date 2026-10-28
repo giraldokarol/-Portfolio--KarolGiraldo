@@ -19,16 +19,14 @@
   },
   "cta": {
     "sayHello": "Ponte en contacto",
-    "downloadCv": "Descargar CV",
-    "linkedin": "LinkedIn"
+    "downloadCv": "Descargar CV"
   },
   "hero": {
     "avatarAlt": "Avatar ilustrado de Karol Giraldo",
     "backgroundWord": "Designer",
     "greeting": "¡Hey! Soy Karol",
     "role": "Product Designer",
-    "subtitle": "Me interesa entender cómo las personas interactúan con los productos digitales y qué hace que una experiencia funcione de verdad.",
-    "stickerAlt": "Product Thinking"
+    "subtitle": "Me interesa entender cómo las personas interactúan con los productos digitales y qué hace que una experiencia funcione de verdad."
   },
   "work": {
     "title": "Casos de estudio",
@@ -38,22 +36,18 @@
     "items": {
       "driverApp": {
         "name": "Driver App - Flexis",
-        "imageAlt": "Interfaz de la aplicación para conductores",
         "description": "Una experiencia móvil pensada para facilitar el día a día de los conductores, desde consultar la información del vehículo hasta gestionar sus tareas y mantenerse conectados con su flota."
       },
       "interface": {
         "name": "Interface - Flexis",
-        "imageAlt": "Interfaz de gestión de flotas",
         "description": "Simplificar la gestión diaria de flotas a través de una interfaz clara e intuitiva, que permite consultar datos operativos, supervisar vehículos y gestionar las operaciones desde un mismo lugar."
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC - Redesign",
-        "imageAlt": "Interfaz bancaria de Crédit Mutuel y CIC",
         "description": "Modernizar la experiencia digital de dos grandes entidades bancarias, mejorando la navegación, la organización de los contenidos y el acceso a sus servicios."
       },
       "tulindero": {
         "name": "TuLindero.com",
-        "imageAlt": "Interfaz de producto inmobiliario",
         "description": "Facilitar la búsqueda de vivienda, permitiendo explorar propiedades y acceder a la información que realmente importa a la hora de elegir."
       }
     },

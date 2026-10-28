@@ -6,7 +6,7 @@ export const SITE_URL = "https://karolgiraldo.com";
 
 export const CONTACT_EMAIL = "karol.giraldo9505@gmail.com";
 
-export const LINKEDIN_URL = "https://www.linkedin.com/in/karol-giraldo-escobar/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/karol-giraldo-escobar/";
 
 export const SOCIAL_LINKS = [
   { label: "Behance", href: "https://www.behance.net/karolGiraldoFrames" },
