@@ -72,11 +72,17 @@
   background: var(--color-background);
 }
 
-// Teléfono (proyectos móviles).
+// Teléfono (proyectos móviles): proporción de un iPhone (393 × 852).
+// El tamaño sale de la altura de la pantalla para que nunca se corte en portátiles bajos.
 .work__frame--mobile {
-  width: fluid(320, 220);
-  aspect-ratio: 320 / 520;
-  border-radius: fluid(44, 32);
+  height: clamp(#{rem(420)}, 58svh, #{rem(560)});
+  aspect-ratio: 393 / 852;
+  border-radius: rem(44);
+
+  @include mq(lg) {
+    height: clamp(#{rem(520)}, 78svh, #{rem(860)});
+    border-radius: rem(56);
+  }
 }
 
 // Web (proyectos de escritorio).
@@ -106,7 +112,7 @@
 
   @include mq(lg) {
     justify-self: end;
-    width: min(100%, #{rem(380)});
+    width: min(100%, #{rem(440)});
   }
 }
 
@@ -129,8 +135,8 @@
   display: inline-flex;
   align-items: center;
   gap: rem(12);
-  padding-block: rem(18);
-  font-size: fluid(19, 16);
+  padding-block: rem(20);
+  font-size: rem(18);
   letter-spacing: -0.02em;
   color: var(--color-text-faded);
   transition: color $duration-fast ease;
@@ -143,6 +149,7 @@
   @include mq(lg) {
     display: flex;
     width: 100%;
+    font-size: rem(24); // decisión de Karol: 24 px en escritorio
   }
 
   @include hover {
@@ -151,7 +158,7 @@
 }
 
 .work__bullet {
-  font-size: rem(13);
+  font-size: rem(15);
   letter-spacing: 0.08em;
 }
 
