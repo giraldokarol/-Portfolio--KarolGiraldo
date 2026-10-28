@@ -68,17 +68,24 @@ export default function SelectedWork() {
         {/* Escenario de tamaño fijo: el marco cambia de forma centrado dentro y el texto de abajo no se mueve. */}
         <div className="work__stage">
           <div className="work__screen">
-            <div className={`work__frame work__frame--${current.frame}`}>
+            {/* El marco lleva al caso de estudio del proyecto actual (el JS cambia el enlace con el scroll).
+                Solo para ratón y táctil: con teclado o lector de pantalla ya están los enlaces de la lista. */}
+            <a
+              href={`/${lang}/work/${current.slug}`}
+              className={`work__frame work__frame--${current.frame}`}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
               {WORK_PROJECTS.map(({ id }, index) => (
                 <img
                   key={id}
                   src={MEDIA[id]}
-                  alt={t(`work.items.${id}.imageAlt`)}
+                  alt=""
                   className={`work__media ${index === 0 ? "is-current" : ""}`}
                   loading={index === 0 ? "eager" : "lazy"}
                 />
               ))}
-            </div>
+            </a>
 
             {/* Marcos "fantasma" invisibles: el JS mide aquí el tamaño real de cada forma (teléfono / web). */}
             <div className="work__frame-probes" aria-hidden="true">

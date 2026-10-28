@@ -48,12 +48,12 @@
       "cmcic": {
         "name": "Crédit Mutuel & CIC - Redesign",
         "imageAlt": "Crédit Mutuel and CIC banking interface",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "description": "Redesigning two major banking websites to make complex content and services clearer, more consistent and easier to navigate."
       },
       "tulindero": {
         "name": "TuLindero.com",
         "imageAlt": "Real estate product interface",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "description": "A digital property experience designed to make home searching clearer, easier and more intuitive."
       }
     }
   },

@@ -140,6 +140,7 @@
 
 .work__frame {
   position: relative;
+  display: block; // el marco visible es un enlace (<a>)
   overflow: hidden;
   border: rem(3) solid var(--color-primary);
   background: var(--color-background);

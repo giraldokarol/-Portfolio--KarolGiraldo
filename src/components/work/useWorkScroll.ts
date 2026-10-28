@@ -42,6 +42,8 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
           item.classList.toggle("is-current", i === index);
         });
         descriptions.forEach((description, i) => description.classList.toggle("is-current", i === index));
+        // El marco enlaza al proyecto actual (mismo destino que su enlace en la lista).
+        frame.setAttribute("href", items[index].querySelector("a")!.getAttribute("href")!);
       };
 
       const mm = gsap.matchMedia();
@@ -56,6 +58,13 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
 
         const tl = gsap.timeline({
           defaults: { ease: "power2.inOut" },
+          // En cada fotograma de la animación (no del scroll: con el suavizado "scrub" la animación
+          // sigue avanzando un instante después de parar), así la lista coincide siempre con el marco.
+          // Proyecto actual = cambios cuya mitad ya pasó.
+          onUpdate: () => {
+            const time = tl.time() - HOLD;
+            setCurrent(gsap.utils.clamp(0, transitions, Math.floor(time / STEP + 0.5)));
+          },
           scrollTrigger: {
             trigger: section,
             start: "top top",
@@ -63,11 +72,6 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
             pin: true,
             scrub: 0.6,
             invalidateOnRefresh: true, // vuelve a medir los marcos fantasma al cambiar el tamaño
-            onUpdate: () => {
-              // Proyecto actual = cambios cuya mitad ya pasó.
-              const time = tl.time() - HOLD;
-              setCurrent(gsap.utils.clamp(0, transitions, Math.floor(time / STEP + 0.5)));
-            },
           },
         });
 
