@@ -6,6 +6,13 @@
   display: block;
   width: rem(130.376);
   height: rem(47.994);
+  // En móvil, más pequeño (~96 px) para que quepa el botón de contacto en cualquier idioma.
+  // zoom reduce también el espacio que ocupa, no solo cómo se ve.
+  zoom: 0.74;
+
+  @include mq(sm) {
+    zoom: 1; // tamaño de Figma desde 640 px
+  }
 
   img {
     position: absolute;

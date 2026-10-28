@@ -252,13 +252,13 @@ src/styles/components/_avatar.scss, _selection-box.scss
 | T2 | Escena 2 estática fiel a Figma: tipografía `clamp()`, `--color-ink`, redes, "Designer" `#fbfbfb`; sin animación | **Codex** | T1 |
 | ~~T3~~ | Icono de mouse en SVG — **hecho** por Claude (Lottie eliminado) | — | — |
 | ~~T0b~~ | Componente `Avatar / Strokes` en Figma — **hecho** ([nodo 2058:76](https://www.figma.com/design/6gbzMRMGQDCcRvv2e5EEjm/Marca-Personal?node-id=2058-76)), colores enlazados a `Primary Color` y `Yellow` | Claude | T0 |
-| T4 | Infraestructura: `lib/gsap.ts`, script `has-motion`, estados iniciales | Claude | T2 |
-| T5 | Gradiente con mouse + deriva en móvil | Claude | T4 |
-| T6 | Avatar: parallax por capas + parpadeo + "mira alrededor" | Claude | T1, T4 |
+| ~~T4~~ | Infraestructura: `lib/gsap.ts`, script `has-motion`, estados iniciales — **hecho** | Claude | T2 |
+| ~~T5~~ | Gradiente con mouse + deriva en móvil — **hecho** | Claude | T4 |
+| ~~T6~~ | Avatar: parallax por capas + parpadeo + "mira alrededor" — **hecho** | Claude | T1, T4 |
 | ~~T7~~ | Timeline: pin, FLIP del avatar, caja de selección con DrawSVG, medidas — **hecho** | Claude | T4 |
 | ~~T8~~ | Texto: escritura con cursor de texto, "Product Designer" contorno → relleno, subtítulo — **hecho** | Claude | T7 |
-| T9 | Móvil + reduced-motion + robustez al redimensionar | Claude | T5–T8 |
-| T10 | Pruebas en `/en`, `/fr`, `/es` × escritorio y móvil con Playwright | Claude | T9 |
+| ~~T9~~ | Móvil + reduced-motion + robustez al redimensionar — **hecho** | Claude | T5–T8 |
+| ~~T10~~ | Pruebas en `/en`, `/fr`, `/es` × 1728, 1440 y 390 px — **hecho**: SEO por idioma, cursor de texto, sin solapes ni scroll horizontal; logo a ~96 px en móvil para que quepa el botón de contacto | Claude | T9 |
 
 Codex hace lo **estático y bien definido** (T1–T3) y Claude la animación (T4–T10), revisa los cambios
 de Codex con `git diff` y hace los commits. Orden de la Fase 3 = el que pediste:
