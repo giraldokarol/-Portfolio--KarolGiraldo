@@ -13,11 +13,11 @@
     "scrollToProjects": "Aller aux projets"
   },
   "nav": {
-    "selectedWork": "Projets choisis",
-    "behindTheWork": "Les coulisses"
+    "selectedWork": "Études de cas",
+    "behindTheWork": "Mon parcours"
   },
   "cta": {
-    "sayHello": "Dire bonjour",
+    "sayHello": "Prendre contact",
     "downloadCv": "Télécharger le CV",
     "linkedin": "LinkedIn"
   },
@@ -26,7 +26,7 @@
     "backgroundWord": "Designer",
     "greeting": "Hello ! Moi c’est Karol",
     "role": "Product Designer",
-    "subtitle": "Curieuse des gens et des produits numériques, je travaille entre UX et UI pour les rendre plus simples à utiliser.",
+    "subtitle": "Ce qui m’intéresse dans le design ? Comprendre les usages, questionner les évidences et concevoir des interfaces qui ont du sens.",
     "stickerAlt": "Product Thinking"
   },
   "projects": {

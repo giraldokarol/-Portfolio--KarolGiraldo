@@ -9,24 +9,24 @@
   },
   "a11y": {
     "mainNav": "Navegación principal",
-    "homeLink": "Karol Giraldo, inicio",
-    "scrollToProjects": "Ir a los proyectos"
+    "homeLink": "Karol Giraldo, Home",
+    "scrollToProjects": "Descubrir todos los proyectos"
   },
   "nav": {
-    "selectedWork": "Proyectos destacados",
-    "behindTheWork": "Detrás del trabajo"
+    "selectedWork": "Casos de estudio",
+    "behindTheWork": "Mi trayectoria"
   },
   "cta": {
-    "sayHello": "Saluda",
+    "sayHello": "Ponte en contacto",
     "downloadCv": "Descargar CV",
     "linkedin": "LinkedIn"
   },
   "hero": {
     "avatarAlt": "Avatar ilustrado de Karol Giraldo",
     "backgroundWord": "Designer",
-    "greeting": "¡Hola! Soy Karol",
+    "greeting": "¡Hey! Soy Karol",
     "role": "Product Designer",
-    "subtitle": "Curiosa por las personas y los productos digitales, trabajo entre UX y UI para hacerlos más fáciles de usar.",
+    "subtitle": "Me interesa entender cómo las personas interactúan con los productos digitales y qué hace que una experiencia funcione de verdad.",
     "stickerAlt": "Product Thinking"
   },
   "projects": {
