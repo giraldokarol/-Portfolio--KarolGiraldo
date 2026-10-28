@@ -31,12 +31,12 @@
 .site-nav__actions {
   display: flex;
   align-items: center;
-  gap: rem(70);
+  gap: rem(50);
 }
 
 .site-nav__links {
   display: none;
-  gap: rem(70);
+  gap: rem(50);
   align-items: center;
 
   @include mq(md) {
