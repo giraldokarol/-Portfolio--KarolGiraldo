@@ -46,6 +46,13 @@ a {
   text-decoration: inherit;
 }
 
+// Anillo de foco de marca: solo al navegar con teclado (:focus-visible), no al hacer clic.
+// Separado del elemento (offset) para que se vea también sobre botones azules.
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 b,
 strong {
   font-weight: bolder;
