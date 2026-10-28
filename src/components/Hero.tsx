@@ -57,6 +57,15 @@ export default function Hero() {
           <svg className="hero__selection-frame">
             <rect x="0" y="0" width="100%" height="100%" />
           </svg>
+          {/* Guías de centro que muestra Figma al mover un elemento. */}
+          <svg className="hero__selection-guides">
+            <line x1="50%" y1="25%" x2="50%" y2="75%" />
+            <line x1="25%" y1="50%" x2="75%" y2="50%" />
+          </svg>
+          <svg className="hero__selection-center" viewBox="-10 -10 20 20">
+            <circle r="2.5" />
+            <path d="M0-9V-5M0 5V9M-9 0H-5M5 0H9M-6.4-6.4-3.5-3.5M3.5 3.5 6.4 6.4M-6.4 6.4-3.5 3.5M3.5-3.5 6.4-6.4" />
+          </svg>
           <span className="hero__handle hero__handle--tl" />
           <span className="hero__handle hero__handle--tr" />
           <span className="hero__handle hero__handle--bl" />

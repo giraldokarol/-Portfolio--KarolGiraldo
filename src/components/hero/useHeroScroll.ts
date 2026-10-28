@@ -6,7 +6,8 @@ import { gsap, useGSAP, ScrollTrigger, SplitText, MEDIA } from "@/lib/gsap";
 // El HTML es la escena 2; la escena 1 es el estado inicial que se calcula aquí (técnica FLIP).
 //
 // Progreso del scroll (0 → 1):
-//   0,00–0,16  aparece la caja de selección y se dibuja su borde
+//   0,00–0,10  aparece la caja de selección (morada, como en Figma) con sus medidas
+//   0,10–0,47  guías de centro mientras la muñeca se mueve
 //   0,12–0,45  la muñeca se encoge de 355 × 380 a su tamaño final y sube
 //   0,45–0,75  la etiqueta de medidas se va; el saludo y "Product Designer" se escriben letra a letra con el cursor de texto
 //   0,76–0,92  cada letra de "Product Designer" pasa de contorno a relleno azul (y el contorno se retira)
@@ -34,6 +35,8 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
       const frame = $<SVGRectElement>(".hero__selection-frame rect");
       const handles = hero.querySelectorAll<HTMLElement>(".hero__handle");
       const sizeLabel = $<HTMLElement>(".hero__selection-size");
+      const guides = hero.querySelectorAll<SVGSVGElement>(".hero__selection-guides, .hero__selection-center");
+      const center = $<SVGSVGElement>(".hero__selection-center");
       const caret = $<HTMLElement>(".hero__caret");
 
       const mm = gsap.matchMedia();
@@ -103,6 +106,7 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
             gsap.set(subtitle, { autoAlpha: 0, y: 24 });
             gsap.set(frame, { drawSVG: "0%" });
             gsap.set(handles, { scale: 0 });
+            gsap.set(guides, { autoAlpha: 0 });
             renderTyping();
 
             const tl = gsap.timeline({
@@ -120,9 +124,13 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
               },
             });
 
-            tl.to(selection, { opacity: 1, duration: 0.03 }, 0)
-              .to(frame, { drawSVG: "100%", duration: 0.12 }, 0.02)
-              .to(handles, { scale: 1, duration: 0.04, stagger: 0.015 }, 0.08)
+            tl.to(selection, { opacity: 1, duration: 0.02 }, 0)
+              .to(frame, { drawSVG: "100%", duration: 0.08 }, 0)
+              .to(handles, { scale: 1, duration: 0.03, stagger: 0.01 }, 0.03)
+              // Guías de centro: aparecen mientras la muñeca "se mueve", como en Figma.
+              .to(guides, { autoAlpha: 1, duration: 0.03 }, 0.1)
+              .fromTo(center, { rotation: -90, scale: 0.4 }, { rotation: 0, scale: 1, duration: 0.06 }, 0.1)
+              .to(guides, { autoAlpha: 0, duration: 0.03 }, 0.44)
               .fromTo(
                 avatar,
                 { x: flipX, y: flipY, scale: scene.scale, transformOrigin: "50% 50%" },
