@@ -2,21 +2,18 @@ import { useRef } from "react";
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
-import CoverDriverApp from "@/assets/img/cover-app-driver.png";
-import CoverInterface from "@/assets/img/cover-web-app.png";
-import CoverCMCIC from "@/assets/img/cover-cmcic.png";
-import CoverTuLindero from "@/assets/img/cover-tulindero.png";
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import { useWorkScroll } from "./work/useWorkScroll";
 import { WORK_PROJECTS, type WorkProject } from "@/config/site";
 
-// Vídeo de cada proyecto (public/videos/work/<slug>.mp4), su proporción real (ancho / alto)
-// para que el marco web se ajuste sin recortes, y la portada: imagen mientras carga y con reduced-motion.
-const MEDIA: Record<WorkProject["id"], { poster: string; ratio: number }> = {
-  driverApp: { poster: CoverDriverApp, ratio: 786 / 1704 },
-  interface: { poster: CoverInterface, ratio: 1716 / 1132 },
-  cmcic: { poster: CoverCMCIC, ratio: 1728 / 978 },
-  tulindero: { poster: CoverTuLindero, ratio: 1920 / 1136 },
+// Vídeo de cada proyecto (public/videos/work/<slug>.mp4) y su portada (<slug>.jpg, el primer fotograma:
+// se ve mientras carga y con reduced-motion). La proporción real del vídeo (ancho / alto) hace que el
+// marco web se ajuste sin recortes. Si cambias un vídeo, cambia también su portada y su proporción.
+const VIDEO_RATIO: Record<WorkProject["id"], number> = {
+  driverApp: 786 / 1704,
+  interface: 1716 / 1132,
+  cmcic: 1728 / 978,
+  tulindero: 1920 / 1136,
 };
 
 // Las tres "bolitas" del diseño, rellenas con el degradado de malla animado.
@@ -82,9 +79,9 @@ export default function SelectedWork() {
                 <video
                   key={id}
                   src={`/videos/work/${slug}.mp4`}
-                  poster={MEDIA[id].poster}
+                  poster={`/videos/work/${slug}.jpg`}
                   className={`work__media ${index === 0 ? "is-current" : ""}`}
-                  data-ratio={MEDIA[id].ratio}
+                  data-ratio={VIDEO_RATIO[id]}
                   muted
                   loop
                   playsInline

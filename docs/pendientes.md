@@ -29,7 +29,7 @@ Para conectarlo:
 - Fase 2 hecha: fondo con mesh gradient animado en WebGL (`components/MeshGradient.tsx`), 3 círculos como en Figma (otra distribución en móvil), pausa fuera de pantalla, quieto con reduced-motion.
 - Fase 3 hecha: sección fijada con scroll (`components/work/useWorkScroll.ts`), imágenes que se deslizan dentro del marco, marco teléfono↔web medido con "marcos fantasma", lista acumulada en negro; reduced-motion sin pin y lista completa.
 - Fase 4 hecha: al enfocar un proyecto con teclado el scroll salta a él; en móvil los proyectos no actuales siguen accesibles (visually-hidden).
-- Fase 5 hecha: vídeos en `public/videos/work/<slug>.mp4`; el marco web toma la proporción de cada vídeo (`ratio` en SelectedWork.tsx: si cambias un vídeo, actualiza su proporción). Solo se reproduce el actual, en pausa fuera de pantalla; reduced-motion = portada.
+- Fase 5 hecha: vídeos en `public/videos/work/<slug>.mp4`; el marco web toma la proporción de cada vídeo (`VIDEO_RATIO` en SelectedWork.tsx) y su portada es `<slug>.jpg` (primer fotograma): si cambias un vídeo, actualiza ambos. Solo se reproduce el actual, en pausa fuera de pantalla; reduced-motion = portada.
   transforma el marco teléfono ↔ web y pone en negro (acumulado) los proyectos destapados · fase 4 móvil y reduced-motion ·
   fase 5 vídeos dentro del marco (hasta entonces, las imágenes `cover-*.png` como contenido provisional).
 - Los enlaces de la lista apuntan a `/:lang/work/:slug` (`WORK_PROJECTS` en `src/config/site.ts`), pero **esas páginas
