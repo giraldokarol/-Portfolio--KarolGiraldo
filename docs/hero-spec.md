@@ -199,6 +199,10 @@ subtítulo                                             ▸ aparece ▸
    desaparece (como al hacer clic fuera del lienzo). El icono de mouse sigue visible durante todo el recorrido.
    Termina el `pin` y la página sigue hacia Projects.
 
+**Hecho** en `src/components/hero/useHeroScroll.ts`. Verificado a 1728 × 1117: escena 1 = muñeca 355 × 379 centrada en
+y = 386 (Figma: 355 × 380, y = 385); el final coincide al píxel con la escena 2 estática. La etiqueta de medidas
+desaparece al terminar de encoger (no tapa el saludo) y el contorno de "Product Designer" se retira tras el relleno.
+
 ### 6.2 Tres idiomas
 - **"Product Designer" es igual en los tres idiomas** (es el término que se usa al buscar trabajo),
   y "Designer" de fondo también. Solo cambian el **saludo** y el **subtítulo**.
@@ -251,8 +255,8 @@ src/styles/components/_avatar.scss, _selection-box.scss
 | T4 | Infraestructura: `lib/gsap.ts`, script `has-motion`, estados iniciales | Claude | T2 |
 | T5 | Gradiente con mouse + deriva en móvil | Claude | T4 |
 | T6 | Avatar: parallax por capas + parpadeo + "mira alrededor" | Claude | T1, T4 |
-| T7 | Timeline: pin, FLIP del avatar, caja de selección con DrawSVG, medidas | Claude | T4 |
-| T8 | Texto: escritura con cursor de texto, "Product Designer" contorno → relleno, subtítulo | Claude | T7 |
+| ~~T7~~ | Timeline: pin, FLIP del avatar, caja de selección con DrawSVG, medidas — **hecho** | Claude | T4 |
+| ~~T8~~ | Texto: escritura con cursor de texto, "Product Designer" contorno → relleno, subtítulo — **hecho** | Claude | T7 |
 | T9 | Móvil + reduced-motion + robustez al redimensionar | Claude | T5–T8 |
 | T10 | Pruebas en `/en`, `/fr`, `/es` × escritorio y móvil con Playwright | Claude | T9 |
 

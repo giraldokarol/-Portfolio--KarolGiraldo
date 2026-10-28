@@ -168,8 +168,9 @@
 }
 
 // "Product Designer" se escribe en contorno y luego cada letra se rellena.
+// --role-stroke vuelve a 0 al terminar el relleno (el grosor final queda igual que en Figma).
 .has-motion .hero__role {
-  -webkit-text-stroke: rem(2) var(--color-primary);
+  -webkit-text-stroke: var(--role-stroke, #{rem(2)}) var(--color-primary);
 }
 
 // Caja de selección estilo Figma alrededor de la muñeca (la posiciona el JS).
