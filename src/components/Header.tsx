@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import Logo from "./Logo";
 import ArrowRightCircle from "@/assets/icons/arrow-right-circle.svg";
+import MailIcon from "@/assets/icons/mail.svg";
 import { CONTACT_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
 
 // Menú principal (Figma: "Principal Menu"). Estilos: styles/components/_header.scss
@@ -61,9 +62,11 @@ export default function Header() {
             ))}
           </ul>
 
+          {/* En móvil solo se ve el icono de correo; el texto sigue ahí para lectores de pantalla. */}
           <a href={`#${CONTACT_SECTION}`} className="btn btn--hello">
-            {t("cta.sayHello")}
-            <img src={ArrowRightCircle} alt="" width={24} height={24} className="btn__icon" />
+            <span className="btn--hello__label">{t("cta.sayHello")}</span>
+            <img src={ArrowRightCircle} alt="" width={24} height={24} className="btn__icon btn--hello__arrow" />
+            <img src={MailIcon} alt="" width={24} height={24} className="btn--hello__mail" />
           </a>
         </div>
       </nav>

@@ -66,4 +66,41 @@
       transform: translateX(rem(3));
     }
   }
+
+  // Móvil: botón reducido a un círculo con el icono de correo (el texto queda solo para lectores).
+  width: rem(40);
+  padding: 0;
+  border-radius: 50%;
+
+  .btn--hello__label {
+    @include visually-hidden;
+  }
+
+  .btn--hello__arrow {
+    display: none;
+  }
+
+  @include mq(sm) {
+    width: auto;
+    padding: rem(0 16);
+    border-radius: rem(24);
+
+    .btn--hello__label {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip-path: none;
+      white-space: nowrap;
+    }
+
+    .btn--hello__arrow {
+      display: block;
+    }
+
+    .btn--hello__mail {
+      display: none;
+    }
+  }
 }
