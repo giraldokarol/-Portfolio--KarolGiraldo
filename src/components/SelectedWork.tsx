@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
+import { useWorkReveal } from "./work/useWorkReveal";
 import { useWorkScroll } from "./work/useWorkScroll";
 import { WORK_PROJECTS, type WorkProject } from "@/config/site";
 
@@ -49,6 +50,7 @@ export default function SelectedWork() {
   const current = WORK_PROJECTS[0];
   const root = useRef<HTMLElement>(null);
 
+  useWorkReveal(root);
   useWorkScroll(root);
 
   return (

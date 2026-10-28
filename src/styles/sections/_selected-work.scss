@@ -199,12 +199,27 @@
   }
 
   @include mq(lg) {
+    position: relative;
     display: block;
-    border-bottom: 1px solid var(--color-divider);
+
+    // Línea separadora: un pseudo-elemento en vez de un borde para poder "dibujarla"
+    // de izquierda a derecha en la entrada (useWorkReveal anima --work-line de 0 a 1).
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      background: var(--color-divider);
+      transform: scaleX(var(--work-line, 1));
+      transform-origin: left;
+    }
 
     // Escritorio: la lista completa visible (deshace el ocultado de móvil).
     &:not(.is-current) {
       @include visually-hidden-reset;
+      position: relative; // referencia de la línea separadora
     }
   }
 }
@@ -308,6 +323,7 @@
 .work.is-static {
   .work__item:not(.is-current) {
     @include visually-hidden-reset;
+    position: relative; // referencia de la línea separadora
   }
 
   .work__link {
