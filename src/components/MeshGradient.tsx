@@ -50,11 +50,11 @@ void main() {
   // (amarillo arriba a la izquierda, azul abajo a la derecha, blanco en medio) para que cada
   // círculo mezcle los tres, como en el diseño.
   vec2 st = px / u_size;
-  float t = u_time * 0.35;
-  vec2 q = st + 0.035 * vec2(sin(st.y * 9.0 + t * 1.7), cos(st.x * 7.0 - t * 1.3));
-  vec2 p0 = vec2(0.26 + 0.09 * sin(t * 0.9), 0.30 + 0.10 * cos(t * 0.7));
-  vec2 p1 = vec2(0.42 + 0.08 * cos(t * 0.8), 0.62 + 0.12 * sin(t * 1.1));
-  vec2 p2 = vec2(0.32 + 0.10 * sin(t * 0.6 + 2.0), 0.50 + 0.14 * cos(t * 0.9 + 1.0));
+  float t = u_time * 0.8; // velocidad del movimiento
+  vec2 q = st + 0.06 * vec2(sin(st.y * 9.0 + t * 1.7), cos(st.x * 7.0 - t * 1.3));
+  vec2 p0 = vec2(0.27 + 0.13 * sin(t * 0.9), 0.32 + 0.16 * cos(t * 0.7));
+  vec2 p1 = vec2(0.40 + 0.12 * cos(t * 0.8), 0.62 + 0.18 * sin(t * 1.1));
+  vec2 p2 = vec2(0.32 + 0.14 * sin(t * 0.6 + 2.0), 0.50 + 0.20 * cos(t * 0.9 + 1.0));
   float w0 = 1.0 / (0.004 + pow(distance(q, p0), 2.0));
   float w1 = 1.0 / (0.004 + pow(distance(q, p1), 2.0));
   float w2 = 1.0 / (0.006 + pow(distance(q, p2), 2.0));
