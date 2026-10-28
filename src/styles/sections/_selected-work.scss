@@ -9,6 +9,8 @@
 }
 
 .work__inner {
+  position: relative;
+  z-index: z(content); // por encima del degradado de malla
   // Más estrecho que la página (1830 px): las tres columnas respiran como en el diseño de Figma.
   @include container(1460px);
   display: flex;

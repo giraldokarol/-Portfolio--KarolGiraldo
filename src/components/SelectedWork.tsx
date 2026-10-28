@@ -5,6 +5,7 @@ import CoverDriverApp from "@/assets/img/cover-app-driver.png";
 import CoverInterface from "@/assets/img/cover-web-app.png";
 import CoverCMCIC from "@/assets/img/cover-cmcic.png";
 import CoverTuLindero from "@/assets/img/cover-tulindero.png";
+import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import { WORK_PROJECTS, type WorkProject } from "@/config/site";
 
 // Contenido provisional del marco hasta tener los vídeos.
@@ -14,6 +15,20 @@ const MEDIA: Record<WorkProject["id"], string> = {
   cmcic: CoverCMCIC,
   tulindero: CoverTuLindero,
 };
+
+// Las tres "bolitas" del diseño, rellenas con el degradado de malla animado.
+// Posición y radio en fracción del ancho/alto de la sección (medidos sobre el diseño de Figma).
+const MESH_CIRCLES: MeshCircle[] = [
+  { x: 0.327, y: 0.36, r: 0.139 },
+  { x: 0.39, y: 0.745, r: 0.071 },
+  { x: 0.249, y: 0.71, r: 0.035 },
+];
+// Móvil: grande detrás del título, mediano a la derecha y pequeño abajo a la izquierda.
+const MESH_CIRCLES_MOBILE: MeshCircle[] = [
+  { x: 0.3, y: 0.2, r: 0.42 },
+  { x: 0.9, y: 0.62, r: 0.26 },
+  { x: 0.1, y: 0.82, r: 0.12 },
+];
 
 // Misma flecha que el botón "Say Hello" (assets/icons/arrow-right-circle.svg), pero del color del texto.
 function ArrowIcon() {
@@ -35,6 +50,8 @@ export default function SelectedWork() {
 
   return (
     <section id="projects" className="work" aria-labelledby="work-title">
+      <MeshGradient circles={MESH_CIRCLES} mobileCircles={MESH_CIRCLES_MOBILE} />
+
       <div className="work__inner">
         <header className="work__intro">
           <h2 id="work-title" className="work__title">

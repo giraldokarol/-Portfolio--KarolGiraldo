@@ -26,7 +26,8 @@ Para conectarlo:
 
 ## Selected work (en curso)
 - Fase 1 hecha: estructura estática (título · marco teléfono/web · lista con flecha en hover; móvil apilado con solo el proyecto actual).
-- Siguiente: fase 2 fondo con mesh gradient animado (colores de marca) · fase 3 scroll fijado que cambia de proyecto,
+- Fase 2 hecha: fondo con mesh gradient animado en WebGL (`components/MeshGradient.tsx`), 3 círculos como en Figma (otra distribución en móvil), pausa fuera de pantalla, quieto con reduced-motion.
+- Siguiente: fase 3 scroll fijado que cambia de proyecto,
   transforma el marco teléfono ↔ web y pone en negro (acumulado) los proyectos destapados · fase 4 móvil y reduced-motion ·
   fase 5 vídeos dentro del marco (hasta entonces, las imágenes `cover-*.png` como contenido provisional).
 - Los enlaces de la lista apuntan a `/:lang/work/:slug` (`WORK_PROJECTS` en `src/config/site.ts`), pero **esas páginas

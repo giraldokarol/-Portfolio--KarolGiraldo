@@ -1,0 +1,20 @@
+@use "../abstracts" as *;
+
+// Fondo con degradado de malla animado (components/MeshGradient.tsx).
+// Ocupa todo su contenedor, detrás del contenido y sin interceptar clics.
+.mesh-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  // Respaldo si el navegador no tiene WebGL: tres manchas suaves estáticas en las mismas posiciones.
+  &:not(.is-webgl) {
+    background:
+      radial-gradient(circle at 32.7% 36%, color-mix(in srgb, var(--color-accent) 18%, transparent) 0, transparent 14%),
+      radial-gradient(circle at 39% 74.5%, color-mix(in srgb, var(--color-primary) 14%, transparent) 0, transparent 7%),
+      radial-gradient(circle at 25% 71%, color-mix(in srgb, var(--color-primary) 14%, transparent) 0, transparent 4%);
+  }
+}
