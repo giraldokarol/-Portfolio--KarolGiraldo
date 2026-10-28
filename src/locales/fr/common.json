@@ -38,22 +38,22 @@
       "driverApp": {
         "name": "Driver App - Flexis",
         "imageAlt": "Interface de l’application conducteur",
-        "description": "Repenser la façon dont les conducteurs accèdent aux informations du véhicule, gèrent leurs tâches quotidiennes et restent connectés à leur flotte sur la route."
+        "description": "Repenser l’expérience des conducteurs pour leur permettre d’accéder aux informations du véhicule, de gérer leurs missions et de rester connectés à leur flotte, même sur la route."
       },
       "interface": {
         "name": "Interface - Flexis",
         "imageAlt": "Interface de gestion de flotte",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "description": "Faciliter la gestion quotidienne des flottes grâce à une interface claire et intuitive, qui rend les données opérationnelles plus accessibles et exploitables."
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC - Redesign",
         "imageAlt": "Interface bancaire Crédit Mutuel et CIC",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "description": "Moderniser l’expérience digitale de deux grandes enseignes bancaires en simplifiant l’accès aux contenus et aux services, tout en renforçant la cohérence des interfaces."
       },
       "tulindero": {
         "name": "TuLindero.com",
         "imageAlt": "Interface de produit immobilier",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "description": "Imaginer une expérience immobilière plus simple et intuitive, pour faciliter la recherche de biens et accompagner les utilisateurs dans leur parcours."
       }
     }
   },
