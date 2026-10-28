@@ -55,6 +55,10 @@
         "imageAlt": "Real estate product interface",
         "description": "A digital property experience designed to make home searching clearer, easier and more intuitive."
       }
+    },
+    "frameType": {
+      "mobile": "Mobile app",
+      "web": "Web"
     }
   },
   "about": {

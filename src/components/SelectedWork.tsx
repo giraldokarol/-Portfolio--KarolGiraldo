@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
+import ArrowIcon from "./ArrowIcon";
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import { useWorkReveal } from "./work/useWorkReveal";
 import { useWorkScroll } from "./work/useWorkScroll";
@@ -30,16 +31,6 @@ const MESH_CIRCLES_MOBILE: MeshCircle[] = [
   { x: 0.9, y: 0.62, r: 0.26 },
   { x: 0.1, y: 0.82, r: 0.12 },
 ];
-
-// Misma flecha que el botón "Say Hello" (assets/icons/arrow-right-circle.svg), pero del color del texto.
-function ArrowIcon() {
-  return (
-    <svg className="work__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M15.6 15L18.6 12L15.6 9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="currentColor" />
-      <path d="M4.59999 12H18.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="currentColor" />
-    </svg>
-  );
-}
 
 // Sección "Selected work": título a la izquierda, marco central (teléfono o web) y lista de proyectos.
 // El HTML muestra el primer proyecto; useWorkScroll fija la sección y recorre los demás con el scroll.
@@ -123,7 +114,7 @@ export default function SelectedWork() {
                   </span>
                   <span className="work__name">
                     {t(`work.items.${id}.name`)}
-                    <ArrowIcon />
+                    <ArrowIcon className="work__arrow" />
                   </span>
                 </a>
               </li>

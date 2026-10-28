@@ -55,6 +55,10 @@
         "imageAlt": "Interfaz de producto inmobiliario",
         "description": "Facilitar la búsqueda de vivienda, permitiendo explorar propiedades y acceder a la información que realmente importa a la hora de elegir."
       }
+    },
+    "frameType": {
+      "mobile": "App móvil",
+      "web": "Web"
     }
   },
   "about": {

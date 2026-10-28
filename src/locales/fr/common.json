@@ -55,6 +55,10 @@
         "imageAlt": "Interface de produit immobilier",
         "description": "Imaginer une expérience immobilière plus simple et intuitive, pour faciliter la recherche de biens et accompagner les utilisateurs dans leur parcours."
       }
+    },
+    "frameType": {
+      "mobile": "Application mobile",
+      "web": "Web"
     }
   },
   "about": {

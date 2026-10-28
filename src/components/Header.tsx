@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import Logo from "./Logo";
+import WorkMenu from "./WorkMenu";
 import ArrowRightCircle from "@/assets/icons/arrow-right-circle.svg";
 import MailIcon from "@/assets/icons/mail.svg";
 import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
@@ -61,17 +62,27 @@ export default function Header() {
 
         <div className="site-nav__actions">
           <ul className="site-nav__links">
-            {NAV_LINKS.map(({ section, label }) => (
-              <li key={section}>
-                <a
+            {NAV_LINKS.map(({ section, label }) =>
+              // "Selected work" abre además un menú con los proyectos (WorkMenu).
+              section === "projects" ? (
+                <WorkMenu
+                  key={section}
                   href={`#${section}`}
-                  className="site-nav__link"
-                  aria-current={activeSection === section ? "true" : undefined}
-                >
-                  {t(`nav.${label}`)}
-                </a>
-              </li>
-            ))}
+                  label={t(`nav.${label}`)}
+                  isCurrent={activeSection === section}
+                />
+              ) : (
+                <li key={section}>
+                  <a
+                    href={`#${section}`}
+                    className="site-nav__link"
+                    aria-current={activeSection === section ? "true" : undefined}
+                  >
+                    {t(`nav.${label}`)}
+                  </a>
+                </li>
+              ),
+            )}
           </ul>
 
           {/* En móvil solo se ve el icono de correo; el texto sigue ahí para lectores de pantalla. */}

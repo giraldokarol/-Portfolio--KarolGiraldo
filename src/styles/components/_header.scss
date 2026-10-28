@@ -5,12 +5,21 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: z(header);
-  background: transparent;
-  backdrop-filter: blur(rem(12));
-  transition: background-color $duration-base ease;
+
+  // Fondo desenfocado en una capa aparte (y no en el header): si el header tuviera el desenfoque,
+  // el cristal del menú de proyectos (_work-menu.scss) no podría desenfocar la página de detrás.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: transparent;
+    backdrop-filter: blur(rem(12));
+    transition: background-color $duration-base ease;
+  }
 }
 
-.site-header--scrolled {
+.site-header--scrolled::before {
   background-color: color-mix(in srgb, var(--color-background) 20%, transparent);
 }
 
