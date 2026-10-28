@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import Logo from "./Logo";
 import ArrowRightCircle from "@/assets/icons/arrow-right-circle.svg";
 import MailIcon from "@/assets/icons/mail.svg";
-import { CONTACT_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
+import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
 
 // Menú principal (Figma: "Principal Menu"). Estilos: styles/components/_header.scss
 export default function Header() {
@@ -22,15 +22,18 @@ export default function Header() {
   }, []);
 
   // Marca en el menú la sección que está en el centro de la pantalla.
+  // También vigila el hero (#home): al volver arriba no hay ninguna sección del menú activa.
   useEffect(() => {
-    const sections = NAV_LINKS.map(({ section }) => document.getElementById(section)).filter(
-      (section): section is HTMLElement => section !== null,
-    );
+    const sections = [HERO_SECTION, ...NAV_LINKS.map(({ section }) => section)]
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id as NavSection);
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          setActiveSection(id === HERO_SECTION ? null : (id as NavSection));
         });
       },
       { rootMargin: "-40% 0px -50% 0px" },
@@ -39,6 +42,15 @@ export default function Header() {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
+
+  // La URL acompaña al scroll: /es#projects en una sección, /es (sin #) de vuelta en el hero.
+  // replaceState cambia la URL sin recargar, sin mover el scroll y sin añadir pasos al botón "atrás".
+  useEffect(() => {
+    const hash = activeSection ? `#${activeSection}` : "";
+    if (window.location.hash === hash) return;
+    const url = `${window.location.pathname}${window.location.search}${hash}`;
+    window.history.replaceState(window.history.state, "", url); // conserva el estado de React Router
+  }, [activeSection]);
 
   return (
     <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>

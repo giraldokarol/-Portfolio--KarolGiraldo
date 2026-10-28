@@ -21,5 +21,8 @@ export const NAV_LINKS = [
 ] as const;
 export type NavSection = (typeof NAV_LINKS)[number]["section"];
 
+// id de la sección del hero (Hero.tsx): al volver a ella, el menú se desmarca y la URL queda sin #.
+export const HERO_SECTION = "home";
+
 // Destino del botón "Say Hello" (id del footer).
 export const CONTACT_SECTION = "contact";
