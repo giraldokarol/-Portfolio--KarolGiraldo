@@ -10,12 +10,13 @@ import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import { useWorkScroll } from "./work/useWorkScroll";
 import { WORK_PROJECTS, type WorkProject } from "@/config/site";
 
-// Contenido provisional del marco hasta tener los vídeos.
-const MEDIA: Record<WorkProject["id"], string> = {
-  driverApp: CoverDriverApp,
-  interface: CoverInterface,
-  cmcic: CoverCMCIC,
-  tulindero: CoverTuLindero,
+// Vídeo de cada proyecto (public/videos/work/<slug>.mp4), su proporción real (ancho / alto)
+// para que el marco web se ajuste sin recortes, y la portada: imagen mientras carga y con reduced-motion.
+const MEDIA: Record<WorkProject["id"], { poster: string; ratio: number }> = {
+  driverApp: { poster: CoverDriverApp, ratio: 786 / 1704 },
+  interface: { poster: CoverInterface, ratio: 1716 / 1132 },
+  cmcic: { poster: CoverCMCIC, ratio: 1728 / 978 },
+  tulindero: { poster: CoverTuLindero, ratio: 1920 / 1136 },
 };
 
 // Las tres "bolitas" del diseño, rellenas con el degradado de malla animado.
@@ -68,7 +69,8 @@ export default function SelectedWork() {
         {/* Escenario de tamaño fijo: el marco cambia de forma centrado dentro y el texto de abajo no se mueve. */}
         <div className="work__stage">
           <div className="work__screen">
-            {/* El marco lleva al caso de estudio del proyecto actual (el JS cambia el enlace con el scroll).
+            {/* Los vídeos se reproducen desde useWorkScroll: solo el del proyecto actual y con la sección en pantalla.
+                El marco lleva al caso de estudio del proyecto actual (el JS cambia el enlace con el scroll).
                 Solo para ratón y táctil: con teclado o lector de pantalla ya están los enlaces de la lista. */}
             <a
               href={`/${lang}/work/${current.slug}`}
@@ -76,13 +78,17 @@ export default function SelectedWork() {
               tabIndex={-1}
               aria-hidden="true"
             >
-              {WORK_PROJECTS.map(({ id }, index) => (
-                <img
+              {WORK_PROJECTS.map(({ id, slug }, index) => (
+                <video
                   key={id}
-                  src={MEDIA[id]}
-                  alt=""
+                  src={`/videos/work/${slug}.mp4`}
+                  poster={MEDIA[id].poster}
                   className={`work__media ${index === 0 ? "is-current" : ""}`}
-                  loading={index === 0 ? "eager" : "lazy"}
+                  data-ratio={MEDIA[id].ratio}
+                  muted
+                  loop
+                  playsInline
+                  preload={index === 0 ? "metadata" : "none"}
                 />
               ))}
             </a>
