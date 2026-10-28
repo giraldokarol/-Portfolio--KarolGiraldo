@@ -28,7 +28,8 @@ Para conectarlo:
 - Fase 1 hecha: estructura estática (título · marco teléfono/web · lista con flecha en hover; móvil apilado con solo el proyecto actual).
 - Fase 2 hecha: fondo con mesh gradient animado en WebGL (`components/MeshGradient.tsx`), 3 círculos como en Figma (otra distribución en móvil), pausa fuera de pantalla, quieto con reduced-motion.
 - Fase 3 hecha: sección fijada con scroll (`components/work/useWorkScroll.ts`), imágenes que se deslizan dentro del marco, marco teléfono↔web medido con "marcos fantasma", lista acumulada en negro; reduced-motion sin pin y lista completa.
-- Siguiente: fase 4 (pulido móvil/hover/teclado) · fase 5 vídeos.
+- Fase 4 hecha: al enfocar un proyecto con teclado el scroll salta a él; en móvil los proyectos no actuales siguen accesibles (visually-hidden).
+- Siguiente: fase 5 vídeos (cuando estén). Textos description de interface/cmcic/tulindero = lorem ipsum (Karol los escribirá).
   transforma el marco teléfono ↔ web y pone en negro (acumulado) los proyectos destapados · fase 4 móvil y reduced-motion ·
   fase 5 vídeos dentro del marco (hasta entonces, las imágenes `cover-*.png` como contenido provisional).
 - Los enlaces de la lista apuntan a `/:lang/work/:slug` (`WORK_PROJECTS` en `src/config/site.ts`), pero **esas páginas

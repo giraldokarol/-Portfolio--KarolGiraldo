@@ -188,17 +188,23 @@
 }
 
 .work__item {
-  // Móvil: lista horizontal bajo el marco que solo muestra el proyecto actual.
-  display: none;
+  // Móvil: solo se ve el proyecto actual. Los demás quedan ocultos a la vista pero siguen
+  // en la página para el teclado y los lectores de pantalla (al enfocarlos, el scroll salta a ellos).
+  display: flex;
   justify-content: center;
 
-  &.is-current {
-    display: flex;
+  &:not(.is-current) {
+    @include visually-hidden;
   }
 
   @include mq(lg) {
     display: block;
     border-bottom: 1px solid var(--color-divider);
+
+    // Escritorio: la lista completa visible (deshace el ocultado de móvil).
+    &:not(.is-current) {
+      @include visually-hidden-reset;
+    }
   }
 }
 
@@ -299,12 +305,8 @@
 
 // Sin animaciones (reduced-motion): la lista completa, todos los proyectos en negro.
 .work.is-static {
-  .work__item {
-    display: flex;
-
-    @include mq(lg) {
-      display: block;
-    }
+  .work__item:not(.is-current) {
+    @include visually-hidden-reset;
   }
 
   .work__link {

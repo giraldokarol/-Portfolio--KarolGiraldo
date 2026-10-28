@@ -95,10 +95,23 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
         });
         tl.set({}, {}, HOLD * 2 + transitions * STEP); // pausa final antes de soltar la sección
 
+        // Teclado / lector de pantalla: al enfocar un proyecto de la lista, el scroll salta
+        // hasta él para que el marco muestre ese proyecto (solo con foco de teclado, no al hacer clic).
+        const onFocus = (event: FocusEvent) => {
+          const target = event.target as Element;
+          const index = items.findIndex((item) => item.contains(target));
+          const st = tl.scrollTrigger;
+          if (index < 0 || !st || !target.matches(":focus-visible")) return;
+          const time = index === 0 ? 0 : HOLD + (index - 1) * STEP + STEP * 0.8;
+          window.scrollTo({ top: st.start + ((st.end - st.start) * time) / tl.duration() });
+        };
+        section.addEventListener("focusin", onFocus);
+
         setCurrent(0);
         ScrollTrigger.refresh();
 
         return () => {
+          section.removeEventListener("focusin", onFocus);
           section.classList.remove("is-animated");
           gsap.set(frame, { clearProps: "width,height,borderRadius" });
           setCurrent(0);
