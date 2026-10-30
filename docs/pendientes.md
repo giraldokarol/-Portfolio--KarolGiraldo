@@ -59,3 +59,10 @@ Para conectarlo:
 - Al publicar en OVH: en el panel de Web3Forms, cambiar el "Website URL" del formulario de localhost al dominio real.
   Y cuando exista el correo del dominio: nueva clave con ese correo + cambiar CONTACT_EMAIL en src/config/site.ts.
 - El footer repite "Let's talk / Have something in mind?": revisar su contenido ahora que existe esta sección.
+
+## Legal y estadísticas
+- Una sola página "Mentions légales & confidentialité" (en/fr/es), enlazada desde el footer y desde una frase junto al
+  formulario. Sin banner ni página de cookies (la web no usa cookies; el idioma guardado es una preferencia exenta).
+  Sin CGU. Faltan datos de Karol: nombre, estatus (freelance/SIRET o personal), contacto, tiempo de conservación.
+- Estadísticas: Cloudflare Web Analytics (gratis, sin cookies, funciona con OVH sin mover el dominio). Instalar al publicar
+  y mencionarlo en la política de privacidad. No usar Google Analytics (necesitaría banner de consentimiento).
