@@ -102,7 +102,6 @@
     },
     "name": "Your name",
     "email": "e-mail",
-    "emailPlaceholder": "mail@company.com",
     "message": "Message",
     "send": "Send Message",
     "mailSubject": "Portfolio — {{reason}}",
@@ -112,6 +111,9 @@
       "emailFormat": "This e-mail doesn’t look right (e.g. mail@company.com).",
       "message": "Please write a message."
     },
-    "opening": "Your e-mail app is opening with the message ready to send."
+    "opening": "Your e-mail app is opening with the message ready to send.",
+    "sending": "Sending…",
+    "sent": "Thanks! Your message is on its way. I’ll get back to you soon.",
+    "failed": "Something went wrong. Please try again or write to me at {{email}}."
   }
 }

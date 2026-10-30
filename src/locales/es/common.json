@@ -102,7 +102,6 @@
     },
     "name": "Tu nombre",
     "email": "e-mail",
-    "emailPlaceholder": "mail@empresa.com",
     "message": "Mensaje",
     "send": "Enviar mensaje",
     "mailSubject": "Portafolio — {{reason}}",
@@ -112,6 +111,9 @@
       "emailFormat": "Este e-mail no parece correcto (ej. mail@empresa.com).",
       "message": "Escribe un mensaje."
     },
-    "opening": "Se está abriendo tu correo con el mensaje listo para enviar."
+    "opening": "Se está abriendo tu correo con el mensaje listo para enviar.",
+    "sending": "Enviando…",
+    "sent": "¡Gracias! Tu mensaje va en camino. Te responderé pronto.",
+    "failed": "Algo salió mal. Inténtalo de nuevo o escríbeme a {{email}}."
   }
 }

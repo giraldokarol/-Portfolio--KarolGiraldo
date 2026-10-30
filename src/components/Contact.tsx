@@ -5,11 +5,15 @@ import ArrowIcon from "./ArrowIcon";
 import MeshGradient from "./MeshGradient";
 import { useContactReveal } from "./contact/useContactReveal";
 import { CONTACT_EMAIL, CONTACT_SECTION } from "@/config/site";
+import { hasContactService, sendContactMessage } from "@/lib/contact";
 
 const REASONS = ["job", "project", "other"] as const;
 type Reason = (typeof REASONS)[number];
 type Field = "name" | "email" | "message";
 type Errors = Partial<Record<Field, string>>;
+type Status = "idle" | "sending" | "sent" | "failed" | "mailto";
+
+const EMPTY = { name: "", email: "", message: "" };
 
 const EMAIL_FORMAT = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,16 +25,17 @@ function fitToContent(textarea: HTMLTextAreaElement) {
 
 // Sección de contacto: título a la izquierda y formulario en una tarjeta de cristal a la derecha,
 // sobre el degradado de malla en movimiento (modo relleno).
-// Envío: de momento abre el programa de correo con todo escrito (mailto). PENDIENTE: servicio de
-// envío directo (ver docs/pendientes.md).
+// Envío: directo con Web3Forms (lib/contact.ts). Sin clave configurada, abre el programa de correo
+// con todo escrito (mailto).
 // Estilos: styles/sections/_contact.scss · Entrada animada: contact/useContactReveal.ts
 export default function Contact() {
   const { t } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const [reason, setReason] = useState<Reason>("job");
-  const [values, setValues] = useState<Record<Field, string>>({ name: "", email: "", message: "" });
+  const [values, setValues] = useState<Record<Field, string>>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
-  const [opened, setOpened] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [botcheck, setBotcheck] = useState(false);
 
   useContactReveal(root);
 
@@ -51,8 +56,10 @@ export default function Contact() {
     if (values[field]) setErrors((current) => ({ ...current, [field]: validate(field, values[field]) }));
   };
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (status === "sending") return;
+    const form = event.currentTarget;
     const found: Errors = {};
     (["name", "email", "message"] as const).forEach((field) => {
       const error = validate(field, values[field]);
@@ -61,15 +68,38 @@ export default function Contact() {
     setErrors(found);
     const first = (["name", "email", "message"] as const).find((field) => found[field]);
     if (first) {
-      event.currentTarget.querySelector<HTMLElement>(`[name="${first}"]`)?.focus(); // al primer error
+      form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus(); // al primer error
       return;
     }
 
     const subject = t("contact.mailSubject", { reason: t(`contact.reasons.${reason}`) });
-    const body = `${values.message.trim()}\n\n— ${values.name.trim()} (${values.email.trim()})`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setOpened(true);
+    const message = { subject, name: values.name.trim(), email: values.email.trim(), message: values.message.trim() };
+
+    if (!hasContactService) {
+      const body = `${message.message}\n\n— ${message.name} (${message.email})`;
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus("mailto");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      await sendContactMessage({ ...message, botcheck });
+      setStatus("sent");
+      setValues(EMPTY); // formulario limpio para otro mensaje
+      form.querySelector<HTMLTextAreaElement>("textarea")?.style.removeProperty("height");
+    } catch {
+      setStatus("failed");
+    }
   };
+
+  const statusText = {
+    idle: "",
+    sending: t("contact.sending"),
+    sent: t("contact.sent"),
+    failed: t("contact.failed", { email: CONTACT_EMAIL }),
+    mailto: t("contact.opening"),
+  }[status];
 
   const fieldProps = (field: Field) => ({
     id: `contact-${field}`,
@@ -130,13 +160,7 @@ export default function Contact() {
           </div>
 
           <div className="contact__field">
-            <input
-              type="email"
-              autoComplete="email"
-              placeholder={t("contact.emailPlaceholder")}
-              className="contact__input contact__input--hint"
-              {...fieldProps("email")}
-            />
+            <input type="email" autoComplete="email" placeholder=" " className="contact__input" {...fieldProps("email")} />
             <label htmlFor="contact-email" className="contact__label">
               {t("contact.email")}
             </label>
@@ -151,13 +175,24 @@ export default function Contact() {
             {error("message")}
           </div>
 
-          <button type="submit" className="btn btn--primary contact__submit">
-            {t("contact.send")}
+          {/* Casilla trampa: invisible para las personas; si un robot la marca, el envío se descarta. */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            className="contact__trap"
+            tabIndex={-1}
+            aria-hidden="true"
+            checked={botcheck}
+            onChange={(event) => setBotcheck(event.target.checked)}
+          />
+
+          <button type="submit" className="btn btn--primary contact__submit" disabled={status === "sending"}>
+            {status === "sending" ? t("contact.sending") : t("contact.send")}
             <ArrowIcon className="btn__icon" />
           </button>
 
-          <p className="contact__status" role="status">
-            {opened ? t("contact.opening") : ""}
+          <p className={`contact__status contact__status--${status}`} role="status">
+            {statusText}
           </p>
         </form>
       </div>

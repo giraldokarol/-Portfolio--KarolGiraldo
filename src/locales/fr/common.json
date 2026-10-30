@@ -102,7 +102,6 @@
     },
     "name": "Votre nom",
     "email": "e-mail",
-    "emailPlaceholder": "mail@entreprise.com",
     "message": "Message",
     "send": "Envoyer le message",
     "mailSubject": "Portfolio — {{reason}}",
@@ -112,6 +111,9 @@
       "emailFormat": "Cet e-mail ne semble pas valide (ex. mail@entreprise.com).",
       "message": "Écrivez un message."
     },
-    "opening": "Votre messagerie s’ouvre avec le message prêt à être envoyé."
+    "opening": "Votre messagerie s’ouvre avec le message prêt à être envoyé.",
+    "sending": "Envoi…",
+    "sent": "Merci ! Votre message est bien parti. Je vous réponds très vite.",
+    "failed": "Une erreur est survenue. Réessayez ou écrivez-moi à {{email}}."
   }
 }

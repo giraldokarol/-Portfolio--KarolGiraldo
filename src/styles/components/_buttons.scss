@@ -37,8 +37,7 @@
   border-radius: rem(24);
   background-color: var(--color-primary);
   color: var(--color-on-primary-soft);
-  font-weight: weight(regular);
-  white-space: nowrap;
+  white-space: nowrap; // mismo grosor que los demás botones (semibold, de .btn)
 
   // Mismo hover que los botones principales (Download CV): fondo amarillo y texto oscuro.
   @include hover {

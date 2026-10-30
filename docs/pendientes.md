@@ -54,5 +54,6 @@ Para conectarlo:
 ## Contacto (components/Contact.tsx)
 - Fase 1 hecha: diseño, fondo de degradado en movimiento (MeshGradient fill), validación, accesibilidad y entrada animada.
   El envío abre de momento el programa de correo (mailto) con todo escrito.
-- PENDIENTE fase 2: servicio de envío directo (sin salir de la web). Karol tiene que elegirlo.
+- Fase 2 hecha: envío directo con Web3Forms (lib/contact.ts). PENDIENTE: Karol crea su clave y la pone en
+  .env.local (VITE_WEB3FORMS_KEY, ver .env.example). Sin clave, el formulario usa mailto.
 - El footer repite "Let's talk / Have something in mind?": revisar su contenido ahora que existe esta sección.

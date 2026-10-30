@@ -5,11 +5,12 @@
 .contact {
   position: relative;
   overflow: hidden;
-  padding-block: rem(96);
+  // Arriba poco margen: va justo después de las habilidades.
+  padding-block: rem(48) rem(96);
   background: var(--color-background);
 
   @include mq(lg) {
-    padding-block: rem(160);
+    padding-block: rem(64) rem(160);
   }
 }
 
@@ -68,15 +69,18 @@
 }
 
 // ─── Tarjeta de cristal ──────────────────────────────────────────────────────────────
+// Cristal "sólido": casi blanco (88 %) con mucho desenfoque; el color de detrás solo se intuye.
+// Un borde de luz fino y una sombra amplia y suave le dan relieve sin peso.
 .contact__card {
   padding: rem(32 24);
-  border: 1px solid color-mix(in srgb, var(--color-background) 80%, transparent);
-  border-radius: rem(20);
-  background: color-mix(in srgb, var(--color-background) 72%, transparent);
-  backdrop-filter: blur(rem(20)) saturate(1.4);
+  border: 1px solid color-mix(in srgb, var(--color-background) 90%, transparent);
+  border-radius: rem(24);
+  background: color-mix(in srgb, var(--color-background) 88%, transparent);
+  backdrop-filter: blur(rem(32)) saturate(1.2);
   box-shadow:
-    0 rem(24) rem(60) rem(-24) color-mix(in srgb, var(--color-ink) 12%, transparent),
-    0 rem(2) rem(8) color-mix(in srgb, var(--color-ink) 4%, transparent);
+    inset 0 1px 0 var(--color-background),
+    0 rem(40) rem(80) rem(-32) color-mix(in srgb, var(--color-primary) 18%, transparent),
+    0 rem(2) rem(12) color-mix(in srgb, var(--color-ink) 5%, transparent);
 
   @include mq(md) {
     padding: rem(44);
@@ -172,13 +176,8 @@
   }
 
   &::placeholder {
-    color: transparent; // en los campos normales la etiqueta hace de texto de ayuda
+    color: transparent; // la etiqueta hace de texto de ayuda
   }
-}
-
-// E-mail: muestra un ejemplo (mail@company.com) y la etiqueta siempre arriba.
-.contact__input--hint::placeholder {
-  color: var(--color-text-faded);
 }
 
 .contact__textarea {
@@ -203,10 +202,9 @@
   }
 }
 
-// Sube y se hace pequeña al escribir o al enfocar (y siempre en el e-mail, que tiene ejemplo).
+// Sube y se hace pequeña al escribir o al enfocar.
 .contact__input:focus + .contact__label,
-.contact__input:not(:placeholder-shown) + .contact__label,
-.contact__input--hint + .contact__label {
+.contact__input:not(:placeholder-shown) + .contact__label {
   transform: translateY(rem(-22)) scale(0.75);
 }
 
@@ -221,8 +219,18 @@
 }
 
 // ─── Envío ───────────────────────────────────────────────────────────────────────────
+// Casilla trampa antispam: fuera de la vista y del teclado.
+.contact__trap {
+  @include visually-hidden;
+}
+
 .contact__submit {
   margin-top: rem(40);
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: progress;
+  }
 
   .btn__icon {
     @include motion-safe {
@@ -245,4 +253,12 @@
   &:empty {
     display: none;
   }
+}
+
+.contact__status--sent {
+  color: var(--color-primary);
+}
+
+.contact__status--failed {
+  color: var(--color-error);
 }
