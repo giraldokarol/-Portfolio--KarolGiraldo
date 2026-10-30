@@ -23,15 +23,45 @@
   }
 }
 
-.site-footer__copyright {
+// Separador "|" entre elementos (copyright | legal, EN | FR | ES). Decorativo.
+@mixin separator {
+  content: "|";
+  margin-inline: rem(12);
+  color: var(--color-text-faded);
+}
+
+// Copyright | página legal.
+.site-footer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   order: 4; // móvil: al final
-  font-size: rem(14);
-  letter-spacing: -0.02em;
-  color: var(--color-gray);
 
   @include mq(lg) {
     order: 0;
     justify-self: start;
+  }
+}
+
+.site-footer__copyright,
+.site-footer__legal {
+  font-size: rem(14);
+  letter-spacing: -0.02em;
+  color: var(--color-gray);
+}
+
+.site-footer__legal {
+  &::before {
+    @include separator;
+  }
+
+  @include motion-safe {
+    transition: color $duration-fast ease;
+  }
+
+  @include hover {
+    color: var(--color-primary);
   }
 }
 
@@ -53,9 +83,7 @@
   align-items: center;
 
   li + li::before {
-    content: "|"; // separador decorativo (los lectores de pantalla leen la lista, no las barras)
-    margin-inline: rem(12);
-    color: var(--color-text-faded);
+    @include separator; // los lectores de pantalla leen la lista, no las barras
   }
 }
 

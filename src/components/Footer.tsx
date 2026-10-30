@@ -11,9 +11,9 @@ const LOCALE_NAMES = { en: "English", fr: "Français", es: "Español" } as const
 // Año del copyright (se calcula al generar la página).
 const YEAR = new Date().getFullYear();
 
-// Footer: copyright · logo · selector de idioma "EN | FR | ES".
+// Footer: copyright | página legal · logo · selector de idioma "EN | FR | ES".
 // En móvil también lleva las redes (en escritorio están en el menú flotante, SocialRail).
-// PENDIENTE: enlace a "Mentions légales & confidentialité" (ver docs/pendientes.md).
+// PENDIENTE: la página legal (/:lang/legal) aún no existe (ver docs/pendientes.md).
 // Estilos: styles/sections/_footer.scss
 export default function Footer() {
   const { t } = useTranslation();
@@ -22,9 +22,14 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__inner container">
-        <p className="site-footer__copyright" suppressHydrationWarning>
-          {YEAR}©KarolGiraldo
-        </p>
+        <div className="site-footer__meta">
+          <p className="site-footer__copyright" suppressHydrationWarning>
+            {YEAR}©KarolGiraldo
+          </p>
+          <a href={`/${lang}/legal`} className="site-footer__legal">
+            {t("footer.legal")}
+          </a>
+        </div>
 
         <img src={LogoFooter} alt={t("footer.logoAlt")} width={40} height={34} className="site-footer__logo" />
 

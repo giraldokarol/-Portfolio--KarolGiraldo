@@ -63,7 +63,8 @@
     "paragraph2": "Mi trabajo abarca <strong>UX/UI, investigación de usuarios y sistemas de diseño,</strong> con un fuerte enfoque en accesibilidad, flujos complejos y productos con muchos datos. Uno pensamiento de producto y oficio de UI para crear experiencias claras, coherentes y preparadas para crecer."
   },
   "footer": {
-    "logoAlt": "Logo de Karol Giraldo"
+    "logoAlt": "Logo de Karol Giraldo",
+    "legal": "Aviso legal y privacidad"
   },
   "languagePicker": {
     "label": "Elige un idioma"

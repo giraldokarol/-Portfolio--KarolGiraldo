@@ -58,7 +58,8 @@ Para conectarlo:
   .env.local (VITE_WEB3FORMS_KEY, ver .env.example). Sin clave, el formulario usa mailto.
 - Al publicar en OVH: en el panel de Web3Forms, cambiar el "Website URL" del formulario de localhost al dominio real.
   Y cuando exista el correo del dominio: nueva clave con ese correo + cambiar CONTACT_EMAIL en src/config/site.ts.
-- Footer rehecho (copyright · logo · EN | FR | ES; redes solo en móvil). Falta el enlace a la página legal.
+- Footer rehecho (copyright | legal · logo · EN | FR | ES; redes solo en móvil). El enlace legal apunta a
+  /:lang/legal, que aún no existe (404 hasta crear la página).
 
 ## Legal y estadísticas
 - Una sola página "Mentions légales & confidentialité" (en/fr/es), enlazada desde el footer y desde una frase junto al
