@@ -49,8 +49,9 @@ void main() {
   vec2 px = vec2(gl_FragCoord.x, u_size.y - gl_FragCoord.y);
   vec2 st = px / u_size;
 
-  // Relleno: todo el fondo, que aparece suavemente desde arriba (ya hay color detrás de la tarjeta).
-  float mask = u_fill * smoothstep(0.0, 0.55, st.y);
+  // Relleno: todo el fondo. Aparece suavemente desde arriba y se desvanece abajo, así el color más
+  // intenso queda detrás del contenido y la sección vuelve a blanco antes de lo siguiente (sin corte).
+  float mask = u_fill * smoothstep(0.0, 0.5, st.y) * (1.0 - smoothstep(0.82, 1.0, st.y));
   for (int i = 0; i < 3; i++) {
     vec2 c = u_circles[i].xy * u_size;
     float r = u_circles[i].z * u_size.x;

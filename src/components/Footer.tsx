@@ -26,7 +26,7 @@ export default function Footer() {
           {YEAR}©KarolGiraldo
         </p>
 
-        <img src={LogoFooter} alt={t("footer.logoAlt")} width={56} height={47} className="site-footer__logo" />
+        <img src={LogoFooter} alt={t("footer.logoAlt")} width={40} height={34} className="site-footer__logo" />
 
         <nav className="site-footer__languages" aria-label={t("languagePicker.label")}>
           <ul className="site-footer__language-list">
