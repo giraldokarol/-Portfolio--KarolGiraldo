@@ -5,11 +5,12 @@
 .about {
   position: relative;
   overflow: hidden;
-  padding-block: rem(96) rem(112);
+  // Arriba poco margen: "Selected work" ya deja aire debajo (ocupa la pantalla entera por el scroll fijado).
+  padding-block: rem(48) rem(112);
   background: var(--color-background);
 
   @include mq(lg) {
-    padding-block: rem(160);
+    padding-block: rem(48) rem(160);
   }
 }
 
