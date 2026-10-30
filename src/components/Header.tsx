@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
+import ArrowIcon from "./ArrowIcon";
 import Logo from "./Logo";
 import WorkMenu from "./WorkMenu";
-import ArrowRightCircle from "@/assets/icons/arrow-right-circle.svg";
 import MailIcon from "@/assets/icons/mail.svg";
 import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
 
@@ -88,7 +88,7 @@ export default function Header() {
           {/* En móvil solo se ve el icono de correo; el texto sigue ahí para lectores de pantalla. */}
           <a href={`#${CONTACT_SECTION}`} className="btn btn--hello">
             <span className="btn--hello__label">{t("cta.sayHello")}</span>
-            <img src={ArrowRightCircle} alt="" width={24} height={24} className="btn__icon btn--hello__arrow" />
+            <ArrowIcon className="btn__icon btn--hello__arrow" />
             <img src={MailIcon} alt="" width={24} height={24} className="btn--hello__mail" />
           </a>
         </div>

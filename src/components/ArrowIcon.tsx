@@ -1,5 +1,5 @@
-// Flecha del botón "Say Hello" (assets/icons/arrow-right-circle.svg), pero del color del texto
-// (currentColor), para listas de enlaces. Decorativa: el texto del enlace ya dice adónde lleva.
+// Flecha de enlaces y botones ("Say Hello", listas de proyectos). Toma el color del texto
+// (currentColor), así cambia con el hover. Decorativa: el texto del enlace ya dice adónde lleva.
 export default function ArrowIcon({ className }: { className?: string }) {
   return (
     <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">

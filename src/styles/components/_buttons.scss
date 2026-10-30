@@ -40,8 +40,10 @@
   font-weight: weight(regular);
   white-space: nowrap;
 
+  // Mismo hover que los botones principales (Download CV): fondo amarillo y texto oscuro.
   @include hover {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
   }
 
   .btn__icon {
