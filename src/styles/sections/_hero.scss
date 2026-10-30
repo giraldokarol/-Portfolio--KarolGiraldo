@@ -96,7 +96,7 @@
 }
 
 .hero__avatar {
-  width: fluid(206.29, 150);
+  width: fluid(176, 140); // un 15 % menor que en Figma (206): el Hero respira más
   flex-shrink: 0;
   margin-bottom: rem(8);
 
@@ -113,23 +113,23 @@
 
 .hero__greeting {
   display: block;
-  font-size: fluid(110, 44);
+  font-size: type-size(hero-greeting);
   letter-spacing: -0.04em;
 }
 
 .hero__role {
   display: block;
-  font-size: fluid(122, 48);
+  font-size: type-size(hero-role);
   letter-spacing: -0.04em;
   color: var(--color-primary);
 
-  @include mq(lg) { margin-top: calc(-1 * #{fluid(31.6, 18)}); }
+  @include mq(lg) { margin-top: calc(-1 * #{fluid(27, 15)}); }
 }
 
 .hero__subtitle {
-  max-width: fluid(791, 320);
+  max-width: fluid(680, 320);
   margin-top: rem(20.28);
-  font-size: fluid(24, 18);
+  font-size: type-size(hero-lead);
   font-weight: weight(regular);
   line-height: 1.26;
   letter-spacing: -0.04em;

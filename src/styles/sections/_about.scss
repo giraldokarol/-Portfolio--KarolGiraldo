@@ -16,6 +16,7 @@
 
 .about__inner {
   position: relative;
+  max-width: rem(1400); // más estrecho que la página (como Selected work): aire a los lados
   z-index: z(content); // por encima del degradado de malla
   display: grid;
   justify-items: center;
@@ -37,7 +38,7 @@
 
   @include mq(lg) {
     justify-self: end;
-    width: min(100%, #{rem(697)});
+    width: min(100%, #{rem(560)});
   }
 
   > * {
@@ -135,7 +136,7 @@
 
 // Mismo estilo que el título de "Selected work".
 .about__title {
-  font-size: fluid(77, 44);
+  font-size: type-size(section-title);
   font-weight: weight(extrabold);
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -154,7 +155,7 @@
   display: grid;
   gap: rem(20);
   margin-top: rem(32);
-  font-size: fluid(18, 16);
+  font-size: type-size(body);
   line-height: 1.4;
   letter-spacing: -0.01em;
   color: var(--color-gray);

@@ -20,6 +20,18 @@ $gutter: 24px; // margen lateral de la página
 $rail-space: 72px; // escritorio: espacio para las redes fijas a la izquierda (SocialRail)
 
 // Escala tipográfica: tamaño + interlineado.
+// Escala tipográfica del sitio: (máximo en 1728 px, mínimo en móvil), en px.
+// Un solo gran momento (el Hero); las secciones, más calmadas y con aire. Se usa con type-size(nombre).
+$type-scale: (
+  hero-greeting: (94, 40),   // "Hey! I'm Karol"
+  hero-role: (104, 44),      // "Product Designer"
+  hero-lead: (20, 17),       // subtítulo del Hero
+  section-title: (56, 36),   // títulos de sección ("Selected work", "From interfaces…")
+  body: (18, 16),            // párrafos de lectura
+  description: (16, 15),     // textos de apoyo (descripción de proyecto)
+  small: (15, 14),           // subtítulos de sección
+);
+
 $font-sizes: (
   sm: (14px, 20px),
   base: (16px, 24px),

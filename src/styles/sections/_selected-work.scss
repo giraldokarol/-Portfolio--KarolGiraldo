@@ -11,9 +11,9 @@
 .work__inner {
   position: relative;
   z-index: z(content); // por encima del degradado de malla
-  // Más estrecho que la página (1830 px): las tres columnas respiran como en el diseño de Figma,
-  // y caben los nombres largos en una línea aunque el marco esté en formato web.
-  @include container(1560px);
+  // Más estrecho que la página (1830 px): deja aire a los lados, como una galería
+  // (y los nombres largos de la lista siguen cabiendo en una línea).
+  @include container(1400px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +49,7 @@
 }
 
 .work__title {
-  font-size: fluid(77, 44);
+  font-size: type-size(section-title);
   font-weight: weight(extrabold);
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -64,7 +64,7 @@
 .work__lead {
   max-width: rem(300);
   margin: rem(16) auto 0;
-  font-size: fluid(16, 14);
+  font-size: type-size(small);
   line-height: 1.26;
   letter-spacing: -0.02em;
   color: var(--color-gray);
@@ -95,7 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fluid(640, 320);
+  width: fluid(560, 320);
   height: var(--work-phone-height);
 }
 
@@ -114,7 +114,7 @@
 // Todas en la misma celda: el bloque mide lo que la más larga; solo se ve la actual.
 .work__description {
   grid-area: 1 / 1;
-  font-size: fluid(18, 15);
+  font-size: type-size(description);
   line-height: 1.35;
   letter-spacing: -0.02em;
   color: var(--color-gray);
@@ -141,7 +141,7 @@
   --work-phone-height: clamp(#{rem(280)}, calc(100svh - #{rem(470)}), #{rem(520)});
 
   @include mq(lg) {
-    --work-phone-height: clamp(#{rem(440)}, 62svh, #{rem(760)});
+    --work-phone-height: clamp(#{rem(400)}, 54svh, #{rem(640)});
   }
 }
 
@@ -157,16 +157,14 @@
 .work__frame--mobile {
   height: var(--work-phone-height);
   aspect-ratio: 393 / 852;
-  border-radius: rem(44);
-
-  @include mq(lg) {
-    border-radius: rem(56);
-  }
+  // Esquinas proporcionales al teléfono (≈ 12 % del ancho, como un iPhone real): se ven igual
+  // sea cual sea su tamaño. Un radio fijo lo dejaba con forma de píldora al hacerlo más pequeño.
+  border-radius: calc(var(--work-phone-height) * 0.055);
 }
 
 // Web (proyectos de escritorio).
 .work__frame--web {
-  width: fluid(640, 320);
+  width: fluid(560, 320);
   aspect-ratio: 16 / 10;
   border-radius: fluid(24, 16);
 }
