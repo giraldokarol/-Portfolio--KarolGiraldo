@@ -9,7 +9,7 @@
   padding-block: rem(48) rem(112);
 
   @include mq(lg) {
-    padding-block: rem(64) rem(160);
+    padding-block: rem(32) rem(160);
   }
 }
 
@@ -44,11 +44,12 @@
 
   // Con animaciones: caja de alto fijo donde se amontonan (lo que cae desde arriba entra por el borde).
   .has-motion & {
-    height: rem(680); // en móvil el montón es más alto (píldoras más anchas en proporción)
+    height: rem(720); // en móvil el montón es más alto (píldoras más anchas en proporción)
     overflow: hidden;
 
+    // Escritorio: el alto del montón (≈ 200–250 px) más margen para la caída.
     @include mq(md) {
-      height: rem(360);
+      height: rem(320);
     }
   }
 }
