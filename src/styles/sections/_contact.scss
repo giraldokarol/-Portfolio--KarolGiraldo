@@ -223,6 +223,24 @@
   color: var(--color-error);
 }
 
+// Aviso de privacidad junto al botón.
+.contact__privacy {
+  margin-top: rem(28);
+  font-size: rem(13);
+  line-height: 1.4;
+  color: var(--color-gray);
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+
+    @include hover {
+      color: var(--color-ink);
+    }
+  }
+}
+
 // ─── Envío ───────────────────────────────────────────────────────────────────────────
 // Casilla trampa antispam: fuera de la vista y del teclado.
 .contact__trap {
@@ -230,7 +248,7 @@
 }
 
 .contact__submit {
-  margin-top: rem(40);
+  margin-top: rem(20);
 
   &:disabled {
     opacity: 0.7;

@@ -1,0 +1,62 @@
+@use "../abstracts" as *;
+
+// MENTIONS LÉGALES & CONFIDENTIALITÉ (routes/legal.tsx): una columna de lectura cómoda.
+.legal {
+  padding-block: calc(var(--header-height) + #{rem(48)}) rem(96);
+
+  @include mq(lg) {
+    padding-block: calc(var(--header-height) + #{rem(80)}) rem(128);
+  }
+}
+
+.legal__inner {
+  max-width: rem(760); // ~70 caracteres por línea: lo más cómodo para leer
+}
+
+.legal__title {
+  font-size: type-size(section-title);
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.legal__updated {
+  margin-top: rem(16);
+  font-size: rem(14);
+  color: var(--color-gray);
+}
+
+.legal__section {
+  margin-top: rem(48);
+  scroll-margin-top: calc(var(--header-height) + #{rem(24)}); // el enlace #privacy no queda bajo el header
+}
+
+.legal__heading {
+  margin-bottom: rem(12);
+  font-size: rem(20);
+  font-weight: weight(semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.legal__text {
+  font-size: type-size(description);
+  line-height: 1.6;
+  color: var(--color-gray);
+
+  & + & {
+    margin-top: rem(12);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+
+    @include hover {
+      color: var(--color-ink);
+    }
+  }
+}

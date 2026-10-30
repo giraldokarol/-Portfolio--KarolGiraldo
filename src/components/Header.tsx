@@ -62,19 +62,20 @@ export default function Header() {
 
         <div className="site-nav__actions">
           <ul className="site-nav__links">
+            {/* Enlaces con /idioma delante: funcionan también desde otras páginas (p. ej. la legal). */}
             {NAV_LINKS.map(({ section, label }) =>
               // "Selected work" abre además un menú con los proyectos (WorkMenu).
               section === "projects" ? (
                 <WorkMenu
                   key={section}
-                  href={`#${section}`}
+                  href={`/${lang}#${section}`}
                   label={t(`nav.${label}`)}
                   isCurrent={activeSection === section}
                 />
               ) : (
                 <li key={section}>
                   <a
-                    href={`#${section}`}
+                    href={`/${lang}#${section}`}
                     className="site-nav__link"
                     aria-current={activeSection === section ? "true" : undefined}
                   >
@@ -86,7 +87,7 @@ export default function Header() {
           </ul>
 
           {/* En móvil solo se ve el icono de correo; el texto sigue ahí para lectores de pantalla. */}
-          <a href={`#${CONTACT_SECTION}`} className="btn btn--hello">
+          <a href={`/${lang}#${CONTACT_SECTION}`} className="btn btn--hello">
             <span className="btn--hello__label">{t("cta.sayHello")}</span>
             <ArrowIcon className="btn__icon btn--hello__arrow" />
             <img src={MailIcon} alt="" width={24} height={24} className="btn--hello__mail" />

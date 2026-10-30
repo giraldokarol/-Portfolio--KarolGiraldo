@@ -1,5 +1,6 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
+import { Trans, useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
 import MeshGradient from "./MeshGradient";
@@ -30,6 +31,7 @@ function fitToContent(textarea: HTMLTextAreaElement) {
 // Estilos: styles/sections/_contact.scss · Entrada animada: contact/useContactReveal.ts
 export default function Contact() {
   const { t } = useTranslation();
+  const { lang } = useParams();
   const root = useRef<HTMLElement>(null);
   const [reason, setReason] = useState<Reason>("job");
   const [values, setValues] = useState<Record<Field, string>>(EMPTY);
@@ -174,6 +176,12 @@ export default function Contact() {
             </label>
             {error("message")}
           </div>
+
+          {/* Aviso RGPD: para qué se usan los datos, con enlace a la política de privacidad. */}
+          <p className="contact__privacy">
+            {/* La etiqueta se llama <policy> (no <link>: en HTML "link" nunca tiene contenido y el texto saldría fuera). */}
+            <Trans i18nKey="contact.privacy" components={{ policy: <a href={`/${lang}/legal#privacy`} /> }} />
+          </p>
 
           {/* Casilla trampa: invisible para las personas; si un robot la marca, el envío se descarta. */}
           <input

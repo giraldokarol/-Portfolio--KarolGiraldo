@@ -5,4 +5,6 @@ export default [
   index("routes/language-redirect.tsx"),
   // Una página por idioma; el idioma sale de la URL (:lang).
   route(":lang", "routes/home.tsx"),
+  // Mentions légales & confidentialité.
+  route(":lang/legal", "routes/legal.tsx"),
 ] satisfies RouteConfig;

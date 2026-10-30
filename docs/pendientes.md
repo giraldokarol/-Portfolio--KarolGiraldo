@@ -58,12 +58,13 @@ Para conectarlo:
   .env.local (VITE_WEB3FORMS_KEY, ver .env.example). Sin clave, el formulario usa mailto.
 - Al publicar en OVH: en el panel de Web3Forms, cambiar el "Website URL" del formulario de localhost al dominio real.
   Y cuando exista el correo del dominio: nueva clave con ese correo + cambiar CONTACT_EMAIL en src/config/site.ts.
-- Footer rehecho (copyright | legal · logo · EN | FR | ES; redes solo en móvil). El enlace legal apunta a
-  /:lang/legal, que aún no existe (404 hasta crear la página).
+- Footer rehecho (copyright | legal · logo · EN | FR | ES; redes solo en móvil).
 
 ## Legal y estadísticas
-- Una sola página "Mentions légales & confidentialité" (en/fr/es), enlazada desde el footer y desde una frase junto al
-  formulario. Sin banner ni página de cookies (la web no usa cookies; el idioma guardado es una preferencia exenta).
-  Sin CGU. Faltan datos de Karol: nombre, estatus (freelance/SIRET o personal), contacto, tiempo de conservación.
+- Página legal hecha: /:lang/legal (routes/legal.tsx), textos en locales legal.* (el francés es la referencia).
+  Enlazada desde el footer y desde una frase junto al botón del formulario (#privacy).
+- PENDIENTE cuando Karol tenga SIRET: añadirlo + dirección postal (puede ser de domiciliación) y teléfono
+  (la LCEN los pide a los profesionales). Confirmar el alojamiento (OVH) al contratarlo.
+- PENDIENTE cuando haya correo del dominio: cambiar CONTACT_EMAIL (site.ts) — se actualiza solo en la página legal.
 - Estadísticas: Cloudflare Web Analytics (gratis, sin cookies, funciona con OVH sin mover el dominio). Instalar al publicar
-  y mencionarlo en la política de privacidad. No usar Google Analytics (necesitaría banner de consentimiento).
+  y AÑADIR un párrafo en legal.sections (privacy/cookies). No usar Google Analytics (necesitaría banner de consentimiento).

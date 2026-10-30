@@ -112,6 +112,60 @@
     "opening": "Votre messagerie s’ouvre avec le message prêt à être envoyé.",
     "sending": "Envoi…",
     "sent": "Merci ! Votre message est bien parti. Je vous réponds très vite.",
-    "failed": "Une erreur est survenue. Réessayez ou écrivez-moi à {{email}}."
+    "failed": "Une erreur est survenue. Réessayez ou écrivez-moi à {{email}}.",
+    "privacy": "Vos données servent uniquement à vous répondre. <policy>Politique de confidentialité</policy>"
+  },
+  "legal": {
+    "seoTitle": "Mentions légales & confidentialité — Karol Giraldo",
+    "seoDescription": "Mentions légales et politique de confidentialité du portfolio de Karol Giraldo Escobar.",
+    "title": "Mentions légales & confidentialité",
+    "updated": "Dernière mise à jour : octobre 2026",
+    "sections": [
+      {
+        "id": "publisher",
+        "title": "Éditeur du site",
+        "paragraphs": [
+          "Ce site est édité par Karol Giraldo Escobar, Product Designer freelance (entrepreneur individuel).",
+          "SIRET : en cours d’immatriculation.",
+          "Contact : <mail>{{email}}</mail>",
+          "Directrice de la publication : Karol Giraldo Escobar."
+        ]
+      },
+      {
+        "id": "hosting",
+        "title": "Hébergement",
+        "paragraphs": [
+          "Le site est hébergé par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — +33 9 72 10 10 07 — www.ovhcloud.com."
+        ]
+      },
+      {
+        "id": "intellectual-property",
+        "title": "Propriété intellectuelle",
+        "paragraphs": [
+          "Sauf mention contraire, l’ensemble des contenus de ce site (textes, designs, illustrations, vidéos et code) appartient à Karol Giraldo Escobar et ne peut être réutilisé sans autorisation.",
+          "Les marques et produits présentés dans les études de cas (Flexis, Crédit Mutuel, CIC, TuLindero) appartiennent à leurs propriétaires respectifs et sont montrés uniquement à titre de portfolio."
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Données personnelles",
+        "paragraphs": [
+          "Responsable du traitement : Karol Giraldo Escobar (<mail>{{email}}</mail>).",
+          "Données collectées : lorsque vous utilisez le formulaire de contact, votre nom, votre adresse e-mail, le motif de votre message et le message lui-même. Aucune autre donnée personnelle n’est collectée.",
+          "Finalité et base légale : ces données servent uniquement à vous répondre et à donner suite à votre demande, sur la base de l’intérêt légitime à traiter les demandes reçues.",
+          "Destinataires : vos données ne sont ni vendues ni utilisées à des fins commerciales. Le formulaire est transmis via Web3Forms, un service qui envoie le message dans ma messagerie (Gmail, Google). Ces prestataires agissent en tant que sous-traitants et peuvent traiter les données en dehors de l’Union européenne, avec des garanties appropriées.",
+          "Durée de conservation : les messages sont conservés 1 an après le dernier échange, puis supprimés.",
+          "Comme tout site web, l’hébergeur peut enregistrer des données techniques (comme l’adresse IP) pour assurer la sécurité et le bon fonctionnement du site.",
+          "Vos droits : vous pouvez accéder à vos données, les rectifier, les effacer, limiter ou vous opposer à leur traitement et demander leur portabilité en écrivant à <mail>{{email}}</mail>. Vous pouvez aussi adresser une réclamation à la CNIL (<cnil>www.cnil.fr</cnil>)."
+        ]
+      },
+      {
+        "id": "cookies",
+        "title": "Cookies",
+        "paragraphs": [
+          "Ce site n’utilise ni cookies ni outils de suivi. Il enregistre seulement dans votre navigateur la langue que vous choisissez, pour que le site s’ouvre dans cette langue lors de votre prochaine visite. Cette information n’est jamais transmise et vous pouvez l’effacer depuis les réglages de votre navigateur."
+        ]
+      }
+    ]
   }
 }

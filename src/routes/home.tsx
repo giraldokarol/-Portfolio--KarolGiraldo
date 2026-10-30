@@ -1,4 +1,7 @@
+import { useEffect, useRef } from "react";
 import { data } from "react-router";
+
+import { ScrollTrigger } from "@/lib/gsap";
 
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
@@ -31,6 +34,21 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 export default function Home() {
+  // Al llegar desde otra página con una sección (/es#about): se lee aquí, en el primer render, porque
+  // el header borra el # de la URL al cargar. Las secciones fijadas con scroll cambian la altura de la
+  // página al montarse, así que el salto se hace cuando GSAP ya ha colocado todo.
+  const target = useRef(typeof window === "undefined" ? "" : window.location.hash.slice(1));
+
+  useEffect(() => {
+    const id = target.current;
+    if (!id) return;
+    const timer = window.setTimeout(() => {
+      ScrollTrigger.refresh();
+      document.getElementById(id)?.scrollIntoView({ behavior: "instant" });
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <Header />

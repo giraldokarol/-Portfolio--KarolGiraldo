@@ -112,6 +112,60 @@
     "opening": "Your e-mail app is opening with the message ready to send.",
     "sending": "Sending…",
     "sent": "Thanks! Your message is on its way. I’ll get back to you soon.",
-    "failed": "Something went wrong. Please try again or write to me at {{email}}."
+    "failed": "Something went wrong. Please try again or write to me at {{email}}.",
+    "privacy": "Your details are only used to reply to you. <policy>Privacy policy</policy>"
+  },
+  "legal": {
+    "seoTitle": "Legal Notice & Privacy Policy — Karol Giraldo",
+    "seoDescription": "Legal notice and privacy policy of Karol Giraldo Escobar’s portfolio.",
+    "title": "Legal Notice & Privacy Policy",
+    "updated": "Last updated: October 2026",
+    "sections": [
+      {
+        "id": "publisher",
+        "title": "Site publisher",
+        "paragraphs": [
+          "This website is published by Karol Giraldo Escobar, freelance Product Designer (sole proprietorship, France).",
+          "SIRET: registration in progress.",
+          "Contact: <mail>{{email}}</mail>",
+          "Publication director: Karol Giraldo Escobar."
+        ]
+      },
+      {
+        "id": "hosting",
+        "title": "Hosting",
+        "paragraphs": [
+          "The website is hosted by OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — +33 9 72 10 10 07 — www.ovhcloud.com."
+        ]
+      },
+      {
+        "id": "intellectual-property",
+        "title": "Intellectual property",
+        "paragraphs": [
+          "Unless stated otherwise, all content on this website (texts, designs, illustrations, videos and code) belongs to Karol Giraldo Escobar and may not be reused without permission.",
+          "Brands and products shown in the case studies (Flexis, Crédit Mutuel, CIC, TuLindero) belong to their respective owners and are presented for portfolio purposes only."
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Personal data",
+        "paragraphs": [
+          "Data controller: Karol Giraldo Escobar (<mail>{{email}}</mail>).",
+          "Data collected: when you use the contact form, your name, e-mail address, the reason for your message and the message itself. No other personal data is collected.",
+          "Purpose and legal basis: this data is used only to reply to you and follow up on your request, based on the legitimate interest in handling the requests received.",
+          "Recipients: your data is never sold or used for marketing. The form is sent through Web3Forms, a service that forwards the message to my mailbox (Gmail, Google). These providers act as processors and may process data outside the European Union, with appropriate safeguards.",
+          "Retention: messages are kept for 1 year after the last exchange, then deleted.",
+          "As with any website, the host may record technical data (such as your IP address) to keep the site secure and working properly.",
+          "Your rights: you can access, correct or delete your data, restrict or object to its processing and ask for its portability by writing to <mail>{{email}}</mail>. You can also lodge a complaint with the French data protection authority, the CNIL (<cnil>www.cnil.fr</cnil>)."
+        ]
+      },
+      {
+        "id": "cookies",
+        "title": "Cookies",
+        "paragraphs": [
+          "This website uses no cookies or tracking tools. It only stores in your browser the language you choose, so the site opens in that language on your next visit. This information is never shared and you can delete it in your browser settings."
+        ]
+      }
+    ]
   }
 }
