@@ -18,6 +18,8 @@ type MeshGradientProps = {
   className?: string;
   // Cuánto color lleva cada pastel sobre blanco (0–1); no cambia la opacidad. Las manchas del Hero = 0.2.
   intensity?: number;
+  // Opacidad de los círculos (0–1): cuánto se funden con el fondo.
+  opacity?: number;
 };
 
 const VERTEX = `
@@ -34,6 +36,7 @@ uniform float u_time;
 uniform vec3 u_circles[3];
 uniform vec3 u_colors[3];
 uniform float u_intensity;
+uniform float u_opacity;
 
 void main() {
   vec2 px = vec2(gl_FragCoord.x, u_size.y - gl_FragCoord.y);
@@ -68,7 +71,8 @@ void main() {
   vec3 c2 = mix(vec3(1.0), u_colors[2], u_intensity);
   vec3 color = (c0 * w0 + c1 * w1 + c2 * w2) / (w0 + w1 + w2);
 
-  gl_FragColor = vec4(color * mask, mask); // alfa premultiplicado
+  float alpha = mask * u_opacity;
+  gl_FragColor = vec4(color * alpha, alpha); // alfa premultiplicado
 }
 `;
 
@@ -85,7 +89,13 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
   return shader;
 }
 
-export default function MeshGradient({ circles, mobileCircles, className = "", intensity = 0.25 }: MeshGradientProps) {
+export default function MeshGradient({
+  circles,
+  mobileCircles,
+  className = "",
+  intensity = 0.25,
+  opacity = 0.7,
+}: MeshGradientProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -124,6 +134,7 @@ export default function MeshGradient({ circles, mobileCircles, className = "", i
     };
     setCircles();
     gl.uniform1f(u("u_intensity"), intensity);
+    gl.uniform1f(u("u_opacity"), opacity);
 
     // Media resolución: un degradado suave no necesita más y la tarjeta gráfica trabaja 4 veces menos.
     const RESOLUTION = 0.5;
@@ -181,7 +192,7 @@ export default function MeshGradient({ circles, mobileCircles, className = "", i
       wide.removeEventListener("change", onWideChange);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [circles, mobileCircles, intensity]);
+  }, [circles, mobileCircles, intensity, opacity]);
 
   return <canvas ref={canvasRef} className={`mesh-gradient ${className}`} aria-hidden="true" />;
 }
