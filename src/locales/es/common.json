@@ -90,5 +90,28 @@
       "businessRequirements": "Análisis de requisitos de negocio",
       "stakeholders": "Colaboración con stakeholders"
     }
+  },
+  "contact": {
+    "title": "¿Tienes algo en mente?",
+    "intro": "Ya sea una nueva oportunidad o un proyecto interesante, siempre estoy abierta a conversar.",
+    "reasonLegend": "¿Qué te trae por aquí?",
+    "reasons": {
+      "job": "Tengo una oferta de trabajo",
+      "project": "Tengo un proyecto en mente",
+      "other": "Otra cosa"
+    },
+    "name": "Tu nombre",
+    "email": "e-mail",
+    "emailPlaceholder": "mail@empresa.com",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "mailSubject": "Portafolio — {{reason}}",
+    "errors": {
+      "name": "Dime tu nombre.",
+      "email": "Escribe tu e-mail.",
+      "emailFormat": "Este e-mail no parece correcto (ej. mail@empresa.com).",
+      "message": "Escribe un mensaje."
+    },
+    "opening": "Se está abriendo tu correo con el mensaje listo para enviar."
   }
 }

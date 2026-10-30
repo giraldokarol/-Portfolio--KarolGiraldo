@@ -1,0 +1,248 @@
+@use "../abstracts" as *;
+
+// CONTACTO — título + formulario en una tarjeta de cristal (components/Contact.tsx).
+// Fondo: degradado de malla en movimiento en modo relleno (MeshGradient fill).
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding-block: rem(96);
+  background: var(--color-background);
+
+  @include mq(lg) {
+    padding-block: rem(160);
+  }
+}
+
+.contact__inner {
+  position: relative;
+  z-index: z(content); // por encima del degradado
+  max-width: rem(1400);
+  display: grid;
+  gap: rem(48);
+
+  @include mq(lg) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, #{rem(655)});
+    align-items: center;
+    gap: rem(96);
+  }
+}
+
+// ─── Título ──────────────────────────────────────────────────────────────────────────
+.contact__intro {
+  text-align: center;
+
+  @include mq(lg) {
+    justify-self: end;
+    text-align: left;
+  }
+}
+
+// Mismo estilo que los demás títulos de sección.
+.contact__title {
+  font-size: type-size(section-title);
+  font-weight: weight(extrabold);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: balance;
+
+  @include mq(lg) {
+    // "Have / something in / mind?", como en el diseño: más ancho que "something in" (5,79 em)
+    // y más estrecho que "Have something" (7,34 em).
+    max-width: 6.4em;
+    text-wrap: wrap;
+  }
+}
+
+.contact__lead {
+  max-width: rem(300);
+  margin: rem(16) auto 0;
+  font-size: type-size(small);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-inline: 0;
+  }
+}
+
+// ─── Tarjeta de cristal ──────────────────────────────────────────────────────────────
+.contact__card {
+  padding: rem(32 24);
+  border: 1px solid color-mix(in srgb, var(--color-background) 80%, transparent);
+  border-radius: rem(20);
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  backdrop-filter: blur(rem(20)) saturate(1.4);
+  box-shadow:
+    0 rem(24) rem(60) rem(-24) color-mix(in srgb, var(--color-ink) 12%, transparent),
+    0 rem(2) rem(8) color-mix(in srgb, var(--color-ink) 4%, transparent);
+
+  @include mq(md) {
+    padding: rem(44);
+  }
+}
+
+.contact__reasons {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact__legend {
+  margin-bottom: rem(16);
+  font-size: rem(16);
+  font-weight: weight(semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+// Los tres motivos en una línea en escritorio (como en el diseño); en móvil se apilan solos.
+.contact__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(12 16);
+}
+
+.contact__option {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(8);
+  font-size: rem(15);
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+// Radio propio: círculo con contorno; marcado = contorno azul + punto azul.
+.contact__radio {
+  flex-shrink: 0;
+  width: rem(20);
+  height: rem(20);
+  margin: 0;
+  border: 1.5px solid var(--color-gray);
+  border-radius: 50%;
+  appearance: none;
+  cursor: pointer;
+
+  @include motion-safe {
+    transition:
+      border-color $duration-fast ease,
+      box-shadow $duration-fast ease;
+  }
+
+  &:checked {
+    border-color: var(--color-primary);
+    box-shadow: inset 0 0 0 rem(3) var(--color-background), inset 0 0 0 rem(10) var(--color-primary);
+  }
+}
+
+// ─── Campos con etiqueta flotante ────────────────────────────────────────────────────
+.contact__field {
+  position: relative;
+  margin-top: rem(28);
+}
+
+.contact__input {
+  display: block;
+  width: 100%;
+  padding: rem(22 0 10);
+  border: 0;
+  border-bottom: 1px solid var(--color-gray);
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  font-size: rem(16);
+  color: var(--color-ink);
+  outline: none;
+
+  @include motion-safe {
+    transition:
+      border-color $duration-fast ease,
+      box-shadow $duration-fast ease;
+  }
+
+  // Foco visible: la línea pasa a azul y más gruesa.
+  &:focus-visible {
+    border-bottom-color: var(--color-primary);
+    box-shadow: 0 1px 0 var(--color-primary);
+  }
+
+  &[aria-invalid] {
+    border-bottom-color: var(--color-error);
+  }
+
+  &::placeholder {
+    color: transparent; // en los campos normales la etiqueta hace de texto de ayuda
+  }
+}
+
+// E-mail: muestra un ejemplo (mail@company.com) y la etiqueta siempre arriba.
+.contact__input--hint::placeholder {
+  color: var(--color-text-faded);
+}
+
+.contact__textarea {
+  min-height: rem(56);
+  resize: none;
+  overflow: hidden;
+}
+
+.contact__label {
+  position: absolute;
+  top: rem(22);
+  left: 0;
+  font-size: rem(16);
+  color: var(--color-gray);
+  pointer-events: none;
+  transform-origin: left top;
+
+  @include motion-safe {
+    transition:
+      transform $duration-fast ease,
+      color $duration-fast ease;
+  }
+}
+
+// Sube y se hace pequeña al escribir o al enfocar (y siempre en el e-mail, que tiene ejemplo).
+.contact__input:focus + .contact__label,
+.contact__input:not(:placeholder-shown) + .contact__label,
+.contact__input--hint + .contact__label {
+  transform: translateY(rem(-22)) scale(0.75);
+}
+
+.contact__input:focus + .contact__label {
+  color: var(--color-primary);
+}
+
+.contact__error {
+  margin-top: rem(6);
+  font-size: rem(13);
+  color: var(--color-error);
+}
+
+// ─── Envío ───────────────────────────────────────────────────────────────────────────
+.contact__submit {
+  margin-top: rem(40);
+
+  .btn__icon {
+    @include motion-safe {
+      transition: transform $duration-fast ease;
+    }
+  }
+
+  @include hover {
+    .btn__icon {
+      transform: translateX(rem(3));
+    }
+  }
+}
+
+.contact__status {
+  margin-top: rem(12);
+  font-size: rem(14);
+  color: var(--color-gray);
+
+  &:empty {
+    display: none;
+  }
+}

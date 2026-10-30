@@ -50,3 +50,9 @@ Para conectarlo:
 - Imágenes de las cards: WebP/AVIF, `width`/`height`, `loading="lazy"` (cover-tulindero pesa 3,6 MB).
 - Fuente: convertir el `.ttf` a `.woff2` (≈ 3 veces menos peso).
 - Meta Open Graph (imagen para compartir en LinkedIn).
+
+## Contacto (components/Contact.tsx)
+- Fase 1 hecha: diseño, fondo de degradado en movimiento (MeshGradient fill), validación, accesibilidad y entrada animada.
+  El envío abre de momento el programa de correo (mailto) con todo escrito.
+- PENDIENTE fase 2: servicio de envío directo (sin salir de la web). Karol tiene que elegirlo.
+- El footer repite "Let's talk / Have something in mind?": revisar su contenido ahora que existe esta sección.

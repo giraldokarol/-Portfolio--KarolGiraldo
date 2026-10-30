@@ -90,5 +90,28 @@
       "businessRequirements": "Analyse des besoins métier",
       "stakeholders": "Collaboration avec les parties prenantes"
     }
+  },
+  "contact": {
+    "title": "Un projet en tête ?",
+    "intro": "Nouvelle opportunité ou projet intéressant : je suis toujours ouverte à la discussion.",
+    "reasonLegend": "Qu’est-ce qui vous amène ?",
+    "reasons": {
+      "job": "J’ai une offre d’emploi",
+      "project": "J’ai un projet en tête",
+      "other": "Autre chose"
+    },
+    "name": "Votre nom",
+    "email": "e-mail",
+    "emailPlaceholder": "mail@entreprise.com",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "mailSubject": "Portfolio — {{reason}}",
+    "errors": {
+      "name": "Indiquez votre nom.",
+      "email": "Indiquez votre e-mail.",
+      "emailFormat": "Cet e-mail ne semble pas valide (ex. mail@entreprise.com).",
+      "message": "Écrivez un message."
+    },
+    "opening": "Votre messagerie s’ouvre avec le message prêt à être envoyé."
   }
 }

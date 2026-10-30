@@ -24,7 +24,7 @@ export type NavSection = (typeof NAV_LINKS)[number]["section"];
 // id de la sección del hero (Hero.tsx): al volver a ella, el menú se desmarca y la URL queda sin #.
 export const HERO_SECTION = "home";
 
-// Destino del botón "Say Hello" (id del footer).
+// Destino del botón "Say Hello" (id de la sección de contacto, components/Contact.tsx).
 export const CONTACT_SECTION = "contact";
 
 // Proyectos de "Selected work", en orden. Los nombres están en locales/*/common.json → work.items.

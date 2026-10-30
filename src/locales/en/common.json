@@ -90,5 +90,28 @@
       "businessRequirements": "Business Requirements Analysis",
       "stakeholders": "Stakeholder Collaboration"
     }
+  },
+  "contact": {
+    "title": "Have something in mind?",
+    "intro": "Whether it’s a new opportunity or an interesting project, I’m always open to a conversation.",
+    "reasonLegend": "What brings you here?",
+    "reasons": {
+      "job": "I have a job opportunity",
+      "project": "I have a project in mind",
+      "other": "Something else"
+    },
+    "name": "Your name",
+    "email": "e-mail",
+    "emailPlaceholder": "mail@company.com",
+    "message": "Message",
+    "send": "Send Message",
+    "mailSubject": "Portfolio — {{reason}}",
+    "errors": {
+      "name": "Please tell me your name.",
+      "email": "Please enter your e-mail.",
+      "emailFormat": "This e-mail doesn’t look right (e.g. mail@company.com).",
+      "message": "Please write a message."
+    },
+    "opening": "Your e-mail app is opening with the message ready to send."
   }
 }

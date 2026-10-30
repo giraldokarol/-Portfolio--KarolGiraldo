@@ -8,6 +8,7 @@ import SocialRail from "@/components/SocialRail";
 import Hero from "@/components/Hero";
 import SelectedWork from "@/components/SelectedWork";
 import About from "@/components/About";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import type { Route } from "./+types/home";
 
@@ -40,6 +41,7 @@ export default function Home() {
           <Hero />
           <SelectedWork />
           <About />
+          <Contact />
         </main>
       </div>
       <Footer />

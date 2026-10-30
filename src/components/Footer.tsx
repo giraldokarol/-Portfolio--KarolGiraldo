@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Mail } from "lucide-react";
 
 import LogoFooter from "@/assets/img/logo-footer.png";
-import { CONTACT_EMAIL, CONTACT_SECTION, SOCIAL_LINKS } from "@/config/site";
+import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/config/site";
 
 // PENDIENTE: selector de idioma "EN · FR · ES" (ver docs/pendientes.md).
 // Estilos: styles/sections/_footer.scss
@@ -10,7 +10,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer id={CONTACT_SECTION} className="site-footer">
+    <footer className="site-footer">
       <div className="site-footer__inner container">
 
         <div className="site-footer__brand">

@@ -18,3 +18,10 @@
       radial-gradient(circle at 25% 71%, color-mix(in srgb, var(--color-primary) 14%, transparent) 0, transparent 4%);
   }
 }
+
+// Respaldo sin WebGL en modo relleno: amarillo abajo a la izquierda, azul abajo a la derecha.
+.mesh-gradient--fill:not(.is-webgl) {
+  background:
+    radial-gradient(ellipse at 15% 100%, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 60%),
+    radial-gradient(ellipse at 85% 100%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent 60%);
+}
