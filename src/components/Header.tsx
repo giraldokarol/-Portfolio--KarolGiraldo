@@ -12,7 +12,10 @@ import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, type NavSection } from "@/con
 export default function Header() {
   const { t } = useTranslation();
   const { lang } = useParams();
-  const [activeSection, setActiveSection] = useState<NavSection | null>(null);
+  // Sección en el centro de la pantalla: una del menú, el contacto o null (hero).
+  const [currentSection, setCurrentSection] = useState<NavSection | typeof CONTACT_SECTION | null>(null);
+  // Enlace del menú marcado: solo si la sección actual tiene enlace (el contacto no lo tiene).
+  const activeSection = NAV_LINKS.some(({ section }) => section === currentSection) ? (currentSection as NavSection) : null;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,9 +26,10 @@ export default function Header() {
   }, []);
 
   // Marca en el menú la sección que está en el centro de la pantalla.
-  // También vigila el hero (#home): al volver arriba no hay ninguna sección del menú activa.
+  // También vigila el hero (#home) y el contacto: en ellos no hay ningún enlace del menú activo
+  // (sin el contacto, al llegar al formulario seguiría marcado "Behind the work").
   useEffect(() => {
-    const sections = [HERO_SECTION, ...NAV_LINKS.map(({ section }) => section)]
+    const sections = [HERO_SECTION, ...NAV_LINKS.map(({ section }) => section), CONTACT_SECTION]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
 
@@ -34,7 +38,7 @@ export default function Header() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const id = entry.target.id;
-          setActiveSection(id === HERO_SECTION ? null : (id as NavSection));
+          setCurrentSection(id === HERO_SECTION ? null : (id as NavSection | typeof CONTACT_SECTION));
         });
       },
       { rootMargin: "-40% 0px -50% 0px" },
@@ -44,14 +48,14 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
-  // La URL acompaña al scroll: /es#projects en una sección, /es (sin #) de vuelta en el hero.
+  // La URL acompaña al scroll: /es#projects o /es#contact en una sección, /es (sin #) de vuelta en el hero.
   // replaceState cambia la URL sin recargar, sin mover el scroll y sin añadir pasos al botón "atrás".
   useEffect(() => {
-    const hash = activeSection ? `#${activeSection}` : "";
+    const hash = currentSection ? `#${currentSection}` : "";
     if (window.location.hash === hash) return;
     const url = `${window.location.pathname}${window.location.search}${hash}`;
     window.history.replaceState(window.history.state, "", url); // conserva el estado de React Router
-  }, [activeSection]);
+  }, [currentSection]);
 
   return (
     <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
