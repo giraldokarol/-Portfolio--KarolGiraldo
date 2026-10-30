@@ -11,11 +11,12 @@ import { gsap } from "@/lib/gsap";
 export type MeshCircle = { x: number; y: number; r: number };
 
 type MeshGradientProps = {
+  // Hasta 3 círculos (el shader tiene 3 huecos; los que falten no se dibujan).
   circles: MeshCircle[];
   // Distribución opcional para pantallas pequeñas (< 1024 px).
   mobileCircles?: MeshCircle[];
   className?: string;
-  // Intensidad del color (0–1) sobre blanco. 0.2 = las manchas del Hero.
+  // Cuánto color lleva cada pastel sobre blanco (0–1); no cambia la opacidad. Las manchas del Hero = 0.2.
   intensity?: number;
 };
 
@@ -41,6 +42,7 @@ void main() {
   for (int i = 0; i < 3; i++) {
     vec2 c = u_circles[i].xy * u_size;
     float r = u_circles[i].z * u_size.x;
+    if (r <= 0.0) continue; // hueco vacío (menos de 3 círculos)
     float d = distance(px, c);
     mask = max(mask, 1.0 - smoothstep(r * 0.92, r, d));
   }
@@ -83,7 +85,7 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
   return shader;
 }
 
-export default function MeshGradient({ circles, mobileCircles, className = "", intensity = 0.2 }: MeshGradientProps) {
+export default function MeshGradient({ circles, mobileCircles, className = "", intensity = 0.25 }: MeshGradientProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -117,7 +119,8 @@ export default function MeshGradient({ circles, mobileCircles, className = "", i
     const wide = window.matchMedia("(min-width: 64em)");
     const setCircles = () => {
       const list = !wide.matches && mobileCircles ? mobileCircles : circles;
-      gl.uniform3fv(u("u_circles"), list.flatMap(({ x, y, r }) => [x, y, r]));
+      const slots = [0, 1, 2].map((i) => list[i] ?? { x: 0, y: 0, r: 0 }); // radio 0 = no se dibuja
+      gl.uniform3fv(u("u_circles"), slots.flatMap(({ x, y, r }) => [x, y, r]));
     };
     setCircles();
     gl.uniform1f(u("u_intensity"), intensity);

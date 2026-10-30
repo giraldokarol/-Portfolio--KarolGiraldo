@@ -15,7 +15,6 @@ const richText = { strong: <strong /> };
 // Posición y radio en fracción del ancho/alto de la sección (medidos sobre el diseño).
 const MESH_CIRCLES: MeshCircle[] = [
   { x: 0.158, y: 0.55, r: 0.11 }, // más pequeña y alta que en el diseño: así cabe entera en el bloque
-  { x: 0.465, y: 0.306, r: 0.079 },
   { x: 0.865, y: 0.57, r: 0.079 },
 ];
 // Móvil: grande detrás de la foto, pequeños junto al texto.
