@@ -56,4 +56,6 @@ Para conectarlo:
   El envío abre de momento el programa de correo (mailto) con todo escrito.
 - Fase 2 hecha: envío directo con Web3Forms (lib/contact.ts). PENDIENTE: Karol crea su clave y la pone en
   .env.local (VITE_WEB3FORMS_KEY, ver .env.example). Sin clave, el formulario usa mailto.
+- Al publicar en OVH: en el panel de Web3Forms, cambiar el "Website URL" del formulario de localhost al dominio real.
+  Y cuando exista el correo del dominio: nueva clave con ese correo + cambiar CONTACT_EMAIL en src/config/site.ts.
 - El footer repite "Let's talk / Have something in mind?": revisar su contenido ahora que existe esta sección.
