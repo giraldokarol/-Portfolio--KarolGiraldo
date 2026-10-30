@@ -63,10 +63,7 @@
     "paragraph2": "My work spans <strong>UX/UI, user research and design systems,</strong> with a strong focus on accessibility, complex workflows and data-rich products. I bring together product thinking and strong UI craft to create experiences that are clear, consistent and built to scale."
   },
   "footer": {
-    "logoAlt": "Karol Giraldo logo",
-    "title": "Let's talk",
-    "text": "Have something in mind? I’d be happy to hear from you.",
-    "socialTitle": "Social Media"
+    "logoAlt": "Karol Giraldo logo"
   },
   "languagePicker": {
     "label": "Choose a language"
