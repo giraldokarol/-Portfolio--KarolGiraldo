@@ -48,7 +48,9 @@ export default function About() {
           <img src={Portrait} alt={t("about.portraitAlt")} className="about__portrait" />
           {/* Tiradores de selección, como en Figma: línea, cuadrado central y dos círculos con sombra amarilla. */}
           <svg className="about__handles" viewBox="0 0 200 24" aria-hidden="true">
-            <line className="about__handles-line" x1="12" y1="12" x2="188" y2="12" />
+            {/* Dos tramos que van de borde a borde: el cuadrado y los círculos quedan huecos. */}
+            <line className="about__handles-line" x1="91" y1="12" x2="19" y2="12" />
+            <line className="about__handles-line" x1="109" y1="12" x2="181" y2="12" />
             <rect className="about__handles-square" x="91" y="3" width="18" height="18" />
             <circle className="about__handles-shadow" cx="9" cy="15" r="7" />
             <circle className="about__handles-shadow" cx="185" cy="15" r="7" />

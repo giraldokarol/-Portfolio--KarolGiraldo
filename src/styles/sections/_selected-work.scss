@@ -26,7 +26,8 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    gap: rem(32);
+    // Título y lista pegados al marco (cada uno al lado que mira al centro), con un hueco cómodo.
+    gap: clamp(#{rem(48)}, 5vw, #{rem(96)});
     padding-block: rem(80);
   }
 }
@@ -38,6 +39,12 @@
   @include mq(lg) {
     justify-self: start;
     text-align: left;
+  }
+
+  // Junto al marco solo desde 1280 px: por debajo la columna es más estrecha que "Selected"
+  // y el título se saldría por la izquierda.
+  @include mq(xl) {
+    justify-self: end;
   }
 }
 
@@ -183,8 +190,8 @@
   width: 100%;
 
   @include mq(lg) {
-    justify-self: end;
-    width: min(100%, #{rem(440)});
+    justify-self: start; // junto al marco
+    width: min(100%, #{rem(360)});
   }
 }
 
@@ -242,7 +249,7 @@
   @include mq(lg) {
     display: flex;
     width: 100%;
-    font-size: rem(24); // decisión de Karol: 24 px en escritorio
+    font-size: rem(18); // decisión de Karol: 18 px en escritorio
   }
 
   @include hover {

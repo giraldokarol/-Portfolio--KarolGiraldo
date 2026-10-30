@@ -44,11 +44,12 @@
   }
 }
 
-// Aro azul (la "selección" alrededor de la foto).
+// Aro azul (la "selección" alrededor de la foto). Mismo centro que en el diseño (29,8 % / 30,65 %),
+// algo más pequeño (decisión de Karol).
 .about__ring {
-  top: 0;
-  left: 0;
-  width: 59.6%;
+  top: 3.9%;
+  left: 3.8%;
+  width: 52%;
   overflow: visible;
 
   circle {
@@ -88,11 +89,11 @@
   object-position: bottom;
 }
 
-// Tiradores de selección bajo el aro.
+// Tiradores de selección en el borde inferior del aro (escalados con él).
 .about__handles {
-  top: 58.1%;
-  left: 6.2%;
-  width: 44.5%;
+  top: 55%;
+  left: 10.4%;
+  width: 38.8%;
   overflow: visible;
 }
 
@@ -101,9 +102,10 @@
   stroke-width: 2.5;
 }
 
+// Sin relleno: solo el contorno (decisión de Karol).
 .about__handles-square,
 .about__handles-knob {
-  fill: var(--color-background);
+  fill: none;
   stroke: var(--color-primary);
   stroke-width: 2.5;
 }

@@ -1,29 +1,53 @@
 @use "../abstracts" as *;
 
-// Redes sociales en vertical (components/SocialRail.tsx): fijas a la izquierda, centradas en
-// vertical, en toda la página. Solo en escritorio (en móvil están en el footer).
+// Redes sociales en vertical (components/SocialRail.tsx). Solo en escritorio (en móvil están en el footer).
+//
+// Cómo se quedan "pegadas" sin pisar el footer (sin JavaScript):
+//   .page-body           envuelve el contenido (no el footer): es el recorrido del menú.
+//   .social-rail         columna invisible a la izquierda, tan alta como .page-body.
+//   .social-rail__sticky caja de una pantalla de alto, "sticky": acompaña al scroll con el menú centrado
+//                        y, al acabarse .page-body, se queda centrada en la última sección.
+.page-body {
+  position: relative;
+}
+
 .social-rail {
-  position: fixed;
+  position: absolute;
   z-index: z(rail);
-  top: 50%;
-  left: rem(36);
+  top: 0;
+  bottom: 0;
+  left: 0;
   display: none;
-  transform: translate(-50%, -50%) rotate(90deg);
+  width: rem(72);
+  pointer-events: none; // la columna no tapa clics; solo los enlaces los reciben
 
   @include mq(lg) {
     display: block;
   }
 }
 
+.social-rail__sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  height: 100svh;
+}
+
+// Texto en vertical, leído de arriba abajo (como girado 90°), pero ocupando su alto real.
 .social-rail__list {
   display: flex;
   align-items: center;
   gap: rem(50);
+  writing-mode: vertical-rl;
   white-space: nowrap;
+  pointer-events: auto;
 }
 
 .social-rail__link {
-  font-size: rem(12);
+  font-size: rem(10);
   font-weight: weight(light);
   line-height: 1.26;
   letter-spacing: 0.42em;

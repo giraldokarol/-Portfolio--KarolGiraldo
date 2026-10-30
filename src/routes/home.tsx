@@ -33,12 +33,15 @@ export default function Home() {
   return (
     <>
       <Header />
-      <SocialRail />
-      <main id="main">
-        <Hero />
-        <SelectedWork />
-        <About />
-      </main>
+      {/* Las redes acompañan al contenido y se quedan en la última sección: nunca pisan el footer. */}
+      <div className="page-body">
+        <SocialRail />
+        <main id="main">
+          <Hero />
+          <SelectedWork />
+          <About />
+        </main>
+      </div>
       <Footer />
     </>
   );

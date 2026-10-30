@@ -34,7 +34,8 @@ export function useAboutReveal(scope: RefObject<HTMLElement | null>) {
           // El aro empieza a dibujarse arriba (-90°) y da la vuelta completa.
           .from($(".about__ring circle"), { drawSVG: "0%", rotate: -90, transformOrigin: "50% 50%", duration: 1.4, ease: "power2.inOut" }, 0.2)
           .from($$(".about__dot"), { scale: 0, duration: 0.9, stagger: 0.25, ease: "back.out(1.8)" }, 0.5)
-          .from($(".about__handles-line"), { drawSVG: "50% 50%", duration: 0.7, ease: "power2.inOut" }, 0.9)
+          // Los dos tramos salen del cuadrado central hacia los lados.
+          .from($$(".about__handles-line"), { drawSVG: "0%", duration: 0.7, ease: "power2.inOut" }, 0.9)
           .from(
             $$(".about__handles-square, .about__handles-knob, .about__handles-shadow"),
             { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.05, ease: "back.out(2)" },
