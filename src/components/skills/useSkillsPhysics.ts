@@ -13,6 +13,7 @@ const WALL = 400; // grosor de suelo y paredes invisibles
 const FLOOR_GAP = 2; // el suelo, 2 px por encima del borde: el contorno de la píldora de abajo no se corta
 // Más inercia de giro = giran menos al chocar y quedan tumbadas: el montón sale bajo y predecible.
 const SPIN_RESISTANCE = 4;
+const GRAVITY = 1.8; // más que la normal (1): caen rápido y el montón se forma en ~1 s
 const PHYSICS = {
   pill: { restitution: 0.2, friction: 0.5, frictionAir: 0.02 }, // poco rebote, se asientan con calma
   dot: { restitution: 0.35, friction: 0.3, frictionAir: 0.01 },
@@ -37,10 +38,11 @@ export function useSkillsPhysics(scope: RefObject<HTMLElement | null>) {
         root.classList.add("is-waiting"); // píldoras ocultas hasta que empiecen a caer
 
         // Se descarga un poco antes de llegar, y la caída empieza al entrar la sección.
-        const prefetch = ScrollTrigger.create({ trigger: arena, start: "top bottom+=400", once: true, onEnter: loadMatter });
+        const prefetch = ScrollTrigger.create({ trigger: arena, start: "top bottom+=600", once: true, onEnter: loadMatter });
+        // Empiezan a caer en cuanto la zona asoma por abajo: al llegar, ya están cayendo o colocadas.
         const drop = ScrollTrigger.create({
           trigger: arena,
-          start: "top 75%",
+          start: "top bottom",
           once: true,
           onEnter: () =>
             loadMatter().then((Matter) => {
@@ -73,6 +75,7 @@ export function useSkillsPhysics(scope: RefObject<HTMLElement | null>) {
 function start(Matter: Matter, root: HTMLElement, arena: HTMLElement) {
   const { Engine, Bodies, Body, Composite, Mouse, MouseConstraint, Events } = Matter;
   const engine = Engine.create({ enableSleeping: true });
+  engine.gravity.y = GRAVITY;
 
   // Modo física: las piezas pasan a posición absoluta (CSS) y se miden.
   root.classList.add("is-physics");
@@ -87,7 +90,7 @@ function start(Matter: Matter, root: HTMLElement, arena: HTMLElement) {
     const w = el.offsetWidth;
     const h = el.offsetHeight;
     const x = gsap.utils.clamp(Math.min(w / 2, width / 2), Math.max(width - w / 2, width / 2), slots[i] * width);
-    const y = -h - i * 50 - gsap.utils.random(0, 40); // escalonadas: caen una tras otra
+    const y = -h - i * 22 - gsap.utils.random(0, 30); // escalonadas pero seguidas: caen casi a la vez
     if (el.classList.contains("skills__dot")) return { el, body: Bodies.circle(x, y, w / 2, PHYSICS.dot), w, h };
     const body = Bodies.rectangle(x, y, w, h, { ...PHYSICS.pill, chamfer: { radius: h / 2 }, angle: gsap.utils.random(-0.2, 0.2) });
     Body.setInertia(body, body.inertia * SPIN_RESISTANCE);

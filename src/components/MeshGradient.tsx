@@ -15,7 +15,7 @@ type MeshGradientProps = {
   // Distribución opcional para pantallas pequeñas (< 1024 px).
   mobileCircles?: MeshCircle[];
   className?: string;
-  // Intensidad del color (0–1). Bajo = pastel, como en el diseño.
+  // Intensidad del color (0–1) sobre blanco. 0.2 = las manchas del Hero.
   intensity?: number;
 };
 
@@ -55,13 +55,18 @@ void main() {
   vec2 p0 = vec2(0.27 + 0.13 * sin(t * 0.9), 0.32 + 0.16 * cos(t * 0.7));
   vec2 p1 = vec2(0.40 + 0.12 * cos(t * 0.8), 0.62 + 0.18 * sin(t * 1.1));
   vec2 p2 = vec2(0.32 + 0.14 * sin(t * 0.6 + 2.0), 0.50 + 0.20 * cos(t * 0.9 + 1.0));
-  float w0 = 1.0 / (0.004 + pow(distance(q, p0), 2.0));
-  float w1 = 1.0 / (0.004 + pow(distance(q, p1), 2.0));
-  float w2 = 1.0 / (0.006 + pow(distance(q, p2), 2.0));
-  vec3 color = (u_colors[0] * w0 + u_colors[1] * w1 + u_colors[2] * w2) / (w0 + w1 + w2);
+  // Exponente 3: transiciones más cortas, cada color se ve más puro.
+  float w0 = 1.0 / (0.002 + pow(distance(q, p0), 3.0));
+  float w1 = 1.0 / (0.002 + pow(distance(q, p1), 3.0));
+  float w2 = 1.0 / (0.003 + pow(distance(q, p2), 3.0));
+  // Cada color se pasa primero a su versión pastel sobre blanco (como las manchas del Hero) y
+  // después se mezclan. Mezclar amarillo y azul puros da gris; mezclar sus pasteles, un tono limpio.
+  vec3 c0 = mix(vec3(1.0), u_colors[0], u_intensity);
+  vec3 c1 = mix(vec3(1.0), u_colors[1], u_intensity);
+  vec3 c2 = mix(vec3(1.0), u_colors[2], u_intensity);
+  vec3 color = (c0 * w0 + c1 * w1 + c2 * w2) / (w0 + w1 + w2);
 
-  float alpha = mask * u_intensity;
-  gl_FragColor = vec4(color * alpha, alpha); // alfa premultiplicado
+  gl_FragColor = vec4(color * mask, mask); // alfa premultiplicado
 }
 `;
 
@@ -78,7 +83,7 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
   return shader;
 }
 
-export default function MeshGradient({ circles, mobileCircles, className = "", intensity = 0.25 }: MeshGradientProps) {
+export default function MeshGradient({ circles, mobileCircles, className = "", intensity = 0.2 }: MeshGradientProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
