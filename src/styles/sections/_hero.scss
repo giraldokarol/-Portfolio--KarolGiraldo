@@ -37,39 +37,15 @@
   color: var(--color-bg-word);
 }
 
-// Manchas del gradiente, igual que en Figma: círculos de Ø574 px, opacidad 10 % y desenfoque de 100 px
-// (medidas en vw porque el frame de Figma mide 1728 px de ancho).
-// Moverlas con transform es barato: el navegador pinta el desenfoque una vez y solo desplaza la capa
-// (will-change). Las mueve components/hero/useHeroGradient.ts escribiendo --blob-x / --blob-y.
-.hero__blob {
-  // 574 / 1728 = 33,22vw, con un mínimo para que en móvil siga viéndose.
-  --blob-size: max(33.22vw, #{rem(320)});
-  // Intensidad del color. Figma usa 0.1; Karol la subió para que el movimiento se note.
-  --blob-opacity: 0.2;
-
-  position: absolute;
-  width: var(--blob-size);
-  aspect-ratio: 1;
-  margin: calc(var(--blob-size) / -2); // centra la mancha en su top/left
-  border-radius: 50%;
-  opacity: var(--blob-opacity);
-  filter: blur(calc(var(--blob-size) * 0.1742)); // 100 / 574: misma proporción que en Figma
-  pointer-events: none;
-  transform: translate(var(--blob-x, 0), var(--blob-y, 0));
-  will-change: transform;
-}
-
-// Centros de Figma en el frame de 1728 × 1117.
+// Manchas del gradiente (estilos comunes en components/_blobs.scss): centros de Figma en el frame de 1728 × 1117.
 .hero__blob--yellow {
   top: 31.2%;
   left: 34.1%;
-  background: var(--color-accent);
 }
 
 .hero__blob--blue {
   top: 61.3%;
   left: 56.6%;
-  background: var(--color-primary);
 }
 
 .hero__content {

@@ -1,0 +1,31 @@
+@use "../abstracts" as *;
+
+// Manchas de color del Hero (y de la página legal), igual que en Figma: círculos de Ø574 px,
+// desenfoque de 100 px (medidas en vw porque el frame de Figma mide 1728 px de ancho).
+// Cada página decide dónde van (top/left). Las mueve components/useBlobGradient.ts escribiendo
+// --blob-x / --blob-y. Moverlas con transform es barato: el desenfoque se pinta una vez (will-change).
+.blob {
+  // 574 / 1728 = 33,22vw, con un mínimo para que en móvil siga viéndose.
+  --blob-size: max(33.22vw, #{rem(320)});
+  // Intensidad del color. Figma usa 0.1; Karol la subió para que el movimiento se note.
+  --blob-opacity: 0.2;
+
+  position: absolute;
+  width: var(--blob-size);
+  aspect-ratio: 1;
+  margin: calc(var(--blob-size) / -2); // centra la mancha en su top/left
+  border-radius: 50%;
+  opacity: var(--blob-opacity);
+  filter: blur(calc(var(--blob-size) * 0.1742)); // 100 / 574: misma proporción que en Figma
+  pointer-events: none;
+  transform: translate(var(--blob-x, 0), var(--blob-y, 0));
+  will-change: transform;
+}
+
+.blob--yellow {
+  background: var(--color-accent);
+}
+
+.blob--blue {
+  background: var(--color-primary);
+}

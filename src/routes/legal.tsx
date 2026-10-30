@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { data } from "react-router";
 import { Trans, useTranslation } from "react-i18next";
 
@@ -6,6 +7,7 @@ import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useBlobGradient } from "@/components/useBlobGradient";
 import { CONTACT_EMAIL } from "@/config/site";
 import type { Route } from "./+types/legal";
 
@@ -33,7 +35,10 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 // Estilos: styles/pages/_legal.scss
 export default function Legal() {
   const { t } = useTranslation();
+  const intro = useRef<HTMLElement>(null);
   const sections = t("legal.sections", { returnObjects: true }) as LegalSection[];
+
+  useBlobGradient(intro); // las manchas de color del Hero, también aquí
 
   // <mail> y <cnil> dentro de los textos se convierten en enlaces reales.
   const links = {
@@ -46,8 +51,13 @@ export default function Legal() {
       <Header />
       <main id="main" className="legal">
         <div className="legal__inner container">
-          <h1 className="legal__title">{t("legal.title")}</h1>
-          <p className="legal__updated">{t("legal.updated")}</p>
+          {/* Título con las manchas de color del Hero (misma línea gráfica). */}
+          <header className="legal__intro" ref={intro}>
+            <div className="blob blob--yellow legal__blob--yellow" aria-hidden="true" />
+            <div className="blob blob--blue legal__blob--blue" aria-hidden="true" />
+            <h1 className="legal__title">{t("legal.title")}</h1>
+            <p className="legal__updated">{t("legal.updated")}</p>
+          </header>
 
           {sections.map((section, s) => (
             <section key={section.id} id={section.id} className="legal__section" aria-labelledby={`${section.id}-title`}>

@@ -2,12 +2,12 @@ import type { RefObject } from "react";
 
 import { gsap, useGSAP, MEDIA } from "@/lib/gsap";
 
-// Cada mancha del gradiente (styles/sections/_hero.scss → .hero__blob--*).
+// Cada mancha del gradiente (styles/components/_blobs.scss → .blob--*).
 // range: cuánto se desplaza como fracción del ancho/alto de la pantalla.
 // lag: segundos que tarda en alcanzar al puntero (distinto = efecto líquido).
 const BLOBS = [
-  { selector: ".hero__blob--yellow", range: 0.34, lag: 0.9, drift: { x: 0.06, y: 0.05, duration: 9 } },
-  { selector: ".hero__blob--blue", range: 0.24, lag: 1.3, drift: { x: -0.05, y: -0.06, duration: 11 } },
+  { selector: ".blob--yellow", range: 0.34, lag: 0.9, drift: { x: 0.06, y: 0.05, duration: 9 } },
+  { selector: ".blob--blue", range: 0.24, lag: 1.3, drift: { x: -0.05, y: -0.06, duration: 11 } },
 ];
 
 // Mueve una mancha escribiendo sus variables CSS --blob-x / --blob-y en píxeles.
@@ -20,20 +20,20 @@ function createBlob(el: HTMLElement) {
   return { position, render };
 }
 
-// Gradiente del hero:
-// - con ratón: sigue al puntero con retraso suave (gsap.quickTo);
+// Manchas de color (amarilla y azul) que se mueven, como en el Hero. Se usan en el Hero y en la página legal.
+// - con ratón: siguen al puntero con retraso suave (gsap.quickTo);
 // - en táctil: deriva lenta y autónoma;
-// - con reduced-motion: quieto (ninguna condición de MEDIA coincide).
-// Solo trabaja mientras el hero está en pantalla.
-export function useHeroGradient(scope: RefObject<HTMLElement | null>) {
+// - con reduced-motion: quietas (ninguna condición de MEDIA coincide).
+// Solo trabajan mientras su contenedor (scope) está en pantalla.
+export function useBlobGradient(scope: RefObject<HTMLElement | null>) {
   useGSAP(
     () => {
-      const hero = scope.current;
-      if (!hero) return;
+      const container = scope.current;
+      if (!container) return;
 
       const blobs = BLOBS.map((config) => ({
         config,
-        ...createBlob(hero.querySelector<HTMLElement>(config.selector)!),
+        ...createBlob(container.querySelector<HTMLElement>(config.selector)!),
       }));
 
       // Al salir de una condición (p. ej. se activa reduced-motion) las manchas vuelven al centro.
@@ -54,10 +54,10 @@ export function useHeroGradient(scope: RefObject<HTMLElement | null>) {
         }));
 
         let visible = true;
-        // El navegador puede agrupar varios avisos (p. ej. al fijar el hero con ScrollTrigger se saca y se vuelve
+        // El navegador puede agrupar varios avisos (p. ej. al fijar el Hero con ScrollTrigger se saca y se vuelve
         // a poner en la página): manda el más reciente, no el primero.
         const observer = new IntersectionObserver((entries) => (visible = entries[entries.length - 1].isIntersecting));
-        observer.observe(hero);
+        observer.observe(container);
 
         // Puntero normalizado de −0,5 a 0,5 desde el centro de la pantalla.
         const onMove = (event: PointerEvent) => {
@@ -97,12 +97,12 @@ export function useHeroGradient(scope: RefObject<HTMLElement | null>) {
           }),
         );
 
-        // Pausa la deriva cuando el hero no se ve (ahorra batería).
+        // Pausa la deriva cuando el contenedor no se ve (ahorra batería).
         const observer = new IntersectionObserver((entries) => {
           const visible = entries[entries.length - 1].isIntersecting; // el aviso más reciente
           timelines.forEach((tl) => (visible ? tl.resume() : tl.pause()));
         });
-        observer.observe(hero);
+        observer.observe(container);
 
         return () => {
           observer.disconnect();

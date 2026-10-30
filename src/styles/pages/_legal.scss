@@ -2,6 +2,7 @@
 
 // MENTIONS LÉGALES & CONFIDENTIALITÉ (routes/legal.tsx): una columna de lectura cómoda.
 .legal {
+  overflow-x: clip; // las manchas de color salen por los lados: sin scroll horizontal
   padding-block: calc(var(--header-height) + #{rem(48)}) rem(96);
 
   @include mq(lg) {
@@ -11,6 +12,30 @@
 
 .legal__inner {
   max-width: rem(760); // ~70 caracteres por línea: lo más cómodo para leer
+}
+
+// Cabecera con las manchas del Hero (components/_blobs.scss), algo más pequeñas.
+.legal__intro {
+  position: relative;
+  padding-block: rem(24);
+
+  .blob {
+    --blob-size: max(26vw, #{rem(280)});
+  }
+
+  > :not(.blob) {
+    position: relative; // el texto por encima de las manchas
+  }
+}
+
+.legal__blob--yellow {
+  top: 20%;
+  left: 15%;
+}
+
+.legal__blob--blue {
+  top: 85%;
+  left: 75%;
 }
 
 .legal__title {

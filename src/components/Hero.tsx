@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import ScrollHint from "./ScrollHint";
 import Avatar from "./Avatar";
-import { useHeroGradient } from "./hero/useHeroGradient";
+import { useBlobGradient } from "./useBlobGradient";
 import { useHeroAvatar } from "./hero/useHeroAvatar";
 import { useHeroScroll } from "./hero/useHeroScroll";
 
@@ -14,7 +14,7 @@ export default function Hero() {
   const { t } = useTranslation();
   const root = useRef<HTMLDivElement>(null);
 
-  useHeroGradient(root);
+  useBlobGradient(root);
   useHeroAvatar(root);
   useHeroScroll(root);
 
@@ -24,8 +24,8 @@ export default function Hero() {
         {t("hero.backgroundWord")}
       </span>
 
-      <div className="hero__blob hero__blob--yellow" aria-hidden="true" />
-      <div className="hero__blob hero__blob--blue" aria-hidden="true" />
+      <div className="blob blob--yellow hero__blob--yellow" aria-hidden="true" />
+      <div className="blob blob--blue hero__blob--blue" aria-hidden="true" />
 
       <section className="hero__content" id="home">
         <div className="hero__intro">

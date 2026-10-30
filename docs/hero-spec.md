@@ -129,7 +129,7 @@ No se anima.
   con `gsap.quickTo` (una función reutilizable que anima suavemente hacia el último valor).
 - Retraso distinto por mancha (amarilla 0,9s; azul 1,3s) para que se sientan "líquidas".
 - Recorrido amplio para que se note (amarilla ±17 %, azul ±12 % de la pantalla; decisión de Karol) para que nunca dejen el centro vacío.
-- **Hecho** en `src/components/hero/useHeroGradient.ts`.
+- **Hecho** en `src/components/useBlobGradient.ts` (compartido con la página legal).
 
 ### 4.2 Avatar vivo
 - **Parallax por capas** (solo con ratón: `(hover: hover) and (pointer: fine)`). Posición del puntero
