@@ -6,12 +6,14 @@
   position: relative;
   overflow: hidden;
   // Arriba poco margen: "Selected work" ya deja aire debajo (ocupa la pantalla entera por el scroll fijado).
-  padding-block: rem(48) rem(112);
+  // Abajo, el margen lo pone el bloque de habilidades (_skills.scss).
+  padding-top: rem(48);
   background: var(--color-background);
+}
 
-  @include mq(lg) {
-    padding-block: rem(48) rem(160);
-  }
+// Foto + texto, con su propio degradado de fondo (las bolitas se colocan respecto a este bloque).
+.about__intro {
+  position: relative;
 }
 
 .about__inner {

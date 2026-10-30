@@ -70,5 +70,25 @@
   },
   "languagePicker": {
     "label": "Choisir une langue"
+  },
+  "skills": {
+    "title": "Compétences",
+    "items": {
+      "userResearch": "Recherche utilisateur",
+      "designSystems": "Design Systems",
+      "componentDocumentation": "Documentation des composants",
+      "crossFunctional": "Collaboration transverse",
+      "designToCode": "Design-to-Code",
+      "informationArchitecture": "Architecture de l’information",
+      "accessibility": "Accessibilité (WCAG / RGAA)",
+      "codePrototyping": "Prototypage codé",
+      "htmlCssSass": "HTML · CSS · Sass",
+      "usabilityTesting": "Tests utilisateurs",
+      "componentLibraries": "Bibliothèques de composants",
+      "agile": "Méthodes agiles",
+      "vibeCoding": "Vibe Coding",
+      "businessRequirements": "Analyse des besoins métier",
+      "stakeholders": "Collaboration avec les parties prenantes"
+    }
   }
 }

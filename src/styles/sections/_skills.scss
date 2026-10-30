@@ -1,0 +1,128 @@
+@use "../abstracts" as *;
+
+// HABILIDADES — complemento de "Behind the work" (components/Skills.tsx).
+// Píldoras con gravedad (skills/useSkillsPhysics.ts). Dos modos:
+//   - Sin animaciones o sin JavaScript: lista de píldoras ordenada y centrada.
+//   - Con física (.is-physics): cada pieza va en posición absoluta y el motor la mueve.
+.skills {
+  position: relative;
+  padding-block: rem(48) rem(112);
+
+  @include mq(lg) {
+    padding-block: rem(64) rem(160);
+  }
+}
+
+// "Behind the work" gigante de fondo, como "Designer" en el Hero.
+.skills__word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 6.5em; // dos líneas, como en el diseño: "Behind the / work"
+  transform: translate(-50%, -50%);
+  font-size: clamp(#{rem(72)}, 13vw, #{rem(230)});
+  font-weight: weight(extrabold);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--color-bg-word);
+  pointer-events: none;
+}
+
+.skills__title {
+  @include visually-hidden; // título para lectores de pantalla; visualmente lo dicen las píldoras
+}
+
+// Zona donde caen las píldoras.
+.skills__arena {
+  position: relative;
+  z-index: z(content);
+  width: min(100% - #{rem($gutter * 2)}, #{rem(900)});
+  margin-inline: auto;
+
+  // Con animaciones: caja de alto fijo donde se amontonan (lo que cae desde arriba entra por el borde).
+  .has-motion & {
+    height: rem(680); // en móvil el montón es más alto (píldoras más anchas en proporción)
+    overflow: hidden;
+
+    @include mq(md) {
+      height: rem(360);
+    }
+  }
+}
+
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(12);
+}
+
+.skills__pill {
+  padding: rem(8 16);
+  border: 1.5px solid var(--color-primary);
+  border-radius: rem(999);
+  background: var(--color-background);
+  font-size: rem(16);
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.skills__pill--filled {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.skills__dot {
+  display: none; // solo existen en el modo con física
+  width: rem(14);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+// ─── Con física ──────────────────────────────────────────────────────────────────────
+// Antes de caer: ocultas (el espacio ya está reservado).
+.skills.is-waiting .skills__pill {
+  visibility: hidden;
+}
+
+.skills.is-physics {
+  .skills__list {
+    position: absolute;
+    inset: 0;
+  }
+
+  .skills__pill,
+  .skills__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    will-change: transform;
+  }
+
+  // Nunca más ancha que la zona (si no, se atasca entre las paredes): en móviles pequeños,
+  // la píldora más larga pasa a dos líneas.
+  .skills__pill {
+    max-width: calc(100% - #{rem(8)});
+    white-space: normal;
+    text-align: center;
+  }
+
+  // Con ratón: se pueden agarrar.
+  @media (hover: hover) and (pointer: fine) {
+    .skills__pill {
+      cursor: grab;
+    }
+
+    .skills__arena.is-dragging,
+    .skills__arena.is-dragging * {
+      cursor: grabbing;
+    }
+  }
+}

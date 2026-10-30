@@ -70,5 +70,25 @@
   },
   "languagePicker": {
     "label": "Elige un idioma"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "items": {
+      "userResearch": "Investigación de usuarios",
+      "designSystems": "Design Systems",
+      "componentDocumentation": "Documentación de componentes",
+      "crossFunctional": "Colaboración multidisciplinar",
+      "designToCode": "Design-to-Code",
+      "informationArchitecture": "Arquitectura de la información",
+      "accessibility": "Accesibilidad (WCAG / RGAA)",
+      "codePrototyping": "Prototipado con código",
+      "htmlCssSass": "HTML · CSS · Sass",
+      "usabilityTesting": "Tests de usabilidad",
+      "componentLibraries": "Librerías de componentes",
+      "agile": "Metodologías ágiles",
+      "vibeCoding": "Vibe Coding",
+      "businessRequirements": "Análisis de requisitos de negocio",
+      "stakeholders": "Colaboración con stakeholders"
+    }
   }
 }

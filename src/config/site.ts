@@ -37,3 +37,23 @@ export const WORK_PROJECTS = [
   { id: "tulindero", frame: "web", slug: "tulindero" },
 ] as const;
 export type WorkProject = (typeof WORK_PROJECTS)[number];
+
+// Habilidades de "Behind the work" (píldoras con física, components/Skills.tsx). Textos: skills.items.<id>.
+// filled = píldora azul rellena (las que más destacan); el resto, con contorno.
+export const SKILLS = [
+  { id: "userResearch", filled: false },
+  { id: "designSystems", filled: true },
+  { id: "componentDocumentation", filled: false },
+  { id: "crossFunctional", filled: true },
+  { id: "designToCode", filled: false },
+  { id: "informationArchitecture", filled: false },
+  { id: "accessibility", filled: false },
+  { id: "codePrototyping", filled: false },
+  { id: "htmlCssSass", filled: true },
+  { id: "usabilityTesting", filled: true },
+  { id: "componentLibraries", filled: false },
+  { id: "agile", filled: false },
+  { id: "vibeCoding", filled: false },
+  { id: "businessRequirements", filled: false },
+  { id: "stakeholders", filled: true },
+] as const;
