@@ -9,7 +9,11 @@ import { i18nByLocale } from "./i18n/instances";
 import type { Route } from "./+types/root";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+  // Icono de la pestaña: uno para el navegador en modo claro y otro para el oscuro (logo claro).
+  { rel: "icon", type: "image/svg+xml", href: "/favicon-light.svg", media: "(prefers-color-scheme: light)" },
+  { rel: "icon", type: "image/svg+xml", href: "/favicon-dark.svg", media: "(prefers-color-scheme: dark)" },
+  // Al guardar la web en la pantalla de inicio del iPhone/iPad.
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
   // Precargar la fuente evita el salto de tipografía en el hero.
   { rel: "preload", href: fontUrl, as: "font", type: "font/ttf", crossOrigin: "anonymous" },
 ];
