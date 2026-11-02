@@ -44,7 +44,7 @@
 
   // Con animaciones: caja de alto fijo donde se amontonan (lo que cae desde arriba entra por el borde).
   .has-motion & {
-    height: rem(720); // en móvil el montón es más alto (píldoras más anchas en proporción)
+    height: rem(780); // en móvil el montón es más alto (píldoras más anchas en proporción)
     overflow: hidden;
 
     // Escritorio: el alto del montón (≈ 200–250 px) más margen para la caída.
@@ -61,11 +61,23 @@
   gap: rem(12);
 }
 
+// Píldoras con contorno: cristal escarchado (blanco translúcido; la palabra gigante y las bolitas se
+// intuyen detrás). Desenfoque solo en escritorio: en táctil, 15 desenfoques cayendo con física van a tirones.
 .skills__pill {
   padding: rem(8 16);
   border: 1.5px solid var(--color-primary);
   border-radius: rem(999);
-  background: var(--color-background);
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  box-shadow:
+    inset 0 1px 1px color-mix(in srgb, var(--color-background) 95%, transparent),
+    0 rem(6) rem(16) rem(-8) color-mix(in srgb, var(--color-primary) 30%, transparent);
+
+  @supports (backdrop-filter: blur(1px)) {
+    @media (hover: hover) and (pointer: fine) {
+      background: color-mix(in srgb, var(--color-background) 45%, transparent);
+      backdrop-filter: blur(rem(10)) saturate(1.6);
+    }
+  }
   font-size: rem(16);
   line-height: 1.3;
   white-space: nowrap;
@@ -73,8 +85,10 @@
   user-select: none;
 }
 
+// Rellenas: azul sólido (el contraste con las de cristal da riqueza al montón), con un brillo sutil.
 .skills__pill--filled {
-  background: var(--color-primary);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--color-primary) 85%, var(--color-background)), var(--color-primary) 60%);
+  backdrop-filter: none;
   color: var(--color-on-primary);
 }
 

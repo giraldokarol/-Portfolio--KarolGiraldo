@@ -12,7 +12,8 @@ import { gsap, useGSAP, ScrollTrigger, MEDIA } from "@/lib/gsap";
 const WALL = 400; // grosor de suelo y paredes invisibles
 const FLOOR_GAP = 2; // el suelo, 2 px por encima del borde: el contorno de la píldora de abajo no se corta
 // Más inercia de giro = giran menos al chocar y quedan tumbadas: el montón sale bajo y predecible.
-const SPIN_RESISTANCE = 4;
+const SPIN_RESISTANCE = { wide: 4, narrow: 10 }; // en zonas estrechas giran aún menos: ninguna se queda de pie
+const NARROW = 600; // px de ancho de la zona
 const GRAVITY = 1.8; // más que la normal (1): caen rápido y el montón se forma en ~1 s
 const PHYSICS = {
   pill: { restitution: 0.2, friction: 0.5, frictionAir: 0.02 }, // poco rebote, se asientan con calma
@@ -93,7 +94,7 @@ function start(Matter: Matter, root: HTMLElement, arena: HTMLElement) {
     const y = -h - i * 22 - gsap.utils.random(0, 30); // escalonadas pero seguidas: caen casi a la vez
     if (el.classList.contains("skills__dot")) return { el, body: Bodies.circle(x, y, w / 2, PHYSICS.dot), w, h };
     const body = Bodies.rectangle(x, y, w, h, { ...PHYSICS.pill, chamfer: { radius: h / 2 }, angle: gsap.utils.random(-0.2, 0.2) });
-    Body.setInertia(body, body.inertia * SPIN_RESISTANCE);
+    Body.setInertia(body, body.inertia * (width < NARROW ? SPIN_RESISTANCE.narrow : SPIN_RESISTANCE.wide));
     return { el, body, w, h };
   });
 
