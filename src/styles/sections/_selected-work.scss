@@ -145,28 +145,33 @@
   }
 }
 
-// Marco de cristal: un bisel blanco translúcido con desenfoque (deja intuir las bolitas de color),
-// un borde de luz fino y una sombra amplia y suave. El vídeo va en la pantalla interior (.work__viewport).
+// Marco de cristal: un bisel translúcido con desenfoque y saturación (las bolitas de color se ven a través),
+// un reflejo diagonal de luz, bordes de luz dentro y fuera y una sombra amplia y suave.
+// El vídeo va en la pantalla interior (.work__viewport).
 .work__frame {
-  --bezel: #{rem(6)};
+  --bezel: #{rem(8)};
 
   position: relative;
   display: block; // el marco visible es un enlace (<a>)
-  border: 1px solid color-mix(in srgb, var(--color-background) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-background) 85%, transparent);
   border-radius: var(--frame-radius);
-  background: linear-gradient(
-    145deg,
-    color-mix(in srgb, var(--color-background) 70%, transparent),
-    color-mix(in srgb, var(--color-background) 30%, transparent)
-  );
-  backdrop-filter: blur(rem(16)) saturate(1.5);
+  background:
+    // reflejo de luz arriba a la izquierda
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-background) 75%, transparent) 0%,
+      color-mix(in srgb, var(--color-background) 15%, transparent) 45%,
+      color-mix(in srgb, var(--color-background) 35%, transparent) 100%
+    );
+  backdrop-filter: blur(rem(20)) saturate(1.9) brightness(1.05);
   box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--color-background) 90%, transparent),
-    0 rem(32) rem(64) rem(-28) color-mix(in srgb, var(--color-primary) 28%, transparent),
-    0 rem(2) rem(10) color-mix(in srgb, var(--color-ink) 6%, transparent);
+    inset 0 1px 1px color-mix(in srgb, var(--color-background) 95%, transparent),
+    inset 0 -1px 1px color-mix(in srgb, var(--color-primary) 12%, transparent),
+    0 rem(40) rem(80) rem(-32) color-mix(in srgb, var(--color-primary) 32%, transparent),
+    0 rem(2) rem(12) color-mix(in srgb, var(--color-ink) 7%, transparent);
 
   @include mq(lg) {
-    --bezel: #{rem(9)};
+    --bezel: #{rem(12)};
   }
 }
 
