@@ -87,15 +87,25 @@
   color: var(--color-ink);
 }
 
+// Saludo y título SIEMPRE en una línea (decisión de Karol). En pantallas estrechas la letra se reduce
+// lo justo para que quepa el texto más largo: ancho disponible ÷ cuántas veces su tamaño mide ese texto.
+//   - saludo más largo: "Hello ! Moi c’est Karol" (fr) ≈ 9,7 veces su tamaño de letra;
+//   - título más largo: "Product Prototyper" ≈ 8,9 veces (si se añade uno más largo, subir este número).
+$greeting-longest-em: 9.7;
+$role-longest-em: 8.9;
+$hero-text-width: calc(100vw - #{rem($gutter * 2)});
+
 .hero__greeting {
   display: block;
-  font-size: type-size(hero-greeting);
+  white-space: nowrap;
+  font-size: min(#{type-size(hero-greeting)}, #{$hero-text-width} / #{$greeting-longest-em});
   letter-spacing: -0.04em;
 }
 
 .hero__role {
   display: block;
-  font-size: type-size(hero-role);
+  white-space: nowrap;
+  font-size: min(#{type-size(hero-role)}, #{$hero-text-width} / #{$role-longest-em});
   letter-spacing: -0.04em;
   color: var(--color-primary);
 
@@ -327,7 +337,8 @@
   top: 0;
   left: 0;
   visibility: hidden;
-  font-size: type-size(hero-role);
+  white-space: nowrap;
+  font-size: min(#{type-size(hero-role)}, #{$hero-text-width} / #{$role-longest-em}); // como .hero__role
   font-weight: weight(extrabold);
   line-height: 1.26;
   letter-spacing: -0.04em;

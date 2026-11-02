@@ -35,6 +35,7 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
       const title = $<HTMLElement>(".hero__title");
       const greeting = $<HTMLElement>(".hero__greeting");
       const role = $<HTMLElement>(".hero__role");
+      const intro = $<HTMLElement>(".hero__intro");
       const subtitle = $<HTMLElement>(".hero__subtitle");
       const selection = $<HTMLElement>(".hero__selection");
       const frame = $<SVGRectElement>(".hero__selection-frame rect");
@@ -161,12 +162,15 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
 
             const startCycle = () => {
               if (cycleTl || cycleDone || !cycleWords.length) return;
-              const box = relative(role.getBoundingClientRect());
-              gsap.set(cycle, { x: box.left, y: box.top, width: box.width, autoAlpha: 1 });
+              // Altura: la del título. Ancho: toda la zona central (donde se centra el título), para que un
+              // título más largo que "Product Designer" también quede centrado y no se desborde a un lado.
+              const line = relative(role.getBoundingClientRect());
+              const area = relative(intro.getBoundingClientRect());
+              gsap.set(cycle, { x: area.left, y: line.top, width: area.width, autoAlpha: 1 });
               write(roleText);
               // Corrección de subpíxeles: la primera letra de la capa, exactamente sobre la del original.
               const drift = roleChars[0].getBoundingClientRect().left - cycle.querySelector(".hero__role-cycle-char")!.getBoundingClientRect().left;
-              gsap.set(cycle, { x: box.left + drift });
+              gsap.set(cycle, { x: area.left + drift });
               caretAfterText();
               gsap.set(role, { autoAlpha: 0 });
               gsap.set(caret, { opacity: 1 });
