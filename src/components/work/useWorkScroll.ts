@@ -25,15 +25,26 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
       const descriptions = gsap.utils.toArray<HTMLElement>(".work__description", section);
       const probe = (type: string) => $<HTMLElement>(`[data-probe="${type}"]`);
 
+      const viewport = $<HTMLElement>(".work__viewport");
+
       // Tamaño y radio del marco para cada proyecto, medidos en los marcos fantasma (se recalculan al
       // redimensionar). Teléfono: tal cual. Web: el ancho del fantasma y el alto según la proporción
-      // del vídeo, para que se vea entero sin recortes ni bandas.
+      // del vídeo. El bisel de cristal (grosor = distancia de la pantalla interior al borde) se suma
+      // fuera, así la pantalla interior conserva la proporción exacta del vídeo: sin recortes ni bandas.
+      // El radio (en px) se escribe en la variable --frame-radius; el de la pantalla interior sale de él.
       const shape = (index: number) => {
         const el = probe(WORK_PROJECTS[index].frame);
         const box = el.getBoundingClientRect();
-        const height = WORK_PROJECTS[index].frame === "web" ? box.width / Number(media[index].dataset.ratio) : box.height;
-        return { width: box.width, height, borderRadius: getComputedStyle(el).borderTopLeftRadius };
+        const bezel = viewport.offsetTop;
+        const height =
+          WORK_PROJECTS[index].frame === "web" ? (box.width - 2 * bezel) / Number(media[index].dataset.ratio) + 2 * bezel : box.height;
+        return { width: box.width, height, radius: parseFloat(getComputedStyle(el).borderTopLeftRadius) };
       };
+      // El radio se anima como un número normal y se copia a la variable CSS en cada fotograma.
+      // (Animar la variable directamente falla: en el CSS es una fórmula, GSAP la lee como 0 y al
+      // volver atrás con el scroll dejaba el teléfono sin esquinas.)
+      const corner = { radius: 0 };
+      const applyCorner = () => frame.style.setProperty("--frame-radius", `${corner.radius}px`);
 
       // Solo se reproduce el vídeo del proyecto actual, y solo si hay animaciones y la sección está en pantalla.
       let autoplay = false;
@@ -69,7 +80,10 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
 
         section.classList.add("is-animated");
         gsap.set(media, { yPercent: (i) => (i === 0 ? 0 : 100) });
-        gsap.set(frame, shape(0));
+        const first = shape(0);
+        gsap.set(frame, { width: first.width, height: first.height });
+        corner.radius = first.radius;
+        applyCorner();
 
         const tl = gsap.timeline({
           defaults: { ease: "power2.inOut" },
@@ -100,14 +114,9 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
           );
           tl.to(
             frame,
-            {
-              width: () => shape(i + 1).width,
-              height: () => shape(i + 1).height,
-              borderRadius: () => shape(i + 1).borderRadius,
-              duration: STEP * 0.8,
-            },
+            { width: () => shape(i + 1).width, height: () => shape(i + 1).height, duration: STEP * 0.8 },
             at,
-          );
+          ).to(corner, { radius: () => shape(i + 1).radius, duration: STEP * 0.8, onUpdate: applyCorner }, at);
         });
         tl.set({}, {}, HOLD * 2 + transitions * STEP); // pausa final antes de soltar la sección
 
@@ -140,7 +149,8 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
           autoplay = false;
           syncVideos();
           section.classList.remove("is-animated");
-          gsap.set(frame, { clearProps: "width,height,borderRadius" });
+          gsap.set(frame, { clearProps: "width,height" });
+          frame.style.removeProperty("--frame-radius");
           setCurrent(0);
         };
       });

@@ -68,19 +68,22 @@ export default function SelectedWork() {
               tabIndex={-1}
               aria-hidden="true"
             >
-              {WORK_PROJECTS.map(({ id, slug }, index) => (
-                <video
-                  key={id}
-                  src={`/videos/work/${slug}.mp4`}
-                  poster={`/videos/work/${slug}.jpg`}
-                  className={`work__media ${index === 0 ? "is-current" : ""}`}
-                  data-ratio={VIDEO_RATIO[id]}
-                  muted
-                  loop
-                  playsInline
-                  preload={index === 0 ? "metadata" : "none"}
-                />
-              ))}
+              {/* Pantalla interior: el marco es un bisel de cristal y el vídeo va dentro, con su propio recorte. */}
+              <span className="work__viewport">
+                {WORK_PROJECTS.map(({ id, slug }, index) => (
+                  <video
+                    key={id}
+                    src={`/videos/work/${slug}.mp4`}
+                    poster={`/videos/work/${slug}.jpg`}
+                    className={`work__media ${index === 0 ? "is-current" : ""}`}
+                    data-ratio={VIDEO_RATIO[id]}
+                    muted
+                    loop
+                    playsInline
+                    preload={index === 0 ? "metadata" : "none"}
+                  />
+                ))}
+              </span>
             </a>
 
             {/* Marcos "fantasma" invisibles: el JS mide aquí el tamaño real de cada forma (teléfono / web). */}
