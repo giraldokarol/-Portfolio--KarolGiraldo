@@ -26,7 +26,12 @@
     "backgroundWord": "Designer",
     "greeting": "Hey! I’m Karol",
     "role": "Product Designer",
-    "subtitle": "Curious about people and digital products, working across UX and UI to make them better to use."
+    "subtitle": "Curious about people and digital products, working across UX and UI to make them better to use.",
+    "roles": [
+      "Creative Developer",
+      "Product Prototyper",
+      "UI Architect"
+    ]
   },
   "work": {
     "title": "Selected work",

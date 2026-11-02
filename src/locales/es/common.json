@@ -26,7 +26,12 @@
     "backgroundWord": "Designer",
     "greeting": "¡Hey! Soy Karol",
     "role": "Product Designer",
-    "subtitle": "Me interesa entender cómo las personas interactúan con los productos digitales y qué hace que una experiencia funcione de verdad."
+    "subtitle": "Me interesa entender cómo las personas interactúan con los productos digitales y qué hace que una experiencia funcione de verdad.",
+    "roles": [
+      "Creative Developer",
+      "Product Prototyper",
+      "UI Architect"
+    ]
   },
   "work": {
     "title": "Casos de estudio",

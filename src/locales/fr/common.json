@@ -26,7 +26,12 @@
     "backgroundWord": "Designer",
     "greeting": "Hello ! Moi c’est Karol",
     "role": "Product Designer",
-    "subtitle": "Ce qui m’intéresse dans le design ? Comprendre les usages, questionner les évidences et concevoir des interfaces qui ont du sens."
+    "subtitle": "Ce qui m’intéresse dans le design ? Comprendre les usages, questionner les évidences et concevoir des interfaces qui ont du sens.",
+    "roles": [
+      "Creative Developer",
+      "Product Prototyper",
+      "UI Architect"
+    ]
   },
   "work": {
     "title": "Études de cas",

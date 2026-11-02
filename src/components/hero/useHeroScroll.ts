@@ -13,10 +13,15 @@ import { gsap, useGSAP, ScrollTrigger, SplitText, MEDIA } from "@/lib/gsap";
 //   0,45–0,75  el saludo y "Product Designer" se escriben letra a letra con el cursor de texto
 //   0,76–0,92  cada letra de "Product Designer" pasa de contorno a relleno azul (y el contorno se retira)
 //   0,86–0,94  aparece el subtítulo
+//   0,95       (ya con tiempo, no con scroll) "Product Designer" se borra y se escriben solos otros títulos
+//              (Creative Developer, Product Prototyper, UI Architect) y al final vuelve "Product Designer".
 const SCENES = {
   wide: { scale: 355.31 / 206.29, centerY: 0.515, length: 1.5 }, // medidas de Figma
   narrow: { scale: 1.6, centerY: 0.47, length: 1 },
 };
+
+// Títulos que se escriben solos tras el relleno (segundos por letra y pausas).
+const CYCLE = { delay: 0.8, erase: 0.035, type: 0.065, gap: 0.25, hold: 1.4 };
 
 export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
   useGSAP(
@@ -38,6 +43,8 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
       const guides = hero.querySelectorAll<SVGSVGElement>(".hero__selection-guides, .hero__selection-center");
       const center = $<SVGSVGElement>(".hero__selection-center");
       const caret = $<HTMLElement>(".hero__caret");
+      const cycle = $<HTMLElement>(".hero__role-cycle");
+      const cycleWords = JSON.parse(cycle.dataset.words ?? "[]") as string[];
 
       const mm = gsap.matchMedia();
 
@@ -74,6 +81,10 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
           sizeLabel.textContent = `${Math.round(box.width)} × ${Math.round(box.height)}`;
         };
 
+        // Se reasigna en cada onSplit; cancela la secuencia de títulos si está en marcha.
+        // progress (del scroll) decide si el cursor debe verse: solo mientras se escribe (0,45–0,9).
+        let stopCycle = (progress?: number) => void progress;
+
         // SplitText separa el título en letras. autoSplit lo rehace si cambia el ancho o carga la
         // fuente, y como devolvemos la animación desde onSplit, se reconstruye sola sin saltos.
         const split = SplitText.create(title, {
@@ -81,6 +92,7 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
           autoSplit: true,
           aria: "auto", // el h1 conserva su texto completo para lectores de pantalla
           onSplit(self) {
+            stopCycle(); // si el título se vuelve a partir (cambio de tamaño), se empieza de cero
             const greetingChars = (self.chars as HTMLElement[]).filter((char) => greeting.contains(char));
             const roleChars = (self.chars as HTMLElement[]).filter((char) => role.contains(char));
 
@@ -102,6 +114,98 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
               });
             };
 
+            // ── Títulos que se escriben solos ──────────────────────────────────────────────
+            // Una capa (.hero__role-cycle) en el sitio exacto de "Product Designer" donde se borra y
+            // se escribe cada título; el cursor la sigue. Al terminar vuelve el título original.
+            const roleText = role.textContent ?? "";
+            let cycleTl: gsap.core.Timeline | null = null;
+            let blink: gsap.core.Tween | null = null;
+            let cycleDone = false;
+
+            // Cursor tras la última letra escrita (o en el centro de la línea si no hay ninguna).
+            const caretAfterText = () => {
+              const chars = cycle.querySelectorAll<HTMLElement>(".hero__role-cycle-char");
+              let rect: DOMRect;
+              if (chars.length) {
+                rect = chars[chars.length - 1].getBoundingClientRect();
+              } else {
+                const box = cycle.getBoundingClientRect();
+                const lineHeight = parseFloat(getComputedStyle(cycle).lineHeight);
+                rect = new DOMRect(box.left + box.width / 2, box.top, 0, lineHeight);
+              }
+              const box = relative(rect);
+              gsap.set(caret, { x: box.left + box.width + 4, y: box.top + box.height * 0.12, height: box.height * 0.76 });
+            };
+            // Cada letra en su propia cajita (inline-block), igual que SplitText en el título original:
+            // así el espaciado entre letras es idéntico y no hay salto al pasar de una capa a otra.
+            const write = (text: string) => {
+              cycle.replaceChildren(
+                ...text.split(" ").flatMap((word, i) => {
+                  const box = document.createElement("span");
+                  box.className = "hero__role-cycle-word";
+                  [...word].forEach((letter) => {
+                    const char = document.createElement("span");
+                    char.className = "hero__role-cycle-char";
+                    char.textContent = letter;
+                    box.append(char);
+                  });
+                  return i === 0 ? [box] : [document.createTextNode(" "), box];
+                }),
+              );
+              caretAfterText();
+            };
+            const showRole = () => {
+              gsap.set(role, { autoAlpha: 1 });
+              gsap.set(cycle, { autoAlpha: 0 });
+            };
+
+            const startCycle = () => {
+              if (cycleTl || cycleDone || !cycleWords.length) return;
+              const box = relative(role.getBoundingClientRect());
+              gsap.set(cycle, { x: box.left, y: box.top, width: box.width, autoAlpha: 1 });
+              write(roleText);
+              // Corrección de subpíxeles: la primera letra de la capa, exactamente sobre la del original.
+              const drift = roleChars[0].getBoundingClientRect().left - cycle.querySelector(".hero__role-cycle-char")!.getBoundingClientRect().left;
+              gsap.set(cycle, { x: box.left + drift });
+              caretAfterText();
+              gsap.set(role, { autoAlpha: 0 });
+              gsap.set(caret, { opacity: 1 });
+              blink = gsap.to(caret, { opacity: 0, duration: 0.5, repeat: -1, yoyo: true, ease: "steps(1)" });
+
+              // Borrar el título anterior → pausa → escribir el siguiente → pausa. El último es el original.
+              const letters = { n: roleText.length };
+              cycleTl = gsap.timeline({ delay: CYCLE.delay, onComplete: finishCycle });
+              let previous = roleText;
+              [...cycleWords, roleText].forEach((word) => {
+                const from = previous;
+                cycleTl!
+                  .to(letters, { n: 0, duration: from.length * CYCLE.erase, ease: "none", onUpdate: () => write(from.slice(0, Math.round(letters.n))) })
+                  .to(letters, { n: word.length, duration: word.length * CYCLE.type, ease: "none", onUpdate: () => write(word.slice(0, Math.round(letters.n))) }, `+=${CYCLE.gap}`)
+                  .to({}, { duration: CYCLE.hold });
+                previous = word;
+              });
+            };
+
+            const finishCycle = () => {
+              blink?.kill();
+              gsap.to(caret, { opacity: 0, duration: 0.3 });
+              showRole();
+              cycleTl = null;
+              cycleDone = true;
+            };
+
+            // Al volver a subir (antes del final del relleno): se cancela y se podrá repetir.
+            stopCycle = (progress) => {
+              if (!cycleTl && !cycleDone) return;
+              cycleTl?.kill();
+              blink?.kill();
+              cycleTl = null;
+              cycleDone = false;
+              showRole();
+              if (progress !== undefined) gsap.set(caret, { opacity: progress >= 0.45 && progress < 0.9 ? 1 : 0 });
+              renderTyping();
+            };
+
             gsap.set(roleChars, { color: primaryClear }); // solo contorno (CSS: text-stroke)
             gsap.set(subtitle, { autoAlpha: 0, y: 24 });
             gsap.set(frame, { drawSVG: "0%" });
@@ -111,8 +215,14 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
 
             const tl = gsap.timeline({
               defaults: { ease: "none" },
-              // En cada fotograma (también mientras el scrub suaviza), la caja sigue a la muñeca.
-              onUpdate: syncSelection,
+              // En cada fotograma (también mientras el scrub suaviza), la caja sigue a la muñeca,
+              // y al terminar el relleno empiezan los títulos que se escriben solos.
+              onUpdate: () => {
+                syncSelection();
+                const progress = tl.progress();
+                if (progress >= 0.95) startCycle();
+                else if (progress < 0.9) stopCycle(progress);
+              },
               scrollTrigger: {
                 trigger: hero,
                 start: "top top",
@@ -157,7 +267,10 @@ export function useHeroScroll(scope: RefObject<HTMLElement | null>) {
         hero.classList.add("is-ready");
         ScrollTrigger.refresh();
 
-        return () => split.revert();
+        return () => {
+          stopCycle();
+          split.revert();
+        };
       });
 
       // Sin animaciones (reduced-motion): la escena 2 tal cual.

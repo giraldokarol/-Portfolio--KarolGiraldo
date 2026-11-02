@@ -139,7 +139,8 @@
 
 // Caja de selección estilo Figma alrededor de la muñeca (la posiciona el JS).
 .hero__selection,
-.hero__caret {
+.hero__caret,
+.hero__role-cycle {
   display: none;
 
   .has-motion & {
@@ -317,4 +318,26 @@
   100% {
     opacity: 1;
   }
+}
+
+// Títulos que se escriben solos encima de "Product Designer" (components/hero/useHeroScroll.ts):
+// misma tipografía que .hero__role; el JS le da la posición y el ancho exactos del título.
+.hero__role-cycle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  font-size: type-size(hero-role);
+  font-weight: weight(extrabold);
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+// Palabras y letras en cajitas, como las que crea SplitText en el título original (mismo espaciado).
+.hero__role-cycle-word,
+.hero__role-cycle-char {
+  display: inline-block;
 }

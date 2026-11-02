@@ -274,3 +274,10 @@ gradiente (T5) → avatar (T6) → timeline (T7–T8) → móvil/reduced-motion 
 - **P7.** Sí: guardar el avatar con trazos en Figma como componente nuevo, sin tocar el original.
 - **P8.** Sí al cursor de texto (barra vertical que parpadea) al escribir el título, para que se vea real.
 - Sin cursor de ratón personalizado: el gradiente y la muñeca siguen al puntero normal.
+
+## Títulos que se escriben solos (añadido tras la validación)
+- Tras el relleno de "Product Designer" (progreso ≥ 0,95), con tiempo y no con scroll: se borra y se escriben
+  "Creative Developer", "Product Prototyper", "UI Architect" y vuelve "Product Designer" (~10 s, una vez).
+- Capa decorativa `.hero__role-cycle` (aria-hidden) sobre el título, letras en cajitas como SplitText (0 px de
+  diferencia con el original). El h1 sigue diciendo "Product Designer". Textos: `hero.roles`.
+- Si se vuelve a subir (progreso < 0,9) se cancela y se repetirá. Sin reduced-motion no existe.

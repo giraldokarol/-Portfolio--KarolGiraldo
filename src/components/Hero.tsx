@@ -60,6 +60,13 @@ export default function Hero() {
           <span className="hero__selection-size" />
         </div>
         <span className="hero__caret" aria-hidden="true" />
+        {/* Otros títulos que se escriben solos tras el relleno de "Product Designer" (decorativo:
+            el h1 sigue diciendo "Product Designer" para lectores de pantalla y buscadores). */}
+        <span
+          className="hero__role-cycle"
+          aria-hidden="true"
+          data-words={JSON.stringify(t("hero.roles", { returnObjects: true }))}
+        />
 
         <div className="hero__scroll">
           <a href="#projects" aria-label={t("a11y.scrollToProjects")}>
