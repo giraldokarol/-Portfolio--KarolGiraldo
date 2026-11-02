@@ -149,7 +149,7 @@
 // un reflejo diagonal de luz, bordes de luz dentro y fuera y una sombra amplia y suave.
 // El vídeo va en la pantalla interior (.work__viewport).
 .work__frame {
-  --bezel: #{rem(8)};
+  --bezel: #{rem(5)};
 
   position: relative;
   display: block; // el marco visible es un enlace (<a>)
@@ -171,7 +171,7 @@
     0 rem(2) rem(12) color-mix(in srgb, var(--color-ink) 7%, transparent);
 
   @include mq(lg) {
-    --bezel: #{rem(12)};
+    --bezel: #{rem(7)};
   }
 }
 
