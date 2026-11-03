@@ -1,0 +1,304 @@
+@use "../abstracts" as *;
+
+// HERO DE UN CASO DE ESTUDIO (components/case/CaseHero.tsx).
+// Al entrar se ven el título, la ficha del proyecto y la parte de arriba del vídeo, cortado por el borde
+// inferior de la pantalla en cualquier tamaño: la cabecera ocupa "alto de pantalla − ficha − trozo visible del vídeo".
+.case-study {
+  overflow-x: clip; // manchas y franja salen por los lados: sin scroll horizontal
+}
+
+.case-hero {
+  // Ancho de la ventana del vídeo: todo el contenedor en móvil, casi la mitad de la pantalla en escritorio.
+  --frame-w: calc(100vw - #{rem($gutter * 2)});
+  --toolbar-h: #{rem(20)};
+  // Alto de la ventana = barra + vídeo (proporción real del vídeo: 1716 × 1112).
+  --frame-h: calc(var(--frame-w) * 1112 / 1716 + var(--toolbar-h));
+  // Trozo de la ventana que se ve al entrar (más en móvil, donde el vídeo es pequeño); el resto aparece con el scroll.
+  --peek: calc(var(--frame-h) * 0.85);
+  --stage-gap: #{rem(40)};
+  // Alto de la ficha (3 filas) + su separación con el vídeo, cuando va encima de él (pantallas < xl).
+  --details-space: #{rem(112)};
+
+  position: relative;
+  isolation: isolate;
+
+  @include mq(lg) {
+    --frame-w: min(48vw, #{rem(900)});
+    --peek: calc(var(--frame-h) * 0.72);
+    --toolbar-h: #{rem(30)};
+    --stage-gap: #{rem(56)};
+    --details-space: #{rem(120)};
+  }
+
+  // A partir de xl la ficha va a la derecha del vídeo: no ocupa alto.
+  @include mq(xl) {
+    --details-space: 0px;
+  }
+}
+
+// ─── Fondo: manchas de color (components/_blobs.scss) ────────────────────────────────
+// Ocupan la primera pantalla: amarilla tras el título, azul bajo él y una de cada color en los lados.
+.case-hero__backdrop {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: 100svh;
+  pointer-events: none;
+}
+
+.case-hero__blob--yellow {
+  top: 30%;
+  left: 58%;
+}
+
+.case-hero__blob--blue {
+  top: 72%;
+  left: 40%;
+  --blob-opacity: 0.12;
+}
+
+.case-hero__blob--yellow-side {
+  top: 58%;
+  left: 96%;
+}
+
+.case-hero__blob--blue-side {
+  top: 62%;
+  left: 4%;
+}
+
+// ─── Título y entradilla ─────────────────────────────────────────────────────────────
+// Escritorio: el texto se apoya abajo, cerca del vídeo; el espacio que sobre en pantallas altas queda arriba.
+// Móvil: centrado en el hueco (si no, quedaría un vacío grande bajo el menú).
+.case-hero__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100svh - var(--peek) - var(--details-space) - var(--stage-gap));
+  padding-top: calc(var(--header-height) + #{rem(16)});
+
+  @include mq(lg) {
+    align-items: flex-end;
+  }
+}
+
+// Tan ancho como el título: la entradilla se alinea con él, metida hacia dentro (como en el diseño).
+.case-hero__heading {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.case-hero__title {
+  font-size: type-size(case-title);
+  font-weight: weight(extrabold);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: balance;
+
+  // El salto de línea del diseño solo en escritorio; en pantallas estrechas el título se reparte solo.
+  br {
+    display: none;
+
+    @include mq(lg) {
+      display: initial;
+    }
+  }
+}
+
+.case-hero__accent {
+  color: var(--color-primary);
+}
+
+.case-hero__lead {
+  max-width: 24em;
+  margin-top: rem(24);
+  font-size: type-size(hero-lead);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+
+  @include mq(lg) {
+    margin-top: rem(40);
+    margin-left: 22.5%;
+  }
+}
+
+// ─── Vídeo y ficha del proyecto ──────────────────────────────────────────────────────
+// Pantallas anchas: ventana centrada y ficha en la columna derecha. Más estrechas: ficha encima del vídeo.
+// En ambos casos la ficha se ve entera al entrar.
+.case-hero__stage {
+  position: relative;
+  display: grid;
+  gap: rem(32);
+  margin-top: var(--stage-gap);
+  padding-bottom: rem(80);
+
+  // Franja clara de lado a lado tras la parte baja del vídeo. Empieza siempre por debajo del borde de la
+  // pantalla: no se ve al entrar, aparece con el scroll.
+  &::before {
+    content: "";
+    position: absolute;
+    top: max(calc(var(--frame-h) * 0.55), calc(var(--details-space) + var(--peek) + #{rem(24)}));
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: var(--color-band);
+  }
+
+  @include mq(lg) {
+    justify-content: center;
+    gap: rem(40);
+    padding-bottom: rem(120);
+  }
+
+  // La ficha cabe a la derecha del vídeo solo en pantallas anchas; antes va debajo.
+  @include mq(xl) {
+    grid-template-columns: 1fr var(--frame-w) 1fr;
+  }
+}
+
+// Marco exterior: ocupa el sitio de la ventana en la rejilla y crece con el scroll (useCaseHeroScroll).
+.case-hero__frame {
+  transform-origin: 50% 0; // al crecer, el borde de arriba no se mueve
+
+  @include mq(lg) {
+    width: var(--frame-w);
+  }
+
+  @include mq(xl) {
+    grid-column: 2;
+  }
+}
+
+// Ventana de navegador: barra con los tres botones + vídeo.
+.case-hero__window {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: rem(8);
+  background: var(--color-background);
+  box-shadow:
+    0 rem(40) rem(80) rem(-40) color-mix(in srgb, var(--color-primary) 22%, transparent),
+    0 rem(2) rem(10) color-mix(in srgb, var(--color-ink) 5%, transparent);
+
+  @include mq(lg) {
+    border-radius: rem(12);
+  }
+}
+
+.case-hero__toolbar {
+  display: flex;
+  align-items: center;
+  gap: rem(5);
+  height: var(--toolbar-h);
+  padding-inline: rem(10);
+
+  span {
+    width: rem(7);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-window-close);
+
+    &:nth-child(2) {
+      background: var(--color-window-minimize);
+    }
+
+    &:nth-child(3) {
+      background: var(--color-window-zoom);
+    }
+  }
+
+  @include mq(lg) {
+    gap: rem(7);
+    padding-inline: rem(14);
+
+    span {
+      width: rem(10);
+    }
+  }
+}
+
+.case-hero__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1716 / 1112;
+  object-fit: cover; // nunca bandas: el vídeo llena siempre la ventana
+  background: var(--color-surface);
+}
+
+// Ficha: "Product •• Flexis Interface".
+.case-hero__details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: rem(10 0);
+  order: -1; // encima del vídeo
+  font-size: rem(14);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+
+  @include mq(lg) {
+    justify-self: center;
+  }
+
+  // A la derecha del vídeo, lo más abajo posible sin cortarse al entrar: la distancia la calcula
+  // case/useCaseHeroDetails.ts según el alto de la pantalla.
+  @include mq(xl) {
+    order: 0;
+    align-self: start;
+    justify-self: start;
+    margin-top: var(--details-offset, #{rem(40)});
+  }
+}
+
+// Cada fila comparte las columnas de la ficha: las etiquetas y los valores quedan alineados.
+.case-hero__detail {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: center;
+
+  dt {
+    color: var(--color-gray);
+  }
+
+  dd {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    white-space: nowrap;
+    color: var(--color-foreground);
+
+    // Dos puntos de separación (decorativos).
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      width: rem(10);
+      height: rem(4);
+      margin-left: rem(12);
+      background: radial-gradient(circle, var(--color-text-faded) 1.5px, transparent 2px) repeat-x;
+      background-size: rem(5) rem(4);
+    }
+  }
+}
+
+// ─── Entrada (case/useCaseHeroReveal.ts) ─────────────────────────────────────────────
+// Ocultos hasta que la animación los coloca en su punto de partida: así no aparecen de golpe antes de
+// animarse. Si el JavaScript fallara, se muestran solos a los 2 s.
+@include motion-safe {
+  .case-hero:not(.is-ready) {
+    .case-hero__heading,
+    .case-hero__window,
+    .case-hero__details {
+      visibility: hidden;
+      animation: case-hero-fallback 0s 2s forwards;
+    }
+  }
+}
+
+@keyframes case-hero-fallback {
+  to {
+    visibility: visible;
+  }
+}

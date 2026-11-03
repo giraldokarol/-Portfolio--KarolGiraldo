@@ -172,5 +172,31 @@
         ]
       }
     ]
+  },
+  "cases": {
+    "interfaceWebApp": {
+      "seoTitle": "Interface Web App — Flexis case study · Karol Giraldo",
+      "seoDescription": "How I designed Flexis Interface, a web platform that turns fleet data into clear daily decisions for fleet managers.",
+      "hero": {
+        "title": "From fleet data to <br/>clear <accent>daily decisions</accent>",
+        "lead": "A new platform built from scratch to help fleet teams make sense of their data and know what to do next.",
+        "videoLabel": "Screen recording of the Flexis Interface dashboard: fleet availability, mileage consumption, alerts and a live map of vehicles.",
+        "detailsLabel": "Project details",
+        "details": [
+          {
+            "label": "Product",
+            "value": "Flexis Interface"
+          },
+          {
+            "label": "Role",
+            "value": "Product Designer (UX/UI)"
+          },
+          {
+            "label": "Duration",
+            "value": "1 Year"
+          }
+        ]
+      }
+    }
   }
 }

@@ -7,4 +7,6 @@ export default [
   route(":lang", "routes/home.tsx"),
   // Mentions légales & confidentialité.
   route(":lang/legal", "routes/legal.tsx"),
+  // Casos de estudio: un archivo por proyecto.
+  route(":lang/work/interface-web-app", "routes/work/interface-web-app.tsx"),
 ] satisfies RouteConfig;
