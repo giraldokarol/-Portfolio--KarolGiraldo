@@ -29,10 +29,10 @@ export const CONTACT_SECTION = "contact";
 
 // Proyectos de "Selected work", en orden. Los nombres están en locales/*/common.json → work.items.
 // frame: forma del marco central (teléfono o web).
-// slug: futura página del caso de estudio (/:lang/work/:slug). PENDIENTE: aún no existen esas páginas.
+// slug: página del caso de estudio (/:lang/work/:slug). PENDIENTE: solo existe la de interface-web-app.
 export const WORK_PROJECTS = [
   { id: "driverApp", frame: "mobile", slug: "driver-app" },
-  { id: "interface", frame: "web", slug: "interface" },
+  { id: "interface", frame: "web", slug: "interface-web-app" },
   { id: "cmcic", frame: "web", slug: "credit-mutuel-cic" },
   { id: "tulindero", frame: "web", slug: "tulindero" },
 ] as const;
