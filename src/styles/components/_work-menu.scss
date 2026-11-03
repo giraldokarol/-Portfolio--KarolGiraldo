@@ -233,6 +233,11 @@ $menu-ease: cubic-bezier(0.22, 1, 0.36, 1); // frenado largo y suave
     @include item-active;
   }
 
+  // Proyecto que se está viendo (página de proyecto): marcado siempre.
+  &[aria-current] {
+    @include item-active;
+  }
+
   &:focus-visible {
     @include item-active;
   }

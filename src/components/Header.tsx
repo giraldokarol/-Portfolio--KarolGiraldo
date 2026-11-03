@@ -1,21 +1,29 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
 import Logo from "./Logo";
 import WorkMenu from "./WorkMenu";
 import MailIcon from "@/assets/icons/mail.svg";
-import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, type NavSection } from "@/config/site";
+import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, WORK_PROJECTS, type NavSection } from "@/config/site";
 
 // Menú principal (Figma: "Principal Menu"). Estilos: styles/components/_header.scss
 export default function Header() {
   const { t } = useTranslation();
   const { lang } = useParams();
+  const { pathname } = useLocation();
+  // En la página de un proyecto (/:lang/work/:slug): su slug. Marca "Selected work" y el proyecto en su menú.
+  const currentProject = WORK_PROJECTS.find(({ slug }) => pathname.endsWith(`/work/${slug}`))?.slug;
   // Sección en el centro de la pantalla: una del menú, el contacto o null (hero).
   const [currentSection, setCurrentSection] = useState<NavSection | typeof CONTACT_SECTION | null>(null);
-  // Enlace del menú marcado: solo si la sección actual tiene enlace (el contacto no lo tiene).
-  const activeSection = NAV_LINKS.some(({ section }) => section === currentSection) ? (currentSection as NavSection) : null;
+  // Enlace del menú marcado: "Selected work" en un proyecto; si no, la sección actual si tiene enlace
+  // (el contacto no lo tiene).
+  const activeSection = currentProject
+    ? "projects"
+    : NAV_LINKS.some(({ section }) => section === currentSection)
+      ? (currentSection as NavSection)
+      : null;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -75,6 +83,7 @@ export default function Header() {
                   href={`/${lang}#${section}`}
                   label={t(`nav.${label}`)}
                   isCurrent={activeSection === section}
+                  currentProject={currentProject}
                 />
               ) : (
                 <li key={section}>

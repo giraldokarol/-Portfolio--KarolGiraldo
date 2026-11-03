@@ -9,13 +9,15 @@ type WorkMenuProps = {
   href: string;
   label: string;
   isCurrent: boolean;
+  // Slug del proyecto que se está viendo (página de proyecto): queda marcado en la lista.
+  currentProject?: string;
 };
 
 // Enlace "Selected work" del menú + panel flotante (cristal) con los 4 proyectos.
 // Se abre con el ratón encima o al llegar con el teclado (Tab); Escape lo cierra.
 // En pantallas táctiles no se abre: tocar el enlace lleva a la sección, como siempre.
 // Apertura y animaciones en CSS: styles/components/_work-menu.scss
-export default function WorkMenu({ href, label, isCurrent }: WorkMenuProps) {
+export default function WorkMenu({ href, label, isCurrent, currentProject }: WorkMenuProps) {
   const { t } = useTranslation();
   const { lang } = useParams();
   const trigger = useRef<HTMLAnchorElement>(null);
@@ -49,7 +51,11 @@ export default function WorkMenu({ href, label, isCurrent }: WorkMenuProps) {
         <ul className="work-menu__list" aria-label={t("work.listLabel")}>
           {WORK_PROJECTS.map(({ id, slug, frame }, index) => (
             <li key={id} className="work-menu__item" style={{ "--i": index } as CSSProperties}>
-              <a href={`/${lang}/work/${slug}`} className="work-menu__link">
+              <a
+                href={`/${lang}/work/${slug}`}
+                className="work-menu__link"
+                aria-current={slug === currentProject ? "page" : undefined}
+              >
                 <span className={`work-menu__thumb work-menu__thumb--${frame}`} aria-hidden="true">
                   {loadThumbs && <img src={`/videos/work/${slug}.jpg`} alt="" />}
                 </span>
