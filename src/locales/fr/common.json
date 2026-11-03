@@ -196,6 +196,36 @@
             "value": "1 an"
           }
         ]
+      },
+      "intro": {
+        "backgroundWord": "Problème",
+        "problem": {
+          "number": "(01)",
+          "title": "Le problème",
+          "lead": "Les équipes de flotte n’ont jamais eu autant de données, mais aucun moyen clair d’agir."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "La solution",
+          "lead": "Une nouvelle plateforme qui transforme les données de flotte en priorités et en actions claires."
+        },
+        "cards": [
+          {
+            "title": "Vue d’ensemble de la flotte",
+            "text": "Ce qui demande votre attention aujourd’hui, en un coup d’œil.",
+            "alt": "Tableau de bord d’accueil de Flexis Interface : disponibilité de la flotte, consommation kilométrique, alertes à traiter et carte des véhicules en circulation."
+          },
+          {
+            "title": "Détail du véhicule",
+            "text": "Le contexte derrière chaque problème.",
+            "alt": "Écran de détail d’un véhicule : check-in et check-out, kilométrage mensuel, consommation annuelle, niveau de batterie et position du véhicule."
+          },
+          {
+            "title": "Workflows actionnables",
+            "text": "De l’alerte à l’action en quelques étapes.",
+            "alt": "Centre de notifications avec la liste des alertes de la flotte et un panneau ouvert sur une alerte de pression des pneus basse, avec l’action recommandée."
+          }
+        ]
       }
     }
   }

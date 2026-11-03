@@ -1,0 +1,233 @@
+@use "../abstracts" as *;
+
+// "THE PROBLEM / THE SOLUTION" DE UN CASO DE ESTUDIO (components/case/CaseIntro.tsx).
+// Sigue la franja clara del Hero; termina a un tercio de las tarjetas y debajo el fondo es blanco.
+.case-intro {
+  position: relative;
+  isolation: isolate;
+  padding-block: rem(24) rem(96);
+  background: var(--color-band);
+
+  @include mq(lg) {
+    padding-block: rem(40) rem(140);
+  }
+}
+
+.case-intro__inner {
+  max-width: rem(1240);
+}
+
+// ─── The problem / The solution ──────────────────────────────────────────────────────
+// Escritorio: "problem" a la izquierda y "solution" a la derecha, algo más abajo (en escalera).
+.case-intro__blocks {
+  display: grid;
+  gap: rem(56);
+
+  @include mq(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: rem(40);
+  }
+}
+
+.case-intro__block {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.case-intro__block--solution {
+  @include mq(lg) {
+    justify-self: end;
+    margin-top: rem(56);
+  }
+}
+
+// "(01)": encima del título, un poco hacia fuera.
+.case-intro__number {
+  display: block;
+  margin-bottom: rem(4);
+  font-size: rem(14);
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-left: rem(-14);
+  }
+}
+
+.case-intro__title {
+  font-size: type-size(case-section);
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+.case-intro__lead {
+  max-width: 20em;
+  margin-top: rem(20);
+  font-size: type-size(small);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+
+  @include mq(lg) {
+    margin-top: rem(32);
+    margin-left: rem(70); // metida hacia dentro, como en el diseño
+  }
+}
+
+// La de "solution", alineada a la derecha bajo su título.
+.case-intro__block--solution .case-intro__lead {
+  @include mq(lg) {
+    margin-left: auto;
+    margin-right: rem(40);
+    text-align: right;
+  }
+}
+
+// ─── Tarjetas ────────────────────────────────────────────────────────────────────────
+// Bloque de las tarjetas: aquí termina la franja (a un tercio de su alto, --floor) y sobre esa línea se
+// apoya la palabra de fondo, como si fuera el suelo.
+.case-intro__showcase {
+  // Móvil (tarjetas apiladas): justo bajo el borde de arriba de la primera tarjeta; la palabra asoma en
+  // el hueco entre los textos y las tarjetas.
+  --floor: #{rem(24)};
+
+  position: relative;
+  margin-top: rem(96);
+
+  @include mq(md) {
+    --floor: 33%;
+    margin-top: rem(48);
+  }
+
+  // Fondo blanco desde el suelo hacia abajo (la franja termina ahí).
+  &::before {
+    content: "";
+    position: absolute;
+    top: var(--floor);
+    bottom: rem(-200);
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: var(--color-background);
+  }
+}
+
+// Círculo con el degradado de malla en movimiento (MeshGradient, el mismo de "Behind the work") que asoma
+// abajo a la izquierda, tras la primera tarjeta y encima del fondo blanco. Decorativo.
+.case-intro__orb {
+  position: absolute;
+  bottom: rem(-64);
+  left: rem(-56);
+  z-index: -1;
+  width: max(14vw, #{rem(160)});
+  aspect-ratio: 1;
+  pointer-events: none;
+
+  // Sin WebGL: un círculo suave estático con los mismos colores.
+  .mesh-gradient:not(.is-webgl) {
+    border-radius: 50%;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-primary) 14%, transparent) 55%,
+      color-mix(in srgb, var(--color-accent) 24%, transparent)
+    );
+  }
+}
+
+// Palabra gigante de fondo ("Problem"), clara sobre la franja y apoyada en su borde inferior.
+// Ocupa todo el ancho de la pantalla (un poco más: case/useFitWord.ts ajusta su tamaño de letra).
+// Decorativa.
+.case-intro__bg-word {
+  position: absolute;
+  // La línea base de las letras justo en el borde de la franja (las letras no bajan de ella:
+  // se descuenta el hueco que la fuente deja bajo la línea base).
+  bottom: calc(100% - var(--floor) - 0.09em);
+  left: calc(50% - 54vw); // centrada en la pantalla: mide 108vw
+  z-index: -1;
+  font-size: 30vw; // tamaño aproximado hasta que se ajusta
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--color-background) 50%, transparent);
+  pointer-events: none;
+}
+
+.case-intro__cards {
+  display: grid;
+  gap: rem(24);
+
+  @include mq(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include mq(lg) {
+    gap: rem(40);
+  }
+}
+
+// Hueco de cada tarjeta en la rejilla (lo mueve la animación de entrada).
+.case-intro__item {
+  display: flex;
+}
+
+// Cristal blanco: se intuyen la palabra de fondo y el círculo de color.
+.case-intro__card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: rem(28 24 20);
+  border: 1px solid color-mix(in srgb, var(--color-background) 80%, transparent);
+  border-radius: rem(16);
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  backdrop-filter: blur(rem(16));
+  box-shadow: 0 rem(20) rem(50) rem(-30) color-mix(in srgb, var(--color-ink) 12%, transparent);
+
+  @include mq(lg) {
+    padding: rem(32 32 24);
+  }
+
+  @include motion-safe {
+    transition:
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s ease;
+  }
+
+  // Con ratón: la tarjeta se eleva y la captura se acerca un poco.
+  @include hover {
+    transform: translateY(rem(-6));
+    box-shadow: 0 rem(30) rem(60) rem(-30) color-mix(in srgb, var(--color-primary) 22%, transparent);
+
+    .case-intro__card-image {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.case-intro__card-title {
+  font-size: rem(20);
+  font-weight: weight(bold);
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+}
+
+.case-intro__card-text {
+  margin-top: rem(4);
+  font-size: rem(14);
+  line-height: 1.4;
+  color: var(--color-gray);
+}
+
+// La captura ya trae su ventana de navegador y su sombra (fondo transparente).
+.case-intro__card-image {
+  width: 100%;
+  height: auto;
+  margin-top: rem(20);
+
+  @include motion-safe {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}

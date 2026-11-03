@@ -196,6 +196,36 @@
             "value": "1 Year"
           }
         ]
+      },
+      "intro": {
+        "backgroundWord": "Problem",
+        "problem": {
+          "number": "(01)",
+          "title": "The problem",
+          "lead": "Fleet teams have more data than ever, but no clear way to act on it."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "The solution",
+          "lead": "A new platform that turns fleet data into clear priorities and actions."
+        },
+        "cards": [
+          {
+            "title": "Fleet Overview",
+            "text": "What needs attention today, at a glance.",
+            "alt": "Flexis Interface home dashboard: fleet availability, mileage consumption, alerts requiring attention and a map of vehicles on route."
+          },
+          {
+            "title": "Vehicle detail",
+            "text": "The context behind every issue.",
+            "alt": "Vehicle detail screen: check-in and check-out, monthly mileage, annual consumption, battery level and vehicle location."
+          },
+          {
+            "title": "Actionable workflows",
+            "text": "From alert to action in a few steps.",
+            "alt": "Notification Center with the list of fleet alerts and an open panel for a low tire pressure alert, with the recommended action."
+          }
+        ]
       }
     }
   }

@@ -196,6 +196,36 @@
             "value": "1 año"
           }
         ]
+      },
+      "intro": {
+        "backgroundWord": "Problema",
+        "problem": {
+          "number": "(01)",
+          "title": "El problema",
+          "lead": "Los equipos de flota tienen más datos que nunca, pero ninguna forma clara de actuar con ellos."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "La solución",
+          "lead": "Una nueva plataforma que convierte los datos de flota en prioridades y acciones claras."
+        },
+        "cards": [
+          {
+            "title": "Vista general de la flota",
+            "text": "Lo que necesita atención hoy, de un vistazo.",
+            "alt": "Panel de inicio de Flexis Interface: disponibilidad de la flota, consumo de kilometraje, alertas que requieren atención y mapa de vehículos en ruta."
+          },
+          {
+            "title": "Detalle del vehículo",
+            "text": "El contexto detrás de cada incidencia.",
+            "alt": "Pantalla de detalle de un vehículo: check-in y check-out, kilometraje mensual, consumo anual, nivel de batería y ubicación del vehículo."
+          },
+          {
+            "title": "Flujos accionables",
+            "text": "De la alerta a la acción en pocos pasos.",
+            "alt": "Centro de notificaciones con la lista de alertas de la flota y un panel abierto sobre una alerta de presión baja de neumáticos, con la acción recomendada."
+          }
+        ]
       }
     }
   }
