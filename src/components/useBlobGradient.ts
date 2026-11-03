@@ -5,7 +5,16 @@ import { gsap, useGSAP, MEDIA } from "@/lib/gsap";
 // Cada mancha del gradiente (styles/components/_blobs.scss → .blob--*).
 // range: cuánto se desplaza como fracción del ancho/alto de la pantalla.
 // lag: segundos que tarda en alcanzar al puntero (distinto = efecto líquido).
-const BLOBS = [
+// drift: deriva autónoma en táctil (fracción de la pantalla y segundos por vaivén).
+export type BlobConfig = {
+  selector: string;
+  range: number;
+  lag: number;
+  drift: { x: number; y: number; duration: number };
+};
+
+// Las del Hero de la home y la página legal; otras páginas pueden pasar las suyas.
+const DEFAULT_BLOBS: BlobConfig[] = [
   { selector: ".blob--yellow", range: 0.34, lag: 0.9, drift: { x: 0.06, y: 0.05, duration: 9 } },
   { selector: ".blob--blue", range: 0.24, lag: 1.3, drift: { x: -0.05, y: -0.06, duration: 11 } },
 ];
@@ -20,21 +29,21 @@ function createBlob(el: HTMLElement) {
   return { position, render };
 }
 
-// Manchas de color (amarilla y azul) que se mueven, como en el Hero. Se usan en el Hero y en la página legal.
+// Manchas de color que se mueven, como en el Hero. Se usan en el Hero, la página legal y los casos de estudio.
 // - con ratón: siguen al puntero con retraso suave (gsap.quickTo);
 // - en táctil: deriva lenta y autónoma;
 // - con reduced-motion: quietas (ninguna condición de MEDIA coincide).
 // Solo trabajan mientras su contenedor (scope) está en pantalla.
-export function useBlobGradient(scope: RefObject<HTMLElement | null>) {
+export function useBlobGradient(scope: RefObject<HTMLElement | null>, configs: BlobConfig[] = DEFAULT_BLOBS) {
   useGSAP(
     () => {
       const container = scope.current;
       if (!container) return;
 
-      const blobs = BLOBS.map((config) => ({
-        config,
-        ...createBlob(container.querySelector<HTMLElement>(config.selector)!),
-      }));
+      const blobs = configs.flatMap((config) => {
+        const el = container.querySelector<HTMLElement>(config.selector);
+        return el ? [{ config, ...createBlob(el) }] : [];
+      });
 
       // Al salir de una condición (p. ej. se activa reduced-motion) las manchas vuelven al centro.
       const reset = () =>
