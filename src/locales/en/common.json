@@ -231,6 +231,49 @@
         "label": "(Context)",
         "title": "Electric fleets bring more data, and more to manage.",
         "lead": "On top of location, managers now track charging, battery, maintenance, availability and costs. <br/><strong>Flexis</strong> set out to build a new product for this shift."
+      },
+      "research": {
+        "label": "(03)",
+        "title": "Research",
+        "lead": "Many tools track the fleet, none help decide what to do next.",
+        "text": "Before designing anything, I interviewed fleet business experts and benchmarked tools like Geotab and Samsara. Three gaps stood out.",
+        "conclusion": "As a result, teams jump between tools and end up sorting it out in Excel.",
+        "gapsLabel": "The three gaps",
+        "gaps": [
+          {
+            "number": "01",
+            "text": "<strong>Data without priorities</strong>: everything is tracked and reported, but nothing shows what matters most.",
+            "alt": "Fleet dashboard widgets side by side: a driving smoothness score chart, 10% of vehicles charging and 1 of 10 charge points in use."
+          },
+          {
+            "number": "02",
+            "text": "<strong>Scattered across tools</strong>: vehicle, driver and charging information live in separate services.",
+            "alt": "An electric van surrounded by separate cards: a wallbox at the Lyon hub with two available charge points, and 3 of 10 charge points available."
+          },
+          {
+            "number": "03",
+            "text": "<strong>One user only</strong>: most products serve the Fleet Manager alone.",
+            "alt": "Role picker with Fleet Manager selected; the other roles, Dispatcher, Fleet Advisor and Financial Manager, fade into the background."
+          }
+        ],
+        "roles": {
+          "fleetManager": {
+            "title": "Fleet Manager",
+            "text": "Manages fleet operations"
+          },
+          "dispatcher": {
+            "title": "Dispatcher",
+            "text": "Manages routes and schedules"
+          },
+          "fleetAdvisor": {
+            "title": "Fleet Advisor",
+            "text": "Provides advice and support on fleet strategy"
+          },
+          "financialManager": {
+            "title": "Financial Manager",
+            "text": "Oversees financial planning for the fleet"
+          }
+        }
       }
     }
   }

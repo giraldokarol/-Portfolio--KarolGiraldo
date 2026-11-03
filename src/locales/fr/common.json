@@ -231,6 +231,49 @@
         "label": "(Contexte)",
         "title": "Les flottes électriques : plus de données, et plus à gérer.",
         "lead": "En plus de la localisation, les gestionnaires suivent désormais la recharge, la batterie, l’entretien, la disponibilité et les coûts. <br/><strong>Flexis</strong> a voulu créer un nouveau produit pour accompagner ce changement."
+      },
+      "research": {
+        "label": "(03)",
+        "title": "Recherche",
+        "lead": "Beaucoup d’outils suivent la flotte, aucun n’aide à décider quoi faire ensuite.",
+        "text": "Avant de concevoir quoi que ce soit, j’ai interrogé des experts métier de la gestion de flotte et analysé des outils comme Geotab et Samsara. Trois manques sont ressortis.",
+        "conclusion": "Résultat : les équipes jonglent entre les outils et finissent par tout trier dans Excel.",
+        "gapsLabel": "Les trois manques",
+        "gaps": [
+          {
+            "number": "01",
+            "text": "<strong>Des données sans priorités</strong> : tout est suivi et signalé, mais rien ne montre ce qui compte le plus.",
+            "alt": "Widgets d’un tableau de bord de flotte côte à côte : un graphique du score de conduite souple, 10 % des véhicules en charge et 1 borne sur 10 utilisée."
+          },
+          {
+            "number": "02",
+            "text": "<strong>Des informations dispersées</strong> : véhicules, conducteurs et recharge sont suivis dans des services séparés.",
+            "alt": "Un utilitaire électrique entouré de cartes séparées : une borne murale du site de Lyon avec deux points de charge disponibles, et 3 bornes sur 10 disponibles."
+          },
+          {
+            "number": "03",
+            "text": "<strong>Un seul utilisateur</strong> : la plupart des produits ne servent que le gestionnaire de flotte.",
+            "alt": "Sélecteur de rôle avec « Gestionnaire de flotte » choisi ; les autres rôles, répartiteur, conseiller flotte et responsable financier, s’effacent à l’arrière-plan."
+          }
+        ],
+        "roles": {
+          "fleetManager": {
+            "title": "Gestionnaire de flotte",
+            "text": "Gère les opérations de la flotte"
+          },
+          "dispatcher": {
+            "title": "Répartiteur",
+            "text": "Gère les tournées et les plannings"
+          },
+          "fleetAdvisor": {
+            "title": "Conseiller flotte",
+            "text": "Conseille et accompagne la stratégie de flotte"
+          },
+          "financialManager": {
+            "title": "Responsable financier",
+            "text": "Supervise la planification financière de la flotte"
+          }
+        }
       }
     }
   }

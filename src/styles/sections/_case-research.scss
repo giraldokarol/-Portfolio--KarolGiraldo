@@ -1,0 +1,254 @@
+@use "../abstracts" as *;
+
+// "RESEARCH" DE UN CASO DE ESTUDIO (components/case/CaseResearch.tsx).
+// Escritorio: el texto a la izquierda y los huecos a la derecha (su composición sale un poco por la derecha
+// de la rejilla, como en el diseño). Móvil: todo apilado.
+.case-research {
+  position: relative;
+  isolation: isolate;
+  padding-block: rem(16) rem(96);
+  overflow-x: clip; // las composiciones que salen por la derecha no crean scroll lateral
+
+  @include mq(lg) {
+    padding-block: 0 rem(140);
+  }
+}
+
+.case-research__inner {
+  display: grid;
+  gap: rem(72);
+  max-width: rem(1240);
+
+  @include mq(lg) {
+    grid-template-columns: 44% 56%;
+    gap: 0;
+  }
+}
+
+// ─── Texto de la izquierda ───────────────────────────────────────────────────────────
+.case-research__intro {
+  @include mq(lg) {
+    padding-top: rem(28); // un poco más abajo que el primer hueco, como en el diseño
+  }
+}
+
+// "(03)": encima del título, un poco hacia fuera (como los números de CaseIntro).
+.case-research__label {
+  display: block;
+  margin-bottom: rem(4);
+  font-size: rem(14);
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-left: rem(-14);
+  }
+}
+
+.case-research__title {
+  font-size: type-size(case-section);
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+.case-research__lead,
+.case-research__text,
+.case-research__conclusion {
+  max-width: 28em;
+  font-size: type-size(small);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+
+  @include mq(lg) {
+    margin-left: rem(22); // metidos hacia dentro respecto al título
+  }
+}
+
+.case-research__lead {
+  margin-top: rem(20);
+  color: var(--color-ink);
+}
+
+.case-research__text {
+  margin-top: rem(20);
+  color: var(--color-gray);
+}
+
+.case-research__conclusion {
+  margin-top: rem(24);
+  font-weight: weight(bold);
+  color: var(--color-gray);
+}
+
+// ─── Huecos ──────────────────────────────────────────────────────────────────────────
+.case-research__gaps {
+  display: grid;
+  gap: rem(80);
+
+  @include mq(lg) {
+    gap: rem(120);
+  }
+}
+
+// Número gigante y muy claro detrás de la frase; la frase, a su derecha (escritorio).
+.case-research__gap {
+  position: relative;
+  padding-top: calc(#{type-size(gap-number)} * 0.6); // la frase se apoya sobre la parte baja del número
+
+  @include mq(lg) {
+    padding-top: 0;
+  }
+}
+
+.case-research__gap-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: type-size(gap-number);
+  font-weight: weight(extrabold);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--color-primary) 8%, var(--color-background));
+  pointer-events: none;
+
+  @include mq(lg) {
+    top: -0.06em;
+    left: 16%;
+  }
+}
+
+.case-research__gap-text {
+  position: relative;
+  max-width: 28em;
+  font-size: type-size(small);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--color-gray);
+
+  strong {
+    font-weight: weight(bold);
+  }
+
+  @include mq(lg) {
+    margin-left: 37.5%;
+  }
+}
+
+// Caja de la composición: las piezas se colocan dentro en % (variables --x, --y, --w que pone el componente).
+.case-research__stage {
+  position: relative;
+  aspect-ratio: var(--ratio-sm);
+  margin-top: rem(20);
+
+  @include mq(lg) {
+    width: var(--stage-w);
+    margin-top: rem(12);
+    margin-left: var(--stage-x);
+    aspect-ratio: var(--ratio);
+  }
+}
+
+.case-research__piece {
+  position: absolute;
+  top: var(--y-sm);
+  left: var(--x-sm);
+  width: var(--w-sm);
+
+  @include mq(lg) {
+    top: var(--y);
+    left: var(--x);
+    width: var(--w);
+  }
+}
+
+img.case-research__piece {
+  height: auto;
+}
+
+// ─── Tarjetas del selector de rol (hueco 03) ─────────────────────────────────────────
+// Todo se mide en "cqi" (% del ancho de la tarjeta): la tarjeta entera crece o encoge como una imagen.
+.case-research__role {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  text-align: center;
+  color: var(--color-gray);
+}
+
+.case-research__role-radio {
+  position: absolute;
+  top: 7cqi;
+  left: 7cqi;
+  width: 7cqi;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-text-faded);
+  border-radius: 50%;
+}
+
+.case-research__role-icon {
+  width: 15cqi;
+  aspect-ratio: 1;
+  margin-bottom: 4cqi;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--color-text-faded);
+}
+
+.case-research__role-title {
+  padding-inline: 6cqi;
+  font-size: 7.9cqi;
+  font-weight: weight(bold);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.case-research__role-text {
+  margin-top: 1.5cqi;
+  padding-inline: 8cqi;
+  font-size: 5.8cqi;
+  line-height: 1.35;
+  color: var(--color-text-faded);
+}
+
+// Seleccionada: fondo azul noche, texto blanco y la opción marcada.
+.case-research__role--selected {
+  border-color: var(--color-navy);
+  background: var(--color-navy);
+  color: var(--color-on-primary);
+  box-shadow: 0 rem(24) rem(50) rem(-24) color-mix(in srgb, var(--color-navy) 45%, transparent);
+
+  .case-research__role-icon,
+  .case-research__role-text {
+    color: inherit;
+  }
+
+  .case-research__role-radio {
+    border: 0.9cqi solid currentcolor;
+    background: radial-gradient(circle, currentcolor 0 42%, transparent 46%);
+  }
+}
+
+// Las que la mayoría de productos olvidan: se borran hacia el fondo.
+.case-research__role--faded {
+  opacity: 0.7;
+}
+
+.case-research__role--ghost {
+  opacity: 0.35;
+}
+
+.case-research__role--faded,
+.case-research__role--ghost {
+  .case-research__role-radio {
+    visibility: hidden;
+  }
+}

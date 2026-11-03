@@ -231,6 +231,49 @@
         "label": "(Contexto)",
         "title": "Las flotas eléctricas traen más datos, y más que gestionar.",
         "lead": "Además de la ubicación, los gestores ahora siguen la carga, la batería, el mantenimiento, la disponibilidad y los costes. <br/><strong>Flexis</strong> se propuso crear un nuevo producto para este cambio."
+      },
+      "research": {
+        "label": "(03)",
+        "title": "Investigación",
+        "lead": "Muchas herramientas siguen la flota, ninguna ayuda a decidir qué hacer después.",
+        "text": "Antes de diseñar nada, entrevisté a expertos en gestión de flotas y analicé herramientas como Geotab y Samsara. Destacaron tres carencias.",
+        "conclusion": "Como resultado, los equipos saltan de una herramienta a otra y acaban resolviéndolo en Excel.",
+        "gapsLabel": "Las tres carencias",
+        "gaps": [
+          {
+            "number": "01",
+            "text": "<strong>Datos sin prioridades</strong>: todo se registra y se reporta, pero nada muestra lo que más importa.",
+            "alt": "Widgets de un panel de flota uno junto a otro: un gráfico de la puntuación de conducción suave, 10 % de vehículos cargando y 1 de 10 puntos de carga en uso."
+          },
+          {
+            "number": "02",
+            "text": "<strong>Información dispersa</strong>: los datos de vehículos, conductores y carga viven en servicios separados.",
+            "alt": "Una furgoneta eléctrica rodeada de tarjetas separadas: un cargador de pared del centro de Lyon con dos puntos de carga disponibles, y 3 de 10 puntos de carga disponibles."
+          },
+          {
+            "number": "03",
+            "text": "<strong>Un solo usuario</strong>: la mayoría de los productos solo sirven al gestor de flota.",
+            "alt": "Selector de rol con «Gestor de flota» elegido; los demás roles, planificador, asesor de flota y responsable financiero, se difuminan al fondo."
+          }
+        ],
+        "roles": {
+          "fleetManager": {
+            "title": "Gestor de flota",
+            "text": "Gestiona las operaciones de la flota"
+          },
+          "dispatcher": {
+            "title": "Planificador",
+            "text": "Gestiona rutas y horarios"
+          },
+          "fleetAdvisor": {
+            "title": "Asesor de flota",
+            "text": "Asesora y apoya la estrategia de la flota"
+          },
+          "financialManager": {
+            "title": "Responsable financiero",
+            "text": "Supervisa la planificación financiera de la flota"
+          }
+        }
       }
     }
   }

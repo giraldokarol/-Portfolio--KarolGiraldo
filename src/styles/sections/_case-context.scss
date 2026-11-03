@@ -9,7 +9,7 @@
   padding-block: rem(16) rem(96);
 
   @include mq(lg) {
-    padding-block: 0 rem(140);
+    padding-block: 0 rem(64); // "Research" llega pronto, como en el diseño
   }
 }
 
