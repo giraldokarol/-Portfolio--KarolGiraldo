@@ -1,0 +1,115 @@
+@use "../abstracts" as *;
+
+// "(CONTEXT)" DE UN CASO DE ESTUDIO (components/case/CaseContext.tsx).
+// Sobre fondo blanco, justo después de las tarjetas de "The problem / The solution". Sin fondo propio:
+// así el círculo de color de CaseIntro, que asoma por abajo, sigue viéndose detrás de la etiqueta.
+.case-context {
+  position: relative;
+  isolation: isolate;
+  padding-block: rem(16) rem(96);
+
+  @include mq(lg) {
+    padding-block: 0 rem(140);
+  }
+}
+
+.case-context__inner {
+  position: relative;
+  max-width: rem(1240);
+}
+
+// Escritorio: el bloque metido hacia dentro (en escalera respecto a las tarjetas), como en el diseño.
+.case-context__label,
+.case-context__heading,
+.case-context__lead {
+  position: relative;
+
+  @include mq(lg) {
+    margin-left: 13%;
+  }
+}
+
+// "(CONTEXT)": encima del título, un poco hacia fuera (como los números de CaseIntro).
+.case-context__label {
+  margin-bottom: rem(4);
+  font-size: rem(14);
+  text-transform: uppercase;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    left: rem(-14);
+  }
+}
+
+.case-context__heading {
+  @include mq(lg) {
+    max-width: 15em; // en "em" del título: dos líneas en inglés, como el diseño
+    font-size: type-size(case-statement);
+  }
+}
+
+.case-context__title {
+  font-size: type-size(case-statement);
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  // Sin saltos de línea fijos (cada idioma corta donde le cabe); "pretty" evita una palabra sola al final.
+  text-wrap: pretty;
+}
+
+.case-context__lead {
+  max-width: 52em;
+  margin-top: rem(20);
+  font-size: type-size(small);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+
+  strong {
+    font-weight: weight(bold);
+  }
+
+  br {
+    display: none;
+
+    @include mq(lg) {
+      display: initial;
+    }
+  }
+
+  @include mq(lg) {
+    margin-top: rem(28);
+    padding-left: rem(64); // metida hacia dentro respecto al título
+  }
+}
+
+// Círculo con el degradado de malla en movimiento (el mismo de CaseIntro). Escritorio: justo después
+// del final del título, a la altura de su segunda línea. Móvil: asoma por la esquina de arriba a la derecha.
+// Decorativo.
+.case-context__orb {
+  position: absolute;
+  top: rem(-56);
+  right: rem(-48);
+  z-index: -1;
+  width: rem(110);
+  aspect-ratio: 1;
+  pointer-events: none;
+
+  @include mq(lg) {
+    top: 35%;
+    right: auto;
+    left: calc(100% - #{rem(4)});
+    width: max(7vw, #{rem(96)});
+  }
+
+  // Sin WebGL: un círculo suave estático con los mismos colores.
+  .mesh-gradient:not(.is-webgl) {
+    border-radius: 50%;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-primary) 14%, transparent) 55%,
+      color-mix(in srgb, var(--color-accent) 24%, transparent)
+    );
+  }
+}

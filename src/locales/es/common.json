@@ -226,6 +226,11 @@
             "alt": "Centro de notificaciones con la lista de alertas de la flota y un panel abierto sobre una alerta de presión baja de neumáticos, con la acción recomendada."
           }
         ]
+      },
+      "context": {
+        "label": "(Contexto)",
+        "title": "Las flotas eléctricas traen más datos, y más que gestionar.",
+        "lead": "Además de la ubicación, los gestores ahora siguen la carga, la batería, el mantenimiento, la disponibilidad y los costes. <br/><strong>Flexis</strong> se propuso crear un nuevo producto para este cambio."
       }
     }
   }

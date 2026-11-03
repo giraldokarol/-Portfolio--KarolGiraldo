@@ -226,6 +226,11 @@
             "alt": "Centre de notifications avec la liste des alertes de la flotte et un panneau ouvert sur une alerte de pression des pneus basse, avec l’action recommandée."
           }
         ]
+      },
+      "context": {
+        "label": "(Contexte)",
+        "title": "Les flottes électriques : plus de données, et plus à gérer.",
+        "lead": "En plus de la localisation, les gestionnaires suivent désormais la recharge, la batterie, l’entretien, la disponibilité et les coûts. <br/><strong>Flexis</strong> a voulu créer un nouveau produit pour accompagner ce changement."
       }
     }
   }

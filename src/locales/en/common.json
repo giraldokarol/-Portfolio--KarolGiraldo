@@ -226,6 +226,11 @@
             "alt": "Notification Center with the list of fleet alerts and an open panel for a low tire pressure alert, with the recommended action."
           }
         ]
+      },
+      "context": {
+        "label": "(Context)",
+        "title": "Electric fleets bring more data, and more to manage.",
+        "lead": "On top of location, managers now track charging, battery, maintenance, availability and costs. <br/><strong>Flexis</strong> set out to build a new product for this shift."
       }
     }
   }
