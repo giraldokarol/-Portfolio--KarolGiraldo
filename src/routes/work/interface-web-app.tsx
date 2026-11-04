@@ -6,6 +6,7 @@ import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
 import CaseHero from "@/components/case/CaseHero";
 import CaseContext from "@/components/case/CaseContext";
+import CaseDecisions, { type DecisionImage } from "@/components/case/CaseDecisions";
 import CaseIntro from "@/components/case/CaseIntro";
 import CaseProcess, { type ProcessStep } from "@/components/case/CaseProcess";
 import CaseQuestion from "@/components/case/CaseQuestion";
@@ -27,6 +28,12 @@ const PROCESS_STEPS: ProcessStep[] = [
   { image: "process-3-design", width: 469, height: 372, tone: "dark" },
 ];
 
+// Composiciones de las tarjetas de "Key Decisions" (fondo transparente).
+const DECISION_IMAGES: DecisionImage[] = [
+  { image: "decision-1-visibility", width: 622, height: 577 },
+  { image: "decision-2-design-system", width: 692, height: 635 },
+];
+
 // Corre en el build (prerender): un idioma que no existe → 404.
 export function loader({ params }: Route.LoaderArgs) {
   if (!isLocale(params.lang)) throw data(null, { status: 404 });
@@ -46,7 +53,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Interface (Flexis), la aplicación web para gestores de flota.
-// Se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…" y "Process". Sin el menú de redes de la izquierda (SocialRail).
+// Se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process" y "Key Decisions". Sin el menú de redes de la izquierda (SocialRail).
 export default function InterfaceWebApp() {
   return (
     <>
@@ -58,6 +65,7 @@ export default function InterfaceWebApp() {
         <CaseResearch textKey={`${TEXTS}.research`} slug={SLUG} gaps={RESEARCH_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} />
         <CaseProcess textKey={`${TEXTS}.process`} slug={SLUG} steps={PROCESS_STEPS} />
+        <CaseDecisions textKey={`${TEXTS}.decisions`} slug={SLUG} images={DECISION_IMAGES} />
       </main>
       <Footer />
     </>

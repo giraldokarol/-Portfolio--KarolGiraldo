@@ -302,6 +302,38 @@
             "alt": "Salle de réunion avec l’écran de gestion des utilisateurs projeté sur un grand écran pendant une séance de revue."
           }
         ]
+      },
+      "decisions": {
+        "label": "(05)",
+        "title": "Décisions clés",
+        "previous": "Décision précédente",
+        "next": "Décision suivante",
+        "slideLabel": "Décision {{current}} sur {{total}}",
+        "slides": [
+          {
+            "title": "Toutes les données <br/>ne méritent pas <br/>la même visibilité.",
+            "items": [
+              {
+                "title": "Auditer",
+                "text": "Recensement de chaque donnée issue des véhicules, de la télématique et des opérations."
+              },
+              {
+                "title": "Prioriser",
+                "text": "Classement de l’information par urgence et par action requise, en séparant ce qui informe de ce qui demande de l’attention."
+              },
+              {
+                "title": "Structurer",
+                "text": "Vue d’ensemble de la flotte → détail du véhicule → action suivante."
+              }
+            ],
+            "alt": "Écrans de Flexis superposés : le tableau de gestion de la flotte, le panneau de filtres et la page de détail d’un véhicule avec son kilométrage et sa consommation."
+          },
+          {
+            "title": "Une seule façon <br/>de lire et d’agir, <br/>dans chaque module.",
+            "text": "Sans interface existante sur laquelle m’appuyer, j’ai construit le design system en même temps que le produit. Les éléments récurrents (statuts, alertes, filtres, actions) sont devenus des composants réutilisables : un même signal a toujours le même aspect et le même comportement, et les nouveaux modules n’ajoutent pas de complexité.",
+            "alt": "Composants du design system : boutons, case à cocher, cartes d’indicateurs, alertes, étiquettes de statut et une barre de kilométrage avec un avertissement."
+          }
+        ]
       }
     }
   }

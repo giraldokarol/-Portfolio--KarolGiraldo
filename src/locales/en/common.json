@@ -302,6 +302,38 @@
             "alt": "Meeting room with the User Management screen projected on a large screen during a review session."
           }
         ]
+      },
+      "decisions": {
+        "label": "(05)",
+        "title": "Key Decisions",
+        "previous": "Previous decision",
+        "next": "Next decision",
+        "slideLabel": "Decision {{current}} of {{total}}",
+        "slides": [
+          {
+            "title": "Not all data <br/>deserves the same <br/>visibility.",
+            "items": [
+              {
+                "title": "Audit",
+                "text": "Mapped every data point from vehicles, telematics and operations."
+              },
+              {
+                "title": "Prioritize",
+                "text": "Ranked information by urgency and required action, separating what is informative from what needs attention."
+              },
+              {
+                "title": "Structure",
+                "text": "Fleet overview → vehicle detail → next action."
+              }
+            ],
+            "alt": "Flexis screens layered on top of each other: the fleet management table, the filter panel and a vehicle detail page with mileage and consumption."
+          },
+          {
+            "title": "One consistent way to <br/>read and act, across <br/>every module.",
+            "text": "With no existing UI to rely on, I built the design system alongside the product. Recurring patterns (statuses, alerts, filters, actions) became reusable components, so the same signal always looks and behaves the same, and new modules don’t add complexity.",
+            "alt": "Design system components: buttons, checkbox, KPI cards, alerts, status tags and a mileage progress bar with a warning."
+          }
+        ]
       }
     }
   }

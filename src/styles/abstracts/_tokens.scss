@@ -30,6 +30,8 @@ $type-scale: (
   case-section: (80, 40),    // títulos de un caso de estudio ("The problem", "The solution")
   case-statement: (68, 36),  // frase grande de un caso de estudio ("Electric fleets bring more data…")
   gap-number: (128, 72),     // números gigantes de los huecos de "Research" ("01", "02", "03")
+  decision-title: (52, 30),  // frase de cada tarjeta de "Key Decisions"
+  decision-item: (36, 26),   // palabras clave en azul de "Key Decisions" ("Audit", "Prioritize"…)
   section-title: (56, 36),   // títulos de sección ("Selected work", "From interfaces…")
   body: (18, 16),            // párrafos de lectura
   description: (16, 15),     // textos de apoyo (descripción de proyecto)

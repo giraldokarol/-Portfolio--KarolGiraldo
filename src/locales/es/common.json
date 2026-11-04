@@ -302,6 +302,38 @@
             "alt": "Sala de reuniones con la pantalla de gestión de usuarios proyectada en una pantalla grande durante una sesión de revisión."
           }
         ]
+      },
+      "decisions": {
+        "label": "(05)",
+        "title": "Decisiones clave",
+        "previous": "Decisión anterior",
+        "next": "Decisión siguiente",
+        "slideLabel": "Decisión {{current}} de {{total}}",
+        "slides": [
+          {
+            "title": "No todos los datos <br/>merecen la misma <br/>visibilidad.",
+            "items": [
+              {
+                "title": "Auditar",
+                "text": "Mapeé cada dato de los vehículos, la telemática y las operaciones."
+              },
+              {
+                "title": "Priorizar",
+                "text": "Ordené la información por urgencia y acción necesaria, separando lo informativo de lo que requiere atención."
+              },
+              {
+                "title": "Estructurar",
+                "text": "Vista general de la flota → detalle del vehículo → siguiente acción."
+              }
+            ],
+            "alt": "Pantallas de Flexis superpuestas: la tabla de gestión de la flota, el panel de filtros y la página de detalle de un vehículo con su kilometraje y consumo."
+          },
+          {
+            "title": "Una forma coherente <br/>de leer y actuar, <br/>en todos los módulos.",
+            "text": "Sin una interfaz previa en la que apoyarme, construí el design system a la vez que el producto. Los patrones recurrentes (estados, alertas, filtros, acciones) se convirtieron en componentes reutilizables: la misma señal siempre se ve y se comporta igual, y los nuevos módulos no añaden complejidad.",
+            "alt": "Componentes del design system: botones, casilla, tarjetas de indicadores, alertas, etiquetas de estado y una barra de kilometraje con un aviso."
+          }
+        ]
       }
     }
   }
