@@ -277,6 +277,31 @@
       },
       "question": {
         "text": "¿Cómo podríamos convertir una gran cantidad de <muted>datos de flota fragmentados</muted> en una experiencia sencilla que ayude a los equipos a saber qué hacer después?"
+      },
+      "process": {
+        "label": "(04)",
+        "title": "Proceso",
+        "lead": "Sin producto previo: cada módulo partió de un objetivo de negocio.",
+        "steps": [
+          {
+            "number": "01.",
+            "title": "Entender",
+            "text": "Entrevistas con expertos y benchmark para definir cada módulo antes de diseñarlo.",
+            "alt": "Una asesora de flota con chaleco reflectante y una tableta, delante de un panel sobre las visitas mensuales in situ."
+          },
+          {
+            "number": "02.",
+            "title": "Definir",
+            "text": "Con Producto y Negocio decidimos qué construir primero y trazamos los flujos de la primera versión.",
+            "alt": "Tablero de taller con prioridades alta, media y baja, el planteamiento del problema, las hipótesis y los objetivos de investigación."
+          },
+          {
+            "number": "03.",
+            "title": "Diseñar y validar",
+            "text": "Revisé los wireframes con desarrolladores, expertos y beta testers antes de pasar a la UI de alta fidelidad.",
+            "alt": "Sala de reuniones con la pantalla de gestión de usuarios proyectada en una pantalla grande durante una sesión de revisión."
+          }
+        ]
       }
     }
   }

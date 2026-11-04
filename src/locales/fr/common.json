@@ -277,6 +277,31 @@
       },
       "question": {
         "text": "Comment transformer une grande quantité de <muted>données de flotte fragmentées</muted> en une expérience simple qui aide les équipes à savoir quoi faire ensuite ?"
+      },
+      "process": {
+        "label": "(04)",
+        "title": "Processus",
+        "lead": "Aucun produit existant : chaque module est parti d’un objectif business.",
+        "steps": [
+          {
+            "number": "01.",
+            "title": "Comprendre",
+            "text": "Entretiens avec des experts et benchmark pour définir chaque module avant de le concevoir.",
+            "alt": "Une conseillère flotte en gilet haute visibilité tenant une tablette, devant un panneau sur les visites mensuelles sur site."
+          },
+          {
+            "number": "02.",
+            "title": "Définir",
+            "text": "Avec le Produit et le Business, nous avons décidé quoi construire en premier et cartographié les parcours de la première version.",
+            "alt": "Tableau d’atelier avec les priorités classées haute, moyenne et basse, la problématique, les hypothèses et les objectifs de recherche."
+          },
+          {
+            "number": "03.",
+            "title": "Concevoir et valider",
+            "text": "J’ai revu les wireframes avec les développeurs, des experts et des bêta-testeurs avant de passer à l’UI haute fidélité.",
+            "alt": "Salle de réunion avec l’écran de gestion des utilisateurs projeté sur un grand écran pendant une séance de revue."
+          }
+        ]
       }
     }
   }

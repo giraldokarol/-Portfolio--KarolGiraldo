@@ -277,6 +277,31 @@
       },
       "question": {
         "text": "How might we turn a large amount of <muted>fragmented fleet data</muted> into a simple experience that helps teams know what to do next?"
+      },
+      "process": {
+        "label": "(04)",
+        "title": "Process",
+        "lead": "No existing product: every module started from a business goal.",
+        "steps": [
+          {
+            "number": "01.",
+            "title": "Understand",
+            "text": "Expert interviews and benchmark to define each module before designing it.",
+            "alt": "A fleet advisor in a high-visibility vest holding a tablet, in front of a board about monthly on-site visits."
+          },
+          {
+            "number": "02.",
+            "title": "Define",
+            "text": "With Product and Business, we decided what to build first and mapped the flows for the first release.",
+            "alt": "Workshop board with priorities ranked high, medium and low, the problem statement, hypotheses and research goals."
+          },
+          {
+            "number": "03.",
+            "title": "Design & validate",
+            "text": "I reviewed wireframes with developers, experts and beta testers before moving to high-fidelity UI.",
+            "alt": "Meeting room with the User Management screen projected on a large screen during a review session."
+          }
+        ]
       }
     }
   }

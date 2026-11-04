@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import CaseHero from "@/components/case/CaseHero";
 import CaseContext from "@/components/case/CaseContext";
 import CaseIntro from "@/components/case/CaseIntro";
+import CaseProcess, { type ProcessStep } from "@/components/case/CaseProcess";
 import CaseQuestion from "@/components/case/CaseQuestion";
 import CaseResearch from "@/components/case/CaseResearch";
 import Footer from "@/components/Footer";
@@ -18,6 +19,13 @@ const SLUG = "interface-web-app";
 
 // Capturas de las tarjetas de "The problem / The solution" (public/images/case/interface-web-app/).
 const INTRO_IMAGES = ["fleet-overview", "vehicle-detail", "actionable-workflows"] as const;
+
+// Fotos de fondo de las etapas de "Process" (aparecen al pasar el ratón). tone = cómo es la foto.
+const PROCESS_STEPS: ProcessStep[] = [
+  { image: "process-1-understand", width: 469, height: 372, tone: "dark" },
+  { image: "process-2-define", width: 502, height: 372, tone: "light" },
+  { image: "process-3-design", width: 469, height: 372, tone: "dark" },
+];
 
 // Corre en el build (prerender): un idioma que no existe → 404.
 export function loader({ params }: Route.LoaderArgs) {
@@ -38,7 +46,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Interface (Flexis), la aplicación web para gestores de flota.
-// Se construye por fases: Hero, "The problem / The solution", "(Context)", "Research" y "How might we…". Sin el menú de redes de la izquierda (SocialRail).
+// Se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…" y "Process". Sin el menú de redes de la izquierda (SocialRail).
 export default function InterfaceWebApp() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function InterfaceWebApp() {
         <CaseContext textKey={`${TEXTS}.context`} />
         <CaseResearch textKey={`${TEXTS}.research`} slug={SLUG} gaps={RESEARCH_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} />
+        <CaseProcess textKey={`${TEXTS}.process`} slug={SLUG} steps={PROCESS_STEPS} />
       </main>
       <Footer />
     </>
