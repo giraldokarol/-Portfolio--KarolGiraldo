@@ -9,7 +9,7 @@
   background: var(--color-band);
 
   @include mq(lg) {
-    padding-block: rem(40) rem(56); // poco hueco: "(Context)" llega justo después de las tarjetas
+    padding-block: rem(40) rem(140); // el mismo hueco entre secciones que en el resto del caso
   }
 }
 
