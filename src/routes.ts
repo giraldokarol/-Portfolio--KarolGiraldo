@@ -9,4 +9,5 @@ export default [
   route(":lang/legal", "routes/legal.tsx"),
   // Casos de estudio: un archivo por proyecto.
   route(":lang/work/interface-web-app", "routes/work/interface-web-app.tsx"),
+  route(":lang/work/driver-app", "routes/work/driver-app.tsx"),
 ] satisfies RouteConfig;

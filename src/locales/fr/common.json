@@ -355,6 +355,30 @@
         "summary": "Une plateforme qui transforme des données de flotte dispersées en actions quotidiennes claires, conçue en un an et prête pour le développement avant le rachat de Flexis.",
         "photoAlt": "Une gestionnaire de flotte en gilet haute visibilité travaille à son bureau, avec l’écran de planification de Flexis sur son moniteur."
       }
+    },
+    "driverApp": {
+      "seoTitle": "Driver App — étude de cas Flexis · Karol Giraldo",
+      "seoDescription": "Comment j’ai conçu Flexis Driver App, une application mobile qui accompagne les livreurs urbains de la prise du véhicule à la fin de la mission.",
+      "hero": {
+        "title": "De la prise du véhicule <br/>à la mission accomplie, <br/>en <accent>une seule app</accent>",
+        "lead": "Une application mobile créée de zéro pour aider les livreurs urbains à démarrer leur journée plus vite, mieux conduire et rester connectés à leur flotte.",
+        "videoLabel": "Enregistrement d’écran de Flexis Driver App : localisation du véhicule attribué sur une carte et lancement de la navigation.",
+        "detailsLabel": "Détails du projet",
+        "details": [
+          {
+            "label": "Produit",
+            "value": "Flexis Driver App"
+          },
+          {
+            "label": "Rôle",
+            "value": "Product Designer (UX/UI)"
+          },
+          {
+            "label": "Durée",
+            "value": "1 an"
+          }
+        ]
+      }
     }
   }
 }

@@ -7,6 +7,11 @@
   overflow-x: clip; // manchas y franja salen por los lados: sin scroll horizontal
 }
 
+// Driver App: franjas claras en gris en vez de azuladas (todas las secciones de la página usan --color-band).
+.case-study--gray {
+  --color-band: var(--color-band-gray);
+}
+
 .case-hero {
   // Ancho de la ventana del vídeo: todo el contenedor en móvil, casi la mitad de la pantalla en escritorio.
   --frame-w: calc(100vw - #{rem($gutter * 2)});
@@ -33,6 +38,22 @@
   // A partir de xl la ficha va a la derecha del vídeo: no ocupa alto.
   @include mq(xl) {
     --details-space: 0px;
+  }
+}
+
+// Variante teléfono (apps móviles): marco estrecho y alto, sin barra. Se ve algo más de la mitad al entrar.
+.case-hero--phone {
+  --frame-w: min(60vw, #{rem(260)});
+  --toolbar-h: 0px;
+  --bezel: #{rem(9)};
+  // Alto = pantalla con la proporción real del vídeo (786 × 1704) + el bisel de arriba y abajo.
+  --frame-h: calc((var(--frame-w) - 2 * var(--bezel)) * 1704 / 786 + 2 * var(--bezel));
+  --peek: calc(var(--frame-h) * 0.42);
+
+  @include mq(lg) {
+    --frame-w: clamp(#{rem(240)}, 20.5vw, #{rem(340)});
+    --bezel: #{rem(12)};
+    --peek: calc(var(--frame-h) * 0.54);
   }
 }
 
@@ -185,6 +206,38 @@
 
   @include mq(lg) {
     border-radius: rem(12);
+  }
+}
+
+// Teléfono: bisel blanco alrededor de la pantalla, esquinas proporcionales a su ancho (como un iPhone)
+// y pantalla con esquinas concéntricas (radio del marco − bisel).
+.case-hero--phone {
+  // Entradilla algo más ancha y ficha centrada en el hueco a la derecha del teléfono (que deja mucho sitio).
+  .case-hero__lead {
+    max-width: 26em;
+  }
+
+  .case-hero__details {
+    @include mq(xl) {
+      justify-self: center;
+    }
+  }
+
+  .case-hero__frame {
+    justify-self: center;
+    width: var(--frame-w);
+  }
+
+  .case-hero__window {
+    --frame-radius: calc(var(--frame-w) * 0.16);
+
+    padding: var(--bezel);
+    border-radius: var(--frame-radius);
+  }
+
+  .case-hero__video {
+    aspect-ratio: 786 / 1704;
+    border-radius: calc(var(--frame-radius) - var(--bezel));
   }
 }
 

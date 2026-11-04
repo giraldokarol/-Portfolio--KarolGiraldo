@@ -355,6 +355,30 @@
         "summary": "A platform that turns scattered fleet data into clear daily actions, designed in one year and ready for development before Flexis was acquired.",
         "photoAlt": "A fleet manager in a high-visibility vest working at her desk, with the Flexis planning screen on her monitor."
       }
+    },
+    "driverApp": {
+      "seoTitle": "Driver App — Flexis case study · Karol Giraldo",
+      "seoDescription": "How I designed the Flexis Driver App, a mobile app that takes urban delivery drivers from vehicle pickup to mission done.",
+      "hero": {
+        "title": "From vehicle pickup <br/>to mission done, in <br/><accent>one app</accent>",
+        "lead": "A mobile app built from scratch to help urban delivery drivers start their day faster, drive better and stay connected to their fleet.",
+        "videoLabel": "Screen recording of the Flexis Driver App: finding the assigned vehicle on a map and starting navigation to it.",
+        "detailsLabel": "Project details",
+        "details": [
+          {
+            "label": "Product",
+            "value": "Flexis Driver App"
+          },
+          {
+            "label": "Role",
+            "value": "Product Designer (UX/UI)"
+          },
+          {
+            "label": "Duration",
+            "value": "1 Year"
+          }
+        ]
+      }
     }
   }
 }
