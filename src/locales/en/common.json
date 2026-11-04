@@ -239,6 +239,7 @@
         "text": "Before designing anything, I interviewed fleet business experts and benchmarked tools like Geotab and Samsara. Three gaps stood out.",
         "conclusion": "As a result, teams jump between tools and end up sorting it out in Excel.",
         "gapsLabel": "The three gaps",
+        "gapLabel": "Gap {{current}} of {{total}}",
         "gaps": [
           {
             "number": "01",
@@ -422,6 +423,7 @@
         "text": "Working with business experts, we mapped a full shift, from depot to last delivery, and found three gaps:",
         "conclusion": "The result: low driver engagement and lower fleet productivity.",
         "gapsLabel": "The three gaps",
+        "gapLabel": "Gap {{current}} of {{total}}",
         "gaps": [
           {
             "number": "01.",

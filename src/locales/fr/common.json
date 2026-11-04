@@ -239,6 +239,7 @@
         "text": "Avant de concevoir quoi que ce soit, j’ai interrogé des experts métier de la gestion de flotte et analysé des outils comme Geotab et Samsara. Trois manques sont ressortis.",
         "conclusion": "Résultat : les équipes jonglent entre les outils et finissent par tout trier dans Excel.",
         "gapsLabel": "Les trois manques",
+        "gapLabel": "Manque {{current}} sur {{total}}",
         "gaps": [
           {
             "number": "01",
@@ -422,6 +423,7 @@
         "text": "Avec des experts métier, nous avons cartographié une journée complète, du dépôt à la dernière livraison, et identifié trois manques :",
         "conclusion": "Résultat : des livreurs peu engagés et une flotte moins productive.",
         "gapsLabel": "Les trois manques",
+        "gapLabel": "Manque {{current}} sur {{total}}",
         "gaps": [
           {
             "number": "01.",

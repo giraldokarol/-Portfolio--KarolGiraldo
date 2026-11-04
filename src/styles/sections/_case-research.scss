@@ -83,12 +83,75 @@
 }
 
 // ─── Huecos ──────────────────────────────────────────────────────────────────────────
+// Móvil y tablet: carrusel horizontal que se desliza con el dedo; cada hueco se para al borde (imán) y el
+// siguiente asoma por la derecha. Llega hasta los bordes de la pantalla (sale del margen del contenedor).
+// Escritorio: los tres apilados (o en la misma celda con la sección fija, ver .is-pinned).
 .case-research__gaps {
-  display: grid;
-  gap: rem(80);
+  display: flex;
+  gap: rem(16);
+  align-items: flex-start;
+  margin-inline: rem(-$gutter);
+  padding-inline: rem($gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain; // el gesto lateral no hace "atrás" en el navegador
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: rem($gutter);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include mq(lg) {
+    display: grid;
     gap: rem(120);
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+}
+
+// Puntos del carrusel: el actual se alarga en azul. Solo móvil y tablet.
+.case-research__dots {
+  display: flex;
+  justify-content: center;
+  gap: rem(8);
+  margin-top: rem(-40); // el hueco de la rejilla es grande: los puntos quedan cerca de su composición
+
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+.case-research__dot {
+  position: relative;
+  width: rem(8);
+  height: rem(8);
+  border-radius: rem(8);
+  background: var(--color-text-faded);
+  cursor: pointer;
+
+  // Zona táctil más grande que el punto (44 × 44).
+  &::after {
+    content: "";
+    position: absolute;
+    inset: rem(-18);
+  }
+
+  &.is-current {
+    width: rem(24);
+    background: var(--color-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  @include motion-safe {
+    transition:
+      width $duration-base $ease-out,
+      background-color $duration-base $ease-out;
   }
 }
 
@@ -127,7 +190,13 @@
 // Número gigante y muy claro detrás de la frase; la frase, a su derecha (escritorio).
 .case-research__gap {
   position: relative;
+  flex: 0 0 88%; // carrusel: el siguiente asoma por la derecha
   padding-top: calc(#{type-size(gap-number)} * 0.6); // la frase se apoya sobre la parte baja del número
+  scroll-snap-align: start;
+
+  @include mq(md) {
+    flex-basis: 64%; // tablet: composiciones más contenidas; se ve más del siguiente
+  }
 
   @include mq(lg) {
     padding-top: 0;

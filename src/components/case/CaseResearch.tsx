@@ -1,4 +1,4 @@
-import { useRef, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import MeshOrb from "./MeshOrb";
@@ -103,12 +103,32 @@ function place({ desktop, mobile }: { desktop: Placement; mobile: Placement }) {
 
 // "Research" de un caso de estudio: a la izquierda el texto; a la derecha los huecos encontrados en la
 // investigación, cada uno con su número gigante, su frase y una composición de pantallas del producto.
+// Móvil y tablet: los huecos son un carrusel que se desliza con el dedo (scroll horizontal con imán),
+// con puntos debajo para saber en cuál se está y saltar a otro.
 // Animaciones en case/useCaseResearchReveal.ts (entrada) y case/useCaseResearchScroll.ts (scroll). Estilos: styles/sections/_case-research.scss
 export default function CaseResearch({ textKey, slug, gaps }: Props) {
   const { t } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const texts = t(`${textKey}.gaps`, { returnObjects: true }) as GapText[];
   const roles = t(`${textKey}.roles`, { returnObjects: true }) as Record<string, RoleText>;
+
+  // Carrusel de móvil: hueco que se ve (según el scroll horizontal de la lista) y salto con los puntos.
+  const list = useRef<HTMLOListElement>(null);
+  const [current, setCurrent] = useState(0);
+  const items = () => [...(list.current?.children ?? [])] as HTMLElement[];
+  const onScroll = () => {
+    const box = list.current;
+    if (!box) return;
+    const distances = items().map((item) => Math.abs(item.offsetLeft - box.offsetLeft - box.scrollLeft));
+    setCurrent(distances.indexOf(Math.min(...distances)));
+  };
+  const goTo = (index: number) => {
+    const box = list.current;
+    const item = items()[index];
+    if (!box || !item) return;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    box.scrollTo({ left: item.offsetLeft - box.offsetLeft, behavior: still ? "auto" : "smooth" });
+  };
 
   useCaseResearchReveal(root);
   useCaseResearchScroll(root);
@@ -134,7 +154,12 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
           <p className="case-research__conclusion">{t(`${textKey}.conclusion`)}</p>
         </div>
 
-        <ol className="case-research__gaps" aria-label={t(`${textKey}.gapsLabel`)}>
+        <ol
+          ref={list}
+          className="case-research__gaps"
+          aria-label={t(`${textKey}.gapsLabel`)}
+          onScroll={onScroll}
+        >
           {gaps.map((gap, index) => {
             const text = texts[index];
             const stageStyle = {
@@ -190,6 +215,20 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
             );
           })}
         </ol>
+
+        {/* Puntos del carrusel (solo móvil y tablet): el actual, más largo. */}
+        <div className="case-research__dots">
+          {gaps.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`case-research__dot ${index === current ? "is-current" : ""}`}
+              onClick={() => goTo(index)}
+              aria-label={t(`${textKey}.gapLabel`, { current: index + 1, total: gaps.length })}
+              aria-current={index === current ? "true" : undefined}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -239,6 +239,7 @@
         "text": "Antes de diseñar nada, entrevisté a expertos en gestión de flotas y analicé herramientas como Geotab y Samsara. Destacaron tres carencias.",
         "conclusion": "Como resultado, los equipos saltan de una herramienta a otra y acaban resolviéndolo en Excel.",
         "gapsLabel": "Las tres carencias",
+        "gapLabel": "Carencia {{current}} de {{total}}",
         "gaps": [
           {
             "number": "01",
@@ -422,6 +423,7 @@
         "text": "Con expertos del negocio, trazamos una jornada completa, del depósito a la última entrega, y encontramos tres carencias:",
         "conclusion": "El resultado: repartidores poco implicados y una flota menos productiva.",
         "gapsLabel": "Las tres carencias",
+        "gapLabel": "Carencia {{current}} de {{total}}",
         "gaps": [
           {
             "number": "01.",
