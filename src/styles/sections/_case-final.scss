@@ -1,0 +1,229 @@
+@use "../abstracts" as *;
+
+// "FINAL THOUGHTS" DE UN CASO DE ESTUDIO (components/case/CaseFinal.tsx).
+// Bento de tarjetas blancas sobre la franja clara. Las tarjetas van en el orden de lectura en el HTML;
+// la rejilla las coloca con grid-template-areas (móvil: apiladas; escritorio: como en el diseño).
+.case-final {
+  padding-block: rem(72) rem(96);
+  background: var(--color-band);
+
+  @include mq(lg) {
+    padding-block: rem(80) rem(140);
+  }
+}
+
+.case-final__inner {
+  max-width: rem(1400);
+}
+
+// ─── Cabecera centrada ───────────────────────────────────────────────────────────────
+.case-final__head {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.case-final__label {
+  display: block;
+  margin-bottom: rem(4);
+  margin-left: rem(-14);
+  font-size: rem(14);
+  color: var(--color-gray);
+}
+
+.case-final__title {
+  font-size: type-size(case-section);
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-align: center;
+}
+
+// ─── Bento ───────────────────────────────────────────────────────────────────────────
+.case-final__bento {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "outcome outcome"
+    "statement statement"
+    "stat-1 stat-2"
+    "photo photo"
+    "client client"
+    "summary summary";
+  gap: rem(12);
+  margin-top: rem(40);
+
+  @include mq(lg) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: minmax(rem(340), auto) minmax(rem(180), auto) minmax(rem(200), auto);
+    grid-template-areas:
+      "photo statement statement summary"
+      "photo client stat-1 summary"
+      "outcome client stat-2 summary";
+    gap: rem(24);
+    margin-top: rem(56);
+  }
+}
+
+.case-final__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: rem(28 24);
+  border-radius: rem(16);
+  background: var(--color-background);
+  box-shadow: 0 rem(20) rem(50) rem(-36) color-mix(in srgb, var(--color-ink) 14%, transparent);
+  text-align: center;
+
+  // "translate" y no "transform": transform lo usa la animación de entrada (case/useCaseFinalReveal.ts).
+  @include motion-safe {
+    transition:
+      translate 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s ease;
+  }
+
+  // Con ratón: la tarjeta se eleva un poco (como las de "The problem / The solution").
+  @include hover {
+    translate: 0 rem(-6);
+    box-shadow: 0 rem(30) rem(60) rem(-30) color-mix(in srgb, var(--color-primary) 22%, transparent);
+  }
+}
+
+.case-final__card--outcome {
+  grid-area: outcome;
+  min-height: rem(140);
+  font-size: type-size(decision-title);
+  font-weight: weight(regular);
+  letter-spacing: -0.035em;
+  color: var(--color-ink);
+}
+
+.case-final__card--statement {
+  grid-area: statement;
+  min-height: rem(220);
+  font-size: type-size(decision-title);
+  font-weight: weight(regular);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  color: var(--color-ink);
+  text-wrap: balance;
+
+  strong {
+    font-weight: weight(bold);
+  }
+
+  @include mq(lg) {
+    padding-inline: 10%;
+  }
+}
+
+// ─── Cifras ──────────────────────────────────────────────────────────────────────────
+.case-final__card--stat-1 {
+  grid-area: stat-1;
+}
+
+.case-final__card--stat-2 {
+  grid-area: stat-2;
+}
+
+.case-final__stat-value {
+  font-size: type-size(decision-stat);
+  font-weight: weight(extrabold);
+  font-variant-numeric: tabular-nums; // los dígitos no bailan mientras cuentan
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+.case-final__stat-label {
+  max-width: 13em;
+  margin-top: rem(8);
+  font-size: type-size(small);
+  line-height: 1.3;
+  color: var(--color-gray);
+}
+
+// ─── Cliente ─────────────────────────────────────────────────────────────────────────
+.case-final__card--client {
+  grid-area: client;
+  gap: rem(28);
+  min-height: rem(200);
+
+  @include mq(lg) {
+    justify-content: flex-start;
+    gap: 0;
+    padding-top: rem(64);
+  }
+}
+
+.case-final__client-label {
+  font-size: type-size(body);
+  color: var(--color-gray);
+}
+
+.case-final__logo {
+  width: min(75%, rem(246));
+  height: auto;
+
+  @include mq(lg) {
+    margin-block: auto; // centrado en el hueco que queda bajo "Project for"
+  }
+}
+
+// ─── Foto ────────────────────────────────────────────────────────────────────────────
+.case-final__card--photo {
+  grid-area: photo;
+  padding: rem(8);
+}
+
+.case-final__photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5; // móvil; en escritorio llena el alto de sus dos filas
+  border-radius: rem(12);
+  object-fit: cover;
+
+  @include mq(lg) {
+    aspect-ratio: auto;
+  }
+}
+
+// ─── Resumen ─────────────────────────────────────────────────────────────────────────
+.case-final__card--summary {
+  position: relative;
+  grid-area: summary;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: rem(280);
+  padding: rem(32 28);
+  text-align: left;
+
+  @include mq(lg) {
+    padding: rem(40);
+  }
+}
+
+.case-final__pencil {
+  position: absolute;
+  top: rem(28);
+  right: rem(28);
+  width: rem(24);
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  @include mq(lg) {
+    top: rem(48);
+    right: rem(44);
+  }
+}
+
+.case-final__summary {
+  font-size: type-size(decision-summary);
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+}

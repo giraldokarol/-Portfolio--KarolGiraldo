@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import CaseHero from "@/components/case/CaseHero";
 import CaseContext from "@/components/case/CaseContext";
 import CaseDecisions, { type DecisionImage } from "@/components/case/CaseDecisions";
+import CaseFinal from "@/components/case/CaseFinal";
 import CaseIntro from "@/components/case/CaseIntro";
 import CaseProcess, { type ProcessStep } from "@/components/case/CaseProcess";
 import CaseQuestion from "@/components/case/CaseQuestion";
@@ -53,7 +54,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Interface (Flexis), la aplicación web para gestores de flota.
-// Se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process" y "Key Decisions". Sin el menú de redes de la izquierda (SocialRail).
+// Se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process", "Key Decisions" y "Final Thoughts". Sin el menú de redes de la izquierda (SocialRail).
 export default function InterfaceWebApp() {
   return (
     <>
@@ -66,6 +67,7 @@ export default function InterfaceWebApp() {
         <CaseQuestion textKey={`${TEXTS}.question`} />
         <CaseProcess textKey={`${TEXTS}.process`} slug={SLUG} steps={PROCESS_STEPS} />
         <CaseDecisions textKey={`${TEXTS}.decisions`} slug={SLUG} images={DECISION_IMAGES} />
+        <CaseFinal textKey={`${TEXTS}.final`} slug={SLUG} photo={{ width: 313, height: 534 }} />
       </main>
       <Footer />
     </>

@@ -334,6 +334,26 @@
             "alt": "Design system components: buttons, checkbox, KPI cards, alerts, status tags and a mileage progress bar with a warning."
           }
         ]
+      },
+      "final": {
+        "label": "(06)",
+        "title": "Final Thoughts",
+        "outcome": "Outcome",
+        "statement": "From <strong>zero</strong> to a validated <strong>product foundation</strong>.",
+        "projectFor": "Project for",
+        "logoAlt": "Flexis",
+        "stats": [
+          {
+            "value": "15",
+            "label": "product modules designed end to end"
+          },
+          {
+            "value": "10",
+            "label": "beta testers validating the experience"
+          }
+        ],
+        "summary": "A platform that turns scattered fleet data into clear daily actions, designed in one year and ready for development before Flexis was acquired.",
+        "photoAlt": "A fleet manager in a high-visibility vest working at her desk, with the Flexis planning screen on her monitor."
       }
     }
   }

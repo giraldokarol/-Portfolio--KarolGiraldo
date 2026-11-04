@@ -334,6 +334,26 @@
             "alt": "Composants du design system : boutons, case à cocher, cartes d’indicateurs, alertes, étiquettes de statut et une barre de kilométrage avec un avertissement."
           }
         ]
+      },
+      "final": {
+        "label": "(06)",
+        "title": "Pour conclure",
+        "outcome": "Résultat",
+        "statement": "De <strong>zéro</strong> à des <strong>fondations produit</strong> validées.",
+        "projectFor": "Projet pour",
+        "logoAlt": "Flexis",
+        "stats": [
+          {
+            "value": "15",
+            "label": "modules produit conçus de bout en bout"
+          },
+          {
+            "value": "10",
+            "label": "bêta-testeurs pour valider l’expérience"
+          }
+        ],
+        "summary": "Une plateforme qui transforme des données de flotte dispersées en actions quotidiennes claires, conçue en un an et prête pour le développement avant le rachat de Flexis.",
+        "photoAlt": "Une gestionnaire de flotte en gilet haute visibilité travaille à son bureau, avec l’écran de planification de Flexis sur son moniteur."
       }
     }
   }
