@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import CaseContext from "@/components/case/CaseContext";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
+import CaseQuestion from "@/components/case/CaseQuestion";
 import CaseResearch from "@/components/case/CaseResearch";
 import Footer from "@/components/Footer";
 import type { Route } from "./+types/driver-app";
@@ -31,6 +32,12 @@ const CONTEXT_ORBS = [
   { x: 88, y: 72, size: 9, mobile: { x: 94, y: 6, size: 24 } },
 ];
 
+// Bolitas de "How might we…": una pequeña a la izquierda, a media altura, y una grande abajo a la derecha.
+const QUESTION_ORBS = [
+  { desktop: { x: 12, y: 47, size: 7.9 }, mobile: { x: 8, y: 12, size: 18 } },
+  { desktop: { x: 81, y: 67, size: 22.4 }, mobile: { x: 84, y: 82, size: 50 } },
+];
+
 // Corre en el build (prerender): un idioma que no existe → 404.
 export function loader({ params }: Route.LoaderArgs) {
   if (!isLocale(params.lang)) throw data(null, { status: 404 });
@@ -50,7 +57,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Driver App (Flexis), la app móvil para conductores de reparto.
-// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research"…
+// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…"…
 export default function DriverApp() {
   return (
     <>
@@ -67,6 +74,7 @@ export default function DriverApp() {
         />
         <CaseContext textKey={`${TEXTS}.context`} orbs={CONTEXT_ORBS} />
         <CaseResearch textKey={`${TEXTS}.research`} slug={SLUG} gaps={RESEARCH_GAPS} />
+        <CaseQuestion textKey={`${TEXTS}.question`} centered orbs={QUESTION_ORBS} />
       </main>
       <Footer />
     </>

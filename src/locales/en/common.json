@@ -439,6 +439,9 @@
             "alt": "An electric van in front of a “Find Your Vehicle” card and a link icon."
           }
         ]
+      },
+      "question": {
+        "text": "How might we give last-mile drivers <muted>one intuitive app that simplifies their daily operations</muted>, from vehicle access to the end of the round?"
       }
     }
   }

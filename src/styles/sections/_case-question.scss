@@ -45,3 +45,16 @@
 .case-question__muted {
   color: var(--color-gray);
 }
+
+// Variante centrada: la pregunta en el centro de la pantalla, con más ancho (cortes como en el diseño).
+.case-question--centered .case-question__inner {
+  max-width: rem(1320);
+}
+
+.case-question--centered .case-question__title {
+  @include mq(lg) {
+    max-width: 17.6em;
+    margin-inline: auto;
+    text-align: center;
+  }
+}

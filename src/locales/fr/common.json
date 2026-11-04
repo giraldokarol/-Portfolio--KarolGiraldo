@@ -439,6 +439,9 @@
             "alt": "Une camionnette électrique devant une carte « Find Your Vehicle » et une icône de lien."
           }
         ]
+      },
+      "question": {
+        "text": "Comment offrir aux livreurs du dernier kilomètre <muted>une seule app intuitive qui simplifie leur quotidien</muted>, de l’accès au véhicule jusqu’à la fin de la tournée ?"
       }
     }
   }

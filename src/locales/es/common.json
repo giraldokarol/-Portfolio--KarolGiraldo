@@ -439,6 +439,9 @@
             "alt": "Una furgoneta eléctrica delante de una tarjeta «Find Your Vehicle» y un icono de enlace."
           }
         ]
+      },
+      "question": {
+        "text": "¿Cómo podríamos dar a los repartidores de última milla <muted>una sola app intuitiva que simplifique su día a día</muted>, desde el acceso al vehículo hasta el final de la ruta?"
       }
     }
   }
