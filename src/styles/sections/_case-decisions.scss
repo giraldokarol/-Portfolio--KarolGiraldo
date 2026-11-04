@@ -248,3 +248,57 @@
 .case-decisions__status {
   @include visually-hidden;
 }
+
+.case-decisions__slide-text strong {
+  font-weight: weight(bold);
+}
+
+// ─── Imagen + vídeo de un teléfono encima (tarjetas con vídeo) ───────────────────────
+.case-decisions__media {
+  position: relative;
+  aspect-ratio: var(--ratio);
+}
+
+.case-decisions__media-back {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// El vídeo trae el teléfono entero sobre fondo negro (sin transparencia): se recorta con la forma del
+// teléfono (bordes laterales del vídeo fuera y esquinas redondeadas, medidas sobre el vídeo).
+.case-decisions__video {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--w);
+  aspect-ratio: var(--video-ratio);
+  clip-path: inset(0 0.95% round 14.2% / 7%);
+}
+
+// ─── Variante teléfono: composiciones altas (pantallas de móvil) ─────────────────────
+// Se limitan en alto (y el ancho sale de su proporción) para que la tarjeta no crezca de más.
+.case-decisions--phone {
+  --media-max-h: #{rem(440)};
+
+  @include mq(lg) {
+    --media-max-h: #{rem(620)};
+  }
+
+  // Más sitio para la imagen (como en el diseño): las composiciones anchas no encogen el teléfono.
+  .case-decisions__slide {
+    @include mq(lg) {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    }
+  }
+
+  .case-decisions__image {
+    width: auto;
+    max-width: 100%;
+    max-height: var(--media-max-h);
+  }
+
+  .case-decisions__media {
+    width: min(100%, calc(var(--media-max-h) * var(--ratio)));
+  }
+}

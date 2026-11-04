@@ -467,6 +467,45 @@
             "alt": "Un repartidor con chaleco de alta visibilidad sostiene un teléfono con la pantalla «Session Completed» de Driver App."
           }
         ]
+      },
+      "decisions": {
+        "label": "(05)",
+        "title": "Decisiones clave",
+        "previous": "Decisión anterior",
+        "next": "Decisión siguiente",
+        "slideLabel": "Decisión {{current}} de {{total}}",
+        "slides": [
+          {
+            "title": "La asignación es <br/>donde empieza <br/>la jornada.",
+            "paragraphs": [
+              "Nada empieza hasta que el repartidor queda asignado a la furgoneta, por código QR, número VIN o llave virtual. Después, la app acompaña la jornada en tiempo real:",
+              "<strong>Asignación → Check-in → Listo para salir → Ruta de entregas → Check-out</strong>",
+              "Un solo paso para el repartidor; para la flota, un registro claro de quién condujo cada furgoneta, y cuándo."
+            ],
+            "alt": "Grabación de pantalla de Driver App escaneando el número VIN de una furgoneta para asignarle el repartidor, con un campo para introducir el código a mano."
+          },
+          {
+            "title": "Planificar la ruta <br/>según la batería.",
+            "paragraphs": [
+              "La app ordena las paradas del día y propone rutas según la carga de la furgoneta, para que los repartidores terminen su ruta gastando menos energía."
+            ],
+            "alt": "Pantallas de ruta de Driver App: un mapa nocturno con el trayecto propuesto, la lista de las 12 paradas del día con sus horas, y el próximo cliente con botones para llamarlo o informar de un incidente."
+          },
+          {
+            "title": "Un vídeo en lugar <br/>de una inspección en papel.",
+            "paragraphs": [
+              "El repartidor graba la furgoneta en el check-in y en el check-out. Un servicio de inspección integrado convierte el vídeo en un informe del estado del vehículo, que llega directamente al gestor de flota."
+            ],
+            "alt": "Pantalla de check-in en vídeo: el repartidor graba el exterior de la furgoneta, junto a una tarjeta «Start Check-in» e iconos de aviso e inspección."
+          },
+          {
+            "title": "De la misma familia <br/>que Interface, pensada <br/>para la carretera.",
+            "paragraphs": [
+              "Adapté el design system de Interface al móvil: zonas táctiles más grandes, pantallas más sencillas y un modo claro y oscuro para las jornadas que empiezan antes del amanecer."
+            ],
+            "alt": "Tres pantallas de Driver App en modo claro y oscuro: el inicio con las herramientas del vehículo, los ajustes con el selector de tema, y la batería de la furgoneta al 75 %."
+          }
+        ]
       }
     }
   }

@@ -5,6 +5,7 @@ import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
 import CaseContext from "@/components/case/CaseContext";
+import CaseDecisions, { type DecisionImage } from "@/components/case/CaseDecisions";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
 import CaseProcess, { type ProcessStep } from "@/components/case/CaseProcess";
@@ -46,6 +47,20 @@ const PROCESS_STEPS: ProcessStep[] = [
   { image: "process-3-design", width: 469, height: 372, tone: "light" },
 ];
 
+// Composiciones de "Key Decisions" (fondo transparente). La primera lleva encima el vídeo del teléfono
+// escaneando el VIN (public/videos/case/driver-app/decision-1-assignment.mp4, 632 × 1282).
+const DECISION_IMAGES: DecisionImage[] = [
+  {
+    image: "decision-1-shapes",
+    width: 508,
+    height: 632,
+    video: { name: "decision-1-assignment", x: 25.9, y: 14.3, w: 50.3, ratio: 632 / 1282 },
+  },
+  { image: "decision-2-route", width: 537, height: 683 },
+  { image: "decision-3-inspection", width: 670, height: 638 },
+  { image: "decision-4-design-system", width: 570, height: 774 },
+];
+
 // Corre en el build (prerender): un idioma que no existe → 404.
 export function loader({ params }: Route.LoaderArgs) {
   if (!isLocale(params.lang)) throw data(null, { status: 404 });
@@ -65,7 +80,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Driver App (Flexis), la app móvil para conductores de reparto.
-// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process"…
+// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process", "Key Decisions"…
 export default function DriverApp() {
   return (
     <>
@@ -84,6 +99,7 @@ export default function DriverApp() {
         <CaseResearch textKey={`${TEXTS}.research`} slug={SLUG} gaps={RESEARCH_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} centered orbs={QUESTION_ORBS} />
         <CaseProcess textKey={`${TEXTS}.process`} slug={SLUG} steps={PROCESS_STEPS} />
+        <CaseDecisions textKey={`${TEXTS}.decisions`} slug={SLUG} images={DECISION_IMAGES} device="phone" />
       </main>
       <Footer />
     </>

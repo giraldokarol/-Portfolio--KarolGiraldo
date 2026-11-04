@@ -467,6 +467,45 @@
             "alt": "A driver in a high-visibility vest holding a phone with the Driver App’s “Session Completed” screen."
           }
         ]
+      },
+      "decisions": {
+        "label": "(05)",
+        "title": "Key Decisions",
+        "previous": "Previous decision",
+        "next": "Next decision",
+        "slideLabel": "Decision {{current}} of {{total}}",
+        "slides": [
+          {
+            "title": "The assignment is <br/>where the shift <br/>begins.",
+            "paragraphs": [
+              "Nothing starts until the driver is assigned to the van, by QR code, VIN or virtual key. Then the app follows the shift as it happens:",
+              "<strong>Assignment → Check-in → Ready to go → Delivery round → Check-out</strong>",
+              "One step for the driver; for the fleet, a clear record of who drove which van, and when."
+            ],
+            "alt": "Screen recording of the Driver App scanning a van’s VIN number to assign the driver to the vehicle, with a field to enter the code manually."
+          },
+          {
+            "title": "Plan the round <br/>around the battery.",
+            "paragraphs": [
+              "The app sequences the day’s stops and suggests routes based on the van’s state of charge, so drivers can finish their round with less energy."
+            ],
+            "alt": "Route screens of the Driver App: a night map with the suggested route, the list of the day’s 12 stops with their times, and the next customer with buttons to call them or report an incident."
+          },
+          {
+            "title": "A video instead of a <br/>paper inspection.",
+            "paragraphs": [
+              "The driver films the van at check-in and check-out. An integrated inspection service turns the video into a condition report, sent straight to the fleet manager."
+            ],
+            "alt": "Video check-in screen: the driver films the van from the outside, next to a “Start Check-in” card and warning and inspection icons."
+          },
+          {
+            "title": "Same family as <br/>Interface, built for the <br/>road.",
+            "paragraphs": [
+              "I adapted Interface’s design system for mobile: larger touch targets, simpler layouts, and a light and dark mode for shifts that start before sunrise."
+            ],
+            "alt": "Three Driver App screens in light and dark mode: the home screen with the vehicle tools, the settings with the theme picker, and the van’s battery at 75%."
+          }
+        ]
       }
     }
   }

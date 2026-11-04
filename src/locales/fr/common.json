@@ -467,6 +467,45 @@
             "alt": "Un livreur en gilet haute visibilité tient un téléphone affichant l’écran « Session Completed » de Driver App."
           }
         ]
+      },
+      "decisions": {
+        "label": "(05)",
+        "title": "Décisions clés",
+        "previous": "Décision précédente",
+        "next": "Décision suivante",
+        "slideLabel": "Décision {{current}} sur {{total}}",
+        "slides": [
+          {
+            "title": "L’attribution, <br/>c’est là que la journée <br/>commence.",
+            "paragraphs": [
+              "Rien ne démarre tant que le livreur n’est pas attribué à la camionnette, par QR code, numéro VIN ou clé virtuelle. Ensuite, l’app suit la journée en temps réel :",
+              "<strong>Attribution → Check-in → Prêt à partir → Tournée → Check-out</strong>",
+              "Une seule étape pour le livreur ; pour la flotte, une trace claire de qui a conduit quelle camionnette, et quand."
+            ],
+            "alt": "Enregistrement d’écran de Driver App qui scanne le numéro VIN d’une camionnette pour y attribuer le livreur, avec un champ pour saisir le code à la main."
+          },
+          {
+            "title": "Planifier la tournée <br/>selon la batterie.",
+            "paragraphs": [
+              "L’app ordonne les arrêts de la journée et propose des itinéraires selon la charge de la camionnette, pour que les livreurs terminent leur tournée en consommant moins d’énergie."
+            ],
+            "alt": "Écrans d’itinéraire de Driver App : une carte nocturne avec le trajet proposé, la liste des 12 arrêts du jour avec leurs horaires, et le prochain client avec des boutons pour l’appeler ou signaler un incident."
+          },
+          {
+            "title": "Une vidéo plutôt <br/>qu’un état des lieux papier.",
+            "paragraphs": [
+              "Le livreur filme la camionnette au check-in et au check-out. Un service d’inspection intégré transforme la vidéo en rapport d’état, envoyé directement au gestionnaire de flotte."
+            ],
+            "alt": "Écran de check-in vidéo : le livreur filme l’extérieur de la camionnette, à côté d’une carte « Start Check-in » et d’icônes d’alerte et d’inspection."
+          },
+          {
+            "title": "De la même famille <br/>qu’Interface, pensée <br/>pour la route.",
+            "paragraphs": [
+              "J’ai adapté le design system d’Interface au mobile : des zones tactiles plus grandes, des écrans plus simples et un mode clair et sombre pour les journées qui commencent avant le lever du soleil."
+            ],
+            "alt": "Trois écrans de Driver App en mode clair et sombre : l’accueil avec les outils du véhicule, les réglages avec le choix du thème, et la batterie de la camionnette à 75 %."
+          }
+        ]
       }
     }
   }
