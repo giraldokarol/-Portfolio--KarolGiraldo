@@ -442,6 +442,31 @@
       },
       "question": {
         "text": "How might we give last-mile drivers <muted>one intuitive app that simplifies their daily operations</muted>, from vehicle access to the end of the round?"
+      },
+      "process": {
+        "label": "(04)",
+        "title": "Process",
+        "lead": "No existing product: every module started from a business goal.",
+        "steps": [
+          {
+            "number": "01.",
+            "title": "Map",
+            "text": "story mapping turned the business goals into epics and user stories, from driver onboarding to route monitoring.",
+            "alt": "Story mapping board for mission planning, with the user needs, the vehicle types and the unassigned routes."
+          },
+          {
+            "number": "02.",
+            "title": "Prioritize",
+            "text": "with Product and Business, we used MoSCoW to define the MVP and the next release (MMP).",
+            "alt": "A designer arranging sticky notes on a glass wall, under the steps of the driver’s journey: profile, vehicle, location, stats and planning."
+          },
+          {
+            "number": "03.",
+            "title": "Design & validate",
+            "text": "I mapped the user flows and validated low-fi mockups before development.",
+            "alt": "A driver in a high-visibility vest holding a phone with the Driver App’s “Session Completed” screen."
+          }
+        ]
       }
     }
   }

@@ -165,6 +165,11 @@
   line-height: 0.8;
   letter-spacing: -0.04em;
   color: color-mix(in srgb, var(--color-primary) 8%, var(--color-background));
+
+  // Driver App (página en gris): número gris en vez de azulado. Con la foto visible manda el color de encima.
+  .case-study--gray & {
+    color: color-mix(in srgb, var(--color-ink) 6%, var(--color-background));
+  }
 }
 
 .case-process__step-title {

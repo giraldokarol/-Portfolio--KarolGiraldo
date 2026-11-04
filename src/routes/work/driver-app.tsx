@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import CaseContext from "@/components/case/CaseContext";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
+import CaseProcess, { type ProcessStep } from "@/components/case/CaseProcess";
 import CaseQuestion from "@/components/case/CaseQuestion";
 import CaseResearch from "@/components/case/CaseResearch";
 import Footer from "@/components/Footer";
@@ -38,6 +39,13 @@ const QUESTION_ORBS = [
   { desktop: { x: 81, y: 67, size: 22.4 }, mobile: { x: 84, y: 82, size: 50 } },
 ];
 
+// Fotos de fondo de las etapas de "Process" (aparecen al pasar el ratón). Las tres son claras.
+const PROCESS_STEPS: ProcessStep[] = [
+  { image: "process-1-map", width: 469, height: 372, tone: "light" },
+  { image: "process-2-prioritize", width: 502, height: 372, tone: "light" },
+  { image: "process-3-design", width: 469, height: 372, tone: "light" },
+];
+
 // Corre en el build (prerender): un idioma que no existe → 404.
 export function loader({ params }: Route.LoaderArgs) {
   if (!isLocale(params.lang)) throw data(null, { status: 404 });
@@ -57,7 +65,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Driver App (Flexis), la app móvil para conductores de reparto.
-// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…"…
+// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process"…
 export default function DriverApp() {
   return (
     <>
@@ -75,6 +83,7 @@ export default function DriverApp() {
         <CaseContext textKey={`${TEXTS}.context`} orbs={CONTEXT_ORBS} />
         <CaseResearch textKey={`${TEXTS}.research`} slug={SLUG} gaps={RESEARCH_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} centered orbs={QUESTION_ORBS} />
+        <CaseProcess textKey={`${TEXTS}.process`} slug={SLUG} steps={PROCESS_STEPS} />
       </main>
       <Footer />
     </>

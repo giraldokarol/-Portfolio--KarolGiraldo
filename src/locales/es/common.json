@@ -442,6 +442,31 @@
       },
       "question": {
         "text": "¿Cómo podríamos dar a los repartidores de última milla <muted>una sola app intuitiva que simplifique su día a día</muted>, desde el acceso al vehículo hasta el final de la ruta?"
+      },
+      "process": {
+        "label": "(04)",
+        "title": "Proceso",
+        "lead": "Sin un producto previo: cada módulo partió de un objetivo de negocio.",
+        "steps": [
+          {
+            "number": "01.",
+            "title": "Mapear",
+            "text": "el story mapping convirtió los objetivos de negocio en épicas e historias de usuario, desde el onboarding del repartidor hasta el seguimiento de rutas.",
+            "alt": "Tablero de story mapping para la planificación de misiones, con las necesidades de los usuarios, los tipos de vehículo y las rutas sin asignar."
+          },
+          {
+            "number": "02.",
+            "title": "Priorizar",
+            "text": "con Producto y Negocio, usamos MoSCoW para definir el MVP y la siguiente versión (MMP).",
+            "alt": "Una diseñadora coloca post-its en una pared de cristal, bajo los pasos del recorrido del repartidor: perfil, vehículo, ubicación, estadísticas y planificación."
+          },
+          {
+            "number": "03.",
+            "title": "Diseñar y validar",
+            "text": "tracé los flujos de usuario y validé maquetas de baja fidelidad antes del desarrollo.",
+            "alt": "Un repartidor con chaleco de alta visibilidad sostiene un teléfono con la pantalla «Session Completed» de Driver App."
+          }
+        ]
       }
     }
   }

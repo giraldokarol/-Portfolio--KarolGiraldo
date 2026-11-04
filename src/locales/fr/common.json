@@ -442,6 +442,31 @@
       },
       "question": {
         "text": "Comment offrir aux livreurs du dernier kilomètre <muted>une seule app intuitive qui simplifie leur quotidien</muted>, de l’accès au véhicule jusqu’à la fin de la tournée ?"
+      },
+      "process": {
+        "label": "(04)",
+        "title": "Processus",
+        "lead": "Aucun produit existant : chaque module est parti d’un objectif métier.",
+        "steps": [
+          {
+            "number": "01.",
+            "title": "Cartographier",
+            "text": "le story mapping a transformé les objectifs métier en epics et en user stories, de l’onboarding du livreur au suivi des tournées.",
+            "alt": "Tableau de story mapping pour la planification des missions, avec les besoins des utilisateurs, les types de véhicules et les tournées non attribuées."
+          },
+          {
+            "number": "02.",
+            "title": "Prioriser",
+            "text": "avec le Produit et le Métier, nous avons utilisé MoSCoW pour définir le MVP et la version suivante (MMP).",
+            "alt": "Une designer place des post-it sur une paroi vitrée, sous les étapes du parcours du livreur : profil, véhicule, localisation, statistiques et planning."
+          },
+          {
+            "number": "03.",
+            "title": "Concevoir et valider",
+            "text": "j’ai cartographié les parcours utilisateurs et validé des maquettes basse fidélité avant le développement.",
+            "alt": "Un livreur en gilet haute visibilité tient un téléphone affichant l’écran « Session Completed » de Driver App."
+          }
+        ]
       }
     }
   }
