@@ -231,3 +231,66 @@
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
+
+// ─── Párrafo en gris bajo la entradilla (opcional) ───────────────────────────────────
+.case-intro__detail {
+  max-width: 22em;
+  margin-top: rem(16);
+  font-size: type-size(small);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-top: rem(32);
+    margin-left: rem(70); // alineado con la entradilla
+  }
+}
+
+.case-intro__card-text strong {
+  font-weight: weight(bold);
+  color: var(--color-ink);
+}
+
+// Bolitas de color (MeshOrb) detrás de las tarjetas, sobre el fondo blanco.
+.case-intro__mesh-orb {
+  z-index: -1;
+}
+
+// ─── Variante teléfono (apps móviles) ────────────────────────────────────────────────
+// El teléfono (imagen con fondo transparente y su sombra) va centrado bajo el texto. En tablet y
+// escritorio sale por debajo de la tarjeta (margen negativo, en % del ancho de la tarjeta); en móvil
+// queda dentro, porque las tarjetas van apiladas y se taparían.
+.case-intro--phone {
+  @include mq(md) {
+    padding-bottom: rem(240); // el hueco de debajo + lo que sobresalen los teléfonos
+
+    .case-intro__showcase::before {
+      bottom: rem(-320); // el fondo blanco llega hasta el final de la sección
+    }
+  }
+
+  @include mq(lg) {
+    padding-bottom: rem(280);
+  }
+
+  .case-intro__card {
+    align-items: center;
+  }
+
+  .case-intro__card-title,
+  .case-intro__card-text {
+    align-self: stretch;
+  }
+
+  .case-intro__card-image {
+    width: min(78%, #{rem(300)});
+    margin-top: rem(8);
+
+    @include mq(md) {
+      width: 88%;
+      margin-top: auto; // los tres a la misma altura, aunque los textos tengan más o menos líneas
+      margin-bottom: -76%;
+    }
+  }
+}

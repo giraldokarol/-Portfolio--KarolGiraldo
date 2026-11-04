@@ -378,6 +378,37 @@
             "value": "1 Year"
           }
         ]
+      },
+      "intro": {
+        "backgroundWord": "Problem",
+        "problem": {
+          "number": "(01)",
+          "title": "The problem",
+          "lead": "Drivers had no single tool for their day, and no clear way to pair with their vehicle.",
+          "detail": "Vehicles were tracked live in Interface, but there was no reliable way to know who was driving each one, and when."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "The solution",
+          "lead": "One app for the driver’s day, starting with a simple vehicle pairing."
+        },
+        "cards": [
+          {
+            "title": "Vehicle pairing",
+            "text": "Scan the <strong>QR code</strong> or enter the <strong>VIN number</strong> to start a mission, or unlock the vehicle with a virtual key.",
+            "alt": "Vehicle pairing screen: the camera scans the vehicle’s VIN number, with a field to enter the vehicle code manually."
+          },
+          {
+            "title": "Video check-in & check-out",
+            "text": "The driver films the vehicle, and an integrated inspection service completes the report.",
+            "alt": "Video check-in screen: the driver films the van from the outside while recording."
+          },
+          {
+            "title": "Smart daily mission",
+            "text": "Routes and stop order optimized to use less energy.",
+            "alt": "Mission navigation screen: turn-by-turn directions on a night map, the next stop and buttons to call the customer or report an incident."
+          }
+        ]
       }
     }
   }

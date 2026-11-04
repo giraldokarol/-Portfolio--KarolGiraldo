@@ -378,6 +378,37 @@
             "value": "1 año"
           }
         ]
+      },
+      "intro": {
+        "backgroundWord": "Problema",
+        "problem": {
+          "number": "(01)",
+          "title": "El problema",
+          "lead": "Los repartidores no tenían una sola herramienta para su día, ni una forma clara de vincularse a su vehículo.",
+          "detail": "Los vehículos se seguían en directo en Interface, pero no había una forma fiable de saber quién conducía cada uno, ni cuándo."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "La solución",
+          "lead": "Una sola app para el día del repartidor, empezando por una vinculación con el vehículo muy sencilla."
+        },
+        "cards": [
+          {
+            "title": "Vinculación del vehículo",
+            "text": "Escanea el <strong>código QR</strong> o introduce el <strong>número VIN</strong> para empezar una misión, o desbloquea el vehículo con una llave virtual.",
+            "alt": "Pantalla de vinculación del vehículo: la cámara escanea el número VIN del vehículo, con un campo para introducir su código a mano."
+          },
+          {
+            "title": "Check-in y check-out en vídeo",
+            "text": "El repartidor graba el vehículo y un servicio de inspección integrado completa el informe.",
+            "alt": "Pantalla de check-in en vídeo: el repartidor graba el exterior de la furgoneta mientras se registra."
+          },
+          {
+            "title": "Misión del día inteligente",
+            "text": "Rutas y orden de paradas optimizados para gastar menos energía.",
+            "alt": "Pantalla de navegación de la misión: indicaciones paso a paso sobre un mapa nocturno, la próxima parada y botones para llamar al cliente o informar de un incidente."
+          }
+        ]
       }
     }
   }

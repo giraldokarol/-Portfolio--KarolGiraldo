@@ -1,11 +1,13 @@
 import { useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import MeshGradient, { type MeshCircle } from "../MeshGradient";
+import MeshOrb, { type OrbPlacement } from "./MeshOrb";
 import { useCaseIntroReveal } from "./useCaseIntroReveal";
 import { useFitWord } from "./useFitWord";
 
-type Block = { number: string; title: string; lead: string };
+// detail: párrafo opcional en gris bajo la entradilla.
+type Block = { number: string; title: string; lead: string; detail?: string };
 type Card = { title: string; text: string; alt: string };
 
 type Props = {
@@ -14,17 +16,32 @@ type Props = {
   // Imágenes de las tarjetas, en el mismo orden que los textos: public/images/case/<slug>/<nombre>.png
   slug: string;
   images: readonly string[];
+  // Tamaño real de las imágenes (el navegador reserva su hueco antes de cargarlas).
+  imageSize?: { width: number; height: number };
+  // Capturas web (en su ventana de navegador) o teléfonos, que salen por debajo de las tarjetas.
+  device?: "web" | "phone";
+  // Bolitas de color (MeshOrb) en lugar del círculo de abajo a la izquierda: centro en % del bloque de
+  // las tarjetas y diámetro en vw.
+  orbs?: (OrbPlacement & { mobile?: OrbPlacement })[];
 };
 
 // Un solo círculo que llena su caja (posición y radio en fracción de la caja).
 const ORB: MeshCircle[] = [{ x: 0.5, y: 0.5, r: 0.5 }];
 
-// Tamaño real de las capturas (760 × 510): el navegador reserva su hueco antes de cargarlas.
-const IMAGE_SIZE = { width: 760, height: 510 };
+// Tamaño de las capturas web (760 × 510).
+const WEB_IMAGE_SIZE = { width: 760, height: 510 };
 
-// "The problem" / "The solution" de un caso de estudio + tarjetas con las pantallas clave.
+// "The problem" / "The solution" de un caso de estudio + tarjetas con las pantallas clave (capturas web
+// o teléfonos).
 // Animación en case/useCaseIntroReveal.ts. Estilos: styles/sections/_case-intro.scss
-export default function CaseIntro({ textKey, slug, images }: Props) {
+export default function CaseIntro({
+  textKey,
+  slug,
+  images,
+  imageSize = WEB_IMAGE_SIZE,
+  device = "web",
+  orbs,
+}: Props) {
   const { t } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const problem = t(`${textKey}.problem`, { returnObjects: true }) as Block;
@@ -35,7 +52,7 @@ export default function CaseIntro({ textKey, slug, images }: Props) {
   useCaseIntroReveal(root);
 
   return (
-    <section className="case-intro" ref={root} aria-labelledby="case-problem-title">
+    <section className={`case-intro case-intro--${device}`} ref={root} aria-labelledby="case-problem-title">
 
       <div className="case-intro__inner container">
         <div className="case-intro__blocks">
@@ -51,6 +68,7 @@ export default function CaseIntro({ textKey, slug, images }: Props) {
                 {block.title}
               </h2>
               <p className="case-intro__lead">{block.lead}</p>
+              {block.detail && <p className="case-intro__detail">{block.detail}</p>}
             </div>
           ))}
         </div>
@@ -59,9 +77,15 @@ export default function CaseIntro({ textKey, slug, images }: Props) {
           <span className="case-intro__bg-word" aria-hidden="true">
             {t(`${textKey}.backgroundWord`)}
           </span>
-          <div className="case-intro__orb" aria-hidden="true">
-            <MeshGradient circles={ORB} />
-          </div>
+          {orbs ? (
+            orbs.map(({ mobile, ...desktop }) => (
+              <MeshOrb key={`${desktop.x}-${desktop.y}`} className="case-intro__mesh-orb" {...desktop} mobile={mobile} />
+            ))
+          ) : (
+            <div className="case-intro__orb" aria-hidden="true">
+              <MeshGradient circles={ORB} />
+            </div>
+          )}
 
           <ul className="case-intro__cards">
             {cards.map((card, index) => (
@@ -69,12 +93,15 @@ export default function CaseIntro({ textKey, slug, images }: Props) {
                 {/* La entrada mueve el <li>; el hover, la tarjeta: cada animación en su propio elemento. */}
                 <div className="case-intro__card">
                   <h3 className="case-intro__card-title">{card.title}</h3>
-                  <p className="case-intro__card-text">{card.text}</p>
+                  <p className="case-intro__card-text">
+                    {/* <strong> = palabras en negrita del diseño. */}
+                    <Trans i18nKey={`${textKey}.cards.${index}.text`} components={{ strong: <strong /> }} />
+                  </p>
                   <img
                     className="case-intro__card-image"
                     src={`/images/case/${slug}/${images[index]}.png`}
                     alt={card.alt}
-                    {...IMAGE_SIZE}
+                    {...imageSize}
                     loading="lazy"
                     decoding="async"
                   />

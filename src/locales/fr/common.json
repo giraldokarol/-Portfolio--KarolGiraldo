@@ -378,6 +378,37 @@
             "value": "1 an"
           }
         ]
+      },
+      "intro": {
+        "backgroundWord": "Problème",
+        "problem": {
+          "number": "(01)",
+          "title": "Le problème",
+          "lead": "Les livreurs n’avaient pas d’outil unique pour leur journée, ni de moyen simple de s’associer à leur véhicule.",
+          "detail": "Les véhicules étaient suivis en direct dans Interface, mais rien ne permettait de savoir de façon fiable qui conduisait chacun d’eux, ni quand."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "La solution",
+          "lead": "Une seule app pour la journée du livreur, à commencer par une association au véhicule toute simple."
+        },
+        "cards": [
+          {
+            "title": "Association du véhicule",
+            "text": "Scannez le <strong>QR code</strong> ou saisissez le <strong>numéro VIN</strong> pour démarrer une mission, ou déverrouillez le véhicule avec une clé virtuelle.",
+            "alt": "Écran d’association du véhicule : la caméra scanne le numéro VIN du véhicule, avec un champ pour saisir son code à la main."
+          },
+          {
+            "title": "Check-in et check-out vidéo",
+            "text": "Le livreur filme le véhicule, et un service d’inspection intégré complète le rapport.",
+            "alt": "Écran de check-in vidéo : le livreur filme l’extérieur de la camionnette pendant l’enregistrement."
+          },
+          {
+            "title": "Mission du jour intelligente",
+            "text": "Itinéraires et ordre des arrêts optimisés pour consommer moins d’énergie.",
+            "alt": "Écran de navigation de la mission : guidage pas à pas sur une carte nocturne, le prochain arrêt et des boutons pour appeler le client ou signaler un incident."
+          }
+        ]
       }
     }
   }

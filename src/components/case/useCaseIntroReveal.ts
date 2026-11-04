@@ -3,7 +3,8 @@ import type { RefObject } from "react";
 import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
 
 // Entrada de "The problem / The solution" (CaseIntro.tsx), una sola vez al llegar con el scroll:
-//   palabra de fondo → cada bloque (número, título palabra a palabra desde una máscara, entradilla)
+//   palabra de fondo → cada bloque (número, título palabra a palabra desde una máscara, entradilla y,
+//   si lo hay, el párrafo en gris)
 //   → tarjetas una tras otra.
 // Con reduced-motion no se anima nada: todo está en su sitio desde el principio.
 export function useCaseIntroReveal(scope: RefObject<HTMLElement | null>) {
@@ -32,8 +33,7 @@ export function useCaseIntroReveal(scope: RefObject<HTMLElement | null>) {
             aria: "auto",
           });
 
-          gsap
-            .timeline({
+          const tl = gsap.timeline({
               defaults: { ease: "power3.out" },
               // "The solution" empieza un poco después: llega a la vez, pero en escalera, como el diseño.
               delay: index * 0.15,
@@ -43,6 +43,10 @@ export function useCaseIntroReveal(scope: RefObject<HTMLElement | null>) {
             .from(block.querySelector(".case-intro__number"), { autoAlpha: 0, y: 12, duration: 0.6 }, 0)
             .from(split.words, { yPercent: 110, duration: 1, stagger: 0.08, ease: "power4.out" }, 0.05)
             .from(block.querySelector(".case-intro__lead"), { autoAlpha: 0, y: 20, duration: 0.8 }, 0.4);
+
+          // Párrafo en gris (solo en algunos casos), un poco después de la entradilla.
+          const detail = block.querySelector(".case-intro__detail");
+          if (detail) tl.from(detail, { autoAlpha: 0, y: 20, duration: 0.8 }, 0.55);
 
           return split;
         });

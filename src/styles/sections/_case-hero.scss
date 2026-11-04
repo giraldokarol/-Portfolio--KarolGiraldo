@@ -7,9 +7,14 @@
   overflow-x: clip; // manchas y franja salen por los lados: sin scroll horizontal
 }
 
-// Driver App: franjas claras en gris en vez de azuladas (todas las secciones de la página usan --color-band).
+// Driver App: franjas claras en gris en vez de azuladas (todas las secciones de la página usan --color-band)
+// y bolitas de color en gris y azul, sin amarillo (MeshGradient lee --color-accent de su propio canvas).
 .case-study--gray {
   --color-band: var(--color-band-gray);
+
+  .mesh-gradient {
+    --color-accent: var(--color-mesh-gray);
+  }
 }
 
 .case-hero {
