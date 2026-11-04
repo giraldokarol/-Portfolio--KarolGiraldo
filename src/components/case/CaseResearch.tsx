@@ -1,7 +1,9 @@
 import { useRef, type CSSProperties } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
+import MeshGradient, { type MeshCircle } from "../MeshGradient";
 import { useCaseResearchReveal } from "./useCaseResearchReveal";
+import { useCaseResearchScroll } from "./useCaseResearchScroll";
 
 // Posición de una pieza dentro de su composición, en % de la caja: x e y = esquina de arriba a la
 // izquierda, w = ancho (el alto sale de la proporción de la imagen o de la tarjeta).
@@ -44,6 +46,18 @@ type Props = {
   // Composición de cada hueco, en el mismo orden que <textKey>.gaps.
   gaps: readonly ResearchGap[];
 };
+
+// Bolitas de color que llenan el blanco mientras la sección está fija (solo escritorio).
+// Cada una es una copia de la bolita grande de "Selected work" (home): su propio degradado, con el círculo en
+// la misma posición de su caja que en la home, así mezcla los tres colores igual estén donde estén.
+const HOME_CIRCLE: MeshCircle[] = [{ x: 0.327, y: 0.36, r: 0.139 }];
+
+// Reparto en diagonal por los huecos libres: centro (x, y) en % de la pantalla y diámetro en vw.
+const ORBS = [
+  { x: 17, y: 19, size: 10 }, // mediana, arriba a la izquierda
+  { x: 81, y: 68, size: 22 }, // grande, abajo a la derecha
+  { x: 47, y: 76, size: 5.5 }, // pequeña, abajo en el centro
+] as const;
 
 // Iconos de línea de las tarjetas de rol (24 × 24, color del texto).
 const ROLE_ICONS = {
@@ -91,7 +105,7 @@ function place({ desktop, mobile }: { desktop: Placement; mobile: Placement }) {
 
 // "Research" de un caso de estudio: a la izquierda el texto; a la derecha los huecos encontrados en la
 // investigación, cada uno con su número gigante, su frase y una composición de pantallas del producto.
-// Animación en case/useCaseResearchReveal.ts. Estilos: styles/sections/_case-research.scss
+// Animaciones en case/useCaseResearchReveal.ts (entrada) y case/useCaseResearchScroll.ts (scroll). Estilos: styles/sections/_case-research.scss
 export default function CaseResearch({ textKey, slug, gaps }: Props) {
   const { t } = useTranslation();
   const root = useRef<HTMLElement>(null);
@@ -99,10 +113,23 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
   const roles = t(`${textKey}.roles`, { returnObjects: true }) as Record<string, RoleText>;
 
   useCaseResearchReveal(root);
+  useCaseResearchScroll(root);
 
   return (
     <section className="case-research" ref={root} aria-labelledby="case-research-title">
       <div className="case-research__inner container">
+        <div className="case-research__mesh" aria-hidden="true">
+          {ORBS.map((orb) => (
+            <div
+              key={`${orb.x}-${orb.y}`}
+              className="case-research__orb"
+              style={{ "--x": `${orb.x}%`, "--y": `${orb.y}%`, "--size": `${orb.size}vw` } as CSSProperties}
+            >
+              <MeshGradient circles={HOME_CIRCLE} />
+            </div>
+          ))}
+        </div>
+
         <div className="case-research__intro">
           <span className="case-research__label" aria-hidden="true">
             {t(`${textKey}.label`)}

@@ -24,6 +24,9 @@ export const MEDIA = {
   // Pantallas medianas y grandes / pequeñas, con animaciones.
   wide: `(min-width: 48em) and ${motionOk}`,
   narrow: `(max-width: 47.99em) and ${motionOk}`,
+  // Escritorio (desde lg, 1024 px) / por debajo, con animaciones.
+  large: `(min-width: 64em) and ${motionOk}`,
+  belowLarge: `(max-width: 63.99em) and ${motionOk}`,
   // Ratón o trackpad: hay un puntero que seguir.
   pointer: `(hover: hover) and (pointer: fine) and ${motionOk}`,
   // Táctil (móvil, tablet): sin cursor, animación autónoma.
