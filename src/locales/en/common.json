@@ -409,6 +409,11 @@
             "alt": "Mission navigation screen: turn-by-turn directions on a night map, the next stop and buttons to call the customer or report an incident."
           }
         ]
+      },
+      "context": {
+        "label": "(Context)",
+        "title": "Last-mile delivery runs on tight schedules and shared vans.",
+        "lead": "In last-mile logistics, several drivers share the same vans, rounds are tight, and electric vehicles add a new constraint: range. Flexis built this app for delivery drivers across Europe."
       }
     }
   }

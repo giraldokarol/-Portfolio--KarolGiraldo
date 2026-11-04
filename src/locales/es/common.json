@@ -409,6 +409,11 @@
             "alt": "Pantalla de navegación de la misión: indicaciones paso a paso sobre un mapa nocturno, la próxima parada y botones para llamar al cliente o informar de un incidente."
           }
         ]
+      },
+      "context": {
+        "label": "(Contexto)",
+        "title": "La última milla funciona con horarios ajustados y furgonetas compartidas.",
+        "lead": "En la logística de última milla, varios repartidores comparten las mismas furgonetas, las rutas van justas y los vehículos eléctricos añaden un límite nuevo: la autonomía. Flexis creó esta app para repartidores de toda Europa."
       }
     }
   }

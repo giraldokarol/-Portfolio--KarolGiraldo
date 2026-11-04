@@ -409,6 +409,11 @@
             "alt": "Écran de navigation de la mission : guidage pas à pas sur une carte nocturne, le prochain arrêt et des boutons pour appeler le client ou signaler un incident."
           }
         ]
+      },
+      "context": {
+        "label": "(Contexte)",
+        "title": "Le dernier kilomètre, ce sont des horaires serrés et des camionnettes partagées.",
+        "lead": "Dans la logistique du dernier kilomètre, plusieurs livreurs partagent les mêmes camionnettes, les tournées sont serrées et les véhicules électriques ajoutent une contrainte : l’autonomie. Flexis a créé cette app pour les livreurs de toute l’Europe."
       }
     }
   }

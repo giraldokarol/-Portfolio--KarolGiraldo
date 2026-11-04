@@ -4,7 +4,7 @@ import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
 
 // Entrada de "(Context)" (CaseContext.tsx), una sola vez al llegar con el scroll:
 //   etiqueta → título palabra a palabra desde una máscara → entradilla.
-// El círculo de color sube un poco más despacio que la página (parallax suave).
+// El círculo (o las bolitas) de color sube un poco más despacio que la página (parallax suave).
 // Con reduced-motion no se anima nada: todo está en su sitio desde el principio.
 export function useCaseContextReveal(scope: RefObject<HTMLElement | null>) {
   useGSAP(
@@ -32,7 +32,7 @@ export function useCaseContextReveal(scope: RefObject<HTMLElement | null>) {
           .from(".case-context__lead", { autoAlpha: 0, y: 20, duration: 0.8 }, 0.5);
 
         gsap.fromTo(
-          ".case-context__orb",
+          ".case-context__orb, .case-context__mesh-orb",
           { yPercent: 30 },
           { yPercent: -30, ease: "none", scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: true } },
         );

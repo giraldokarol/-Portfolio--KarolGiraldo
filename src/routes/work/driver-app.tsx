@@ -4,6 +4,7 @@ import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
+import CaseContext from "@/components/case/CaseContext";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
 import Footer from "@/components/Footer";
@@ -20,6 +21,12 @@ const INTRO_IMAGES = ["vehicle-pairing", "video-check-in", "smart-daily-mission"
 const INTRO_ORBS = [
   { x: 4, y: 80, size: 13.5, mobile: { x: 2, y: 22, size: 48 } },
   { x: 72, y: 106, size: 18.5, mobile: { x: 96, y: 78, size: 58 } },
+];
+
+// Bolitas de "(Context)": una grande abajo a la izquierda (sale un poco de la sección) y una pequeña a la derecha.
+const CONTEXT_ORBS = [
+  { x: 14, y: 100, size: 26, mobile: { x: 6, y: 96, size: 56 } },
+  { x: 88, y: 72, size: 9, mobile: { x: 94, y: 6, size: 24 } },
 ];
 
 // Corre en el build (prerender): un idioma que no existe → 404.
@@ -41,7 +48,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Driver App (Flexis), la app móvil para conductores de reparto.
-// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution"…
+// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)"…
 export default function DriverApp() {
   return (
     <>
@@ -56,6 +63,7 @@ export default function DriverApp() {
           device="phone"
           orbs={INTRO_ORBS}
         />
+        <CaseContext textKey={`${TEXTS}.context`} orbs={CONTEXT_ORBS} />
       </main>
       <Footer />
     </>

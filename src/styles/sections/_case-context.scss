@@ -113,3 +113,8 @@
     );
   }
 }
+
+// Bolitas de color repartidas por la sección (MeshOrb, solo en algunos casos), detrás del texto.
+.case-context__mesh-orb {
+  z-index: -1;
+}
