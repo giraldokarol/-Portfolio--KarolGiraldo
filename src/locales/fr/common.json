@@ -506,6 +506,26 @@
             "alt": "Trois écrans de Driver App en mode clair et sombre : l’accueil avec les outils du véhicule, les réglages avec le choix du thème, et la batterie de la camionnette à 75 %."
           }
         ]
+      },
+      "final": {
+        "label": "(06)",
+        "title": "Pour conclure",
+        "outcome": "Résultat",
+        "statement": "D’un cadre produit à un <strong>MVP prêt pour le développement</strong>.",
+        "projectFor": "Projet pour",
+        "logoAlt": "Flexis",
+        "stats": [
+          {
+            "value": "04",
+            "label": "parcours livreur conçus de bout en bout"
+          },
+          {
+            "value": "02",
+            "label": "thèmes, clair et sombre"
+          }
+        ],
+        "summary": "Une seule app qui accompagne les livreurs de l’attribution du véhicule jusqu’au check-out, conçue de zéro et prête pour le développement avant le rachat de Flexis.",
+        "photoAlt": "Un livreur en gilet haute visibilité sourit en regardant son téléphone, qui affiche Driver App avec la batterie de la camionnette à 75 %, devant une camionnette électrique."
       }
     }
   }

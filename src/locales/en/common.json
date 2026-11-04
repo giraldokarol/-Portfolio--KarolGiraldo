@@ -506,6 +506,26 @@
             "alt": "Three Driver App screens in light and dark mode: the home screen with the vehicle tools, the settings with the theme picker, and the van’s battery at 75%."
           }
         ]
+      },
+      "final": {
+        "label": "(06)",
+        "title": "Final Thoughts",
+        "outcome": "Outcome",
+        "statement": "From a product framework to a <strong>dev-ready MVP</strong>.",
+        "projectFor": "Project for",
+        "logoAlt": "Flexis",
+        "stats": [
+          {
+            "value": "04",
+            "label": "driver journeys designed end to end"
+          },
+          {
+            "value": "02",
+            "label": "themes, light & dark"
+          }
+        ],
+        "summary": "One app that takes drivers from vehicle assignment to check-out, designed from scratch and ready for development before Flexis was acquired.",
+        "photoAlt": "A delivery driver in a high-visibility vest smiling at his phone, which shows the Driver App with the van’s battery at 75%, in front of an electric van."
       }
     }
   }

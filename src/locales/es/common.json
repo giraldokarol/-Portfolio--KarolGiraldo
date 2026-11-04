@@ -506,6 +506,26 @@
             "alt": "Tres pantallas de Driver App en modo claro y oscuro: el inicio con las herramientas del vehículo, los ajustes con el selector de tema, y la batería de la furgoneta al 75 %."
           }
         ]
+      },
+      "final": {
+        "label": "(06)",
+        "title": "Reflexiones finales",
+        "outcome": "Resultado",
+        "statement": "De un marco de producto a un <strong>MVP listo para desarrollo</strong>.",
+        "projectFor": "Proyecto para",
+        "logoAlt": "Flexis",
+        "stats": [
+          {
+            "value": "04",
+            "label": "recorridos del repartidor diseñados de principio a fin"
+          },
+          {
+            "value": "02",
+            "label": "temas, claro y oscuro"
+          }
+        ],
+        "summary": "Una sola app que acompaña a los repartidores desde la asignación del vehículo hasta el check-out, diseñada desde cero y lista para desarrollo antes de que Flexis fuera adquirida.",
+        "photoAlt": "Un repartidor con chaleco de alta visibilidad sonríe mirando su teléfono, que muestra Driver App con la batería de la furgoneta al 75 %, delante de una furgoneta eléctrica."
       }
     }
   }

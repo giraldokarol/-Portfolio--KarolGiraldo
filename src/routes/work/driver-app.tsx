@@ -6,6 +6,7 @@ import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
 import CaseContext from "@/components/case/CaseContext";
 import CaseDecisions, { type DecisionImage } from "@/components/case/CaseDecisions";
+import CaseFinal from "@/components/case/CaseFinal";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
 import CaseProcess, { type ProcessStep } from "@/components/case/CaseProcess";
@@ -80,7 +81,8 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Driver App (Flexis), la app móvil para conductores de reparto.
-// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research", "How might we…", "Process", "Key Decisions"…
+// Misma estructura que el de Interface (routes/work/interface-web-app.tsx): Hero, "The problem / The solution",
+// "(Context)", "Research", "How might we…", "Process", "Key Decisions" y "Final Thoughts".
 export default function DriverApp() {
   return (
     <>
@@ -100,6 +102,7 @@ export default function DriverApp() {
         <CaseQuestion textKey={`${TEXTS}.question`} centered orbs={QUESTION_ORBS} />
         <CaseProcess textKey={`${TEXTS}.process`} slug={SLUG} steps={PROCESS_STEPS} />
         <CaseDecisions textKey={`${TEXTS}.decisions`} slug={SLUG} images={DECISION_IMAGES} device="phone" />
+        <CaseFinal textKey={`${TEXTS}.final`} slug={SLUG} photo={{ width: 313, height: 534 }} />
       </main>
       <Footer />
     </>

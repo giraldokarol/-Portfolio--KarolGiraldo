@@ -36,14 +36,25 @@ export function useCaseFinalReveal(scope: RefObject<HTMLElement | null>) {
           .timeline({ scrollTrigger: { trigger: ".case-final__bento", start: "top 80%", once: true } })
           .from($$(".case-final__card"), { autoAlpha: 0, y: 60, duration: 1, stagger: 0.09, ease: "expo.out" });
 
-        // Cifras: de 0 a su valor (el número real ya está en el HTML; aquí solo se anima).
-        $$(".case-final__stat-value").forEach((value) => {
-          cards.from(value, { textContent: 0, snap: { textContent: 1 }, duration: 1.6, ease: "power2.out" }, 0.3);
+        // Cifras: de 0 a su valor (el número real está en el HTML; aquí solo se anima). Si el valor lleva
+        // ceros delante, los conserva ("04" cuenta 00, 01… 04; "15", 0, 1… 15). Al deshacer, vuelve el valor real.
+        const values = $$(".case-final__stat-value").map((value) => ({ value, text: value.textContent ?? "" }));
+        values.forEach(({ value, text }) => {
+          const target = Number(text);
+          if (!Number.isFinite(target)) return;
+          const digits = text.startsWith("0") ? text.length : 0;
+          const show = (n: number) => (value.textContent = String(Math.round(n)).padStart(digits, "0"));
+          const count = { n: 0 };
+          show(0);
+          cards.to(count, { n: target, duration: 1.6, ease: "power2.out", onUpdate: () => show(count.n) }, 0.3);
         });
 
         cards.from(".case-final__pencil path", { drawSVG: "0%", duration: 1.2, stagger: 0.2, ease: "power2.inOut" }, 0.6);
 
-        return () => split.revert();
+        return () => {
+          split.revert();
+          values.forEach(({ value, text }) => (value.textContent = text));
+        };
       });
 
       return () => mm.revert();
