@@ -19,7 +19,7 @@ import { RESEARCH_GAPS } from "./driver-app.research";
 const TEXTS = "cases.driverApp";
 const SLUG = "driver-app";
 
-// Teléfonos de las tarjetas de "The problem / The solution" (public/images/case/driver-app/, 290 × 488,
+// Teléfonos de las tarjetas de "The problem / The solution" (public/images/case/driver-app/, 580 × 976 a 2x,
 // con fondo transparente y su sombra).
 const INTRO_IMAGES = ["vehicle-pairing", "video-check-in", "smart-daily-mission"] as const;
 
@@ -43,9 +43,9 @@ const QUESTION_ORBS = [
 
 // Fotos de fondo de las etapas de "Process" (aparecen al pasar el ratón). Las tres son claras.
 const PROCESS_STEPS: ProcessStep[] = [
-  { image: "process-1-map", width: 469, height: 372, tone: "light" },
-  { image: "process-2-prioritize", width: 502, height: 372, tone: "light" },
-  { image: "process-3-design", width: 469, height: 372, tone: "light" },
+  { image: "process-1-map", width: 938, height: 744, tone: "light" },
+  { image: "process-2-prioritize", width: 1004, height: 744, tone: "light" },
+  { image: "process-3-design", width: 938, height: 744, tone: "light" },
 ];
 
 // Composiciones de "Key Decisions" (fondo transparente). La primera lleva encima el vídeo del teléfono
@@ -53,13 +53,13 @@ const PROCESS_STEPS: ProcessStep[] = [
 const DECISION_IMAGES: DecisionImage[] = [
   {
     image: "decision-1-shapes",
-    width: 508,
-    height: 632,
+    width: 1016,
+    height: 1263,
     video: { name: "decision-1-assignment", x: 25.9, y: 14.3, w: 50.3, ratio: 632 / 1282 },
   },
-  { image: "decision-2-route", width: 537, height: 683 },
-  { image: "decision-3-inspection", width: 670, height: 638 },
-  { image: "decision-4-design-system", width: 570, height: 774 },
+  { image: "decision-2-route", width: 1074, height: 1365 },
+  { image: "decision-3-inspection", width: 1340, height: 1276 },
+  { image: "decision-4-design-system", width: 1140, height: 1548 },
 ];
 
 // Corre en el build (prerender): un idioma que no existe → 404.
@@ -93,7 +93,7 @@ export default function DriverApp() {
           textKey={`${TEXTS}.intro`}
           slug={SLUG}
           images={INTRO_IMAGES}
-          imageSize={{ width: 290, height: 488 }}
+          imageSize={{ width: 580, height: 976 }}
           device="phone"
           orbs={INTRO_ORBS}
         />

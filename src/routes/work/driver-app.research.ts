@@ -1,6 +1,6 @@
 import type { ResearchGap } from "@/components/case/CaseResearch";
 
-// Composiciones de los tres huecos de "Research" (CaseResearch.tsx), medidas sobre el diseño.
+// Composiciones de los tres huecos de "Research" (CaseResearch.tsx), medidas sobre el diseño (imágenes a 2x).
 // Posiciones en % de cada caja (ver los tipos en CaseResearch.tsx). Las imágenes traen su margen
 // transparente y su sombra: las medidas ya lo descuentan. Móvil: el hueco 01 se reparte de arriba abajo
 // (no conectado → furgoneta → conectado → listo) para que las tarjetas se lean; los otros dos mantienen
@@ -12,29 +12,29 @@ export const RESEARCH_GAPS: readonly ResearchGap[] = [
     images: [
       {
         name: "gap-1-not-connected",
-        width: 372,
-        height: 122,
+        width: 743,
+        height: 243,
         desktop: { x: 0, y: 14.9, w: 46.2 },
         mobile: { x: 0, y: 0, w: 62 },
       },
       {
         name: "gap-1-van",
-        width: 374,
-        height: 327,
+        width: 748,
+        height: 654,
         desktop: { x: 23, y: 0, w: 46.4 },
         mobile: { x: 18, y: 14.4, w: 64 },
       },
       {
         name: "gap-1-connected",
-        width: 398,
-        height: 69,
+        width: 795,
+        height: 137,
         desktop: { x: 50.6, y: 2.7, w: 49.4 },
         mobile: { x: 28, y: 61, w: 72 },
       },
       {
         name: "gap-1-ready",
-        width: 250,
-        height: 64,
+        width: 500,
+        height: 128,
         desktop: { x: 63.2, y: 41, w: 31 },
         mobile: { x: 40, y: 79.7, w: 60 },
       },
@@ -47,29 +47,29 @@ export const RESEARCH_GAPS: readonly ResearchGap[] = [
     images: [
       {
         name: "gap-2-phone",
-        width: 390,
-        height: 294,
+        width: 780,
+        height: 588,
         desktop: { x: 17.4, y: 0, w: 81.2 },
         mobile: { x: 17.4, y: 0, w: 81.2 },
       },
       {
         name: "gap-2-van-top",
-        width: 118,
-        height: 118,
+        width: 235,
+        height: 236,
         desktop: { x: 17.2, y: 28.8, w: 24.6 },
         mobile: { x: 17.2, y: 28.8, w: 24.6 },
       },
       {
         name: "gap-2-directions",
-        width: 158,
-        height: 123,
+        width: 315,
+        height: 246,
         desktop: { x: 67.1, y: 12.4, w: 32.9 },
         mobile: { x: 67.1, y: 12.4, w: 32.9 },
       },
       {
         name: "gap-2-find-vehicle",
-        width: 446,
-        height: 162,
+        width: 892,
+        height: 324,
         desktop: { x: 0, y: 55.5, w: 92.8 },
         mobile: { x: 0, y: 55.5, w: 92.8 },
       },
@@ -81,22 +81,22 @@ export const RESEARCH_GAPS: readonly ResearchGap[] = [
     images: [
       {
         name: "gap-3-link",
-        width: 639,
-        height: 631,
+        width: 426,
+        height: 421,
         desktop: { x: 56.7, y: 12.4, w: 33.6 },
         mobile: { x: 56.7, y: 12.4, w: 33.6 },
       },
       {
         name: "gap-3-find-vehicle",
-        width: 446,
-        height: 162,
+        width: 892,
+        height: 324,
         desktop: { x: 0, y: 29.5, w: 69.8 },
         mobile: { x: 0, y: 29.5, w: 69.8 },
       },
       {
         name: "gap-3-van",
-        width: 604,
-        height: 403,
+        width: 1208,
+        height: 806,
         desktop: { x: 4, y: 0, w: 96 },
         mobile: { x: 4, y: 0, w: 96 },
       },

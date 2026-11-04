@@ -27,3 +27,6 @@ build
 
 # Capturas de Playwright
 .playwright-mcp
+
+# Vídeos originales de edición (ProRes, cientos de MB): a la web solo van los .mp4 comprimidos
+*.mov
