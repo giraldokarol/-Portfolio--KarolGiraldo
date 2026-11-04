@@ -14,6 +14,7 @@
 @use "components/links";
 @use "components/logo";
 @use "components/mesh-gradient";
+@use "components/mesh-orb";
 @use "components/header";
 @use "components/work-menu";
 @use "components/social-rail";
@@ -28,6 +29,7 @@
 @use "sections/case-intro";
 @use "sections/case-context";
 @use "sections/case-research";
+@use "sections/case-question";
 
 @use "pages/system";
 @use "pages/legal";

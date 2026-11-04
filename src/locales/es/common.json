@@ -274,6 +274,9 @@
             "text": "Supervisa la planificación financiera de la flota"
           }
         }
+      },
+      "question": {
+        "text": "¿Cómo podríamos convertir una gran cantidad de <muted>datos de flota fragmentados</muted> en una experiencia sencilla que ayude a los equipos a saber qué hacer después?"
       }
     }
   }

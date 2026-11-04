@@ -274,6 +274,9 @@
             "text": "Oversees financial planning for the fleet"
           }
         }
+      },
+      "question": {
+        "text": "How might we turn a large amount of <muted>fragmented fleet data</muted> into a simple experience that helps teams know what to do next?"
       }
     }
   }

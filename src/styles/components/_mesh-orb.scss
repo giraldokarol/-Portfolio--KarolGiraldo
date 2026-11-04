@@ -1,0 +1,24 @@
+@use "../abstracts" as *;
+
+// BOLITA DE COLOR CON EL DEGRADADO DE LA HOME (components/case/MeshOrb.tsx).
+// Su caja tiene la proporción de la sección de la home (16:10); el círculo está en x 32,7 %, y 36 % y su
+// radio es el 13,9 % del ancho (HOME_CIRCLE). La caja se calcula para que el círculo mida --orb-size y
+// quede centrado en --orb-x, --orb-y del contenedor (que debe estar posicionado).
+.mesh-orb {
+  --size: var(--orb-size-sm);
+  --width: calc(var(--size) / 0.278); // diámetro = 2 × 0,139 del ancho de la caja
+
+  position: absolute;
+  top: calc(var(--orb-y-sm) - var(--width) * 0.625 * 0.36);
+  left: calc(var(--orb-x-sm) - var(--width) * 0.327);
+  width: var(--width);
+  aspect-ratio: 1.6;
+  pointer-events: none;
+
+  @include mq(lg) {
+    --size: var(--orb-size);
+
+    top: calc(var(--orb-y) - var(--width) * 0.625 * 0.36);
+    left: calc(var(--orb-x) - var(--width) * 0.327);
+  }
+}

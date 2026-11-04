@@ -274,6 +274,9 @@
             "text": "Supervise la planification financière de la flotte"
           }
         }
+      },
+      "question": {
+        "text": "Comment transformer une grande quantité de <muted>données de flotte fragmentées</muted> en une expérience simple qui aide les équipes à savoir quoi faire ensuite ?"
       }
     }
   }

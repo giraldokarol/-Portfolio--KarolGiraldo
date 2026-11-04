@@ -1,0 +1,47 @@
+@use "../abstracts" as *;
+
+// "HOW MIGHT WE…" DE UN CASO DE ESTUDIO (components/case/CaseQuestion.tsx).
+// La pregunta en grande, a la derecha en escritorio; detrás, tres bolitas de color (MeshOrb).
+.case-question {
+  position: relative;
+  isolation: isolate;
+  padding-block: rem(120);
+  overflow-x: clip; // las bolitas que salen por los lados no crean scroll lateral
+
+  @include mq(lg) {
+    padding-block: rem(96) rem(140);
+  }
+}
+
+.case-question__orb {
+  z-index: -1;
+}
+
+.case-question__inner {
+  max-width: rem(1240);
+}
+
+.case-question__title {
+  font-size: type-size(case-section);
+  font-weight: weight(extrabold);
+  line-height: 1.05; // algo de aire: los acentos (qué, después) no tocan la línea de arriba
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: pretty; // sin una palabra sola en la última línea
+
+  @include mq(lg) {
+    max-width: 11.2em; // cortes de línea parecidos al diseño
+    margin-left: 30%;
+  }
+}
+
+// Máscara de cada línea durante la entrada (case/useCaseQuestionReveal.ts): un poco más alta por abajo
+// para no cortar las letras que bajan de la línea (g, p, y).
+.case-question__line-mask {
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.case-question__muted {
+  color: var(--color-gray);
+}

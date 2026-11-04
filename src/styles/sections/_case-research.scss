@@ -106,9 +106,9 @@
 }
 
 // ─── Círculos de color (solo con la sección fija) ───────────────────────────────────
-// Bolitas con el mismo degradado de malla que "Selected work" (home), en una capa del tamaño de la
-// pantalla centrada en la sección. Aparece con el scroll cuando "(Context)" sale de la pantalla
-// (case/useCaseResearchScroll.ts). Decorativa.
+// Bolitas con el degradado de la home (MeshOrb), en una capa del tamaño de la pantalla centrada en la
+// sección. Aparece con el scroll cuando "(Context)" sale de la pantalla (case/useCaseResearchScroll.ts).
+// Decorativa.
 .case-research__mesh {
   display: none;
 
@@ -122,97 +122,6 @@
     height: 100vh;
     pointer-events: none;
   }
-}
-
-// Caja de cada bolita: del tamaño de la sección de la home (proporción 16:10) para que el círculo
-// (x 32,7 %, y 36 %, radio 13,9 % del ancho, como HOME_CIRCLE) mida --size y quede centrado en --x, --y.
-.case-research__orb {
-  --width: calc(var(--size) / 0.278); // diámetro = 2 × 0,139 del ancho de la caja
-
-  position: absolute;
-  top: calc(var(--y) - var(--width) * 0.625 * 0.36);
-  left: calc(var(--x) - var(--width) * 0.327);
-  width: var(--width);
-  aspect-ratio: 1.6;
-}
-
-// Escritorio con animaciones (case/useCaseResearchScroll.ts): los tres huecos en la misma celda, uno
-// encima de otro; el scroll los cambia.
-.case-research.is-pinned {
-  .case-research__gaps {
-    grid-template-areas: "gap";
-    align-items: start;
-  }
-
-  .case-research__gap {
-    grid-area: gap;
-  }
-}
-
-// ─── Círculos de color (solo con la sección fija) ───────────────────────────────────
-// Degradado de malla en movimiento (MeshGradient, el mismo de CaseIntro y CaseContext). Aparecen con el
-// scroll cuando "(Context)" sale de la pantalla y se desplazan despacio mientras la sección está fija
-// (case/useCaseResearchScroll.ts). Decorativos.
-.case-research__orbs {
-  display: none;
-
-  .case-research.is-pinned & {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    display: block;
-    pointer-events: none;
-  }
-}
-
-.case-research__orb {
-  position: absolute;
-  aspect-ratio: 1;
-
-  // Sin WebGL: un círculo suave estático con los mismos colores.
-  .mesh-gradient:not(.is-webgl) {
-    border-radius: 50%;
-    background: linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--color-primary) 14%, transparent) 55%,
-      color-mix(in srgb, var(--color-accent) 24%, transparent)
-    );
-  }
-}
-
-// Grande, abajo a la izquierda, asomando tras la conclusión.
-.case-research__orb--left {
-  top: 62%;
-  left: -12%;
-  width: 16vw;
-}
-
-// Mediano, arriba a la derecha, por encima de la frase del hueco.
-.case-research__orb--top {
-  top: -30%;
-  right: -7%;
-  width: 9vw;
-}
-
-// Pequeño, abajo entre las dos columnas.
-.case-research__orb--bottom {
-  bottom: -30%;
-  left: 45%;
-  width: 5.5vw;
-}
-
-// Mediano, en el blanco de arriba, sobre "Research".
-.case-research__orb--high {
-  top: -62%;
-  left: 24%;
-  width: 7vw;
-}
-
-// Grande, en el blanco de abajo, bajo la composición.
-.case-research__orb--low {
-  right: 14%;
-  bottom: -78%;
-  width: 12vw;
 }
 
 // Número gigante y muy claro detrás de la frase; la frase, a su derecha (escritorio).

@@ -1,7 +1,7 @@
 import { useRef, type CSSProperties } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
-import MeshGradient, { type MeshCircle } from "../MeshGradient";
+import MeshOrb from "./MeshOrb";
 import { useCaseResearchReveal } from "./useCaseResearchReveal";
 import { useCaseResearchScroll } from "./useCaseResearchScroll";
 
@@ -47,11 +47,7 @@ type Props = {
   gaps: readonly ResearchGap[];
 };
 
-// Bolitas de color que llenan el blanco mientras la sección está fija (solo escritorio).
-// Cada una es una copia de la bolita grande de "Selected work" (home): su propio degradado, con el círculo en
-// la misma posición de su caja que en la home, así mezcla los tres colores igual estén donde estén.
-const HOME_CIRCLE: MeshCircle[] = [{ x: 0.327, y: 0.36, r: 0.139 }];
-
+// Bolitas de color (MeshOrb) que llenan el blanco mientras la sección está fija (solo escritorio).
 // Reparto en diagonal por los huecos libres: centro (x, y) en % de la pantalla y diámetro en vw.
 const ORBS = [
   { x: 17, y: 19, size: 10 }, // mediana, arriba a la izquierda
@@ -120,13 +116,7 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
       <div className="case-research__inner container">
         <div className="case-research__mesh" aria-hidden="true">
           {ORBS.map((orb) => (
-            <div
-              key={`${orb.x}-${orb.y}`}
-              className="case-research__orb"
-              style={{ "--x": `${orb.x}%`, "--y": `${orb.y}%`, "--size": `${orb.size}vw` } as CSSProperties}
-            >
-              <MeshGradient circles={HOME_CIRCLE} />
-            </div>
+            <MeshOrb key={`${orb.x}-${orb.y}`} {...orb} />
           ))}
         </div>
 
