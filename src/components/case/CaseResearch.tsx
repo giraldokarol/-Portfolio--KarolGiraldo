@@ -29,8 +29,10 @@ export type RoleCard = {
 
 // Caja de la composición. Escritorio: x y w en % de la columna derecha (puede salir un poco por la
 // derecha); ratio = ancho / alto. Móvil: todo el ancho, con su propia proporción.
+// y (opcional): desplazamiento vertical en % del ancho de la caja; negativo = sube detrás de la frase
+// (para las imágenes que traen mucho margen transparente arriba).
 export type ResearchGap = {
-  stage: { x: number; w: number; ratio: number; mobileRatio: number };
+  stage: { x: number; w: number; ratio: number; mobileRatio: number; y?: number };
   // Las piezas se pintan en este orden: la última queda encima.
   images?: GapImage[];
   roles?: RoleCard[];
@@ -140,6 +142,7 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
               "--stage-w": `${gap.stage.w}%`,
               "--ratio": gap.stage.ratio,
               "--ratio-sm": gap.stage.mobileRatio,
+              "--stage-y": (gap.stage.y ?? 0) / 100,
             } as CSSProperties;
 
             return (

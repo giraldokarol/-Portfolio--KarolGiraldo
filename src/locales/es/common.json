@@ -414,6 +414,31 @@
         "label": "(Contexto)",
         "title": "La última milla funciona con horarios ajustados y furgonetas compartidas.",
         "lead": "En la logística de última milla, varios repartidores comparten las mismas furgonetas, las rutas van justas y los vehículos eléctricos añaden un límite nuevo: la autonomía. Flexis creó esta app para repartidores de toda Europa."
+      },
+      "research": {
+        "label": "(03)",
+        "title": "Investigación",
+        "lead": "Las furgonetas estaban localizadas; los repartidores, no.",
+        "text": "Con expertos del negocio, trazamos una jornada completa, del depósito a la última entrega, y encontramos tres carencias:",
+        "conclusion": "El resultado: repartidores poco implicados y una flota menos productiva.",
+        "gapsLabel": "Las tres carencias",
+        "gaps": [
+          {
+            "number": "01.",
+            "text": "<strong>Herramientas dispersas:</strong> los repartidores gestionaban sus entregas con varias herramientas, sin información en tiempo real.",
+            "alt": "Una furgoneta eléctrica entre tres tarjetas de estado: vehículo no conectado, vehículo conectado y listo para el check-in, y vehículo listo para empezar el día."
+          },
+          {
+            "number": "02.",
+            "text": "<strong>No pensado para repartidores:</strong> las soluciones existentes no cubrían lo básico de su jornada, como un onboarding sencillo y un acceso seguro al vehículo.",
+            "alt": "La pantalla de inicio de Driver App con indicaciones paso a paso, una furgoneta vista desde arriba y una tarjeta «Find Your Vehicle»."
+          },
+          {
+            "number": "03.",
+            "text": "<strong>Sin vínculo repartidor–vehículo:</strong> las furgonetas estaban localizadas, pero no había una forma clara de saber quién conducía cada una, ni cuándo.",
+            "alt": "Una furgoneta eléctrica delante de una tarjeta «Find Your Vehicle» y un icono de enlace."
+          }
+        ]
       }
     }
   }

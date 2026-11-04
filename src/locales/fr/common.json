@@ -414,6 +414,31 @@
         "label": "(Contexte)",
         "title": "Le dernier kilomètre, ce sont des horaires serrés et des camionnettes partagées.",
         "lead": "Dans la logistique du dernier kilomètre, plusieurs livreurs partagent les mêmes camionnettes, les tournées sont serrées et les véhicules électriques ajoutent une contrainte : l’autonomie. Flexis a créé cette app pour les livreurs de toute l’Europe."
+      },
+      "research": {
+        "label": "(03)",
+        "title": "Recherche",
+        "lead": "Les camionnettes étaient suivies, pas les livreurs.",
+        "text": "Avec des experts métier, nous avons cartographié une journée complète, du dépôt à la dernière livraison, et identifié trois manques :",
+        "conclusion": "Résultat : des livreurs peu engagés et une flotte moins productive.",
+        "gapsLabel": "Les trois manques",
+        "gaps": [
+          {
+            "number": "01.",
+            "text": "<strong>Des outils éparpillés :</strong> les livreurs géraient leurs livraisons avec plusieurs outils, sans information en temps réel.",
+            "alt": "Une camionnette électrique entre trois cartes d’état : véhicule non connecté, véhicule connecté et prêt pour le check-in, et véhicule prêt pour commencer la journée."
+          },
+          {
+            "number": "02.",
+            "text": "<strong>Pas pensé pour les livreurs :</strong> les solutions existantes oubliaient l’essentiel de leur journée, comme un onboarding fluide et un accès sécurisé au véhicule.",
+            "alt": "L’écran d’accueil de Driver App avec un guidage pas à pas, une camionnette vue de dessus et une carte « Find Your Vehicle »."
+          },
+          {
+            "number": "03.",
+            "text": "<strong>Aucun lien livreur–véhicule :</strong> les camionnettes étaient suivies, mais rien ne permettait de savoir clairement qui conduisait chacune d’elles, ni quand.",
+            "alt": "Une camionnette électrique devant une carte « Find Your Vehicle » et une icône de lien."
+          }
+        ]
       }
     }
   }

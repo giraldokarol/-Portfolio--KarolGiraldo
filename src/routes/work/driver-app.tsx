@@ -7,8 +7,10 @@ import Header from "@/components/Header";
 import CaseContext from "@/components/case/CaseContext";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
+import CaseResearch from "@/components/case/CaseResearch";
 import Footer from "@/components/Footer";
 import type { Route } from "./+types/driver-app";
+import { RESEARCH_GAPS } from "./driver-app.research";
 
 const TEXTS = "cases.driverApp";
 const SLUG = "driver-app";
@@ -48,7 +50,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: Driver App (Flexis), la app móvil para conductores de reparto.
-// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)"…
+// Misma estructura que el de Interface (routes/work/interface-web-app.tsx); se construye por fases: Hero, "The problem / The solution", "(Context)", "Research"…
 export default function DriverApp() {
   return (
     <>
@@ -64,6 +66,7 @@ export default function DriverApp() {
           orbs={INTRO_ORBS}
         />
         <CaseContext textKey={`${TEXTS}.context`} orbs={CONTEXT_ORBS} />
+        <CaseResearch textKey={`${TEXTS}.research`} slug={SLUG} gaps={RESEARCH_GAPS} />
       </main>
       <Footer />
     </>

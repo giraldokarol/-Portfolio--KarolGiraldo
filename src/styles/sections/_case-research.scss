@@ -149,6 +149,11 @@
     top: -0.06em;
     left: 16%;
   }
+
+  // Driver App (página en gris): número gris en vez de azulado.
+  .case-study--gray & {
+    color: color-mix(in srgb, var(--color-ink) 6%, var(--color-background));
+  }
 }
 
 .case-research__gap-text {
@@ -172,11 +177,11 @@
 .case-research__stage {
   position: relative;
   aspect-ratio: var(--ratio-sm);
-  margin-top: rem(20);
+  margin-top: calc(#{rem(20)} + var(--stage-y, 0) * 100%); // --stage-y: fracción del ancho de la caja
 
   @include mq(lg) {
     width: var(--stage-w);
-    margin-top: rem(12);
+    margin-top: calc(#{rem(12)} + var(--stage-y, 0) * var(--stage-w));
     margin-left: var(--stage-x);
     aspect-ratio: var(--ratio);
   }

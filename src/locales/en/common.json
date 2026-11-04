@@ -414,6 +414,31 @@
         "label": "(Context)",
         "title": "Last-mile delivery runs on tight schedules and shared vans.",
         "lead": "In last-mile logistics, several drivers share the same vans, rounds are tight, and electric vehicles add a new constraint: range. Flexis built this app for delivery drivers across Europe."
+      },
+      "research": {
+        "label": "(03)",
+        "title": "Research",
+        "lead": "Vans were tracked, drivers weren’t.",
+        "text": "Working with business experts, we mapped a full shift, from depot to last delivery, and found three gaps:",
+        "conclusion": "The result: low driver engagement and lower fleet productivity.",
+        "gapsLabel": "The three gaps",
+        "gaps": [
+          {
+            "number": "01.",
+            "text": "<strong>Fragmented tools:</strong> drivers managed their deliveries across different tools, without real-time information.",
+            "alt": "An electric van between three status cards: vehicle not connected, vehicle connected and ready to check in, and vehicle ready to start the day."
+          },
+          {
+            "number": "02.",
+            "text": "<strong>Not designed for drivers:</strong> existing solutions lacked the basics of a driver’s day, like a smooth onboarding and secure vehicle access.",
+            "alt": "The Driver App home screen with turn-by-turn directions, a van seen from above and a “Find Your Vehicle” card."
+          },
+          {
+            "number": "03.",
+            "text": "<strong>No driver–vehicle pairing:</strong> vans were tracked, but there was no clear way to know who was driving each one, and when.",
+            "alt": "An electric van in front of a “Find Your Vehicle” card and a link icon."
+          }
+        ]
       }
     }
   }
