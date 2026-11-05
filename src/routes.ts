@@ -10,4 +10,5 @@ export default [
   // Casos de estudio: un archivo por proyecto.
   route(":lang/work/interface-web-app", "routes/work/interface-web-app.tsx"),
   route(":lang/work/driver-app", "routes/work/driver-app.tsx"),
+  route(":lang/work/credit-mutuel-cic", "routes/work/credit-mutuel-cic.tsx"),
 ] satisfies RouteConfig;

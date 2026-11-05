@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import { useBlobGradient, type BlobConfig } from "../useBlobGradient";
@@ -15,6 +15,8 @@ type Props = {
   slug: string;
   // Marco del vídeo: ventana de navegador (web, por defecto) o teléfono (apps móviles).
   device?: "web" | "phone";
+  // Proporción del vídeo (ancho / alto) en la ventana de navegador; por defecto, la del vídeo de Interface.
+  videoRatio?: number;
 };
 
 // Manchas de color: las dos del Hero de la home y dos más a los lados.
@@ -48,8 +50,10 @@ const BLOBS: BlobConfig[] = [
 // Hero de un caso de estudio: título, entradilla, vídeo en una ventana de navegador o en un teléfono
 // (cortado por el borde de la pantalla al entrar; el resto aparece con el scroll) y ficha del proyecto.
 // Animaciones en case/useCaseHeroReveal.ts (entrada) y case/useCaseHeroScroll.ts (scroll). Estilos: styles/sections/_case-hero.scss
-export default function CaseHero({ textKey, slug, device = "web" }: Props) {
-  const { t } = useTranslation();
+export default function CaseHero({ textKey, slug, device = "web", videoRatio }: Props) {
+  const { t, i18n } = useTranslation();
+  // Nota opcional bajo el vídeo (p. ej. confidencialidad), solo si el caso la tiene.
+  const note = i18n.exists(`${textKey}.note`) ? t(`${textKey}.note`) : null;
   const root = useRef<HTMLElement>(null);
   const details = t(`${textKey}.details`, { returnObjects: true }) as Detail[];
 
@@ -59,7 +63,12 @@ export default function CaseHero({ textKey, slug, device = "web" }: Props) {
   useCaseHeroScroll(root);
 
   return (
-    <section className={`case-hero case-hero--${device}`} ref={root} aria-labelledby="case-title">
+    <section
+      className={`case-hero case-hero--${device}`}
+      ref={root}
+      aria-labelledby="case-title"
+      style={videoRatio ? ({ "--video-ratio": videoRatio } as CSSProperties) : undefined}
+    >
       <div className="case-hero__backdrop" aria-hidden="true">
         <div className="blob blob--yellow case-hero__blob--yellow" />
         <div className="blob blob--blue case-hero__blob--blue" />
@@ -104,6 +113,7 @@ export default function CaseHero({ textKey, slug, device = "web" }: Props) {
                 preload="metadata"
               />
             </div>
+            {note && <p className="case-hero__note">{note}</p>}
           </div>
 
           <dl

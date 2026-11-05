@@ -155,6 +155,13 @@
   }
 }
 
+// Al fijar la sección, GSAP envuelve el bloque en un "pin-spacer" y le copia sus márgenes; a veces copia
+// 0 en vez del centrado automático y el bloque se queda pegado a la izquierda: el envoltorio va siempre
+// centrado (!important: GSAP pone sus estilos en línea).
+.case-research > .pin-spacer {
+  margin-inline: auto !important;
+}
+
 // Escritorio con animaciones (case/useCaseResearchScroll.ts): los tres huecos en la misma celda, uno
 // encima de otro; el scroll los cambia.
 .case-research.is-pinned {
@@ -271,6 +278,24 @@
 
 img.case-research__piece {
   height: auto;
+}
+
+// Piezas hechas en código: la letra base es un % del ancho de la caja (escalan como una imagen).
+.case-research__stage {
+  container-type: inline-size;
+}
+
+.case-research__layer {
+  font-size: 2.6cqi;
+}
+
+// Pieza que ocupa toda la caja (líneas que unen otras piezas).
+.case-research__layer--full {
+  aspect-ratio: var(--ratio-sm);
+
+  @include mq(lg) {
+    aspect-ratio: var(--ratio);
+  }
 }
 
 // ─── Tarjetas del selector de rol (hueco 03) ─────────────────────────────────────────

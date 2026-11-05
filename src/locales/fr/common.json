@@ -11,7 +11,8 @@
     "mainNav": "Navigation principale",
     "homeLink": "Karol Giraldo, accueil",
     "scrollToProjects": "Aller aux projets",
-    "socialNav": "Réseaux sociaux"
+    "socialNav": "Réseaux sociaux",
+    "newTab": "(s’ouvre dans un nouvel onglet)"
   },
   "nav": {
     "selectedWork": "Études de cas",
@@ -528,6 +529,145 @@
         ],
         "summary": "Une seule app qui accompagne les livreurs de l’attribution du véhicule jusqu’au check-out, conçue de zéro et prête pour le développement avant le rachat de Flexis.",
         "photoAlt": "Un livreur en gilet haute visibilité sourit en regardant son téléphone, qui affiche Driver App avec la batterie de la camionnette à 75 %, devant une camionnette électrique."
+      }
+    },
+    "creditMutuelCic": {
+      "seoTitle": "Crédit Mutuel & CIC — refonte du framework CSS · Karol Giraldo",
+      "seoDescription": "Comment j’ai refondu le framework CSS et les composants de la banque en ligne du Crédit Mutuel et du CIC, pour qu’une même base neutre porte les deux marques.",
+      "hero": {
+        "title": "Une <accent>nouvelle marque</accent> <br/>derrière la connexion",
+        "lead": "La refonte du framework CSS et des composants de la banque en ligne du Crédit Mutuel et du CIC.",
+        "videoLabel": "Enregistrement d’écran de la page de connexion refondue de la banque en ligne : le formulaire avec ses nouveaux champs et boutons.",
+        "detailsLabel": "Détails du projet",
+        "details": [
+          {
+            "label": "Produit",
+            "value": "Groupe Crédit Mutuel - Refonte"
+          },
+          {
+            "label": "Rôle",
+            "value": "UI Designer & Développeuse front-end"
+          },
+          {
+            "label": "Durée",
+            "value": "3 ans"
+          }
+        ]
+      },
+      "intro": {
+        "backgroundWord": "Problème",
+        "problem": {
+          "number": "(01)",
+          "title": "Le problème",
+          "lead": "Le site public avait un nouveau look. Une fois connectés, les clients retrouvaient la banque d’avant."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "La solution",
+          "lead": "Une nouvelle version du framework CSS, qui apporte la nouvelle identité à chaque page de l’espace client.*"
+        },
+        "cards": [
+          {
+            "title": "Plus de 20 composants refondus",
+            "text": "selon la nouvelle charte de marque.",
+            "alt": "Composants de l’espace client refondus avec la nouvelle identité, présentés avec une marque fictive."
+          },
+          {
+            "title": "Un framework, deux marques",
+            "text": "Crédit Mutuel et CIC à partir du même code.",
+            "alt": "Les mêmes composants déclinés pour deux marques fictives à partir d’un code commun."
+          },
+          {
+            "title": "Pensé pour être réutilisé",
+            "text": "par les équipes internes qui construisent chaque page.",
+            "alt": "Plusieurs pages de l’espace client construites avec les mêmes composants réutilisables, présentées avec une marque fictive."
+          }
+        ],
+        "note": "*Par souci de confidentialité, tous les visuels de ce cas sont recréés avec des marques fictives. Plus de détails sur demande."
+      },
+      "context": {
+        "label": "(Contexte)",
+        "title": "90 % de nos composants vivent derrière la connexion.",
+        "lead": "Comptes, crédits, messages avec le conseiller : tout ce que les clients gèrent une fois connectés est construit avec nos composants. Quand les banques ont refondu leur site public, l’espace client devait suivre.",
+        "cta": "Voir la nouvelle identité publique"
+      },
+      "bank": {
+        "themes": {
+          "default": "Par défaut",
+          "alpha": "Banque Alpha",
+          "beta": "Banque Beta"
+        },
+        "primary": "Continuer",
+        "secondary": "Annuler",
+        "send": "Envoyer",
+        "link": "Voir le détail",
+        "inputLabel": "Identifiant",
+        "inputValue": "4821 0397",
+        "helper": "8 chiffres, sur votre contrat",
+        "checkbox": "Se souvenir de moi",
+        "radio": [
+          "Mensuel",
+          "Annuel"
+        ],
+        "toggle": "Notifications",
+        "tabs": [
+          "Comptes",
+          "Cartes",
+          "Épargne"
+        ],
+        "badge": "Nouveau",
+        "alert": "Votre nouvelle carte est en route.",
+        "amountLabel": "Montant",
+        "amountValue": "−50",
+        "amountValueOk": "250,00 €",
+        "error": "Saisissez un montant positif",
+        "account": {
+          "name": "Compte courant",
+          "number": "FR76 •••• •••• 4821",
+          "status": "Actif",
+          "balanceLabel": "Solde disponible",
+          "balance": "2 480,50 €",
+          "transfer": "Virement",
+          "details": "Détail"
+        },
+        "pages": [
+          "Comptes",
+          "Crédits",
+          "Messages"
+        ],
+        "challenge": {
+          "alert": "12 surcharges sur .btn",
+          "message": {
+            "from": "Votre conseiller",
+            "time": "Il y a 2 min",
+            "text": "Votre simulation de prêt est prête. On en parle jeudi ?"
+          }
+        }
+      },
+      "challenge": {
+        "label": "(03)",
+        "title": "Le défi",
+        "lead": "Trop de pages pour les refondre une à une.",
+        "text": "Le framework existait déjà, mais il avait été conçu pour l’ancienne identité. Appliquer le nouveau design par-dessus voulait dire surcharger les styles page après page, ce qui ajoutait de la complexité à chaque changement.",
+        "gapsLabel": "Les trois défis",
+        "gapLabel": "Défi {{current}} sur {{total}}",
+        "gaps": [
+          {
+            "number": "01.",
+            "text": "<strong>Un espace client immense :</strong> un grand nombre de pages internes construites par différentes équipes.",
+            "alt": "Une pile de maquettes de pages grises qui s’effacent vers l’arrière, avec un nouveau message du conseiller et une ligne de compte courant, entre de petits boutons d’icônes."
+          },
+          {
+            "number": "02.",
+            "text": "<strong>Deux marques, un seul code :</strong> le Crédit Mutuel et le CIC partagent les mêmes composants avec des identités visuelles différentes.",
+            "alt": "Le même champ montant et le même bouton dans une version grise neutre, reliés par des lignes fines à deux versions de marque : Banque Alpha et Banque Beta."
+          },
+          {
+            "number": "03.",
+            "text": "<strong>Des surcharges partout :</strong> chaque nouveau style devait lutter contre l’ancien, ce qui rendait le code plus difficile à maintenir.",
+            "alt": "Un éditeur de code sombre avec du code Less pour un bouton : les anciennes propriétés sont barrées et les nouvelles ne s’imposent qu’avec !important, avec un avertissement : 12 surcharges sur .btn."
+          }
+        ]
       }
     }
   }

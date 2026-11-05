@@ -18,6 +18,7 @@
 @use "components/header";
 @use "components/work-menu";
 @use "components/social-rail";
+@use "components/bank-ui";
 
 @use "sections/hero";
 @use "sections/selected-work";
@@ -33,6 +34,7 @@
 @use "sections/case-process";
 @use "sections/case-decisions";
 @use "sections/case-final";
+@use "sections/case-bank-visuals";
 
 @use "pages/system";
 @use "pages/legal";

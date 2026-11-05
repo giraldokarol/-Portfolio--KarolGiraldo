@@ -1,4 +1,4 @@
-import { useRef, useState, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import MeshOrb from "./MeshOrb";
@@ -27,6 +27,17 @@ export type RoleCard = {
   mobile: Placement;
 };
 
+// Pieza hecha en código (componentes, paneles…) en lugar de una imagen. Su contenido se mide en "em":
+// la letra base es un % del ancho de la caja, así escala como una imagen.
+export type GapLayer = {
+  id: string;
+  node: ReactNode;
+  desktop: Placement;
+  mobile: Placement;
+  // Ocupa toda la caja (p. ej. líneas que unen piezas): mismo ancho y alto que la caja.
+  full?: boolean;
+};
+
 // Caja de la composición. Escritorio: x y w en % de la columna derecha (puede salir un poco por la
 // derecha); ratio = ancho / alto. Móvil: todo el ancho, con su propia proporción.
 // y (opcional): desplazamiento vertical en % del ancho de la caja; negativo = sube detrás de la frase
@@ -36,6 +47,7 @@ export type ResearchGap = {
   // Las piezas se pintan en este orden: la última queda encima.
   images?: GapImage[];
   roles?: RoleCard[];
+  layers?: GapLayer[];
 };
 
 type GapText = { number: string; text: string; alt: string };
@@ -107,7 +119,7 @@ function place({ desktop, mobile }: { desktop: Placement; mobile: Placement }) {
 // con puntos debajo para saber en cuál se está y saltar a otro.
 // Animaciones en case/useCaseResearchReveal.ts (entrada) y case/useCaseResearchScroll.ts (scroll). Estilos: styles/sections/_case-research.scss
 export default function CaseResearch({ textKey, slug, gaps }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const texts = t(`${textKey}.gaps`, { returnObjects: true }) as GapText[];
   const roles = t(`${textKey}.roles`, { returnObjects: true }) as Record<string, RoleText>;
@@ -151,7 +163,10 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
           </h2>
           <p className="case-research__lead">{t(`${textKey}.lead`)}</p>
           <p className="case-research__text">{t(`${textKey}.text`)}</p>
-          <p className="case-research__conclusion">{t(`${textKey}.conclusion`)}</p>
+          {/* Conclusión: solo si el caso la tiene. */}
+          {i18n.exists(`${textKey}.conclusion`) && (
+            <p className="case-research__conclusion">{t(`${textKey}.conclusion`)}</p>
+          )}
         </div>
 
         <ol
@@ -194,6 +209,16 @@ export default function CaseResearch({ textKey, slug, gaps }: Props) {
                       loading="lazy"
                       decoding="async"
                     />
+                  ))}
+
+                  {gap.layers?.map((layer) => (
+                    <div
+                      key={layer.id}
+                      className={`case-research__piece case-research__layer ${layer.full ? "case-research__layer--full" : ""}`}
+                      style={place(layer)}
+                    >
+                      {layer.node}
+                    </div>
                   ))}
 
                   {gap.roles?.map((role) => (

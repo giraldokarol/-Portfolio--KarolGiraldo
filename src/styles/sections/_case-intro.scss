@@ -201,7 +201,8 @@
     transform: translateY(rem(-6));
     box-shadow: 0 rem(30) rem(60) rem(-30) color-mix(in srgb, var(--color-primary) 22%, transparent);
 
-    .case-intro__card-image {
+    .case-intro__card-image,
+    .case-intro__card-visual {
       transform: scale(1.03);
     }
   }
@@ -292,5 +293,21 @@
       margin-top: auto; // los tres a la misma altura, aunque los textos tengan más o menos líneas
       margin-bottom: -76%;
     }
+  }
+}
+
+// Nota bajo la entradilla de "solution" (opcional): pequeña y en gris, alineada con la entradilla.
+.case-intro__note {
+  max-width: 26em;
+  margin-top: rem(12);
+  font-size: rem(12);
+  line-height: 1.45;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-top: rem(16);
+    margin-right: rem(40);
+    margin-left: auto;
+    text-align: right;
   }
 }

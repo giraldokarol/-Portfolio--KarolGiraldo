@@ -1,0 +1,380 @@
+@use "../abstracts" as *;
+
+// COMPONENTES DE BANCA FICTICIOS (components/case/bank/*): los visuales y la demo del caso Crédit Mutuel & CIC.
+// Un solo juego de componentes "neutros" que leen variables (--bk-*); cada marca solo cambia sus valores.
+// Así funcionaba el framework real: una base neutra + variables por marca, sin sobrescribir estilos.
+// Todo se mide en "em": el tamaño de letra del contenedor escala el componente entero (como una imagen).
+// Marcas ficticias, sin logos ni tipografías de Crédit Mutuel o CIC (Banque Alpha usa su azul, a petición de Karol).
+
+// ─── Temas: solo valores ─────────────────────────────────────────────────────────────
+// Tema neutro por defecto: gris pizarra, esquinas discretas.
+.bk-theme,
+.bk-theme--default {
+  --bk-font: var(--font-sans);
+  --bk-font-figures: var(--font-sans);
+  --bk-primary: #334155; // 10,4:1 sobre blanco
+  --bk-primary-hover: #1e293b;
+  --bk-on-primary: #ffffff;
+  --bk-text: #1e293b;
+  --bk-muted: #5b6676; // 5,8:1 sobre blanco
+  --bk-surface: #ffffff;
+  --bk-surface-alt: #f1f4f8;
+  --bk-border: #c7ced8;
+  --bk-focus: #2563eb;
+  --bk-error: #b42318; // 6,6:1 sobre blanco
+  --bk-success: #157347;
+  --bk-radius-control: 0.3em;
+  --bk-radius-card: 0.5em;
+  --bk-weight-strong: 600;
+  --bk-shadow: 0 0.15em 0.5em rgb(15 23 42 / 0.08);
+}
+
+// Banque Alpha (Theme 1, inspirado en Crédit Mutuel): azul (el de la nueva marca, pedido por Karol),
+// redondeado (botones en píldora, tarjetas con esquinas suaves), la tipografía del portafolio.
+.bk-theme--alpha {
+  --bk-primary: #003398; // 10,9:1 sobre blanco
+  --bk-primary-hover: #00276f;
+  --bk-text: #0f1e3d;
+  --bk-muted: #4f5d78; // 6,6:1 sobre blanco
+  --bk-surface-alt: #eef3fb;
+  --bk-border: #c6d2e8;
+  --bk-focus: #003398;
+  --bk-radius-control: 999em;
+  --bk-radius-card: 0.9em;
+  --bk-weight-strong: 700;
+  --bk-shadow: 0 0.4em 1.2em rgb(0 51 152 / 0.12);
+}
+
+// Banque Beta (Theme 2, inspirado en CIC): verde petróleo, esquinas rectas y cifras en serif.
+.bk-theme--beta {
+  --bk-font: ui-sans-serif, system-ui, sans-serif;
+  --bk-font-figures: Georgia, "Times New Roman", serif;
+  --bk-primary: #0b6e63; // 6,1:1 sobre blanco
+  --bk-primary-hover: #085a51;
+  --bk-text: #12302b;
+  --bk-muted: #4d6661; // 6,2:1 sobre blanco
+  --bk-surface-alt: #edf6f3;
+  --bk-border: #b8d0ca;
+  --bk-focus: #0b6e63;
+  --bk-radius-control: 0;
+  --bk-radius-card: 0;
+  --bk-weight-strong: 600;
+  --bk-shadow: 0 0.1em 0.3em rgb(11 110 99 / 0.14);
+}
+
+.bk-theme,
+[class*="bk-theme--"] {
+  font-family: var(--bk-font);
+  color: var(--bk-text);
+}
+
+// ─── Botones ─────────────────────────────────────────────────────────────────────────
+.bk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 2.75em; // 44 px a tamaño real
+  padding: 0 1.25em;
+  border: 1px solid var(--bk-primary);
+  border-radius: var(--bk-radius-control);
+  background: var(--bk-primary);
+  font: inherit;
+  font-weight: var(--bk-weight-strong);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--bk-on-primary);
+  cursor: pointer;
+}
+
+.bk-btn--secondary {
+  background: var(--bk-surface);
+  color: var(--bk-primary);
+}
+
+// Terciario: enlace con flecha.
+.bk-btn--link,
+.bk-link {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bk-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.bk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-weight: var(--bk-weight-strong);
+}
+
+.bk-btn.is-hover {
+  border-color: var(--bk-primary-hover);
+  background: var(--bk-primary-hover);
+}
+
+.bk-btn--secondary.is-hover {
+  background: var(--bk-surface-alt);
+  color: var(--bk-primary-hover);
+}
+
+.bk-btn:disabled,
+.bk-btn.is-disabled {
+  border-color: var(--bk-border);
+  background: var(--bk-surface-alt);
+  color: var(--bk-muted);
+  cursor: not-allowed;
+}
+
+// Foco visible: anillo del color de foco de la marca, separado del componente.
+.bk-btn:focus-visible,
+.bk-btn.is-focus,
+.bk-link:focus-visible,
+.bk-link.is-focus {
+  outline: 0.15em solid var(--bk-focus);
+  outline-offset: 0.2em;
+}
+
+// ─── Campo de texto ──────────────────────────────────────────────────────────────────
+.bk-field {
+  display: grid;
+  gap: 0.35em;
+}
+
+.bk-field__label {
+  font-size: 0.875em;
+  font-weight: var(--bk-weight-strong);
+}
+
+.bk-field__input {
+  width: 100%;
+  min-height: 2.75em;
+  padding: 0 0.9em;
+  border: 1px solid var(--bk-border);
+  border-radius: min(var(--bk-radius-control), 0.75em); // las píldoras no deforman el campo
+  background: var(--bk-surface);
+  font: inherit;
+  color: var(--bk-text);
+
+  &::placeholder {
+    color: var(--bk-muted);
+  }
+}
+
+.bk-field__helper {
+  font-size: 0.8em;
+  color: var(--bk-muted);
+}
+
+.bk-field.is-focus .bk-field__input,
+.bk-field__input:focus-visible {
+  border-color: var(--bk-focus);
+  outline: 0.15em solid color-mix(in srgb, var(--bk-focus) 30%, transparent);
+  outline-offset: 0;
+}
+
+.bk-field.is-error {
+  .bk-field__input {
+    border-color: var(--bk-error);
+  }
+
+  .bk-field__helper {
+    font-weight: var(--bk-weight-strong);
+    color: var(--bk-error);
+  }
+}
+
+.bk-field.is-disabled {
+  .bk-field__label,
+  .bk-field__helper {
+    color: var(--bk-muted);
+  }
+
+  .bk-field__input {
+    background: var(--bk-surface-alt);
+    color: var(--bk-muted);
+    cursor: not-allowed;
+  }
+}
+
+// ─── Casilla, opción, interruptor ────────────────────────────────────────────────────
+.bk-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 0.9em;
+}
+
+.bk-choice__box {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  border: 1px solid var(--bk-muted);
+  border-radius: min(var(--bk-radius-control), 0.3em);
+  background: var(--bk-surface);
+}
+
+.bk-choice--radio .bk-choice__box {
+  border-radius: 50%;
+}
+
+.bk-choice.is-checked .bk-choice__box {
+  border-color: var(--bk-primary);
+  background: var(--bk-primary);
+
+  // Marca: un check blanco (casilla) o un punto blanco (opción).
+  &::after {
+    content: "";
+    width: 0.35em;
+    height: 0.6em;
+    border: solid var(--bk-on-primary);
+    border-width: 0 0.14em 0.14em 0;
+    transform: translateY(-0.08em) rotate(45deg);
+  }
+}
+
+.bk-choice--radio.is-checked .bk-choice__box {
+  background: var(--bk-surface);
+
+  &::after {
+    width: 0.6em;
+    height: 0.6em;
+    border: 0;
+    border-radius: 50%;
+    background: var(--bk-primary);
+    transform: none;
+  }
+}
+
+.bk-toggle {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 2.4em;
+  height: 1.4em;
+  border-radius: 999em;
+  background: var(--bk-border);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0.2em;
+    left: 0.2em;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: var(--bk-surface);
+    box-shadow: 0 0.05em 0.15em rgb(0 0 0 / 0.2);
+  }
+
+  .bk-choice.is-checked & {
+    background: var(--bk-primary);
+
+    &::after {
+      left: 1.2em;
+    }
+  }
+}
+
+// ─── Pestañas y etiqueta ─────────────────────────────────────────────────────────────
+.bk-tabs {
+  display: flex;
+  gap: 1.2em;
+  border-bottom: 1px solid var(--bk-border);
+  font-size: 0.9em;
+}
+
+.bk-tabs__tab {
+  padding-bottom: 0.6em;
+  color: var(--bk-muted);
+
+  &.is-current {
+    box-shadow: inset 0 -0.16em 0 var(--bk-primary);
+    font-weight: var(--bk-weight-strong);
+    color: var(--bk-primary);
+  }
+}
+
+.bk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em 0.65em;
+  border-radius: 999em;
+  background: var(--bk-surface-alt);
+  font-size: 0.75em;
+  font-weight: var(--bk-weight-strong);
+  color: var(--bk-primary);
+}
+
+.bk-badge--success {
+  background: color-mix(in srgb, var(--bk-success) 12%, var(--bk-surface));
+  color: var(--bk-success);
+}
+
+// ─── Aviso ───────────────────────────────────────────────────────────────────────────
+.bk-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.8em 1em;
+  border-left: 0.25em solid var(--bk-primary);
+  border-radius: min(var(--bk-radius-card), 0.6em);
+  background: var(--bk-surface-alt);
+  font-size: 0.85em;
+}
+
+// ─── Tarjeta de cuenta (datos ficticios) ─────────────────────────────────────────────
+.bk-account {
+  display: grid;
+  gap: 0.9em;
+  padding: 1.25em;
+  border: 1px solid var(--bk-border);
+  border-radius: var(--bk-radius-card);
+  background: var(--bk-surface);
+  box-shadow: var(--bk-shadow);
+}
+
+.bk-account__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6em;
+}
+
+.bk-account__name {
+  font-weight: var(--bk-weight-strong);
+}
+
+.bk-account__number {
+  margin-top: 0.15em;
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--bk-muted);
+}
+
+.bk-account__label {
+  font-size: 0.75em;
+  color: var(--bk-muted);
+}
+
+.bk-account__balance {
+  font-family: var(--bk-font-figures);
+  font-size: 1.75em;
+  font-weight: var(--bk-weight-strong);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.bk-account__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+}

@@ -31,6 +31,10 @@ export function useCaseContextReveal(scope: RefObject<HTMLElement | null>) {
           .from(split.words, { yPercent: 110, duration: 1, stagger: 0.06, ease: "power4.out" }, 0.05)
           .from(".case-context__lead", { autoAlpha: 0, y: 20, duration: 0.8 }, 0.5);
 
+        // Botón (solo en algunos casos), justo después de la entradilla.
+        const cta = section.querySelector(".case-context__cta");
+        if (cta) gsap.from(cta, { autoAlpha: 0, y: 16, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: cta, start: "top 90%", once: true } });
+
         gsap.fromTo(
           ".case-context__orb, .case-context__mesh-orb",
           { yPercent: 30 },

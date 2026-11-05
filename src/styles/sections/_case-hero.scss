@@ -21,8 +21,10 @@
   // Ancho de la ventana del vídeo: todo el contenedor en móvil, casi la mitad de la pantalla en escritorio.
   --frame-w: calc(100vw - #{rem($gutter * 2)});
   --toolbar-h: #{rem(20)};
-  // Alto de la ventana = barra + vídeo (proporción real del vídeo: 1716 × 1112).
-  --frame-h: calc(var(--frame-w) * 1112 / 1716 + var(--toolbar-h));
+  // Alto de la ventana = barra + vídeo. --video-ratio (ancho / alto) lo pone CaseHero si el vídeo no es
+  // el de Interface (1716 × 1112).
+  // (entre paréntesis: si no, "1716 / 1112" se dividiría dos veces).
+  --frame-h: calc(var(--frame-w) / (var(--video-ratio, 1716 / 1112)) + var(--toolbar-h));
   // Trozo de la ventana que se ve al entrar (más en móvil, donde el vídeo es pequeño); el resto aparece con el scroll.
   --peek: calc(var(--frame-h) * 0.85);
   --stage-gap: #{rem(40)};
@@ -135,6 +137,8 @@
 .case-hero__accent {
   color: var(--color-primary);
 }
+
+
 
 .case-hero__lead {
   max-width: 24em;
@@ -281,7 +285,7 @@
 .case-hero__video {
   display: block;
   width: 100%;
-  aspect-ratio: 1716 / 1112;
+  aspect-ratio: var(--video-ratio, 1716 / 1112);
   object-fit: cover; // nunca bandas: el vídeo llena siempre la ventana
   background: var(--color-surface);
 }
@@ -307,6 +311,21 @@
     align-self: start;
     justify-self: start;
     margin-top: var(--details-offset, #{rem(40)});
+  }
+}
+
+// Nota justo debajo del vídeo (p. ej. confidencialidad, marcada con * en la entradilla): pequeña y en gris.
+// Va dentro del marco: crece con él al hacer scroll.
+.case-hero__note {
+  margin-top: rem(14);
+  padding-inline: rem(4);
+  font-size: rem(12);
+  line-height: 1.45;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    padding-inline: rem(32);
+    font-size: rem(13);
   }
 }
 
@@ -348,6 +367,7 @@
   .case-hero:not(.is-ready) {
     .case-hero__heading,
     .case-hero__window,
+    .case-hero__note,
     .case-hero__details {
       visibility: hidden;
       animation: case-hero-fallback 0s 2s forwards;

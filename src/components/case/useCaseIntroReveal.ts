@@ -44,9 +44,11 @@ export function useCaseIntroReveal(scope: RefObject<HTMLElement | null>) {
             .from(split.words, { yPercent: 110, duration: 1, stagger: 0.08, ease: "power4.out" }, 0.05)
             .from(block.querySelector(".case-intro__lead"), { autoAlpha: 0, y: 20, duration: 0.8 }, 0.4);
 
-          // Párrafo en gris (solo en algunos casos), un poco después de la entradilla.
+          // Párrafo en gris y nota (solo en algunos casos), un poco después de la entradilla.
           const detail = block.querySelector(".case-intro__detail");
           if (detail) tl.from(detail, { autoAlpha: 0, y: 20, duration: 0.8 }, 0.55);
+          const note = block.querySelector(".case-intro__note");
+          if (note) tl.from(note, { autoAlpha: 0, y: 12, duration: 0.8 }, 0.6);
 
           return split;
         });

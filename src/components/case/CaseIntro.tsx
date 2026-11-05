@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import MeshGradient, { type MeshCircle } from "../MeshGradient";
@@ -20,6 +20,9 @@ type Props = {
   imageSize?: { width: number; height: number };
   // Capturas web (en su ventana de navegador) o teléfonos, que salen por debajo de las tarjetas.
   device?: "web" | "phone";
+  // Visuales hechos en código en lugar de imágenes (uno por tarjeta, mismo orden). Se leen como una sola
+  // imagen con el texto alternativo de la tarjeta (<textKey>.cards.N.alt).
+  visuals?: readonly ReactNode[];
   // Bolitas de color (MeshOrb) en lugar del círculo de abajo a la izquierda: centro en % del bloque de
   // las tarjetas y diámetro en vw.
   orbs?: (OrbPlacement & { mobile?: OrbPlacement })[];
@@ -41,8 +44,11 @@ export default function CaseIntro({
   imageSize = WEB_IMAGE_SIZE,
   device = "web",
   orbs,
+  visuals,
 }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  // Nota opcional bajo la entradilla de "solution" (p. ej. confidencialidad, marcada con * en esa entradilla).
+  const note = i18n.exists(`${textKey}.note`) ? t(`${textKey}.note`) : null;
   const root = useRef<HTMLElement>(null);
   const problem = t(`${textKey}.problem`, { returnObjects: true }) as Block;
   const solution = t(`${textKey}.solution`, { returnObjects: true }) as Block;
@@ -69,6 +75,7 @@ export default function CaseIntro({
               </h2>
               <p className="case-intro__lead">{block.lead}</p>
               {block.detail && <p className="case-intro__detail">{block.detail}</p>}
+              {id === "solution" && note && <p className="case-intro__note">{note}</p>}
             </div>
           ))}
         </div>
@@ -97,18 +104,25 @@ export default function CaseIntro({
                     {/* <strong> = palabras en negrita del diseño. */}
                     <Trans i18nKey={`${textKey}.cards.${index}.text`} components={{ strong: <strong /> }} />
                   </p>
-                  <img
-                    className="case-intro__card-image"
-                    src={`/images/case/${slug}/${images[index]}.png`}
-                    alt={card.alt}
-                    {...imageSize}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {visuals ? (
+                    <div className="case-intro__card-visual" role="img" aria-label={card.alt}>
+                      {visuals[index]}
+                    </div>
+                  ) : (
+                    <img
+                      className="case-intro__card-image"
+                      src={`/images/case/${slug}/${images[index]}.png`}
+                      alt={card.alt}
+                      {...imageSize}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                 </div>
               </li>
             ))}
           </ul>
+
         </div>
       </div>
     </section>

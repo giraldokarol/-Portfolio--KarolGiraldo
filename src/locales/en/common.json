@@ -11,7 +11,8 @@
     "mainNav": "Main navigation",
     "homeLink": "Karol Giraldo, home",
     "scrollToProjects": "Go to projects",
-    "socialNav": "Social networks"
+    "socialNav": "Social networks",
+    "newTab": "(opens in a new tab)"
   },
   "nav": {
     "selectedWork": "Selected work",
@@ -528,6 +529,145 @@
         ],
         "summary": "One app that takes drivers from vehicle assignment to check-out, designed from scratch and ready for development before Flexis was acquired.",
         "photoAlt": "A delivery driver in a high-visibility vest smiling at his phone, which shows the Driver App with the van’s battery at 75%, in front of an electric van."
+      }
+    },
+    "creditMutuelCic": {
+      "seoTitle": "Crédit Mutuel & CIC — CSS framework redesign · Karol Giraldo",
+      "seoDescription": "How I redesigned the CSS framework and components behind the online banking of Crédit Mutuel and CIC, so one neutral base carries both brands.",
+      "hero": {
+        "title": "Bringing a <accent>new brand</accent> <br/>behind the login",
+        "lead": "The redesign of the CSS framework and components behind the online banking of Crédit Mutuel and CIC.",
+        "videoLabel": "Screen recording of the redesigned online banking login page: the sign-in form with its new inputs and buttons.",
+        "detailsLabel": "Project details",
+        "details": [
+          {
+            "label": "Product",
+            "value": "Crédit Mutuel Group - Redesign"
+          },
+          {
+            "label": "Role",
+            "value": "UI Designer & Front-end Developer"
+          },
+          {
+            "label": "Duration",
+            "value": "3 Years"
+          }
+        ]
+      },
+      "intro": {
+        "backgroundWord": "Problem",
+        "problem": {
+          "number": "(01)",
+          "title": "The problem",
+          "lead": "The public website had a new look. Once clients logged in, the bank still looked the same as before."
+        },
+        "solution": {
+          "number": "(02)",
+          "title": "The solution",
+          "lead": "A new version of the CSS framework, bringing the new identity to every page of the client area.*"
+        },
+        "cards": [
+          {
+            "title": "20+ components redesigned",
+            "text": "following the new brand guidelines.",
+            "alt": "Components of the client area redesigned with the new identity, shown with a fictional brand."
+          },
+          {
+            "title": "One framework, two brands",
+            "text": "Crédit Mutuel and CIC from the same code.",
+            "alt": "The same components themed for two fictional brands from one shared codebase."
+          },
+          {
+            "title": "Built to be reused",
+            "text": "by the internal teams building every page.",
+            "alt": "Several client-area pages assembled from the same reusable components, shown with a fictional brand."
+          }
+        ],
+        "note": "*Out of respect for confidentiality, all visuals in this case are recreated with fictional brands. More details available on request."
+      },
+      "context": {
+        "label": "(Context)",
+        "title": "90% of our components live behind the login.",
+        "lead": "Accounts, loans, messages with the advisor: everything clients manage once logged in is built with our components. When the banks redesigned their public website, the client area had to follow.",
+        "cta": "See the new public identity"
+      },
+      "bank": {
+        "themes": {
+          "default": "Default",
+          "alpha": "Banque Alpha",
+          "beta": "Banque Beta"
+        },
+        "primary": "Continue",
+        "secondary": "Cancel",
+        "send": "Send",
+        "link": "See details",
+        "inputLabel": "Customer ID",
+        "inputValue": "4821 0397",
+        "helper": "8 digits, on your contract",
+        "checkbox": "Remember me",
+        "radio": [
+          "Monthly",
+          "Yearly"
+        ],
+        "toggle": "Notifications",
+        "tabs": [
+          "Accounts",
+          "Cards",
+          "Savings"
+        ],
+        "badge": "New",
+        "alert": "Your new card is on its way.",
+        "amountLabel": "Amount",
+        "amountValue": "−50",
+        "amountValueOk": "€250.00",
+        "error": "Enter a positive amount",
+        "account": {
+          "name": "Current account",
+          "number": "FR76 •••• •••• 4821",
+          "status": "Active",
+          "balanceLabel": "Available balance",
+          "balance": "€2,480.50",
+          "transfer": "Transfer",
+          "details": "Details"
+        },
+        "pages": [
+          "Accounts",
+          "Loans",
+          "Messages"
+        ],
+        "challenge": {
+          "alert": "12 overrides on .btn",
+          "message": {
+            "from": "Your advisor",
+            "time": "2 min ago",
+            "text": "Your loan simulation is ready. Shall we go over it on Thursday?"
+          }
+        }
+      },
+      "challenge": {
+        "label": "(03)",
+        "title": "Challenge",
+        "lead": "Too many pages to redesign one by one.",
+        "text": "The framework already existed, but it was built for the previous identity. Applying the new design on top of it meant overriding styles page after page, which added complexity with every change.",
+        "gapsLabel": "The three challenges",
+        "gapLabel": "Challenge {{current}} of {{total}}",
+        "gaps": [
+          {
+            "number": "01.",
+            "text": "<strong>A huge client area:</strong> a large number of internal pages built by different teams.",
+            "alt": "A stack of grey page wireframes fading into the background, with a new message from the advisor and a current account line, among small icon buttons."
+          },
+          {
+            "number": "02.",
+            "text": "<strong>Two brands, one codebase:</strong> Crédit Mutuel and CIC share the same components with different visual identities.",
+            "alt": "The same amount field and button in a neutral grey version, linked by thin lines to two branded versions: Banque Alpha and Banque Beta."
+          },
+          {
+            "number": "03.",
+            "text": "<strong>Overrides everywhere:</strong> every new style had to fight the old one, making the code harder to maintain.",
+            "alt": "A dark code editor with Less code for a button: the old properties are crossed out and the new ones only win with !important, with a warning: 12 overrides on .btn."
+          }
+        ]
       }
     }
   }

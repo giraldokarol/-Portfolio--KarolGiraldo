@@ -118,3 +118,30 @@
 .case-context__mesh-orb {
   z-index: -1;
 }
+
+// Botón opcional bajo la entradilla (enlace externo): alineado con ella y con la flecha que avanza al pasar el ratón.
+.case-context__cta {
+  margin-top: rem(24);
+
+  @include mq(lg) {
+    margin-top: rem(28);
+    margin-left: calc(13% + #{rem(64)}); // donde empieza la entradilla
+  }
+
+  @include hover {
+    .case-context__cta-arrow {
+      transform: translateX(rem(3));
+    }
+  }
+}
+
+// "(se abre en otra pestaña)": solo para lectores de pantalla.
+.case-context__cta-hint {
+  @include visually-hidden;
+}
+
+.case-context__cta-arrow {
+  @include motion-safe {
+    transition: transform $duration-fast ease;
+  }
+}

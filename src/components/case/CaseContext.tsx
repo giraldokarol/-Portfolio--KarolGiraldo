@@ -11,6 +11,8 @@ type Props = {
   // Bolitas de color (MeshOrb) repartidas por la sección en lugar del círculo junto al título:
   // centro en % de la sección y diámetro en vw.
   orbs?: (OrbPlacement & { mobile?: OrbPlacement })[];
+  // Botón opcional bajo la entradilla, a una web externa (se abre en otra pestaña). Texto: <textKey>.cta.
+  link?: string;
 };
 
 // Un solo círculo que llena su caja (posición y radio en fracción de la caja).
@@ -18,7 +20,7 @@ const ORB: MeshCircle[] = [{ x: 0.5, y: 0.5, r: 0.5 }];
 
 // "(Context)" de un caso de estudio: una frase grande que sitúa el proyecto y una entradilla.
 // Animación en case/useCaseContextReveal.ts. Estilos: styles/sections/_case-context.scss
-export default function CaseContext({ textKey, orbs }: Props) {
+export default function CaseContext({ textKey, orbs, link }: Props) {
   const { t } = useTranslation();
   const root = useRef<HTMLElement>(null);
 
@@ -47,6 +49,15 @@ export default function CaseContext({ textKey, orbs }: Props) {
           {/* <strong> = nombre del producto en negrita. */}
           <Trans i18nKey={`${textKey}.lead`} components={{ strong: <strong /> }} />
         </p>
+        {link && (
+          <a className="btn btn--primary case-context__cta" href={link} target="_blank" rel="noopener noreferrer">
+            {t(`${textKey}.cta`)}
+            <span className="case-context__cta-hint">{` ${t("a11y.newTab")}`}</span>
+            <svg className="case-context__cta-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        )}
       </div>
     </section>
   );

@@ -26,11 +26,15 @@ export function useCaseHeroReveal(scope: RefObject<HTMLElement | null>) {
           onComplete: () => split.revert(),
         });
 
+        // Nota bajo el vídeo: solo en algunos casos.
+        const note = hero.querySelector(".case-hero__note");
+
         tl.from($(".case-hero__backdrop"), { autoAlpha: 0, duration: 1.6, ease: "power2.out" }, 0)
           .from(split.chars, { yPercent: 110, duration: 1, stagger: 0.022, ease: "power4.out" }, 0.15)
           .from($(".case-hero__lead"), { autoAlpha: 0, y: 20, duration: 0.9 }, 0.65)
           .from(hero.querySelectorAll(".case-hero__detail"), { autoAlpha: 0, y: 12, duration: 0.7, stagger: 0.08 }, 0.8)
           .from($(".case-hero__window"), { autoAlpha: 0, y: 80, duration: 1.3, ease: "expo.out" }, 0.75);
+        if (note) tl.from(note, { autoAlpha: 0, y: 12, duration: 0.7 }, 1.1);
 
         // Los elementos ya están en su punto de partida: se pueden mostrar.
         hero.classList.add("is-ready");

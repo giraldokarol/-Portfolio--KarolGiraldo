@@ -12,6 +12,7 @@ export default {
       `/${lang}/legal`,
       `/${lang}/work/interface-web-app`,
       `/${lang}/work/driver-app`,
+      `/${lang}/work/credit-mutuel-cic`,
     ]),
   ],
 } satisfies Config;

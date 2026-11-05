@@ -27,9 +27,13 @@ export const HERO_SECTION = "home";
 // Destino del botón "Say Hello" (id de la sección de contacto, components/Contact.tsx).
 export const CONTACT_SECTION = "contact";
 
+// Caso Crédit Mutuel & CIC: botón "See the new public identity" (web pública con la nueva marca).
+// PROVISIONAL: confirmar con Karol el enlace exacto.
+export const CM_CIC_PUBLIC_SITE_URL = "https://www.creditmutuel.fr/fr/particuliers.html";
+
 // Proyectos de "Selected work", en orden. Los nombres están en locales/*/common.json → work.items.
 // frame: forma del marco central (teléfono o web).
-// slug: página del caso de estudio (/:lang/work/:slug). PENDIENTE: solo existen interface-web-app y driver-app.
+// slug: página del caso de estudio (/:lang/work/:slug). PENDIENTE: falta tulindero.
 export const WORK_PROJECTS = [
   { id: "driverApp", frame: "mobile", slug: "driver-app" },
   { id: "interface", frame: "web", slug: "interface-web-app" },
