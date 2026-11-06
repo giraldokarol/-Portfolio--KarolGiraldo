@@ -7,12 +7,14 @@ import Header from "@/components/Header";
 import { CM_CIC_PUBLIC_SITE_URL } from "@/config/site";
 import CaseContext from "@/components/case/CaseContext";
 import CaseDecisions from "@/components/case/CaseDecisions";
+import CaseFinal from "@/components/case/CaseFinal";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
 import CaseQuestion from "@/components/case/CaseQuestion";
 import CaseResearch from "@/components/case/CaseResearch";
 import { BankDerived, BankMixins, BankServices, BankTokens } from "@/components/case/bank/BankBuilt";
 import BankMosaic from "@/components/case/bank/BankMosaic";
+import BankShowcase from "@/components/case/bank/BankShowcase";
 import BankReuse from "@/components/case/bank/BankReuse";
 import BankSplit from "@/components/case/bank/BankSplit";
 import Footer from "@/components/Footer";
@@ -71,8 +73,9 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 // Caso de estudio: rediseño del framework CSS de la banca online de Crédit Mutuel y CIC.
-// Misma estructura y colores que el de Interface (routes/work/interface-web-app.tsx); se construye por
-// fases: Hero, "The problem / The solution", "(Context)", "Challenge", "How might we…", "What I built"… Por confidencialidad, los demás visuales usan marcas ficticias.
+// Misma estructura y colores que el de Interface (routes/work/interface-web-app.tsx): Hero,
+// "The problem / The solution", "(Context)", "Challenge", "How might we…", "What I built" y "Final Thoughts".
+// Por confidencialidad, los visuales (salvo el vídeo del Hero) usan marcas ficticias.
 export default function CreditMutuelCic() {
   return (
     <>
@@ -85,6 +88,13 @@ export default function CreditMutuelCic() {
         <CaseResearch textKey={`${TEXTS}.challenge`} slug={SLUG} gaps={CHALLENGE_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} left orbs={QUESTION_ORBS} />
         <CaseDecisions textKey={`${TEXTS}.built`} slug={SLUG} visuals={BUILT_VISUALS} />
+        {/* Logo de Euro-Information: public/images/case/credit-mutuel-cic/euro-information-logo.svg */}
+        <CaseFinal
+          textKey={`${TEXTS}.final`}
+          slug={SLUG}
+          visual={<BankShowcase textKey={BANK} />}
+          logo={{ file: "euro-information-logo.svg", width: 182, height: 168 }}
+        />
       </main>
       <Footer />
     </>

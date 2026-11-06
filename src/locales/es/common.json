@@ -721,6 +721,26 @@
             "alt": "Una lista de validación de los servicios que usan el framework, cuatro validados y uno en revisión, sobre las etapas prueba, iteración y aceptación."
           }
         ]
+      },
+      "final": {
+        "label": "(05)",
+        "title": "Reflexiones finales",
+        "outcome": "Resultado",
+        "statement": "De una <strong>nueva marca</strong> a cada página detrás del login.",
+        "projectFor": "Proyecto para",
+        "logoAlt": "Euro-Information",
+        "stats": [
+          {
+            "value": "20+",
+            "label": "componentes rediseñados y programados"
+          },
+          {
+            "value": "2",
+            "label": "marcas desde un solo framework"
+          }
+        ],
+        "summary": "Un framework CSS modernizado que llevó la nueva identidad de Crédit Mutuel y CIC a toda el área de clientes, y una base flexible lista para futuras webs.",
+        "photoAlt": "Una pantalla bancaria ficticia que cambia entre los temas Por defecto, Banque Alpha y Banque Beta: la misma tarjeta de cuenta, el mismo campo y el mismo botón con otros colores y formas."
       }
     }
   }

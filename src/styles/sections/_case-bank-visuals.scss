@@ -983,3 +983,72 @@
     }
   }
 }
+
+// ─── Final Thoughts · pantalla que cambia de tema ────────────────────────────────────
+// Ocupa la tarjeta "foto" del bento; la letra base es un % de su ancho (escala como una imagen).
+.case-final__visual {
+  container-type: inline-size;
+  width: 100%;
+  height: 100%; // escritorio: llena el alto de sus dos filas; móvil: el alto de su contenido
+  overflow: hidden;
+  border-radius: rem(12);
+  text-align: left; // las tarjetas del bento centran su texto; una pantalla de app, no
+}
+
+.bank-showcase {
+  display: grid;
+  gap: 0.9em;
+  align-content: start;
+  height: 100%;
+  padding: 1.2em 1.1em;
+  background: var(--bk-surface-alt);
+  font-size: min(5.4cqi, #{rem(15)}); // en móvil la tarjeta es ancha: la letra no crece de más
+
+  .bk-btn {
+    width: 100%;
+  }
+
+  // El cambio de tema se ve como un fundido de colores y formas.
+  @include motion-safe {
+    &,
+    * {
+      transition:
+        background-color 0.6s ease,
+        border-color 0.6s ease,
+        color 0.6s ease,
+        border-radius 0.6s ease;
+    }
+  }
+}
+
+// Selector de tema (marca el activo).
+.bank-showcase__switch {
+  display: flex;
+  gap: 0.2em;
+  padding: 0.25em;
+  border-radius: 999em;
+  background: var(--bk-surface);
+  font-size: 0.62em;
+  box-shadow: inset 0 0 0 1px var(--bk-border);
+
+  span {
+    flex: 1;
+    padding: 0.45em 0.3em;
+    border-radius: 999em;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--bk-muted);
+
+    &.is-current {
+      background: var(--bk-primary);
+      font-weight: var(--bk-weight-strong);
+      color: var(--bk-on-primary);
+    }
+  }
+}
+
+.bank-showcase__title {
+  margin-top: 0.3em;
+  font-size: 1.15em;
+  font-weight: var(--bk-weight-strong);
+}

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import { useCaseFinalReveal } from "./useCaseFinalReveal";
@@ -8,15 +8,21 @@ type Stat = { value: string; label: string };
 type Props = {
   // Clave de los textos en locales/*/common.json (p. ej. "cases.interfaceWebApp.final").
   textKey: string;
-  // Archivos en public/images/case/<slug>/: final-photo.png y flexis-logo.svg.
+  // Archivos en public/images/case/<slug>/: final-photo.png y el logo del cliente.
   slug: string;
-  photo: { width: number; height: number };
+  photo?: { width: number; height: number };
+  // Visual hecho en código en lugar de la foto (se lee como una imagen con <textKey>.photoAlt).
+  visual?: ReactNode;
+  // Logo del cliente (por defecto, el de Flexis).
+  logo?: { file: string; width: number; height: number };
 };
+
+const FLEXIS_LOGO = { file: "flexis-logo.svg", width: 246, height: 66 };
 
 // "Final Thoughts" de un caso de estudio: bento de tarjetas blancas (foto, resultado, frase, cliente,
 // cifras y resumen). El orden del HTML es el de lectura; la rejilla (grid-template-areas) las coloca.
 // Animación en case/useCaseFinalReveal.ts. Estilos: styles/sections/_case-final.scss
-export default function CaseFinal({ textKey, slug, photo }: Props) {
+export default function CaseFinal({ textKey, slug, photo, visual, logo = FLEXIS_LOGO }: Props) {
   const { t } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const stats = t(`${textKey}.stats`, { returnObjects: true }) as Stat[];
@@ -57,24 +63,32 @@ export default function CaseFinal({ textKey, slug, photo }: Props) {
             <p className="case-final__client-label">{t(`${textKey}.projectFor`)}</p>
             <img
               className="case-final__logo"
-              src={`/images/case/${slug}/flexis-logo.svg`}
+              src={`/images/case/${slug}/${logo.file}`}
               alt={t(`${textKey}.logoAlt`)}
-              width={246}
-              height={66}
+              width={logo.width}
+              height={logo.height}
               loading="lazy"
             />
           </div>
 
           <div className="case-final__card case-final__card--photo">
-            <img
-              className="case-final__photo"
-              src={`/images/case/${slug}/final-photo.png`}
-              alt={t(`${textKey}.photoAlt`)}
-              width={photo.width}
-              height={photo.height}
-              loading="lazy"
-              decoding="async"
-            />
+            {visual ? (
+              <div className="case-final__visual" role="img" aria-label={t(`${textKey}.photoAlt`)}>
+                {visual}
+              </div>
+            ) : (
+              photo && (
+                <img
+                  className="case-final__photo"
+                  src={`/images/case/${slug}/final-photo.png`}
+                  alt={t(`${textKey}.photoAlt`)}
+                  width={photo.width}
+                  height={photo.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )
+            )}
           </div>
 
           <div className="case-final__card case-final__card--summary">
