@@ -668,6 +668,9 @@
             "alt": "A dark code editor with Less code for a button: the old properties are crossed out and the new ones only win with !important, with a warning: 12 overrides on .btn."
           }
         ]
+      },
+      "question": {
+        "text": "How might <muted>we modernize our framework</muted> so the new identity works everywhere, without <muted>overriding the old styles</muted>?"
       }
     }
   }

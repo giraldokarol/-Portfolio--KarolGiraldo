@@ -7,8 +7,10 @@ import { useCaseQuestionReveal } from "./useCaseQuestionReveal";
 type Props = {
   // Clave de los textos en locales/*/common.json (p. ej. "cases.interfaceWebApp.question").
   textKey: string;
-  // Pregunta centrada (en vez de a la derecha) y bolitas en otro sitio (por defecto, las de ORBS).
+  // Pregunta centrada o más a la izquierda (por defecto, a la derecha) y bolitas en otro sitio (por
+  // defecto, las de ORBS).
   centered?: boolean;
+  left?: boolean;
   orbs?: { desktop: OrbPlacement; mobile: OrbPlacement }[];
 };
 
@@ -23,14 +25,14 @@ const ORBS: { desktop: OrbPlacement; mobile: OrbPlacement }[] = [
 
 // "How might we…": la pregunta que guía el diseño, en grande y con la parte clave en gris.
 // Animación en case/useCaseQuestionReveal.ts. Estilos: styles/sections/_case-question.scss
-export default function CaseQuestion({ textKey, centered = false, orbs = ORBS }: Props) {
+export default function CaseQuestion({ textKey, centered = false, left = false, orbs = ORBS }: Props) {
   const root = useRef<HTMLElement>(null);
 
   useCaseQuestionReveal(root);
 
   return (
     <section
-      className={`case-question ${centered ? "case-question--centered" : ""}`}
+      className={`case-question ${centered ? "case-question--centered" : ""} ${left ? "case-question--left" : ""}`}
       ref={root}
       aria-labelledby="case-question-title"
     >

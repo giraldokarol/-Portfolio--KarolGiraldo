@@ -668,6 +668,9 @@
             "alt": "Un éditeur de code sombre avec du code Less pour un bouton : les anciennes propriétés sont barrées et les nouvelles ne s’imposent qu’avec !important, avec un avertissement : 12 surcharges sur .btn."
           }
         ]
+      },
+      "question": {
+        "text": "Comment <muted>moderniser notre framework</muted> pour que la nouvelle identité fonctionne partout, sans <muted>surcharger les anciens styles</muted> ?"
       }
     }
   }

@@ -668,6 +668,9 @@
             "alt": "Un editor de código oscuro con código Less para un botón: las propiedades antiguas están tachadas y las nuevas solo ganan con !important, con un aviso: 12 sobrescrituras en .btn."
           }
         ]
+      },
+      "question": {
+        "text": "¿Cómo podríamos <muted>modernizar nuestro framework</muted> para que la nueva identidad funcione en todas partes, sin <muted>sobrescribir los estilos antiguos</muted>?"
       }
     }
   }

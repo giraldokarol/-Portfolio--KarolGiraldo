@@ -58,3 +58,11 @@
     text-align: center;
   }
 }
+
+// Variante a la izquierda: la pregunta empieza antes y deja sitio a la bolita grande de la derecha.
+.case-question--left .case-question__title {
+  @include mq(lg) {
+    max-width: 12.4em; // cinco líneas en inglés, como el diseño
+    margin-left: 14%;
+  }
+}
