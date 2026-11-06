@@ -139,7 +139,7 @@ export function BankThemeLines() {
 // Código Less ficticio (no es el de la empresa) y en inglés en todos los idiomas, como en un editor real.
 // Una regla de la identidad anterior, sobrescrita por la de una página: lo antiguo queda tachado y lo nuevo
 // solo gana a base de !important. "@…" = variables de Less.
-type CodeLine = { text: string; kind?: "comment" | "selector" | "overridden" | "forced" };
+export type CodeLine = { text: string; kind?: "comment" | "selector" | "overridden" | "forced" };
 
 const LESS: CodeLine[] = [
   { text: "// legacy/buttons.less", kind: "comment" },
@@ -155,8 +155,8 @@ const LESS: CodeLine[] = [
   { text: "}" },
 ];
 
-// Ventana de editor oscura con el código Less (número de línea + código).
-export function BankDevTools() {
+// Ventana de editor oscura con código (número de línea + código). La primera pestaña es la activa.
+export function BankCodeWindow({ tabs, lines }: { tabs: string[]; lines: CodeLine[] }) {
   return (
     <div className="bank-devtools">
       <div className="bank-devtools__tabs">
@@ -165,11 +165,14 @@ export function BankDevTools() {
           <span />
           <span />
         </span>
-        <span className="is-current">accounts.less</span>
-        <span>buttons.less</span>
+        {tabs.map((tab, index) => (
+          <span key={tab} className={index === 0 ? "is-current" : undefined}>
+            {tab}
+          </span>
+        ))}
       </div>
       <ol className="bank-devtools__code">
-        {LESS.map((line, index) => (
+        {lines.map((line, index) => (
           <li key={index} className={line.kind ? `is-${line.kind}` : undefined}>
             <span className="bank-devtools__prop">{line.text}</span>
           </li>
@@ -177,6 +180,11 @@ export function BankDevTools() {
       </ol>
     </div>
   );
+}
+
+// Challenge 03: la regla antigua sobrescrita por la de una página.
+export function BankDevTools() {
+  return <BankCodeWindow tabs={["accounts.less", "buttons.less"]} lines={LESS} />;
 }
 
 // Aviso flotante: "12 overrides on .btn".

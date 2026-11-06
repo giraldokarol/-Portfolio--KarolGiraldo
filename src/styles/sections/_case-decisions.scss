@@ -63,6 +63,20 @@
   color: var(--color-ink);
 }
 
+// Entradilla opcional bajo el título.
+.case-decisions__lead {
+  max-width: 34em;
+  margin-top: rem(16);
+  font-size: type-size(small);
+  line-height: 1.4;
+  color: var(--color-gray);
+
+  @include mq(lg) {
+    margin-top: rem(20);
+    margin-left: rem(4);
+  }
+}
+
 .case-decisions__controls {
   display: flex;
   flex-shrink: 0;

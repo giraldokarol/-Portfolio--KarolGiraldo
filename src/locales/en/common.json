@@ -642,6 +642,26 @@
             "time": "2 min ago",
             "text": "Your loan simulation is ready. Shall we go over it on Thursday?"
           }
+        },
+        "built": {
+          "site": "Public website",
+          "tokens": "Derived styles",
+          "variable": "Variable",
+          "release": "Release v2 · acceptance",
+          "validated": "Validated",
+          "review": "In review",
+          "services": [
+            "Accounts",
+            "Loans",
+            "Messages",
+            "Cards",
+            "Savings"
+          ],
+          "steps": [
+            "Test",
+            "Iterate",
+            "Acceptance"
+          ]
         }
       },
       "challenge": {
@@ -671,6 +691,36 @@
       },
       "question": {
         "text": "How might <muted>we modernize our framework</muted> so the new identity works everywhere, without <muted>overriding the old styles</muted>?"
+      },
+      "built": {
+        "label": "(04)",
+        "title": "What I built",
+        "lead": "A neutral base, themed by variables. Instead of building two versions of each component, we built one neutral base and let variables carry each brand's identity.",
+        "previous": "Previous",
+        "next": "Next",
+        "slideLabel": "Step {{current}} of {{total}}",
+        "slides": [
+          {
+            "title": "Components derived <br/>from the new public <br/>design",
+            "text": "From the public website mockups, we derived the colors, shapes and styles of every component, keeping the existing page structure, since structural changes take a long time in a bank.",
+            "alt": "A fictional public website mockup on the left; on the right, the colors, button shape and typography derived from it, and the resulting button."
+          },
+          {
+            "title": "A neutral default <br/>theme",
+            "text": "We created our own internal visual identity, independent from Crédit Mutuel and CIC, as the default style of every component. Each property is a variable: using a component for CM or CIC only means changing the values.",
+            "alt": "A table of variables: primary color, corner radius, figures font and button, each shown for the Default, Banque Alpha and Banque Beta themes."
+          },
+          {
+            "title": "Simpler CSS with <br/>mixins",
+            "text": "Repeated styles were turned into Less mixins, written once and reused across components.",
+            "alt": "A Less code editor with a button mixin written once and used by a primary and a secondary button, shown next to the two resulting buttons."
+          },
+          {
+            "title": "Tested with every <br/>service",
+            "text": "Since the new version also changed the framework’s structure, every change was tested and validated with each service using it.",
+            "alt": "An acceptance checklist of the services using the framework, four validated and one in review, above the steps test, iterate and acceptance."
+          }
+        ]
       }
     }
   }

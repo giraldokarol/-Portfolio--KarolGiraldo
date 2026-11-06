@@ -6,10 +6,12 @@ import { alternateLinks } from "@/i18n/seo";
 import Header from "@/components/Header";
 import { CM_CIC_PUBLIC_SITE_URL } from "@/config/site";
 import CaseContext from "@/components/case/CaseContext";
+import CaseDecisions from "@/components/case/CaseDecisions";
 import CaseHero from "@/components/case/CaseHero";
 import CaseIntro from "@/components/case/CaseIntro";
 import CaseQuestion from "@/components/case/CaseQuestion";
 import CaseResearch from "@/components/case/CaseResearch";
+import { BankDerived, BankMixins, BankServices, BankTokens } from "@/components/case/bank/BankBuilt";
 import BankMosaic from "@/components/case/bank/BankMosaic";
 import BankReuse from "@/components/case/bank/BankReuse";
 import BankSplit from "@/components/case/bank/BankSplit";
@@ -42,6 +44,14 @@ const QUESTION_ORBS = [
   { desktop: { x: 21, y: 80, size: 7.2 }, mobile: { x: 12, y: 92, size: 18 } },
 ];
 
+// Visuales del carrusel "What I built" (uno por tarjeta, en el orden de <TEXTS>.built.slides).
+const BUILT_VISUALS = [
+  <BankDerived key="derived" textKey={BANK} />,
+  <BankTokens key="tokens" textKey={BANK} />,
+  <BankMixins key="mixins" textKey={BANK} />,
+  <BankServices key="services" textKey={BANK} />,
+];
+
 // Corre en el build (prerender): un idioma que no existe → 404.
 export function loader({ params }: Route.LoaderArgs) {
   if (!isLocale(params.lang)) throw data(null, { status: 404 });
@@ -62,7 +72,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 
 // Caso de estudio: rediseño del framework CSS de la banca online de Crédit Mutuel y CIC.
 // Misma estructura y colores que el de Interface (routes/work/interface-web-app.tsx); se construye por
-// fases: Hero, "The problem / The solution", "(Context)", "Challenge", "How might we…"… Por confidencialidad, los demás visuales usan marcas ficticias.
+// fases: Hero, "The problem / The solution", "(Context)", "Challenge", "How might we…", "What I built"… Por confidencialidad, los demás visuales usan marcas ficticias.
 export default function CreditMutuelCic() {
   return (
     <>
@@ -74,6 +84,7 @@ export default function CreditMutuelCic() {
         <CaseContext textKey={`${TEXTS}.context`} link={CM_CIC_PUBLIC_SITE_URL} />
         <CaseResearch textKey={`${TEXTS}.challenge`} slug={SLUG} gaps={CHALLENGE_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} left orbs={QUESTION_ORBS} />
+        <CaseDecisions textKey={`${TEXTS}.built`} slug={SLUG} visuals={BUILT_VISUALS} />
       </main>
       <Footer />
     </>

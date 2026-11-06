@@ -622,3 +622,364 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+// ─── What I built ────────────────────────────────────────────────────────────────────
+// Sin fondo propio: se apoyan directamente sobre la tarjeta del carrusel.
+.bank-visual--bare {
+  overflow: visible;
+  background: none;
+}
+
+// Contenedor del visual en la tarjeta del carrusel (CaseDecisions): da el ancho de referencia (cqi).
+.case-decisions__visual {
+  container-type: inline-size;
+}
+
+// 01 · Web pública → valores derivados.
+.bank-derived__site,
+.bank-derived__tokens {
+  position: absolute;
+  top: 10%;
+}
+
+.bank-derived__site {
+  left: 0;
+  width: 50%;
+}
+
+.bank-derived__caption {
+  display: block;
+  margin-bottom: 0.6em;
+  font-family: var(--font-sans);
+  font-size: 0.7em;
+  font-weight: weight(semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.bank-derived__browser {
+  display: grid;
+  gap: 0.7em;
+  padding: 0.7em;
+  border: 1px solid var(--color-border);
+  border-radius: 0.7em;
+  background: var(--color-background);
+  box-shadow: 0 0.8em 2em rgb(15 23 42 / 0.08);
+}
+
+.bank-derived__dots {
+  display: flex;
+  gap: 0.3em;
+
+  span {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+}
+
+// "Hero" de la web pública, con el color de la marca.
+.bank-derived__hero {
+  display: grid;
+  gap: 0.5em;
+  padding: 1.2em 1em;
+  border-radius: var(--bk-radius-card);
+  background: var(--bk-primary);
+}
+
+.bank-derived__line {
+  width: 70%;
+  height: 0.45em;
+  border-radius: 0.25em;
+  background: rgb(255 255 255 / 0.5);
+}
+
+.bank-derived__line--title {
+  width: 50%;
+  height: 0.75em;
+  background: rgb(255 255 255 / 0.9);
+}
+
+.bank-derived__pill {
+  width: 5em;
+  height: 1.5em;
+  margin-top: 0.3em;
+  border-radius: var(--bk-radius-control);
+  background: var(--bk-surface);
+}
+
+.bank-derived__tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5em;
+
+  span {
+    height: 2.6em;
+    border-radius: 0.4em;
+    background: var(--color-surface);
+  }
+}
+
+.bank-derived__arrow {
+  position: absolute;
+  top: 44%;
+  left: 52.5%;
+  width: 7%;
+  fill: none;
+  stroke: var(--color-text-faded);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bank-derived__tokens {
+  right: 0;
+  display: grid;
+  gap: 0.9em;
+  justify-items: start;
+  width: 36%;
+  padding: 0.9em 1em 1.1em;
+  border: 1px solid var(--bk-border);
+  border-radius: var(--bk-radius-card);
+  background: var(--bk-surface);
+  box-shadow: var(--bk-shadow);
+
+  .bank-derived__caption {
+    margin-bottom: 0;
+  }
+
+  .bk-btn {
+    width: 100%;
+  }
+}
+
+.bank-derived__swatches {
+  display: flex;
+  gap: 0.4em;
+
+  span {
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  }
+}
+
+.bank-derived__specs {
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+}
+
+.bank-derived__shape {
+  width: 3.2em;
+  height: 1.4em;
+  border: 1.5px solid var(--bk-primary);
+  border-radius: var(--bk-radius-control);
+}
+
+.bank-derived__type {
+  font-size: 1.5em;
+  font-weight: var(--bk-weight-strong);
+  line-height: 1;
+  color: var(--bk-primary);
+}
+
+// 02 · Tabla de variables por tema.
+.bank-tokens {
+  display: grid;
+  place-items: center;
+}
+
+.bank-tokens__table {
+  display: grid;
+  grid-template-columns: auto repeat(3, 1fr);
+  gap: 0.55em 0.9em;
+  align-items: center;
+  width: 94%;
+  padding: 1.1em 1.2em;
+  border: 1px solid var(--color-border);
+  border-radius: 0.8em;
+  background: var(--color-background);
+  box-shadow: 0 0.8em 2em rgb(15 23 42 / 0.08);
+  font-family: var(--font-sans);
+}
+
+.bank-tokens__head {
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 0.68em;
+  font-weight: weight(semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.bank-tokens__var {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72em;
+  color: var(--color-ink);
+}
+
+.bank-tokens__cell {
+  display: flex;
+  align-items: center;
+  min-height: 2.2em;
+  font-size: 0.8em;
+
+  .bk-btn {
+    min-height: 2.2em;
+    padding: 0 1em;
+    font-size: 0.9em;
+  }
+}
+
+.bank-tokens__swatch {
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 50%;
+  background: var(--bk-primary);
+}
+
+.bank-tokens__radius {
+  width: 3em;
+  height: 1.6em;
+  border: 1.5px solid var(--bk-primary);
+  border-radius: var(--bk-radius-control);
+}
+
+.bank-tokens__font {
+  font-family: var(--bk-font-figures);
+  font-size: 1.25em;
+  font-weight: var(--bk-weight-strong);
+  color: var(--bk-text);
+}
+
+// 03 · Mixin + componentes que lo usan.
+.bank-mixins__code {
+  position: absolute;
+  top: 4%;
+  left: 0;
+  width: 64%;
+}
+
+.bank-mixins__result {
+  position: absolute;
+  top: 26%;
+  right: 0;
+  display: grid;
+  gap: 0.5em;
+  width: 30%;
+  padding: 1em;
+  border: 1px solid var(--bk-border);
+  border-radius: var(--bk-radius-card);
+  background: var(--bk-surface);
+  box-shadow: var(--bk-shadow);
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.62em;
+    color: var(--bk-muted);
+  }
+
+  code:not(:first-child) {
+    margin-top: 0.4em;
+  }
+
+  .bk-btn {
+    width: 100%;
+    font-size: 0.85em;
+  }
+}
+
+// 04 · Servicios validados.
+.bank-services {
+  display: grid;
+  gap: 1em;
+  align-content: center;
+  justify-items: center;
+}
+
+.bank-services__card {
+  display: grid;
+  gap: 0.6em;
+  width: 70%;
+  padding: 1em 1.2em;
+  border: 1px solid var(--bk-border);
+  border-radius: var(--bk-radius-card);
+  background: var(--bk-surface);
+  box-shadow: 0 0.8em 2em rgb(15 23 42 / 0.08);
+  font-size: 0.85em;
+}
+
+.bank-services__head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bank-services__title {
+  font-weight: var(--bk-weight-strong);
+}
+
+.bank-services__count {
+  font-variant-numeric: tabular-nums;
+  color: var(--bk-muted);
+}
+
+.bank-services__progress {
+  height: 0.35em;
+  border-radius: 1em;
+  background: linear-gradient(to right, var(--bk-success) calc(var(--done) * 100%), var(--bk-surface-alt) 0);
+}
+
+.bank-services__list {
+  display: grid;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45em 0;
+    border-top: 1px solid var(--bk-surface-alt);
+  }
+}
+
+.bank-services__review {
+  background: #fdf3e1;
+  color: #8a5a00; // 5,4:1 sobre su fondo
+}
+
+// Etapas de cada cambio: "Test → Iterate → Acceptance".
+.bank-services__steps {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.72em;
+  color: var(--color-gray);
+  list-style: none;
+
+  li {
+    position: relative;
+    padding: 0.35em 0.8em;
+    border: 1px solid var(--color-border);
+    border-radius: 999em;
+    background: var(--color-background);
+  }
+
+  // Flecha entre etapas, fuera de la píldora.
+  li + li {
+    margin-left: 1.3em;
+
+    &::before {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      left: -1.45em;
+      color: var(--color-text-faded);
+      transform: translateY(-50%);
+    }
+  }
+}

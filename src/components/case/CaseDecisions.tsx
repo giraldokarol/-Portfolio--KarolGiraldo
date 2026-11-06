@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import MeshOrb from "./MeshOrb";
@@ -29,7 +29,10 @@ type Props = {
   textKey: string;
   slug: string;
   // Una por tarjeta, en el mismo orden que <textKey>.slides.
-  images: readonly DecisionImage[];
+  images?: readonly DecisionImage[];
+  // Visuales hechos en código en lugar de imágenes (uno por tarjeta, mismo orden). Se leen como una sola
+  // imagen con el texto alternativo de la tarjeta (<textKey>.slides.N.alt).
+  visuals?: readonly ReactNode[];
   // Composiciones altas (pantallas de móvil): se limitan en alto para que la tarjeta no crezca de más.
   device?: "web" | "phone";
 };
@@ -47,8 +50,8 @@ const ORBS = [
 // "Key Decisions" de un caso de estudio: mini carrusel de tarjetas (texto a la izquierda, imagen a la
 // derecha). Se pasa con las flechas, arrastrando (dedo o ratón) o haciendo clic en la tarjeta que asoma.
 // La tarjeta siguiente/anterior asoma por el borde. Estilos: styles/sections/_case-decisions.scss
-export default function CaseDecisions({ textKey, slug, images, device = "web" }: Props) {
-  const { t } = useTranslation();
+export default function CaseDecisions({ textKey, slug, images = [], visuals, device = "web" }: Props) {
+  const { t, i18n } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const slides = t(`${textKey}.slides`, { returnObjects: true }) as DecisionText[];
   const [current, setCurrent] = useState(0);
@@ -134,6 +137,8 @@ export default function CaseDecisions({ textKey, slug, images, device = "web" }:
             <h2 id="case-decisions-title" className="case-decisions__title">
               {t(`${textKey}.title`)}
             </h2>
+            {/* Entradilla opcional bajo el título. */}
+            {i18n.exists(`${textKey}.lead`) && <p className="case-decisions__lead">{t(`${textKey}.lead`)}</p>}
           </div>
 
           <div className="case-decisions__controls">
@@ -172,9 +177,11 @@ export default function CaseDecisions({ textKey, slug, images, device = "web" }:
           onPointerCancel={() => (drag.current = null)}
         >
           <div className="case-decisions__track" style={{ "--current": current } as CSSProperties}>
-            {slides.map((slide, index) => (
+            {slides.map((slide, index) => {
+              const image = images[index];
+              return (
               <article
-                key={images[index].image}
+                key={image?.image ?? index}
                 className={`case-decisions__slide ${index === current ? "is-current" : ""}`}
                 aria-roledescription="slide"
                 aria-label={t(`${textKey}.slideLabel`, { current: index + 1, total: slides.length })}
@@ -211,20 +218,24 @@ export default function CaseDecisions({ textKey, slug, images, device = "web" }:
                   ))}
                 </div>
 
-                {images[index].video ? (
+                {visuals ? (
+                  <div className="case-decisions__image case-decisions__visual" role="img" aria-label={slide.alt}>
+                    {visuals[index]}
+                  </div>
+                ) : image.video ? (
                   // Imagen de fondo + teléfono grabado encima: una sola imagen para los lectores de pantalla.
                   <div
                     className="case-decisions__image case-decisions__media"
-                    style={{ "--ratio": images[index].width / images[index].height } as CSSProperties}
+                    style={{ "--ratio": image.width / image.height } as CSSProperties}
                     role="img"
                     aria-label={slide.alt}
                   >
                     <img
                       className="case-decisions__media-back"
-                      src={`/images/case/${slug}/${images[index].image}.png`}
+                      src={`/images/case/${slug}/${image.image}.png`}
                       alt=""
-                      width={images[index].width}
-                      height={images[index].height}
+                      width={image.width}
+                      height={image.height}
                       loading="lazy"
                       decoding="async"
                       draggable={false}
@@ -234,14 +245,14 @@ export default function CaseDecisions({ textKey, slug, images, device = "web" }:
                       data-index={index}
                       style={
                         {
-                          "--x": `${images[index].video.x}%`,
-                          "--y": `${images[index].video.y}%`,
-                          "--w": `${images[index].video.w}%`,
-                          "--video-ratio": images[index].video.ratio,
+                          "--x": `${image.video.x}%`,
+                          "--y": `${image.video.y}%`,
+                          "--w": `${image.video.w}%`,
+                          "--video-ratio": image.video.ratio,
                         } as CSSProperties
                       }
-                      src={`/videos/case/${slug}/${images[index].video.name}.mp4`}
-                      poster={`/videos/case/${slug}/${images[index].video.name}.jpg`}
+                      src={`/videos/case/${slug}/${image.video.name}.mp4`}
+                      poster={`/videos/case/${slug}/${image.video.name}.jpg`}
                       muted
                       loop
                       playsInline
@@ -251,17 +262,18 @@ export default function CaseDecisions({ textKey, slug, images, device = "web" }:
                 ) : (
                   <img
                     className="case-decisions__image"
-                    src={`/images/case/${slug}/${images[index].image}.png`}
+                    src={`/images/case/${slug}/${image.image}.png`}
                     alt={slide.alt}
-                    width={images[index].width}
-                    height={images[index].height}
+                    width={image.width}
+                    height={image.height}
                     loading="lazy"
                     decoding="async"
                     draggable={false}
                   />
                 )}
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
 

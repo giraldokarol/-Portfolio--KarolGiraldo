@@ -642,6 +642,26 @@
             "time": "Il y a 2 min",
             "text": "Votre simulation de prêt est prête. On en parle jeudi ?"
           }
+        },
+        "built": {
+          "site": "Site public",
+          "tokens": "Styles dérivés",
+          "variable": "Variable",
+          "release": "Version 2 · recette",
+          "validated": "Validé",
+          "review": "En revue",
+          "services": [
+            "Comptes",
+            "Crédits",
+            "Messages",
+            "Cartes",
+            "Épargne"
+          ],
+          "steps": [
+            "Test",
+            "Itération",
+            "Recette"
+          ]
         }
       },
       "challenge": {
@@ -671,6 +691,36 @@
       },
       "question": {
         "text": "Comment <muted>moderniser notre framework</muted> pour que la nouvelle identité fonctionne partout, sans <muted>surcharger les anciens styles</muted> ?"
+      },
+      "built": {
+        "label": "(04)",
+        "title": "Ce que j’ai construit",
+        "lead": "Une base neutre, déclinée par des variables. Plutôt que de construire deux versions de chaque composant, nous avons construit une seule base neutre et laissé les variables porter l’identité de chaque marque.",
+        "previous": "Précédent",
+        "next": "Suivant",
+        "slideLabel": "Étape {{current}} sur {{total}}",
+        "slides": [
+          {
+            "title": "Des composants issus <br/>du nouveau design <br/>public",
+            "text": "À partir des maquettes du site public, nous avons défini les couleurs, les formes et les styles de chaque composant, en gardant la structure des pages, car les changements de structure prennent beaucoup de temps dans une banque.",
+            "alt": "Une maquette de site public fictif à gauche ; à droite, les couleurs, la forme du bouton et la typographie qui en découlent, et le bouton obtenu."
+          },
+          {
+            "title": "Un thème neutre <br/>par défaut",
+            "text": "Nous avons créé notre propre identité visuelle interne, indépendante du Crédit Mutuel et du CIC, comme style par défaut de chaque composant. Chaque propriété est une variable : utiliser un composant pour le CM ou le CIC revient à changer les valeurs.",
+            "alt": "Un tableau de variables : couleur principale, arrondi, police des chiffres et bouton, présentés pour les thèmes Par défaut, Banque Alpha et Banque Beta."
+          },
+          {
+            "title": "Un CSS plus simple <br/>avec des mixins",
+            "text": "Les styles répétés sont devenus des mixins Less, écrits une fois et réutilisés dans tous les composants.",
+            "alt": "Un éditeur de code Less avec un mixin de bouton écrit une fois et utilisé par un bouton principal et un bouton secondaire, à côté des deux boutons obtenus."
+          },
+          {
+            "title": "Testé avec chaque <br/>service",
+            "text": "Comme la nouvelle version changeait aussi la structure du framework, chaque modification a été testée et validée avec chaque service qui l’utilise.",
+            "alt": "Une liste de recette des services qui utilisent le framework, quatre validés et un en revue, au-dessus des étapes test, itération et recette."
+          }
+        ]
       }
     }
   }

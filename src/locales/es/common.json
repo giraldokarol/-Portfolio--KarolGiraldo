@@ -642,6 +642,26 @@
             "time": "Hace 2 min",
             "text": "Tu simulación de préstamo está lista. ¿La vemos el jueves?"
           }
+        },
+        "built": {
+          "site": "Web pública",
+          "tokens": "Estilos derivados",
+          "variable": "Variable",
+          "release": "Versión 2 · aceptación",
+          "validated": "Validado",
+          "review": "En revisión",
+          "services": [
+            "Cuentas",
+            "Préstamos",
+            "Mensajes",
+            "Tarjetas",
+            "Ahorro"
+          ],
+          "steps": [
+            "Prueba",
+            "Iteración",
+            "Aceptación"
+          ]
         }
       },
       "challenge": {
@@ -671,6 +691,36 @@
       },
       "question": {
         "text": "¿Cómo podríamos <muted>modernizar nuestro framework</muted> para que la nueva identidad funcione en todas partes, sin <muted>sobrescribir los estilos antiguos</muted>?"
+      },
+      "built": {
+        "label": "(04)",
+        "title": "Lo que construí",
+        "lead": "Una base neutra, adaptada con variables. En lugar de construir dos versiones de cada componente, construimos una sola base neutra y dejamos que las variables llevaran la identidad de cada marca.",
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "slideLabel": "Paso {{current}} de {{total}}",
+        "slides": [
+          {
+            "title": "Componentes derivados <br/>del nuevo diseño <br/>público",
+            "text": "A partir de las maquetas de la web pública, definimos los colores, las formas y los estilos de cada componente, manteniendo la estructura de las páginas, porque en un banco los cambios de estructura llevan mucho tiempo.",
+            "alt": "Una maqueta de web pública ficticia a la izquierda; a la derecha, los colores, la forma del botón y la tipografía que se derivan de ella, y el botón resultante."
+          },
+          {
+            "title": "Un tema neutro <br/>por defecto",
+            "text": "Creamos nuestra propia identidad visual interna, independiente de Crédit Mutuel y CIC, como estilo por defecto de cada componente. Cada propiedad es una variable: usar un componente para CM o CIC solo significa cambiar los valores.",
+            "alt": "Una tabla de variables: color principal, radio de las esquinas, fuente de las cifras y botón, mostrados para los temas Por defecto, Banque Alpha y Banque Beta."
+          },
+          {
+            "title": "CSS más simple <br/>con mixins",
+            "text": "Los estilos repetidos se convirtieron en mixins de Less, escritos una vez y reutilizados en todos los componentes.",
+            "alt": "Un editor de código Less con un mixin de botón escrito una vez y usado por un botón principal y uno secundario, junto a los dos botones resultantes."
+          },
+          {
+            "title": "Probado con cada <br/>servicio",
+            "text": "Como la nueva versión también cambiaba la estructura del framework, cada cambio se probó y validó con cada servicio que lo usa.",
+            "alt": "Una lista de validación de los servicios que usan el framework, cuatro validados y uno en revisión, sobre las etapas prueba, iteración y aceptación."
+          }
+        ]
       }
     }
   }
