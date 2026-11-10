@@ -36,8 +36,13 @@ Para conectarlo:
   de caso de estudio aún no existen**: hoy dan 404.
 
 ## Configuración
-- Dominio real en `SITE_URL` (`src/config/site.ts`); hoy es provisional y se usa en canonical/hreflang.
-- Hosting: confirmar que sirve `build/client/en/index.html` en `/en` y `__spa-fallback.html` / 404 para rutas desconocidas.
+- Dominio: karolgiraldoescobar.com (Hostinger), en `SITE_URL` (`src/config/site.ts`) y en `public/.htaccess`
+  (redirección a https sin www). La publicación en Hostinger se hace con Karol.
+- Publicar: subir TODO el contenido de `build/client` (incluido `.htaccess`, archivo oculto) a `public_html`.
+- `public/.htaccess`: /en sin barra final, 404 → la app (components/ErrorPage.tsx), modos construcción y
+  mantenimiento listos para activar (páginas en `public/status/`).
+- robots.txt y sitemap.xml se generan en cada build (`scripts/seo-files.mjs`). Al publicar: enviar el sitemap
+  en Google Search Console.
 - Revisar y validar las traducciones provisionales de `src/locales/fr` y `src/locales/es`.
 
 ## Header
@@ -47,7 +52,7 @@ Para conectarlo:
 - Estado activo del menú (subrayado azul al hacer scroll): se mantiene del sitio anterior, no está en Figma.
 
 ## Más adelante
-- Imágenes de las cards: WebP/AVIF, `width`/`height`, `loading="lazy"` (cover-tulindero pesa 3,6 MB).
+- Imágenes de las cards: WebP/AVIF, `width`/`height`, `loading="lazy"`.
 - Fuente: convertir el `.ttf` a `.woff2` (≈ 3 veces menos peso).
 - Meta Open Graph (imagen para compartir en LinkedIn).
 
@@ -56,15 +61,17 @@ Para conectarlo:
   El envío abre de momento el programa de correo (mailto) con todo escrito.
 - Fase 2 hecha: envío directo con Web3Forms (lib/contact.ts). PENDIENTE: Karol crea su clave y la pone en
   .env.local (VITE_WEB3FORMS_KEY, ver .env.example). Sin clave, el formulario usa mailto.
-- Al publicar en OVH: en el panel de Web3Forms, cambiar el "Website URL" del formulario de localhost al dominio real.
+- Al publicar en Hostinger: en el panel de Web3Forms, cambiar el "Website URL" del formulario de localhost al dominio real.
   Y cuando exista el correo del dominio: nueva clave con ese correo + cambiar CONTACT_EMAIL en src/config/site.ts.
 - Footer rehecho (copyright | legal · logo · EN | FR | ES; redes solo en móvil).
 
 ## Legal y estadísticas
 - Página legal hecha: /:lang/legal (routes/legal.tsx), textos en locales legal.* (el francés es la referencia).
   Enlazada desde el footer y desde una frase junto al botón del formulario (#privacy).
-- PENDIENTE cuando Karol tenga SIRET: añadirlo + dirección postal (puede ser de domiciliación) y teléfono
-  (la LCEN los pide a los profesionales). Confirmar el alojamiento (OVH) al contratarlo.
+- Sin SIRET ni dirección para el lanzamiento (decidido por Karol, 2026-11-10): si la contratan, pasará por una
+  sociedad de portage / CAPE y entonces se actualizará el "Responsable del sitio".
+- Alojamiento: Hostinger (Hostinger International Ltd, Chipre), ya en la página legal.
+- PENDIENTE: comprar el dominio y ponerlo en SITE_URL (src/config/site.ts).
 - PENDIENTE cuando haya correo del dominio: cambiar CONTACT_EMAIL (site.ts) — se actualiza solo en la página legal.
-- Estadísticas: Cloudflare Web Analytics (gratis, sin cookies, funciona con OVH sin mover el dominio). Instalar al publicar
+- Estadísticas: Cloudflare Web Analytics (gratis, sin cookies, funciona con Hostinger sin mover el dominio). Instalar al publicar
   y AÑADIR un párrafo en legal.sections (privacy/cookies). No usar Google Analytics (necesitaría banner de consentimiento).

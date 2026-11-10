@@ -10,8 +10,11 @@ import { WORK_PROJECTS } from "@/config/site";
 //   - el nombre del proyecto pasa a negro en la lista y se queda así (acumulado);
 //   - la descripción bajo el marco cambia a la del proyecto actual.
 const STEP = 1; // duración de cada cambio de proyecto en la línea de tiempo
-const HOLD = 0.35; // pausa al principio y al final para ver el primer y el último proyecto
-const SCROLL_PER_PROJECT = { wide: 0.9, narrow: 0.75 }; // pantallas de scroll por cada cambio
+const HOLD = 0.35; // pausa al principio para ver el primer proyecto
+// Al final casi no hay pausa: en cuanto el último proyecto termina de entrar, la página sigue bajando
+// (con una pausa larga la sección parecía quedarse bloqueada después del último proyecto).
+const END_HOLD = 0.05;
+const SCROLL_PER_STEP = { wide: 0.65, narrow: 0.55 }; // pantallas de scroll por cada unidad de la línea de tiempo
 
 export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
   useGSAP(
@@ -75,8 +78,9 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
       const mm = gsap.matchMedia();
 
       mm.add({ wide: MEDIA.wide, narrow: MEDIA.narrow }, (context) => {
-        const screens = context.conditions?.wide ? SCROLL_PER_PROJECT.wide : SCROLL_PER_PROJECT.narrow;
+        const screens = context.conditions?.wide ? SCROLL_PER_STEP.wide : SCROLL_PER_STEP.narrow;
         const transitions = WORK_PROJECTS.length - 1;
+        const total = HOLD + (transitions - 1) * STEP + STEP * 0.8 + END_HOLD; // el último cambio dura STEP * 0.8
 
         section.classList.add("is-animated");
         gsap.set(media, { yPercent: (i) => (i === 0 ? 0 : 100) });
@@ -97,7 +101,7 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${window.innerHeight * screens * transitions}`,
+            end: () => `+=${window.innerHeight * screens * total}`,
             pin: true,
             scrub: 0.6,
             invalidateOnRefresh: true, // vuelve a medir los marcos fantasma al cambiar el tamaño
@@ -118,7 +122,7 @@ export function useWorkScroll(scope: RefObject<HTMLElement | null>) {
             at,
           ).to(corner, { radius: () => shape(i + 1).radius, duration: STEP * 0.8, onUpdate: applyCorner }, at);
         });
-        tl.set({}, {}, HOLD * 2 + transitions * STEP); // pausa final antes de soltar la sección
+        tl.set({}, {}, total); // pequeña pausa final antes de soltar la sección
 
         // Teclado / lector de pantalla: al enfocar un proyecto de la lista, el scroll salta
         // hasta él para que el marco muestre ese proyecto (solo con foco de teclado, no al hacer clic).

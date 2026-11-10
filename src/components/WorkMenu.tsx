@@ -13,7 +13,7 @@ type WorkMenuProps = {
   currentProject?: string;
 };
 
-// Enlace "Selected work" del menú + panel flotante (cristal) con los 4 proyectos.
+// Enlace "Selected work" del menú + panel flotante (cristal) con los proyectos (nombre y tipo, sin imágenes).
 // Se abre con el ratón encima o al llegar con el teclado (Tab); Escape lo cierra.
 // En pantallas táctiles no se abre: tocar el enlace lleva a la sección, como siempre.
 // Apertura y animaciones en CSS: styles/components/_work-menu.scss
@@ -23,8 +23,6 @@ export default function WorkMenu({ href, label, isCurrent, currentProject }: Wor
   const trigger = useRef<HTMLAnchorElement>(null);
   // Cerrado con Escape: se queda cerrado hasta que el ratón o el foco salen del menú.
   const [dismissed, setDismissed] = useState(false);
-  // Las miniaturas se cargan la primera vez que se abre el menú, no con la página.
-  const [loadThumbs, setLoadThumbs] = useState(false);
 
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.key !== "Escape") return;
@@ -35,9 +33,7 @@ export default function WorkMenu({ href, label, isCurrent, currentProject }: Wor
   return (
     <li
       className={`work-menu ${dismissed ? "is-dismissed" : ""}`}
-      onPointerEnter={() => setLoadThumbs(true)}
       onPointerLeave={() => setDismissed(false)}
-      onFocus={() => setLoadThumbs(true)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setDismissed(false);
       }}
@@ -56,9 +52,6 @@ export default function WorkMenu({ href, label, isCurrent, currentProject }: Wor
                 className="work-menu__link"
                 aria-current={slug === currentProject ? "page" : undefined}
               >
-                <span className={`work-menu__thumb work-menu__thumb--${frame}`} aria-hidden="true">
-                  {loadThumbs && <img src={`/videos/work/${slug}.jpg`} alt="" />}
-                </span>
                 <span className="work-menu__text">
                   <span className="work-menu__name">{t(`work.items.${id}.name`)}</span>
                   <span className="work-menu__type">{t(`work.frameType.${frame}`)}</span>

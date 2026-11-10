@@ -15,7 +15,6 @@ const VIDEO_RATIO: Record<WorkProject["id"], number> = {
   driverApp: 786 / 1704,
   interface: 1716 / 1132,
   cmcic: 1728 / 978,
-  tulindero: 1920 / 1136,
 };
 
 // Las tres "bolitas" del diseño, rellenas con el degradado de malla animado.

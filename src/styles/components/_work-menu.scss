@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 // Menú desplegable de "Selected work" en el header (components/WorkMenu.tsx).
-// Panel de cristal flotante con los 4 proyectos. Se abre con hover (solo ratón) o con el teclado
+// Panel de cristal flotante con los proyectos (sin imágenes). Se abre con hover (solo ratón) o con el teclado
 // (:focus-visible dentro); .is-dismissed lo cierra tras pulsar Escape.
 
 $menu-ease: cubic-bezier(0.22, 1, 0.36, 1); // frenado largo y suave
@@ -16,7 +16,7 @@ $menu-ease: cubic-bezier(0.22, 1, 0.36, 1); // frenado largo y suave
   position: absolute;
   top: 100%;
   left: 50%;
-  width: rem(380);
+  width: rem(320);
   padding-top: rem(18);
   visibility: hidden;
   pointer-events: none;
@@ -117,10 +117,10 @@ $menu-ease: cubic-bezier(0.22, 1, 0.36, 1); // frenado largo y suave
 .work-menu__link {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: rem(14);
   align-items: center;
-  padding: rem(10);
+  padding: rem(12) rem(14);
   border-radius: rem(14);
   isolation: isolate; // la píldora de fondo queda detrás del contenido
 
@@ -140,25 +140,6 @@ $menu-ease: cubic-bezier(0.22, 1, 0.36, 1); // frenado largo y suave
         opacity 0.25s ease,
         transform 0.4s $menu-ease;
     }
-  }
-}
-
-.work-menu__thumb {
-  width: rem(56);
-  height: rem(40);
-  overflow: hidden;
-  border-radius: rem(8);
-  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-background));
-
-  @include motion-safe {
-    transition: transform 0.5s $menu-ease;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
   }
 }
 
@@ -208,10 +189,6 @@ $menu-ease: cubic-bezier(0.22, 1, 0.36, 1); // frenado largo y suave
   &::before {
     opacity: 1;
     transform: none;
-  }
-
-  .work-menu__thumb {
-    transform: scale(1.06) rotate(-2deg);
   }
 
   .work-menu__text {

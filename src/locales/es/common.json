@@ -5,7 +5,21 @@
   },
   "seo": {
     "title": "Karol Giraldo — Product Designer (UX/UI)",
-    "description": "Product Designer con más de 8 años de experiencia en movilidad, banca y servicios digitales: UX/UI, investigación de usuarios y sistemas de diseño."
+    "description": "Product Designer con más de 8 años de experiencia en movilidad, banca y servicios digitales: UX/UI, investigación de usuarios y sistemas de diseño.",
+    "shareImageAlt": "¡Hey! Soy Karol, Product Designer — junto a mi avatar ilustrado."
+  },
+  "errors": {
+    "home": "Karol Giraldo — inicio",
+    "back": "Volver al inicio",
+    "explore": "O entra directamente en un caso de estudio:",
+    "notFound": {
+      "title": "Esta página se perdió por el camino.",
+      "lead": "Puede que el enlace esté roto o que la página haya cambiado de dirección. Volvamos al buen camino."
+    },
+    "generic": {
+      "title": "Algo no ha cargado como esperábamos.",
+      "lead": "Prueba a recargar la página. Si vuelve a pasar, el inicio está a un clic."
+    }
   },
   "a11y": {
     "mainNav": "Navegación principal",
@@ -49,12 +63,8 @@
         "description": "Simplificar la gestión diaria de flotas a través de una interfaz clara e intuitiva, que permite consultar datos operativos, supervisar vehículos y gestionar las operaciones desde un mismo lugar."
       },
       "cmcic": {
-        "name": "Crédit Mutuel & CIC - Redesign",
-        "description": "Modernizar la experiencia digital de dos grandes entidades bancarias, mejorando la navegación, la organización de los contenidos y el acceso a sus servicios."
-      },
-      "tulindero": {
-        "name": "TuLindero.com",
-        "description": "Facilitar la búsqueda de vivienda, permitiendo explorar propiedades y acceder a la información que realmente importa a la hora de elegir."
+        "name": "Crédit Mutuel & CIC",
+        "description": "Rediseñar el framework CSS y los componentes de la banca online de dos grandes bancos, para que una misma base neutra sirva a las dos marcas."
       }
     },
     "frameType": {
@@ -65,7 +75,7 @@
   "about": {
     "title": "De interfaces a productos",
     "portraitAlt": "Retrato de Karol Giraldo",
-    "paragraph1": "Soy Product Designer con <strong>más de 9 años de experiencia</strong> en movilidad, banca y servicios digitales, diseñando plataformas B2B y aplicaciones web y móviles.",
+    "paragraph1": "Soy Product Designer con <strong>más de 8 años de experiencia</strong> en movilidad, banca y servicios digitales, diseñando plataformas B2B y aplicaciones web y móviles.",
     "paragraph2": "Mi trabajo abarca <strong>UX/UI, investigación de usuarios y sistemas de diseño,</strong> con un fuerte enfoque en accesibilidad, flujos complejos y productos con muchos datos. Uno pensamiento de producto y oficio de UI para crear experiencias claras, coherentes y preparadas para crecer."
   },
   "footer": {
@@ -125,14 +135,13 @@
     "seoTitle": "Aviso legal y privacidad — Karol Giraldo",
     "seoDescription": "Aviso legal y política de privacidad del portafolio de Karol Giraldo Escobar.",
     "title": "Aviso legal y privacidad",
-    "updated": "Última actualización: octubre de 2026",
+    "updated": "Última actualización: noviembre de 2026",
     "sections": [
       {
         "id": "publisher",
         "title": "Responsable del sitio",
         "paragraphs": [
-          "Este sitio web lo publica Karol Giraldo Escobar, Product Designer freelance (empresaria individual, Francia).",
-          "SIRET: en trámite de registro.",
+          "Este sitio web lo publica Karol Giraldo Escobar, Product Designer.",
           "Contacto: <mail>{{email}}</mail>",
           "Directora de la publicación: Karol Giraldo Escobar."
         ]
@@ -141,7 +150,7 @@
         "id": "hosting",
         "title": "Alojamiento",
         "paragraphs": [
-          "El sitio está alojado por OVH SAS, 2 rue Kellermann, 59100 Roubaix, Francia — +33 9 72 10 10 07 — www.ovhcloud.com."
+          "El sitio está alojado por Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Chipre — www.hostinger.com."
         ]
       },
       {
@@ -149,7 +158,7 @@
         "title": "Propiedad intelectual",
         "paragraphs": [
           "Salvo que se indique lo contrario, todo el contenido de este sitio (textos, diseños, ilustraciones, vídeos y código) pertenece a Karol Giraldo Escobar y no puede reutilizarse sin autorización.",
-          "Las marcas y productos que aparecen en los casos de estudio (Flexis, Crédit Mutuel, CIC, TuLindero) pertenecen a sus respectivos propietarios y se muestran solo como parte del portafolio."
+          "Las marcas y productos que aparecen en los casos de estudio (Flexis, Crédit Mutuel, CIC) pertenecen a sus respectivos propietarios y se muestran solo como parte del portafolio."
         ]
       },
       {
@@ -589,7 +598,10 @@
         "label": "(Contexto)",
         "title": "El 90 % de nuestros componentes vive detrás del login.",
         "lead": "Cuentas, préstamos, mensajes con el asesor: todo lo que los clientes gestionan una vez dentro está hecho con nuestros componentes. Cuando los bancos rediseñaron su web pública, el área de clientes tenía que seguirla.",
-        "cta": "Ver la nueva identidad pública"
+        "cta": {
+          "cm": "Visitar Crédit Mutuel",
+          "cic": "Visitar CIC"
+        }
       },
       "bank": {
         "themes": {

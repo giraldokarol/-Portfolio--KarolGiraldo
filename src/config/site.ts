@@ -1,8 +1,8 @@
 // Datos que no se traducen (nombres propios, URLs, email).
 
-// PENDIENTE: poner el dominio real cuando se elija el hosting.
+// Dominio del sitio (comprado en Hostinger). Si cambia, cambiarlo también en public/.htaccess.
 // Google exige URLs absolutas en canonical y hreflang.
-export const SITE_URL = "https://karolgiraldo.com";
+export const SITE_URL = "https://karolgiraldoescobar.com";
 
 export const CONTACT_EMAIL = "karol.giraldo9505@gmail.com";
 
@@ -27,18 +27,20 @@ export const HERO_SECTION = "home";
 // Destino del botón "Say Hello" (id de la sección de contacto, components/Contact.tsx).
 export const CONTACT_SECTION = "contact";
 
-// Caso Crédit Mutuel & CIC: botón "See the new public identity" (web pública con la nueva marca).
-// PROVISIONAL: confirmar con Karol el enlace exacto.
-export const CM_CIC_PUBLIC_SITE_URL = "https://www.creditmutuel.fr/fr/particuliers.html";
+// Caso Crédit Mutuel & CIC: botones a la web pública de cada banco, con la nueva marca.
+// key = texto del botón en cases.creditMutuelCic.context.cta.<key>.
+export const CM_CIC_PUBLIC_SITES = [
+  { key: "cm", href: "https://www.creditmutuel.fr/fr/particuliers.html" },
+  { key: "cic", href: "https://www.cic.fr/fr/particuliers.html" },
+];
 
 // Proyectos de "Selected work", en orden. Los nombres están en locales/*/common.json → work.items.
 // frame: forma del marco central (teléfono o web).
-// slug: página del caso de estudio (/:lang/work/:slug). PENDIENTE: falta tulindero.
+// slug: página del caso de estudio (/:lang/work/:slug).
 export const WORK_PROJECTS = [
   { id: "driverApp", frame: "mobile", slug: "driver-app" },
   { id: "interface", frame: "web", slug: "interface-web-app" },
   { id: "cmcic", frame: "web", slug: "credit-mutuel-cic" },
-  { id: "tulindero", frame: "web", slug: "tulindero" },
 ] as const;
 export type WorkProject = (typeof WORK_PROJECTS)[number];
 

@@ -5,7 +5,21 @@
   },
   "seo": {
     "title": "Karol Giraldo — Product Designer (UX/UI)",
-    "description": "Product Designer with 8+ years of experience across mobility, banking and digital services: UX/UI, user research and design systems."
+    "description": "Product Designer with 8+ years of experience across mobility, banking and digital services: UX/UI, user research and design systems.",
+    "shareImageAlt": "Hey! I’m Karol, Product Designer — next to my illustrated avatar."
+  },
+  "errors": {
+    "home": "Karol Giraldo — home",
+    "back": "Back to home",
+    "explore": "Or jump straight into a case study:",
+    "notFound": {
+      "title": "This page got lost in the flow.",
+      "lead": "The link may be broken, or the page has moved. Let’s get you back on track."
+    },
+    "generic": {
+      "title": "Something didn’t load as expected.",
+      "lead": "Try reloading the page. If it happens again, the home page is one click away."
+    }
   },
   "a11y": {
     "mainNav": "Main navigation",
@@ -49,12 +63,8 @@
         "description": "Simplifying fleet operations through a clear, data-driven interface designed around the needs of fleet managers."
       },
       "cmcic": {
-        "name": "Crédit Mutuel & CIC - Redesign",
-        "description": "Redesigning two major banking websites to make complex content and services clearer, more consistent and easier to navigate."
-      },
-      "tulindero": {
-        "name": "TuLindero.com",
-        "description": "A digital property experience designed to make home searching clearer, easier and more intuitive."
+        "name": "Crédit Mutuel & CIC",
+        "description": "Redesigning the CSS framework and components behind the online banking of two major banks, so one neutral base carries both brands."
       }
     },
     "frameType": {
@@ -65,7 +75,7 @@
   "about": {
     "title": "From interfaces to products",
     "portraitAlt": "Portrait of Karol Giraldo",
-    "paragraph1": "I’m a Product Designer with <strong>9+ years of experience</strong> across mobility, banking and digital services, designing B2B platforms, web and mobile applications.",
+    "paragraph1": "I’m a Product Designer with <strong>8+ years of experience</strong> across mobility, banking and digital services, designing B2B platforms, web and mobile applications.",
     "paragraph2": "My work spans <strong>UX/UI, user research and design systems,</strong> with a strong focus on accessibility, complex workflows and data-rich products. I bring together product thinking and strong UI craft to create experiences that are clear, consistent and built to scale."
   },
   "footer": {
@@ -125,14 +135,13 @@
     "seoTitle": "Legal Notice & Privacy Policy — Karol Giraldo",
     "seoDescription": "Legal notice and privacy policy of Karol Giraldo Escobar’s portfolio.",
     "title": "Legal Notice & Privacy Policy",
-    "updated": "Last updated: October 2026",
+    "updated": "Last updated: November 2026",
     "sections": [
       {
         "id": "publisher",
         "title": "Site publisher",
         "paragraphs": [
-          "This website is published by Karol Giraldo Escobar, freelance Product Designer (sole proprietorship, France).",
-          "SIRET: registration in progress.",
+          "This website is published by Karol Giraldo Escobar, Product Designer.",
           "Contact: <mail>{{email}}</mail>",
           "Publication director: Karol Giraldo Escobar."
         ]
@@ -141,7 +150,7 @@
         "id": "hosting",
         "title": "Hosting",
         "paragraphs": [
-          "The website is hosted by OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — +33 9 72 10 10 07 — www.ovhcloud.com."
+          "The website is hosted by Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Cyprus — www.hostinger.com."
         ]
       },
       {
@@ -149,7 +158,7 @@
         "title": "Intellectual property",
         "paragraphs": [
           "Unless stated otherwise, all content on this website (texts, designs, illustrations, videos and code) belongs to Karol Giraldo Escobar and may not be reused without permission.",
-          "Brands and products shown in the case studies (Flexis, Crédit Mutuel, CIC, TuLindero) belong to their respective owners and are presented for portfolio purposes only."
+          "Brands and products shown in the case studies (Flexis, Crédit Mutuel, CIC) belong to their respective owners and are presented for portfolio purposes only."
         ]
       },
       {
@@ -589,7 +598,10 @@
         "label": "(Context)",
         "title": "90% of our components live behind the login.",
         "lead": "Accounts, loans, messages with the advisor: everything clients manage once logged in is built with our components. When the banks redesigned their public website, the client area had to follow.",
-        "cta": "See the new public identity"
+        "cta": {
+          "cm": "Visit Crédit Mutuel",
+          "cic": "Visit CIC"
+        }
       },
       "bank": {
         "themes": {

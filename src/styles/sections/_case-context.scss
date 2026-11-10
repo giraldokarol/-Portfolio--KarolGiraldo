@@ -120,14 +120,20 @@
 }
 
 // Botón opcional bajo la entradilla (enlace externo): alineado con ella y con la flecha que avanza al pasar el ratón.
-.case-context__cta {
+// Botones a las webs externas, uno al lado del otro (pasan a la línea siguiente si no caben).
+.case-context__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(12);
   margin-top: rem(24);
 
   @include mq(lg) {
     margin-top: rem(28);
     margin-left: calc(13% + #{rem(64)}); // donde empieza la entradilla
   }
+}
 
+.case-context__cta {
   @include hover {
     .case-context__cta-arrow {
       transform: translateX(rem(3));

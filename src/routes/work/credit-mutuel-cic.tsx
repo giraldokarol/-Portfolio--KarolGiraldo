@@ -2,9 +2,9 @@ import { data } from "react-router";
 
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
-import { alternateLinks } from "@/i18n/seo";
+import { alternateLinks, shareMeta } from "@/i18n/seo";
 import Header from "@/components/Header";
-import { CM_CIC_PUBLIC_SITE_URL } from "@/config/site";
+import { CM_CIC_PUBLIC_SITES } from "@/config/site";
 import CaseContext from "@/components/case/CaseContext";
 import CaseDecisions from "@/components/case/CaseDecisions";
 import CaseFinal from "@/components/case/CaseFinal";
@@ -69,6 +69,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
     { title: t(`${TEXTS}.seoTitle`) },
     { name: "description", content: t(`${TEXTS}.seoDescription`) },
     ...alternateLinks(locale, "/work/credit-mutuel-cic"),
+    ...shareMeta(locale, t(`${TEXTS}.seoTitle`), t(`${TEXTS}.seoDescription`), "/work/credit-mutuel-cic"),
   ];
 };
 
@@ -84,7 +85,7 @@ export default function CreditMutuelCic() {
         {/* Vídeo de la maqueta: 1920 × 1278. */}
         <CaseHero textKey={`${TEXTS}.hero`} slug={SLUG} videoRatio={1920 / 1278} />
         <CaseIntro textKey={`${TEXTS}.intro`} slug={SLUG} images={INTRO_CARDS} visuals={INTRO_VISUALS} />
-        <CaseContext textKey={`${TEXTS}.context`} link={CM_CIC_PUBLIC_SITE_URL} />
+        <CaseContext textKey={`${TEXTS}.context`} links={CM_CIC_PUBLIC_SITES} />
         <CaseResearch textKey={`${TEXTS}.challenge`} slug={SLUG} gaps={CHALLENGE_GAPS} />
         <CaseQuestion textKey={`${TEXTS}.question`} left orbs={QUESTION_ORBS} />
         <CaseDecisions textKey={`${TEXTS}.built`} slug={SLUG} visuals={BUILT_VISUALS} />
