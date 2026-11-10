@@ -1,4 +1,3 @@
-import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import LogoFooter from "@/assets/img/logo-footer.png";
@@ -13,11 +12,11 @@ const YEAR = new Date().getFullYear();
 
 // Footer: copyright | página legal · logo · selector de idioma "EN | FR | ES".
 // En móvil también lleva las redes (en escritorio están en el menú flotante, SocialRail).
-// PENDIENTE: la página legal (/:lang/legal) aún no existe (ver docs/pendientes.md).
 // Estilos: styles/sections/_footer.scss
 export default function Footer() {
-  const { t } = useTranslation();
-  const { lang } = useParams();
+  // Idioma de la página (el de la URL, también en la 404: el proveedor de root.tsx ya lo resuelve).
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   return (
     <footer className="site-footer">

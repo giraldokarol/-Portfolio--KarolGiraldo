@@ -9,16 +9,16 @@
     "shareImageAlt": "Hello ! Moi c’est Karol, Product Designer — à côté de mon avatar illustré."
   },
   "errors": {
-    "home": "Karol Giraldo — accueil",
     "back": "Retour à l’accueil",
-    "explore": "Ou plongez directement dans une étude de cas :",
     "notFound": {
-      "title": "Cette page s’est perdue en chemin.",
-      "lead": "Le lien est peut-être cassé, ou la page a changé d’adresse. Reprenons le bon chemin."
+      "title": "Oups ! Mauvais virage.",
+      "subtitle": "On dirait que cette page est sortie de la grille.",
+      "text": "Pas d’inquiétude, il reste plein de choses à découvrir."
     },
     "generic": {
-      "title": "Quelque chose ne s’est pas chargé comme prévu.",
-      "lead": "Essayez de recharger la page. Si cela se reproduit, l’accueil n’est qu’à un clic."
+      "title": "Bon, ce n’était pas prévu.",
+      "subtitle": "Quelque chose s’est mal passé de mon côté.",
+      "text": "Essayez de recharger la page ou revenez à l’accueil."
     }
   },
   "a11y": {

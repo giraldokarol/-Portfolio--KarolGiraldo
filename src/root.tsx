@@ -59,9 +59,14 @@ export default function Root() {
 // Página no encontrada o error inesperado, en el idioma de la URL (components/ErrorPage.tsx).
 // En Hostinger, el .htaccess (public/.htaccess) sirve la app para las URLs que no existen,
 // y así esta página aparece también en /es/lo-que-sea, con código 404 para Google.
+// Solo en desarrollo (npm run dev): añadir ?preview=500 a una URL que no existe muestra la página de error
+// inesperado, que si no solo se ve cuando algo falla de verdad. En el sitio publicado no existe.
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const first = useLocation().pathname.split("/")[1];
+  const { pathname, search } = useLocation();
+  const first = pathname.split("/")[1];
   const locale = isLocale(first) ? first : DEFAULT_LOCALE;
+  const preview500 = import.meta.env.DEV && new URLSearchParams(search).get("preview") === "500";
+  const notFound = isRouteErrorResponse(error) && error.status === 404 && !preview500;
 
-  return <ErrorPage locale={locale} notFound={isRouteErrorResponse(error) && error.status === 404} />;
+  return <ErrorPage locale={locale} notFound={notFound} />;
 }

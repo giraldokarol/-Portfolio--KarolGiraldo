@@ -1,0 +1,177 @@
+@use "../abstracts" as *;
+
+// PÁGINA DE ERROR (components/ErrorPage.tsx): 404 y error inesperado, según el Figma "Marca Personal".
+// Medidas tomadas del frame de 1728 px.
+// Como un hero: ocupa exactamente una pantalla (sin scroll). Los textos, el botón y el footer tienen su
+// alto; la ilustración (cifras + muñeca) usa el que queda y se reduce para caber en cualquier pantalla.
+
+.error-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overflow: hidden;
+
+  > .page-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  // Pantallas muy bajas (móvil en horizontal): no cabe todo legible, así que vuelve a poder hacer scroll.
+  @media (max-height: 31.25em) {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+
+    .error-page__visual {
+      flex: none;
+      height: rem(200); // sin alto libre que medir, la ilustración toma un alto fijo
+    }
+  }
+
+  // Pantallas bajas: footer más compacto (en móvil va apilado y es alto).
+  @media (max-height: 50em) {
+    .site-footer__inner {
+      gap: rem(12);
+      padding-block: rem(16);
+    }
+  }
+}
+
+.error-page {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  overflow: hidden; // el degradado es más ancho que la pantalla
+  // Arriba: lo justo para el logo; abajo: aire hasta el footer (menos en pantallas bajas).
+  padding: clamp(#{rem(72)}, 8svh, #{rem(90)}) rem($gutter) clamp(#{rem(20)}, 13svh, #{rem(150)});
+  text-align: center;
+}
+
+// Dos manchas desenfocadas (amarilla arriba a la izquierda, azul abajo a la derecha), detrás de todo.
+.error-page__gradient {
+  position: absolute;
+  z-index: -1;
+  top: -12.44vw;
+  left: 8.8vw;
+  width: 78.9vw;
+  min-width: rem(700);
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+}
+
+// Hueco para la ilustración: todo el alto libre. Es un "contenedor" (container-type) para que la
+// ilustración pueda medirse con él (cqh = % de su alto, cqw = % de su ancho).
+.error-page__visual {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  container-type: size;
+}
+
+// Código en cifras gigantes con la muñeca en medio. 1em = una cifra (500 px en Figma, como máximo):
+// tan grande como quepa en el hueco, a lo alto (1,12em) y a lo ancho (~2em).
+// Las cifras pisan un poco el círculo de la muñeca, como en el diseño.
+// Rejilla de 3 columnas: la muñeca queda siempre en el centro exacto, aunque las cifras midan distinto ("5" y "0").
+.error-page__stage {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  width: 100%;
+  height: 1.12em; // el título empieza donde acaba la cifra visible (la caja de la cifra es más alta)
+  font-size: min(#{rem(500)}, calc(100cqh / 1.12), 50cqw);
+}
+
+.error-page__digit {
+  position: relative;
+  z-index: 1;
+  font-weight: weight(extrabold);
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+  opacity: 0.08;
+
+  // Cada cifra pegada a la muñeca (la página centra el texto: sin esto, la segunda se iría al centro de su columna).
+  &:first-child {
+    justify-self: end;
+  }
+
+  &:last-child {
+    justify-self: start;
+  }
+
+  // El "4" tiene la diagonal a la izquierda: se ve más lejos del círculo que el primero. Se acerca.
+  .error-layout--404 &:last-child {
+    margin-left: -0.04em;
+  }
+}
+
+.error-page__avatar {
+  flex-shrink: 0;
+  width: 0.785em;
+  aspect-ratio: 394 / 421; // reserva el sitio del dibujo antes de que se inserte
+  margin: 0.2em -0.085em 0;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.error-page__code {
+  @include visually-hidden;
+}
+
+.error-page__title {
+  font-size: fluid(60, 32);
+  font-weight: weight(extrabold);
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.error-page__subtitle {
+  font-size: fluid(24, 18);
+  font-weight: weight(medium);
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+  text-wrap: balance;
+}
+
+.error-page__text {
+  margin-top: rem(11);
+  font-size: rem(16);
+  line-height: 1.26;
+  letter-spacing: -0.04em;
+  color: var(--color-black);
+}
+
+.error-page__cta {
+  flex-shrink: 0;
+  height: rem(40);
+  margin-top: clamp(#{rem(20)}, 4svh, #{rem(43)});
+  padding-inline: rem(16);
+
+  @include hover {
+    .error-page__cta-arrow {
+      transform: translateX(rem(3));
+    }
+  }
+}
+
+.error-page__cta-arrow {
+  @include motion-safe {
+    transition: transform $duration-fast ease;
+  }
+}

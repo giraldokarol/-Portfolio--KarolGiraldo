@@ -1,68 +1,94 @@
+import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
+import Footer from "./Footer";
 import Logo from "./Logo";
-import MeshGradient, { type MeshCircle } from "./MeshGradient";
-import { WORK_PROJECTS } from "@/config/site";
+import SocialRail from "./SocialRail";
+import { useErrorAvatar } from "./error/useErrorAvatar";
 import type { Locale } from "@/i18n/config";
+// Ilustraciones exportadas de Figma ("Marca Personal" → 404 y 500). Se insertan como SVG en el HTML
+// (no como <img>) para poder animar sus capas: cada capa conserva su id de Figma.
+import avatar404 from "@/assets/errors/avatar-404.svg?raw";
+import avatar500 from "@/assets/errors/avatar-500.svg?raw";
+import gradient from "@/assets/errors/gradient.svg";
 
-// Bolitas de color como en "Selected work": grande arriba a la derecha, mediana y pequeña abajo a la izquierda.
-const CIRCLES: MeshCircle[] = [
-  { x: 0.78, y: 0.3, r: 0.16 },
-  { x: 0.2, y: 0.78, r: 0.08 },
-  { x: 0.1, y: 0.6, r: 0.035 },
-];
-const CIRCLES_MOBILE: MeshCircle[] = [
-  { x: 0.85, y: 0.18, r: 0.3 },
-  { x: 0.15, y: 0.88, r: 0.16 },
-  { x: 0.06, y: 0.74, r: 0.07 },
-];
-
-// Página de error (404 o error inesperado), en el idioma de la URL (/es/… → español).
-// Sin header ni footer completos: sus enlaces dependen de la página, y aquí no la hay.
-// La usa el ErrorBoundary de root.tsx. Estilos: styles/pages/_system.scss
-export default function ErrorPage({ locale, notFound }: { locale: Locale; notFound: boolean }) {
+// Página de error en el idioma de la URL (/es/… → español), diseño de Figma:
+//   - 404: no encontrada ("Oops! Wrong turn.") con la muñeca preocupada entre dos "4";
+//   - cualquier otro error ("Well, that wasn't the plan.") con la muñeca pensativa entre "5" y "0".
+// La usa el ErrorBoundary de root.tsx. Estilos: styles/pages/_error.scss
+export default function ErrorPage({
+  locale,
+  notFound,
+}: {
+  locale: Locale;
+  notFound: boolean;
+}) {
   const { t } = useTranslation();
   const key = notFound ? "errors.notFound" : "errors.generic";
+  const [first, last] = notFound ? ["4", "4"] : ["5", "0"];
+  const avatar = useRef<HTMLDivElement>(null);
+
+  // El SVG se mete a mano, no con dangerouslySetInnerHTML: React lo volvía a insertar tras la carga
+  // y la animación se quedaba enganchada al dibujo antiguo. Va antes de useErrorAvatar (que lo anima).
+  useLayoutEffect(() => {
+    if (avatar.current) avatar.current.innerHTML = notFound ? avatar404 : avatar500;
+  }, [notFound]);
+
+  // La muñeca de la 404 sigue al cursor; la de la 500 se queda quieta (su dibujo no está pensado para moverse).
+  useErrorAvatar(avatar, notFound);
 
   return (
-    <div className="status-page">
+    <>
       <title>{`${t(`${key}.title`)} — Karol Giraldo`}</title>
       <meta name="robots" content="noindex" />
-      <MeshGradient circles={CIRCLES} mobileCircles={CIRCLES_MOBILE} />
 
-      <header className="status-page__header">
-        <a href={`/${locale}`} aria-label={t("errors.home")}>
-          <Logo />
-        </a>
-      </header>
+      {/* Como un hero: todo cabe en una pantalla, sin scroll. La ilustración se adapta al alto que queda libre. */}
+      <div className={`error-layout ${notFound ? "error-layout--404" : ""}`}>
+        <div className="page-body">
+          <SocialRail />
+          <header className="site-header">
+            <div className="site-nav">
+              <a href={`/${locale}`} aria-label={t("a11y.homeLink")}>
+                <Logo />
+              </a>
+            </div>
+          </header>
 
-      <main className="status-page__main">
-        <p className="status-page__code">{notFound ? "(404)" : "(Error)"}</p>
-        <h1 className="status-page__title">{t(`${key}.title`)}</h1>
-        <p className="status-page__lead">{t(`${key}.lead`)}</p>
-        <a className="btn btn--primary status-page__cta" href={`/${locale}`}>
-          {t("errors.back")}
-          <ArrowIcon />
-        </a>
+          <main id="main" className="error-page">
+            <img
+              className="error-page__gradient"
+              src={gradient}
+              alt=""
+              width={1363}
+              height={1096}
+            />
 
-        {/* Atajos a los casos de estudio: quien llega aquí por un enlace roto suele buscar uno. */}
-        <nav className="status-page__work" aria-labelledby="status-work-title">
-          <p id="status-work-title" className="status-page__work-title">
-            {t("errors.explore")}
-          </p>
-          <ul className="status-page__work-list">
-            {WORK_PROJECTS.map(({ id, slug }) => (
-              <li key={id}>
-                <a className="status-page__work-link" href={`/${locale}/work/${slug}`}>
-                  {t(`work.items.${id}.name`)}
-                  <ArrowIcon className="status-page__work-arrow" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </main>
-    </div>
+            {/* Código de error en grande (decorativo) con la muñeca en medio; el lector lee el código en el h1. */}
+            <div className="error-page__visual" aria-hidden="true">
+              <div className="error-page__stage">
+                <span className="error-page__digit">{first}</span>
+                <div ref={avatar} className="error-page__avatar" />
+                <span className="error-page__digit">{last}</span>
+              </div>
+            </div>
+
+            <h1 className="error-page__title">
+              <span className="error-page__code">
+                {notFound ? "404 — " : "500 — "}
+              </span>
+              {t(`${key}.title`)}
+            </h1>
+            <p className="error-page__subtitle">{t(`${key}.subtitle`)}</p>
+            <p className="error-page__text">{t(`${key}.text`)}</p>
+            <a className="btn btn--primary error-page__cta" href={`/${locale}`}>
+              {t("errors.back")}
+              <ArrowIcon className="error-page__cta-arrow" />
+            </a>
+          </main>
+        </div>
+        <Footer />
+      </div>
+    </>
   );
 }

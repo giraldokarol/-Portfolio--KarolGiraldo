@@ -9,16 +9,16 @@
     "shareImageAlt": "Hey! I’m Karol, Product Designer — next to my illustrated avatar."
   },
   "errors": {
-    "home": "Karol Giraldo — home",
-    "back": "Back to home",
-    "explore": "Or jump straight into a case study:",
+    "back": "Back to homepage",
     "notFound": {
-      "title": "This page got lost in the flow.",
-      "lead": "The link may be broken, or the page has moved. Let’s get you back on track."
+      "title": "Oops! Wrong turn.",
+      "subtitle": "Looks like this page went off the grid.",
+      "text": "No worries, there’s plenty more to explore."
     },
     "generic": {
-      "title": "Something didn’t load as expected.",
-      "lead": "Try reloading the page. If it happens again, the home page is one click away."
+      "title": "Well, that wasn’t the plan.",
+      "subtitle": "Something went wrong on my end.",
+      "text": "Try refreshing the page or head back home."
     }
   },
   "a11y": {
