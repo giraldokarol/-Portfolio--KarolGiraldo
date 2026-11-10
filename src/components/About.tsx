@@ -3,10 +3,16 @@ import { Trans, useTranslation } from "react-i18next";
 import { Download } from "lucide-react";
 
 import Portrait from "@/assets/img/portrait_karol.png";
-import cvUrl from "@/assets/CV_KarolGiraldo_FR.pdf";
+import cvEn from "@/assets/CV_KarolGiraldo_EN.pdf";
+import cvFr from "@/assets/CV_KarolGiraldo_FR.pdf";
+import cvEs from "@/assets/CV_KarolGiraldo_ES.pdf";
+import type { Locale } from "@/i18n/config";
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import Skills from "./Skills";
 import { useAboutReveal } from "./about/useAboutReveal";
+
+// CV en el idioma de la página. Al descargarlo se guarda con un nombre limpio (el de la URL lleva un código).
+const CV: Record<Locale, string> = { en: cvEn, fr: cvFr, es: cvEs };
 
 // <Trans> convierte el <strong> escrito dentro del JSON en negrita real.
 const richText = { strong: <strong /> };
@@ -28,7 +34,8 @@ const MESH_CIRCLES_MOBILE: MeshCircle[] = [
 // del Hero) y círculos de color a la izquierda; título, texto y CV a la derecha.
 // Estilos: styles/sections/_about.scss · Entrada animada: about/useAboutReveal.ts
 export default function About() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language as Locale;
   const root = useRef<HTMLElement>(null);
 
   useAboutReveal(root);
@@ -75,7 +82,7 @@ export default function About() {
               </p>
             </div>
 
-            <a href={cvUrl} download className="btn btn--primary about__cta">
+            <a href={CV[locale]} download={`CV_KarolGiraldo_${locale.toUpperCase()}.pdf`} className="btn btn--primary about__cta">
               <Download size={18} aria-hidden="true" /> {t("cta.downloadCv")}
             </a>
           </div>
