@@ -8,7 +8,10 @@ import { gsap, useGSAP, MEDIA } from "@/lib/gsap";
 // lag: segundos hasta alcanzar al puntero → capas con distinto retraso = profundidad.
 // Cabeza = cara + orejas (se mueven juntas para no despegarse).
 const LAYERS = [
-  { part: "hair-back", move: -10, lag: 0.9 }, // contrario: está "detrás"
+  // Pelo: el contorno se mueve algo menos que la cara (profundidad) y las líneas interiores, que nacen
+  // bajo las orejas, suman lo que falta para ir pegadas a ellas (3 + 4 = 7, con el mismo retraso).
+  { part: "hair-back", move: 3, lag: 0.6 },
+  { part: "hair-lines", move: 4, lag: 0.6 },
   { part: "neck", move: 2.5, lag: 0.7 },
   { part: "ears", move: 7, lag: 0.6 },
   { part: "face", move: 7, lag: 0.6 }, // incluye el flequillo
@@ -28,7 +31,7 @@ const MASKS = [
 ] as const;
 
 const HEAD_TILT = 4; // grados máximos de inclinación de la cabeza
-const NECK_POINT = "178 300"; // punto de giro de la cabeza (base del cuello, en unidades SVG)
+const NECK_POINT = "183 305"; // punto de giro de la cabeza (base del cuello, en unidades SVG)
 
 const BLINK = { min: 1.2, max: 3.5, double: 0.2 }; // segundos entre parpadeos, probabilidad de doble
 const LOOK_AROUND = { min: 1.8, max: 4.5 }; // móvil: cada cuánto mira a otro sitio
