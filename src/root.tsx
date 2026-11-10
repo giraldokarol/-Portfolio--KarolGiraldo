@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useParams } from "react-router";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useLocation, useParams } from "react-router";
 import { I18nextProvider } from "react-i18next";
 
 import "./styles/main.scss";
+import ErrorPage from "./components/ErrorPage";
 import fontUrl from "./assets/fonts/JakartaSans-Variable.ttf?url";
 import { DEFAULT_LOCALE, isLocale } from "./i18n/config";
 import { i18nByLocale } from "./i18n/instances";
@@ -22,7 +23,9 @@ export const links: Route.LinksFunction = () => [
 // Al prerenderizar, cada HTML sale con su lang correcto (en / fr / es).
 export function Layout({ children }: { children: ReactNode }) {
   const { lang } = useParams();
-  const locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
+  // Sin ruta que coincida (404, p. ej. /es/no-existe) no hay :lang: se lee el idioma del principio de la URL.
+  const first = useLocation().pathname.split("/")[1];
+  const locale = isLocale(lang) ? lang : isLocale(first) ? first : DEFAULT_LOCALE;
 
   return (
     // suppressHydrationWarning: el script de abajo añade una clase a <html> antes de que React cargue.
@@ -53,17 +56,12 @@ export default function Root() {
   return <Outlet />;
 }
 
+// Página no encontrada o error inesperado, en el idioma de la URL (components/ErrorPage.tsx).
+// En Hostinger, el .htaccess (public/.htaccess) sirve la app para las URLs que no existen,
+// y así esta página aparece también en /es/lo-que-sea, con código 404 para Google.
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const is404 = isRouteErrorResponse(error) && error.status === 404;
+  const first = useLocation().pathname.split("/")[1];
+  const locale = isLocale(first) ? first : DEFAULT_LOCALE;
 
-  return (
-    <main className="system-page">
-      <div>
-        <p className="pretitle">{is404 ? "404" : "Error"}</p>
-        <a className="system-page__link link-muted" href="/">
-          karolgiraldo.com
-        </a>
-      </div>
-    </main>
-  );
+  return <ErrorPage locale={locale} notFound={isRouteErrorResponse(error) && error.status === 404} />;
 }

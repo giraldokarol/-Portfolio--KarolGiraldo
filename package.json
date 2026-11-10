@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "react-router dev",
-    "build": "react-router typegen && tsc -b && react-router build",
+    "build": "react-router typegen && tsc -b && react-router build && node scripts/seo-files.mjs",
     "typecheck": "react-router typegen && tsc -b",
     "lint": "eslint .",
     "preview": "vite preview --outDir build/client"

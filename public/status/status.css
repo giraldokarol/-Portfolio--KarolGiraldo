@@ -1,0 +1,222 @@
+/* Páginas de estado SIN la app (public/status/): construcción y 503 (mantenimiento).
+   Las sirve el servidor directamente (ver public/.htaccess), así funcionan aunque la app no esté:
+   por eso son HTML + CSS sueltos, sin Sass ni React. Imitan el diseño del sitio
+   (colores de src/styles/base/_root.scss, mismos tamaños que la página 404 de styles/pages/_system.scss). */
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("jakarta-sans.ttf") format("truetype");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #3475f7;
+  --color-accent: #ffd332;
+  --color-on-accent: #1f2937;
+  --color-ink: #1a1a1a;
+  --color-gray: #757575;
+  --color-divider: #eeeeee;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: #ffffff;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Bolitas de color (como en el sitio, pero fijas): amarillo y azul muy suaves. */
+.orb {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb--big {
+  top: 4%;
+  right: 6%;
+  width: min(32vw, 30rem);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 30% 30%, #fff7d6, #eaf1ff 70%);
+}
+
+.orb--mid {
+  bottom: 8%;
+  left: 10%;
+  width: min(16vw, 14rem);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 70% 30%, #eaf1ff, #fff9e3 80%);
+}
+
+.orb--small {
+  bottom: 34%;
+  left: 5%;
+  width: min(7vw, 6rem);
+  aspect-ratio: 1;
+  background: #fff8dc;
+}
+
+header {
+  padding: 1.25rem 1.5rem;
+}
+
+/* Logo: texto "karolg" + punto amarillo, colocados como en styles/components/_logo.scss. */
+.logo {
+  position: relative;
+  display: block;
+  width: 8.15rem;
+  height: 3rem;
+  zoom: 0.74;
+}
+
+.logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logo img + img {
+  top: 1.352rem;
+  left: 7.561rem;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 53.75rem;
+  margin-inline: auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.code {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+}
+
+h1 {
+  margin-top: 0.75rem;
+  font-size: clamp(2.25rem, 1.2rem + 3.2vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: pretty;
+}
+
+.lead {
+  max-width: 32.5rem;
+  margin-top: 1.25rem;
+  font-size: clamp(1rem, 0.95rem + 0.15vw, 1.125rem);
+  line-height: 1.5;
+  color: var(--color-gray);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Idiomas: EN · FR · ES abajo; solo se ve el bloque del idioma elegido. */
+.languages {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 3.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.languages button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--color-gray);
+  cursor: pointer;
+}
+
+.languages button[aria-pressed="true"] {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+[data-lang][hidden] {
+  display: none;
+}
+
+@media (min-width: 40em) {
+  .logo {
+    zoom: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  .languages button:hover {
+    color: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn {
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease;
+  }
+}
+
+/* "(se abre en otra pestaña)": solo para lectores de pantalla. */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

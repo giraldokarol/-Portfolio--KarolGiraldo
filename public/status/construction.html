@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- Página "en construcción" (sin la app). Se activa en public/.htaccess (MODO CONSTRUCCIÓN). -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Something new is being designed. — Karol Giraldo</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" href="/status/jakarta-sans.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="/status/status.css" />
+  </head>
+  <body>
+    <span class="orb orb--big" aria-hidden="true"></span>
+    <span class="orb orb--mid" aria-hidden="true"></span>
+    <span class="orb orb--small" aria-hidden="true"></span>
+
+    <header>
+      <span class="logo" role="img" aria-label="Karol Giraldo">
+        <img src="/status/logo-karolg.svg" alt="" width="117" height="48" />
+        <img src="/status/logo-point.svg" alt="" width="9" height="9" />
+      </span>
+    </header>
+
+    <main>
+      <div data-lang="en">
+        <p class="code">(Coming soon)</p>
+        <h1>Something new is being designed.</h1>
+        <p class="lead">My new portfolio is almost ready. In the meantime, you can see my work on LinkedIn and Behance, or write to me.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="mailto:karol.giraldo9505@gmail.com">Write to me<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.6 15 18.6 12 15.6 9M4.6 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn" href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (opens in a new tab)</span></a>
+          <a class="btn" href="https://www.behance.net/karolGiraldoFrames" target="_blank" rel="noopener noreferrer">Behance<span class="sr"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+      <div data-lang="fr" hidden>
+        <p class="code">(Bientôt en ligne)</p>
+        <h1>Quelque chose de nouveau se dessine.</h1>
+        <p class="lead">Mon nouveau portfolio est presque prêt. En attendant, retrouvez mon travail sur LinkedIn et Behance, ou écrivez-moi.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="mailto:karol.giraldo9505@gmail.com">M’écrire<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.6 15 18.6 12 15.6 9M4.6 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn" href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (s’ouvre dans un nouvel onglet)</span></a>
+          <a class="btn" href="https://www.behance.net/karolGiraldoFrames" target="_blank" rel="noopener noreferrer">Behance<span class="sr"> (s’ouvre dans un nouvel onglet)</span></a>
+        </div>
+      </div>
+      <div data-lang="es" hidden>
+        <p class="code">(Muy pronto)</p>
+        <h1>Algo nuevo se está diseñando.</h1>
+        <p class="lead">Mi nuevo portafolio está casi listo. Mientras tanto, puedes ver mi trabajo en LinkedIn y Behance, o escribirme.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="mailto:karol.giraldo9505@gmail.com">Escríbeme<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.6 15 18.6 12 15.6 9M4.6 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn" href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (se abre en otra pestaña)</span></a>
+          <a class="btn" href="https://www.behance.net/karolGiraldoFrames" target="_blank" rel="noopener noreferrer">Behance<span class="sr"> (se abre en otra pestaña)</span></a>
+        </div>
+      </div>
+
+      <ul class="languages" aria-label="Language">
+        <li><button type="button" data-set-lang="en" lang="en" aria-pressed="true">EN</button></li>
+        <li><button type="button" data-set-lang="fr" lang="fr" aria-pressed="false">FR</button></li>
+        <li><button type="button" data-set-lang="es" lang="es" aria-pressed="false">ES</button></li>
+      </ul>
+    </main>
+
+    <script src="/status/lang.js"></script>
+  </body>
+</html>

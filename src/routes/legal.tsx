@@ -4,7 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
-import { alternateLinks } from "@/i18n/seo";
+import { alternateLinks, shareMeta } from "@/i18n/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useBlobGradient } from "@/components/useBlobGradient";
@@ -28,6 +28,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
     { title: t("legal.seoTitle") },
     { name: "description", content: t("legal.seoDescription") },
     ...alternateLinks(locale, "/legal"),
+    ...shareMeta(locale, t("legal.seoTitle"), t("legal.seoDescription"), "/legal"),
   ];
 };
 

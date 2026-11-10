@@ -2,7 +2,7 @@ import { data } from "react-router";
 
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
-import { alternateLinks } from "@/i18n/seo";
+import { alternateLinks, shareMeta } from "@/i18n/seo";
 import Header from "@/components/Header";
 import CaseContext from "@/components/case/CaseContext";
 import CaseDecisions, { type DecisionImage } from "@/components/case/CaseDecisions";
@@ -77,6 +77,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
     { title: t(`${TEXTS}.seoTitle`) },
     { name: "description", content: t(`${TEXTS}.seoDescription`) },
     ...alternateLinks(locale, "/work/driver-app"),
+    ...shareMeta(locale, t(`${TEXTS}.seoTitle`), t(`${TEXTS}.seoDescription`), "/work/driver-app"),
   ];
 };
 

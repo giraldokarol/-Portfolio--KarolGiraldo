@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 import { LOCALES, detectLocale } from "@/i18n/config";
-import { alternateLinks } from "@/i18n/seo";
+import { alternateLinks, shareMeta } from "@/i18n/seo";
 import en from "@/locales/en/common.json";
 import type { Route } from "./+types/language-redirect";
 
@@ -10,6 +10,7 @@ export const meta: Route.MetaFunction = () => [
   { title: en.seo.title },
   { name: "description", content: en.seo.description },
   ...alternateLinks(null),
+  ...shareMeta(null, en.seo.title, en.seo.description),
 ];
 
 // Página x-default: solo existe para elegir idioma.

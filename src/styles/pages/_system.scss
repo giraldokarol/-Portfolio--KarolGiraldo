@@ -27,3 +27,109 @@
   margin-top: rem(16);
   text-decoration: underline;
 }
+
+// ─── Página de error (components/ErrorPage.tsx) ──────────────────────────────────────
+// Misma estética que el sitio: logo arriba, título grande, bolitas de color detrás.
+.status-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.status-page__header {
+  position: relative;
+  z-index: z(content);
+  padding: rem(20) rem($gutter);
+}
+
+.status-page__main {
+  position: relative;
+  z-index: z(content);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: rem(860);
+  margin-inline: auto;
+  padding: rem(48) rem($gutter) rem(64);
+}
+
+.status-page__code {
+  @include text(sm);
+  color: var(--color-gray);
+}
+
+.status-page__title {
+  margin-top: rem(12);
+  font-size: type-size(case-statement);
+  font-weight: weight(extrabold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  text-wrap: pretty;
+}
+
+.status-page__lead {
+  max-width: rem(520);
+  margin-top: rem(20);
+  font-size: type-size(body);
+  line-height: 1.5;
+  color: var(--color-gray);
+}
+
+.status-page__cta {
+  margin-top: rem(32);
+}
+
+// Atajos a los casos de estudio, como la lista de "Selected work".
+.status-page__work {
+  width: 100%;
+  max-width: rem(420);
+  margin-top: rem(56);
+}
+
+.status-page__work-title {
+  @include text(sm);
+  color: var(--color-gray);
+}
+
+.status-page__work-list {
+  margin-top: rem(8);
+}
+
+.status-page__work-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(12);
+  min-height: rem(48);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: type-size(body);
+  color: var(--color-ink);
+
+  @include motion-safe {
+    transition: color $duration-fast ease;
+  }
+
+  @include hover {
+    color: var(--color-primary);
+
+    .status-page__work-arrow {
+      transform: translateX(rem(4));
+    }
+  }
+}
+
+.status-page__work-arrow {
+  flex-shrink: 0;
+  width: rem(20);
+  height: rem(20);
+
+  @include motion-safe {
+    transition: transform $duration-fast ease;
+  }
+}

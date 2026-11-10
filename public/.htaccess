@@ -1,0 +1,40 @@
+# Configuración del servidor de Hostinger (Apache / LiteSpeed). Se copia tal cual a build/client.
+# Las líneas que empiezan por # son comentarios: no hacen nada.
+
+RewriteEngine On
+
+# ─── HTTPS y dominio sin www ─────────────────────────────────────────────────────────
+# Siempre https://karolgiraldoescobar.com (igual que SITE_URL en src/config/site.ts).
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://karolgiraldoescobar.com%{REQUEST_URI} [R=301,L]
+
+# ─── MODO CONSTRUCCIÓN (desactivado) ─────────────────────────────────────────────────
+# Todo el mundo ve public/status/construction.html en lugar del sitio (la página lleva
+# "noindex": Google no la guarda). Para activarlo: quita el # de las 2 líneas RewriteCond/RewriteRule.
+# Para seguir viendo el sitio tú: cambia 0\.0\.0\.0 por tu IP (búscala en "cuál es mi IP")
+# y quita también el # de esa línea.
+# RewriteCond %{REQUEST_URI} !^/(status/|favicon|apple-touch-icon)
+# RewriteCond %{REMOTE_ADDR} !^0\.0\.0\.0$
+# RewriteRule ^ /status/construction.html [L]
+
+# ─── MODO MANTENIMIENTO (desactivado) ────────────────────────────────────────────────
+# Muestra public/status/503.html ("vuelvo en un momento") con el código 503: Google entiende
+# que es temporal y no quita el sitio de sus resultados. Se activa igual que el anterior.
+# RewriteCond %{REQUEST_URI} !^/(status/|favicon|apple-touch-icon)
+# RewriteCond %{REMOTE_ADDR} !^0\.0\.0\.0$
+# RewriteRule ^ - [R=503,L]
+
+# ─── Páginas de error ────────────────────────────────────────────────────────────────
+ErrorDocument 503 /status/503.html
+# 404: se carga la app, que muestra su página "no encontrada" en el idioma de la URL
+# (src/components/ErrorPage.tsx), con el código 404 para Google.
+ErrorDocument 404 /__spa-fallback.html
+
+# ─── URLs sin barra final ────────────────────────────────────────────────────────────
+# /es sirve es/index.html sin redirigir a /es/ (las URLs del sitio nunca llevan barra final).
+DirectorySlash Off
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.+?)/?$ /$1/index.html [L]
