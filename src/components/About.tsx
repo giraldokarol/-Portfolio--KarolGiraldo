@@ -36,6 +36,7 @@ const MESH_CIRCLES_MOBILE: MeshCircle[] = [
 export default function About() {
   const { t, i18n } = useTranslation();
   const locale = i18n.language as Locale;
+  const paragraphs = t("about.paragraphs", { returnObjects: true }) as string[];
   const root = useRef<HTMLElement>(null);
 
   useAboutReveal(root);
@@ -73,13 +74,13 @@ export default function About() {
               {t("about.title")}
             </h2>
 
+            {/* Tantos párrafos como tenga cada idioma (clave about.paragraphs de los textos). */}
             <div className="about__body">
-              <p>
-                <Trans i18nKey="about.paragraph1" components={richText} />
-              </p>
-              <p>
-                <Trans i18nKey="about.paragraph2" components={richText} />
-              </p>
+              {paragraphs.map((_, index) => (
+                <p key={index}>
+                  <Trans i18nKey={`about.paragraphs.${index}`} components={richText} />
+                </p>
+              ))}
             </div>
 
             <a href={CV[locale]} download={`CV_KarolGiraldo_${locale.toUpperCase()}.pdf`} className="btn btn--primary about__cta">

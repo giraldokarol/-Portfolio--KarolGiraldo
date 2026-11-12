@@ -5,7 +5,7 @@
   },
   "seo": {
     "title": "Karol Giraldo — Product Designer (UX/UI)",
-    "description": "Product Designer with 8+ years of experience across mobility, banking and digital services: UX/UI, user research and design systems.",
+    "description": "Product Designer with nearly 10 years in design: UX/UI, design systems and front-end development across mobility and banking.",
     "shareImageAlt": "Hey! I’m Karol, Product Designer — next to my illustrated avatar."
   },
   "errors": {
@@ -75,8 +75,11 @@
   "about": {
     "title": "From interfaces to products",
     "portraitAlt": "Portrait of Karol Giraldo",
-    "paragraph1": "I’m a Product Designer with <strong>8+ years of experience</strong> across mobility, banking and digital services, designing B2B platforms, web and mobile applications.",
-    "paragraph2": "My work spans <strong>UX/UI, user research and design systems,</strong> with a strong focus on accessibility, complex workflows and data-rich products. I bring together product thinking and strong UI craft to create experiences that are clear, consistent and built to scale."
+    "paragraphs": [
+      "Hi, I’m Karol, a Product Designer with <strong>nearly 10 years in design</strong> and <strong>almost 7 in UX/UI and front-end development.</strong>",
+      "I’ve designed B2B platforms, web and mobile apps across mobility and banking, often for complex, data-heavy products where clarity really matters. I care a lot about <strong>design systems, accessibility</strong> and the small details that make an interface feel consistent.",
+      "And because I also code, I design with development in mind: interfaces that look good, and actually get built the way they were designed."
+    ]
   },
   "footer": {
     "logoAlt": "Karol Giraldo logo",

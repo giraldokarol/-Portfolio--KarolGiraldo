@@ -5,7 +5,7 @@
   },
   "seo": {
     "title": "Karol Giraldo — Product Designer (UX/UI)",
-    "description": "Product Designer avec plus de 8 ans d’expérience dans la mobilité, la banque et les services numériques : UX/UI, recherche utilisateur et design systems.",
+    "description": "Product Designer avec près de 10 ans d’expérience en design : UX/UI, design systems et développement front-end, dans la mobilité et la banque.",
     "shareImageAlt": "Hello ! Moi c’est Karol, Product Designer — à côté de mon avatar illustré."
   },
   "errors": {
@@ -75,8 +75,11 @@
   "about": {
     "title": "Des interfaces aux produits",
     "portraitAlt": "Portrait de Karol Giraldo",
-    "paragraph1": "Je suis Product Designer avec <strong>plus de 8 ans d’expérience</strong> dans la mobilité, la banque et les services numériques, sur des plateformes B2B et des applications web et mobiles.",
-    "paragraph2": "Mon travail couvre <strong>l’UX/UI, la recherche utilisateur et les design systems,</strong> avec une attention forte à l’accessibilité, aux parcours complexes et aux produits riches en données. J’allie réflexion produit et exigence UI pour créer des expériences claires, cohérentes et pensées pour évoluer."
+    "paragraphs": [
+      "Bonjour, moi c’est Karol, Product Designer avec <strong>près de 10 ans d’expérience en design</strong>, dont <strong>presque 7 en UX/UI et en développement front-end.</strong>",
+      "J’ai conçu des plateformes B2B et des applications web et mobiles dans la mobilité et la banque, souvent pour des produits complexes, riches en données, où la clarté fait toute la différence. Je suis particulièrement attentive aux <strong>design systems, à l’accessibilité</strong> et à ces petits détails qui rendent une interface cohérente.",
+      "Et comme je code aussi, je conçois en pensant au développement : des interfaces qui sont belles, et qui sont réellement développées comme elles ont été pensées."
+    ]
   },
   "footer": {
     "logoAlt": "Logo de Karol Giraldo",
