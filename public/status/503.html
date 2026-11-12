@@ -1,61 +1,77 @@
 <!doctype html>
-<!-- Error 503: el sitio está en mantenimiento (sin la app). Se activa en public/.htaccess (MODO MANTENIMIENTO). -->
+<!-- Página de mantenimiento / trabajo en curso (503), diseño de Figma "Marca Personal" → 503 - Mantenimiento.
+     HTML suelto, sin la app: el servidor la muestra cuando se activa el MODO MANTENIMIENTO en public/.htaccess.
+     Idioma: lang.js (sin JavaScript se ve en inglés). Estilos: wip.css -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>Back in a moment. — Karol Giraldo</title>
+    <title>Good things take a little time. — Karol Giraldo</title>
     <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
     <link rel="preload" href="/status/jakarta-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="/status/status.css" />
+    <link rel="stylesheet" href="/status/wip.css" />
   </head>
   <body>
-    <span class="orb orb--big" aria-hidden="true"></span>
-    <span class="orb orb--mid" aria-hidden="true"></span>
-    <span class="orb orb--small" aria-hidden="true"></span>
+    <img class="gradient" src="/status/gradient.svg" alt="" width="1363" height="1096" />
 
-    <header>
+    <header class="header">
       <span class="logo" role="img" aria-label="Karol Giraldo">
         <img src="/status/logo-karolg.svg" alt="" width="117" height="48" />
         <img src="/status/logo-point.svg" alt="" width="9" height="9" />
       </span>
     </header>
 
-    <main>
-      <p class="code">(503)</p>
-      <div data-lang="en">
-        <h1>Back in a moment.</h1>
-        <p class="lead">I’m making a few improvements to the site. Please come back in a few minutes.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="mailto:karol.giraldo9505@gmail.com">Write to me<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.6 15 18.6 12 15.6 9M4.6 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="btn" href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (opens in a new tab)</span></a>
-        </div>
-      </div>
-      <div data-lang="fr" hidden>
-        <h1>De retour dans un instant.</h1>
-        <p class="lead">J’apporte quelques améliorations au site. Revenez dans quelques minutes.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="mailto:karol.giraldo9505@gmail.com">M’écrire<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.6 15 18.6 12 15.6 9M4.6 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="btn" href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (s’ouvre dans un nouvel onglet)</span></a>
-        </div>
-      </div>
-      <div data-lang="es" hidden>
-        <h1>Vuelvo en un momento.</h1>
-        <p class="lead">Estoy haciendo algunas mejoras en el sitio. Vuelve en unos minutos.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="mailto:karol.giraldo9505@gmail.com">Escríbeme<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.6 15 18.6 12 15.6 9M4.6 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="btn" href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (se abre en otra pestaña)</span></a>
+    <!-- Redes en vertical a la izquierda (solo escritorio), como en el sitio. -->
+    <nav class="rail" aria-label="Social media">
+      <a href="https://www.behance.net/karolGiraldoFrames" target="_blank" rel="noreferrer">Behance</a>
+      <a href="https://www.figma.com/@giraldokarol" target="_blank" rel="noreferrer">Figma Community</a>
+      <a href="https://www.linkedin.com/in/karol-giraldo-escobar/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </nav>
+
+    <main class="main">
+      <!-- Ilustración con "In Progress" en grande detrás (decorativo). Se adapta al alto libre de la pantalla. -->
+      <div class="visual" aria-hidden="true">
+        <div class="art">
+          <span class="ghost" data-lang="en">In&nbsp;&nbsp;Progress</span>
+          <span class="ghost" data-lang="fr" hidden>En&nbsp;&nbsp;cours</span>
+          <span class="ghost" data-lang="es" hidden>En&nbsp;&nbsp;progreso</span>
+          <img class="illustration" src="/status/wip-avatar.svg" alt="" />
         </div>
       </div>
 
-      <ul class="languages" aria-label="Language">
+      <div data-lang="en">
+        <h1>Good things take a little time.</h1>
+        <p class="subtitle">I’m making a few updates behind the scenes.</p>
+        <p class="text">This space will be back soon.</p>
+      </div>
+      <div data-lang="fr" hidden>
+        <h1>Les bonnes choses prennent un peu de temps.</h1>
+        <p class="subtitle">Je fais quelques mises à jour en coulisses.</p>
+        <p class="text">Cet espace sera bientôt de retour.</p>
+      </div>
+      <div data-lang="es" hidden>
+        <h1>Las cosas buenas toman su tiempo.</h1>
+        <p class="subtitle">Estoy haciendo algunos ajustes entre bastidores.</p>
+        <p class="text">Este espacio volverá muy pronto.</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__meta">
+        <span>2026©KarolGiraldo</span>
+        <a data-lang="en" href="/en/legal">Legal Notice &amp; Privacy Policy</a>
+        <a data-lang="fr" href="/fr/legal" hidden>Mentions légales &amp; confidentialité</a>
+        <a data-lang="es" href="/es/legal" hidden>Aviso legal y privacidad</a>
+      </p>
+      <img class="footer__logo" src="/status/logo-footer.png" alt="" width="40" height="34" />
+      <ul class="footer__languages" aria-label="Language">
         <li><button type="button" data-set-lang="en" lang="en" aria-pressed="true">EN</button></li>
         <li><button type="button" data-set-lang="fr" lang="fr" aria-pressed="false">FR</button></li>
         <li><button type="button" data-set-lang="es" lang="es" aria-pressed="false">ES</button></li>
       </ul>
-    </main>
+    </footer>
 
     <script src="/status/lang.js"></script>
   </body>
