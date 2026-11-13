@@ -1,9 +1,7 @@
-// Idiomas del sitio. Cambiar aquí es suficiente para añadir/quitar uno
-// (además de su carpeta en src/locales y su ruta en react-router.config.ts).
-export const LOCALES = ["en", "fr", "es"] as const;
-export type Locale = (typeof LOCALES)[number];
+// Idiomas del sitio: la lista está en ./locales.ts (sin dependencias, la usa también el build).
+import { DEFAULT_LOCALE, LOCALES, type Locale } from "./locales.ts";
 
-export const DEFAULT_LOCALE: Locale = "en";
+export { DEFAULT_LOCALE, LOCALES, type Locale };
 
 // Clave donde se guarda la elección manual del visitante.
 // La usará el selector "EN · FR · ES" del footer (ver docs/pendientes.md).

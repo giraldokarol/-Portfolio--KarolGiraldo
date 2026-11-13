@@ -3,7 +3,8 @@ import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
-import { WORK_PROJECTS } from "@/config/site";
+import { WORK_PROJECTS, projectPath } from "@/config/site";
+import type { Locale } from "@/i18n/config";
 
 type WorkMenuProps = {
   href: string;
@@ -48,7 +49,7 @@ export default function WorkMenu({ href, label, isCurrent, currentProject }: Wor
           {WORK_PROJECTS.map(({ id, slug, frame }, index) => (
             <li key={id} className="work-menu__item" style={{ "--i": index } as CSSProperties}>
               <a
-                href={`/${lang}/work/${slug}`}
+                href={projectPath(lang as Locale, slug)}
                 className="work-menu__link"
                 aria-current={slug === currentProject ? "page" : undefined}
               >

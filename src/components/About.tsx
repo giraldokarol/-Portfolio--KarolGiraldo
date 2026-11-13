@@ -7,6 +7,7 @@ import cvEn from "@/assets/CV_KarolGiraldo_EN.pdf";
 import cvFr from "@/assets/CV_KarolGiraldo_FR.pdf";
 import cvEs from "@/assets/CV_KarolGiraldo_ES.pdf";
 import type { Locale } from "@/i18n/config";
+import { sectionId } from "@/config/site";
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import Skills from "./Skills";
 import { useAboutReveal } from "./about/useAboutReveal";
@@ -42,7 +43,7 @@ export default function About() {
   useAboutReveal(root);
 
   return (
-    <section id="about" className="about" aria-labelledby="about-title" ref={root}>
+    <section id={sectionId("about", locale)} className="about" aria-labelledby="about-title" ref={root}>
       {/* Bloque principal (foto + texto) con su propio fondo; debajo, las habilidades. */}
       <div className="about__intro">
         <MeshGradient circles={MESH_CIRCLES} mobileCircles={MESH_CIRCLES_MOBILE} />

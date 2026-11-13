@@ -6,15 +6,17 @@ import ArrowIcon from "./ArrowIcon";
 import Logo from "./Logo";
 import WorkMenu from "./WorkMenu";
 import MailIcon from "@/assets/icons/mail.svg";
-import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, WORK_PROJECTS, type NavSection } from "@/config/site";
+import { CONTACT_SECTION, HERO_SECTION, NAV_LINKS, WORK_PROJECTS, findSection, projectPath, sectionId, type NavSection } from "@/config/site";
+import type { Locale } from "@/i18n/config";
 
 // Menú principal (Figma: "Principal Menu"). Estilos: styles/components/_header.scss
 export default function Header() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { lang } = useParams();
+  const locale = i18n.language as Locale;
   const { pathname } = useLocation();
-  // En la página de un proyecto (/:lang/work/:slug): su slug. Marca "Selected work" y el proyecto en su menú.
-  const currentProject = WORK_PROJECTS.find(({ slug }) => pathname.endsWith(`/work/${slug}`))?.slug;
+  // En la página de un proyecto (/es/casos-de-estudio/driver-app): su slug. Marca "Selected work" y el proyecto en su menú.
+  const currentProject = WORK_PROJECTS.find(({ slug }) => pathname === projectPath(locale, slug))?.slug;
   // Sección en el centro de la pantalla: una del menú, el contacto o null (hero).
   const [currentSection, setCurrentSection] = useState<NavSection | typeof CONTACT_SECTION | null>(null);
   // Enlace del menú marcado: "Selected work" en un proyecto; si no, la sección actual si tiene enlace
@@ -37,7 +39,10 @@ export default function Header() {
   // También vigila el hero (#home) y el contacto: en ellos no hay ningún enlace del menú activo
   // (sin el contacto, al llegar al formulario seguiría marcado "Behind the work").
   useEffect(() => {
-    const sections = [HERO_SECTION, ...NAV_LINKS.map(({ section }) => section), CONTACT_SECTION]
+    const sections = [
+      HERO_SECTION,
+      ...[...NAV_LINKS.map(({ section }) => section), CONTACT_SECTION].map((section) => sectionId(section, locale)),
+    ]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
 
@@ -45,8 +50,9 @@ export default function Header() {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
+          // id del elemento (en el idioma de la página) → clave de la sección.
           const id = entry.target.id;
-          setCurrentSection(id === HERO_SECTION ? null : (id as NavSection | typeof CONTACT_SECTION));
+          setCurrentSection(id === HERO_SECTION ? null : (findSection(id) as NavSection | typeof CONTACT_SECTION));
         });
       },
       { rootMargin: "-40% 0px -50% 0px" },
@@ -54,16 +60,16 @@ export default function Header() {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [locale]);
 
-  // La URL acompaña al scroll: /es#projects o /es#contact en una sección, /es (sin #) de vuelta en el hero.
+  // La URL acompaña al scroll: /es#casos-de-estudio o /es#contacto en una sección, /es (sin #) de vuelta en el hero.
   // replaceState cambia la URL sin recargar, sin mover el scroll y sin añadir pasos al botón "atrás".
   useEffect(() => {
-    const hash = currentSection ? `#${currentSection}` : "";
+    const hash = currentSection ? `#${sectionId(currentSection, locale)}` : "";
     if (window.location.hash === hash) return;
     const url = `${window.location.pathname}${window.location.search}${hash}`;
     window.history.replaceState(window.history.state, "", url); // conserva el estado de React Router
-  }, [currentSection]);
+  }, [currentSection, locale]);
 
   return (
     <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
@@ -80,7 +86,7 @@ export default function Header() {
               section === "projects" ? (
                 <WorkMenu
                   key={section}
-                  href={`/${lang}#${section}`}
+                  href={`/${lang}#${sectionId(section, locale)}`}
                   label={t(`nav.${label}`)}
                   isCurrent={activeSection === section}
                   currentProject={currentProject}
@@ -88,7 +94,7 @@ export default function Header() {
               ) : (
                 <li key={section}>
                   <a
-                    href={`/${lang}#${section}`}
+                    href={`/${lang}#${sectionId(section, locale)}`}
                     className="site-nav__link"
                     aria-current={activeSection === section ? "true" : undefined}
                   >
@@ -100,7 +106,7 @@ export default function Header() {
           </ul>
 
           {/* En móvil solo se ve el icono de correo; el texto sigue ahí para lectores de pantalla. */}
-          <a href={`/${lang}#${CONTACT_SECTION}`} className="btn btn--hello">
+          <a href={`/${lang}#${sectionId(CONTACT_SECTION, locale)}`} className="btn btn--hello">
             <span className="btn--hello__label">{t("cta.sayHello")}</span>
             <ArrowIcon className="btn__icon btn--hello__arrow" />
             <img src={MailIcon} alt="" width={24} height={24} className="btn--hello__mail" />

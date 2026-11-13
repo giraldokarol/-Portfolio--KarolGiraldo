@@ -1,12 +1,12 @@
 import { useRef } from "react";
-import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
 import MeshGradient, { type MeshCircle } from "./MeshGradient";
 import { useWorkReveal } from "./work/useWorkReveal";
 import { useWorkScroll } from "./work/useWorkScroll";
-import { WORK_PROJECTS, type WorkProject } from "@/config/site";
+import { WORK_PROJECTS, projectPath, sectionId, type WorkProject } from "@/config/site";
+import type { Locale } from "@/i18n/config";
 
 // Vídeo de cada proyecto (public/videos/work/<slug>.mp4) y su portada (<slug>.jpg, el primer fotograma:
 // se ve mientras carga y con reduced-motion). La proporción real del vídeo (ancho / alto) hace que el
@@ -35,8 +35,8 @@ const MESH_CIRCLES_MOBILE: MeshCircle[] = [
 // El HTML muestra el primer proyecto; useWorkScroll fija la sección y recorre los demás con el scroll.
 // Estilos: styles/sections/_selected-work.scss
 export default function SelectedWork() {
-  const { t } = useTranslation();
-  const { lang } = useParams();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language as Locale;
   const current = WORK_PROJECTS[0];
   const root = useRef<HTMLElement>(null);
 
@@ -44,7 +44,7 @@ export default function SelectedWork() {
   useWorkScroll(root);
 
   return (
-    <section id="projects" className="work" aria-labelledby="work-title" ref={root}>
+    <section id={sectionId("projects", locale)} className="work" aria-labelledby="work-title" ref={root}>
       <MeshGradient circles={MESH_CIRCLES} mobileCircles={MESH_CIRCLES_MOBILE} />
 
       <div className="work__inner">
@@ -62,7 +62,7 @@ export default function SelectedWork() {
                 El marco lleva al caso de estudio del proyecto actual (el JS cambia el enlace con el scroll).
                 Solo para ratón y táctil: con teclado o lector de pantalla ya están los enlaces de la lista. */}
             <a
-              href={`/${lang}/work/${current.slug}`}
+              href={projectPath(locale, current.slug)}
               className={`work__frame work__frame--${current.frame}`}
               tabIndex={-1}
               aria-hidden="true"
@@ -107,7 +107,7 @@ export default function SelectedWork() {
             {WORK_PROJECTS.map(({ id, slug }, index) => (
               <li key={id} className={`work__item ${index === 0 ? "is-revealed is-current" : ""}`}>
                 <a
-                  href={`/${lang}/work/${slug}`}
+                  href={projectPath(locale, slug)}
                   className="work__link"
                   aria-label={t("work.openProject", { name: t(`work.items.${id}.name`) })}
                 >

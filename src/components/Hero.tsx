@@ -6,12 +6,14 @@ import Avatar from "./Avatar";
 import { useBlobGradient } from "./useBlobGradient";
 import { useHeroAvatar } from "./hero/useHeroAvatar";
 import { useHeroScroll } from "./hero/useHeroScroll";
+import { sectionId } from "@/config/site";
+import type { Locale } from "@/i18n/config";
 
 // HTML = escena 2 (la que se prerenderiza y ve quien tiene reduced-motion).
 // La escena 1 (muñeca grande) es el estado inicial que crea useHeroScroll.
 // Las animaciones viven en components/hero/*. Estilos: styles/sections/_hero.scss
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const root = useRef<HTMLDivElement>(null);
 
   useBlobGradient(root);
@@ -69,7 +71,7 @@ export default function Hero() {
         />
 
         <div className="hero__scroll">
-          <a href="#projects" aria-label={t("a11y.scrollToProjects")}>
+          <a href={`#${sectionId("projects", i18n.language as Locale)}`} aria-label={t("a11y.scrollToProjects")}>
             <ScrollHint />
           </a>
         </div>

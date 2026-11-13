@@ -3,6 +3,11 @@ import { data } from "react-router";
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks, shareMeta } from "@/i18n/seo";
+import { SECTION_IDS, projectPath } from "@/config/site";
+import type { Locale } from "@/i18n/config";
+
+// Dirección de este caso en cada idioma (para el hreflang y la tarjeta al compartir).
+const PAGE = (locale: Locale) => projectPath(locale, "interface-web-app");
 import Header from "@/components/Header";
 import CaseHero from "@/components/case/CaseHero";
 import CaseContext from "@/components/case/CaseContext";
@@ -36,8 +41,10 @@ const DECISION_IMAGES: DecisionImage[] = [
 ];
 
 // Corre en el build (prerender): un idioma que no existe → 404.
-export function loader({ params }: Route.LoaderArgs) {
-  if (!isLocale(params.lang)) throw data(null, { status: 404 });
+export function loader({ params, request }: Route.LoaderArgs) {
+  // /en/selected-work/…, /fr/etudes-de-cas/…: la palabra del medio tiene que ser la del idioma.
+  const word = new URL(request.url).pathname.replace(/\.data$/, "").split("/")[2]; // sin ".data" (prerender)
+  if (!isLocale(params.lang) || word !== SECTION_IDS.projects[params.lang]) throw data(null, { status: 404 });
   return { locale: params.lang };
 }
 
@@ -49,8 +56,8 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
   return [
     { title: t(`${TEXTS}.seoTitle`) },
     { name: "description", content: t(`${TEXTS}.seoDescription`) },
-    ...alternateLinks(locale, "/work/interface-web-app"),
-    ...shareMeta(locale, t(`${TEXTS}.seoTitle`), t(`${TEXTS}.seoDescription`), "/work/interface-web-app"),
+    ...alternateLinks(locale, PAGE),
+    ...shareMeta(locale, t(`${TEXTS}.seoTitle`), t(`${TEXTS}.seoDescription`), PAGE),
   ];
 };
 

@@ -5,6 +5,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks, shareMeta } from "@/i18n/seo";
+import { LEGAL_SLUGS, legalPath } from "@/config/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useBlobGradient } from "@/components/useBlobGradient";
@@ -14,8 +15,10 @@ import type { Route } from "./+types/legal";
 type LegalSection = { id: string; title: string; paragraphs: string[] };
 
 // Corre en el build (prerender): un idioma que no existe → 404.
-export function loader({ params }: Route.LoaderArgs) {
-  if (!isLocale(params.lang)) throw data(null, { status: 404 });
+export function loader({ params, request }: Route.LoaderArgs) {
+  // /en/legal, /fr/mentions-legales, /es/aviso-legal: la palabra tiene que ser la del idioma.
+  const word = new URL(request.url).pathname.replace(/\.data$/, "").split("/")[2]; // sin ".data" (prerender)
+  if (!isLocale(params.lang) || word !== LEGAL_SLUGS[params.lang]) throw data(null, { status: 404 });
   return { locale: params.lang };
 }
 
@@ -27,8 +30,8 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
   return [
     { title: t("legal.seoTitle") },
     { name: "description", content: t("legal.seoDescription") },
-    ...alternateLinks(locale, "/legal"),
-    ...shareMeta(locale, t("legal.seoTitle"), t("legal.seoDescription"), "/legal"),
+    ...alternateLinks(locale, legalPath),
+    ...shareMeta(locale, t("legal.seoTitle"), t("legal.seoDescription"), legalPath),
   ];
 };
 

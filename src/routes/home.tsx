@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
-import { data } from "react-router";
+import { data, useLoaderData } from "react-router";
 
 import { ScrollTrigger } from "@/lib/gsap";
 
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
 import { alternateLinks, shareMeta } from "@/i18n/seo";
+import { findSection, sectionId } from "@/config/site";
 import Header from "@/components/Header";
 import SocialRail from "@/components/SocialRail";
 import Hero from "@/components/Hero";
@@ -35,20 +36,24 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
 };
 
 export default function Home() {
-  // Al llegar desde otra página con una sección (/es#about): se lee aquí, en el primer render, porque
+  // Al llegar desde otra página con una sección (/es#mi-trayectoria): se lee aquí, en el primer render, porque
   // el header borra el # de la URL al cargar. Las secciones fijadas con scroll cambian la altura de la
   // página al montarse, así que el salto se hace cuando GSAP ya ha colocado todo.
   const target = useRef(typeof window === "undefined" ? "" : window.location.hash.slice(1));
 
+  const { locale } = useLoaderData<typeof loader>();
+
   useEffect(() => {
-    const id = target.current;
-    if (!id) return;
+    // El # puede venir en otro idioma o con un id antiguo (#projects): se busca su sección
+    // y se salta a su id en el idioma de la página.
+    const section = findSection(target.current);
+    if (!section) return;
     const timer = window.setTimeout(() => {
       ScrollTrigger.refresh();
-      document.getElementById(id)?.scrollIntoView({ behavior: "instant" });
+      document.getElementById(sectionId(section, locale))?.scrollIntoView({ behavior: "instant" });
     }, 400);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [locale]);
 
   return (
     <>

@@ -1,11 +1,11 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import { useParams } from "react-router";
 import { Trans, useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
 import MeshGradient from "./MeshGradient";
 import { useContactReveal } from "./contact/useContactReveal";
-import { CONTACT_EMAIL, CONTACT_SECTION } from "@/config/site";
+import { CONTACT_EMAIL, CONTACT_SECTION, legalPath, sectionId } from "@/config/site";
+import type { Locale } from "@/i18n/config";
 import { hasContactService, sendContactMessage } from "@/lib/contact";
 
 const REASONS = ["job", "project", "other"] as const;
@@ -30,8 +30,7 @@ function fitToContent(textarea: HTMLTextAreaElement) {
 // con todo escrito (mailto).
 // Estilos: styles/sections/_contact.scss · Entrada animada: contact/useContactReveal.ts
 export default function Contact() {
-  const { t } = useTranslation();
-  const { lang } = useParams();
+  const { t, i18n } = useTranslation();
   const root = useRef<HTMLElement>(null);
   const [reason, setReason] = useState<Reason>("job");
   const [values, setValues] = useState<Record<Field, string>>(EMPTY);
@@ -121,7 +120,7 @@ export default function Contact() {
     );
 
   return (
-    <section id={CONTACT_SECTION} className="contact" aria-labelledby="contact-title" ref={root}>
+    <section id={sectionId(CONTACT_SECTION, i18n.language as Locale)} className="contact" aria-labelledby="contact-title" ref={root}>
       <MeshGradient fill />
 
       <div className="contact__inner container">
@@ -180,7 +179,7 @@ export default function Contact() {
           {/* Aviso RGPD: para qué se usan los datos, con enlace a la política de privacidad. */}
           <p className="contact__privacy">
             {/* La etiqueta se llama <policy> (no <link>: en HTML "link" nunca tiene contenido y el texto saldría fuera). */}
-            <Trans i18nKey="contact.privacy" components={{ policy: <a href={`/${lang}/legal#privacy`} /> }} />
+            <Trans i18nKey="contact.privacy" components={{ policy: <a href={`${legalPath(i18n.language as Locale)}#privacy`} /> }} />
           </p>
 
           {/* Casilla trampa: invisible para las personas; si un robot la marca, el envío se descarta. */}

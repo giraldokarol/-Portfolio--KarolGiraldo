@@ -16,7 +16,7 @@ html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   tab-size: 4;
-  scroll-padding-top: rem(96); // las anclas (#projects) no quedan bajo el header
+  scroll-padding-top: rem(96); // las anclas (#selected-work…) no quedan bajo el header
 
   // Scroll animado al pulsar enlaces #ancla, solo sin reduced-motion.
   @include motion-safe {

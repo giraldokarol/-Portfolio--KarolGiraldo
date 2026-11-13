@@ -9,6 +9,14 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://karolgiraldoescobar.com%{REQUEST_URI} [R=301,L]
 
+# ─── Direcciones antiguas → nuevas (301 = "se mudó para siempre"; Google pasa su posición a la nueva) ──
+# Los casos de estudio estaban en /idioma/work/… y la página legal en /idioma/legal.
+RewriteRule ^en/work/(.+)$ /en/selected-work/$1 [R=301,L]
+RewriteRule ^fr/work/(.+)$ /fr/etudes-de-cas/$1 [R=301,L]
+RewriteRule ^es/work/(.+)$ /es/casos-de-estudio/$1 [R=301,L]
+RewriteRule ^fr/legal/?$ /fr/mentions-legales [R=301,L]
+RewriteRule ^es/legal/?$ /es/aviso-legal [R=301,L]
+
 # ─── MODO CONSTRUCCIÓN (desactivado) ─────────────────────────────────────────────────
 # Todo el mundo ve public/status/construction.html en lugar del sitio (la página lleva
 # "noindex": Google no la guarda). Para activarlo: quita el # de las 2 líneas RewriteCond/RewriteRule.

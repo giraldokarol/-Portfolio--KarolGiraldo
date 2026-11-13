@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import ArrowIcon from "./ArrowIcon";
@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import SocialRail from "./SocialRail";
 import { useErrorAvatar } from "./error/useErrorAvatar";
 import type { Locale } from "@/i18n/config";
+import { fixPath } from "@/config/site";
 // Ilustraciones exportadas de Figma ("Marca Personal" → 404 y 500). Se insertan como SVG en el HTML
 // (no como <img>) para poder animar sus capas: cada capa conserva su id de Figma.
 import avatar404 from "@/assets/errors/avatar-404.svg?raw";
@@ -28,6 +29,13 @@ export default function ErrorPage({
   const key = notFound ? "errors.notFound" : "errors.generic";
   const [first, last] = notFound ? ["4", "4"] : ["5", "0"];
   const avatar = useRef<HTMLDivElement>(null);
+
+  // Dirección antigua (/es/work/…, /fr/legal) o con la palabra de otro idioma: se lleva a la correcta
+  // en vez de mostrar la 404 (los enlaces compartidos antes siguen funcionando).
+  useEffect(() => {
+    const fixed = fixPath(window.location.pathname);
+    if (fixed && fixed !== window.location.pathname) window.location.replace(fixed + window.location.hash);
+  }, []);
 
   // El SVG se mete a mano, no con dangerouslySetInnerHTML: React lo volvía a insertar tras la carga
   // y la animación se quedaba enganchada al dibujo antiguo. Va antes de useErrorAvatar (que lo anima).
