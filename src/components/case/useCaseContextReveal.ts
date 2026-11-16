@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Entrada de "(Context)" (CaseContext.tsx), una sola vez al llegar con el scroll:
 //   etiqueta → título palabra a palabra desde una máscara → entradilla.
@@ -24,7 +24,7 @@ export function useCaseContextReveal(scope: RefObject<HTMLElement | null>) {
         gsap
           .timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: ".case-context__title", start: "top 80%", once: true },
+            scrollTrigger: { trigger: ".case-context__title", start: "top 80%", ...PLAY_ONCE },
             onComplete: () => split.revert(),
           })
           .from(".case-context__label", { autoAlpha: 0, y: 12, duration: 0.6 }, 0)
@@ -33,7 +33,7 @@ export function useCaseContextReveal(scope: RefObject<HTMLElement | null>) {
 
         // Botón (solo en algunos casos), justo después de la entradilla.
         const cta = section.querySelector(".case-context__cta");
-        if (cta) gsap.from(cta, { autoAlpha: 0, y: 16, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: cta, start: "top 90%", once: true } });
+        if (cta) gsap.from(cta, { autoAlpha: 0, y: 16, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: cta, start: "top 90%", ...PLAY_ONCE } });
 
         gsap.fromTo(
           ".case-context__orb, .case-context__mesh-orb",

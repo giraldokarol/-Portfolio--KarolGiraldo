@@ -131,11 +131,12 @@
   background: var(--color-text-faded);
   cursor: pointer;
 
-  // Zona táctil más grande que el punto (44 × 44).
+  // Zona táctil más alta que el punto (44 px); a los lados solo hasta la mitad del hueco, para que la
+  // del punto siguiente no la tape.
   &::after {
     content: "";
     position: absolute;
-    inset: rem(-18);
+    inset: rem(-18) rem(-4);
   }
 
   &.is-current {

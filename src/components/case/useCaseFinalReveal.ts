@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Entrada de "Final Thoughts" (CaseFinal.tsx), una sola vez al llegar con el scroll:
 //   etiqueta → título palabra a palabra → tarjetas una tras otra → las cifras cuentan desde 0
@@ -26,14 +26,14 @@ export function useCaseFinalReveal(scope: RefObject<HTMLElement | null>) {
         gsap
           .timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: section, start: "top 75%", once: true },
+            scrollTrigger: { trigger: section, start: "top 75%", ...PLAY_ONCE },
             onComplete: () => split.revert(),
           })
           .from(".case-final__label", { autoAlpha: 0, y: 12, duration: 0.6 }, 0)
           .from(split.words, { yPercent: 110, duration: 1, stagger: 0.08, ease: "power4.out" }, 0.05);
 
         const cards = gsap
-          .timeline({ scrollTrigger: { trigger: ".case-final__bento", start: "top 80%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".case-final__bento", start: "top 80%", ...PLAY_ONCE } })
           .from($$(".case-final__card"), { autoAlpha: 0, y: 60, duration: 1, stagger: 0.09, ease: "expo.out" });
 
         // Cifras: de 0 a su valor (el número real está en el HTML; aquí solo se anima). Si el valor lleva

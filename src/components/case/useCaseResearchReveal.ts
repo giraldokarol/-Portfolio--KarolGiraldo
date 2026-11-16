@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Entrada de "Research" (CaseResearch.tsx), una sola vez al llegar con el scroll:
 //   texto de la izquierda (etiqueta, título palabra a palabra, párrafos)
@@ -26,7 +26,7 @@ export function useCaseResearchReveal(scope: RefObject<HTMLElement | null>) {
         gsap
           .timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: ".case-research__intro", start: "top 80%", once: true },
+            scrollTrigger: { trigger: ".case-research__intro", start: "top 80%", ...PLAY_ONCE },
             onComplete: () => split.revert(),
           })
           .from(".case-research__label", { autoAlpha: 0, y: 12, duration: 0.6 }, 0)
@@ -44,7 +44,7 @@ export function useCaseResearchReveal(scope: RefObject<HTMLElement | null>) {
           y: 60,
           duration: 1.1,
           ease: "expo.out",
-          scrollTrigger: { trigger: ".case-research__gaps", start: "top 85%", once: true },
+          scrollTrigger: { trigger: ".case-research__gaps", start: "top 85%", ...PLAY_ONCE },
         });
       });
 
@@ -54,7 +54,7 @@ export function useCaseResearchReveal(scope: RefObject<HTMLElement | null>) {
           gsap
             .timeline({
               defaults: { ease: "power3.out" },
-              scrollTrigger: { trigger: gap, start: "top 80%", once: true },
+              scrollTrigger: { trigger: gap, start: "top 80%", ...PLAY_ONCE },
             })
             .from(gap.querySelector(".case-research__gap-number"), { autoAlpha: 0, x: -24, duration: 1 }, 0)
             .from(gap.querySelector(".case-research__gap-text"), { autoAlpha: 0, y: 16, duration: 0.8 }, 0.1)

@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Entrada de "Key Decisions" (CaseDecisions.tsx), una sola vez al llegar con el scroll:
 //   etiqueta → título palabra a palabra → flechas → el carrusel sube desde abajo.
@@ -23,7 +23,7 @@ export function useCaseDecisionsReveal(scope: RefObject<HTMLElement | null>) {
         gsap
           .timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: section, start: "top 75%", once: true },
+            scrollTrigger: { trigger: section, start: "top 75%", ...PLAY_ONCE },
             onComplete: () => split.revert(),
           })
           .from(".case-decisions__label", { autoAlpha: 0, y: 12, duration: 0.6 }, 0)

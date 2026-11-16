@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, ScrollTrigger, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, ScrollTrigger, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Pantallas táctiles (sin hover): la foto de una etapa aparece cuando la etapa cruza el centro de la
 // pantalla con el scroll, y se recoge al salir. Funciona también con reduced-motion (el CSS quita el
@@ -31,7 +31,7 @@ export function useCaseProcessReveal(scope: RefObject<HTMLElement | null>) {
         gsap
           .timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: section, start: "top 80%", once: true },
+            scrollTrigger: { trigger: section, start: "top 80%", ...PLAY_ONCE },
             onComplete: () => split.revert(),
           })
           .from(".case-process__label", { autoAlpha: 0, y: 12, duration: 0.6 }, 0)
@@ -45,7 +45,7 @@ export function useCaseProcessReveal(scope: RefObject<HTMLElement | null>) {
           duration: 1,
           stagger: 0.14,
           ease: "expo.out",
-          scrollTrigger: { trigger: ".case-process__steps", start: "top 85%", once: true },
+          scrollTrigger: { trigger: ".case-process__steps", start: "top 85%", ...PLAY_ONCE },
         });
 
         return () => split.revert();

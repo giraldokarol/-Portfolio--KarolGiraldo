@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Entrada de "The problem / The solution" (CaseIntro.tsx), una sola vez al llegar con el scroll:
 //   palabra de fondo → cada bloque (número, título palabra a palabra desde una máscara, entradilla y,
@@ -37,7 +37,7 @@ export function useCaseIntroReveal(scope: RefObject<HTMLElement | null>) {
               defaults: { ease: "power3.out" },
               // "The solution" empieza un poco después: llega a la vez, pero en escalera, como el diseño.
               delay: index * 0.15,
-              scrollTrigger: { trigger: block, start: "top 80%", once: true },
+              scrollTrigger: { trigger: block, start: "top 80%", ...PLAY_ONCE },
               onComplete: () => split.revert(),
             })
             .from(block.querySelector(".case-intro__number"), { autoAlpha: 0, y: 12, duration: 0.6 }, 0)
@@ -59,7 +59,7 @@ export function useCaseIntroReveal(scope: RefObject<HTMLElement | null>) {
           duration: 1.1,
           stagger: 0.14,
           ease: "expo.out",
-          scrollTrigger: { trigger: ".case-intro__cards", start: "top 85%", once: true },
+          scrollTrigger: { trigger: ".case-intro__cards", start: "top 85%", ...PLAY_ONCE },
         });
 
         return () => splits.forEach((split) => split.revert());

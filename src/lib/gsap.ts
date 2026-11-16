@@ -32,3 +32,8 @@ export const MEDIA = {
   // Táctil (móvil, tablet): sin cursor, animación autónoma.
   touch: `(hover: none) and ${motionOk}, (pointer: coarse) and ${motionOk}`,
 } as const;
+
+// Entradas que se ven una sola vez al llegar con el scroll (y no se deshacen al volver arriba).
+// En vez de "once: true": "once" borra el ScrollTrigger al pasarlo y, si la página se recarga a mitad
+// de scroll, GSAP borra varios a la vez mientras los está calculando y falla (página de error).
+export const PLAY_ONCE = { toggleActions: "play none none none" } as const;

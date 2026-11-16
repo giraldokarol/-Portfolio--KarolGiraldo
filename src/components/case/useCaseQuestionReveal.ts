@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { gsap, useGSAP, SplitText, MEDIA } from "@/lib/gsap";
+import { gsap, useGSAP, SplitText, MEDIA, PLAY_ONCE } from "@/lib/gsap";
 
 // Bolitas: cuánto se desplaza cada una (px) mientras la sección cruza la pantalla, en el orden de
 // CaseQuestion.tsx. Velocidades distintas = sensación de profundidad.
@@ -31,7 +31,7 @@ export function useCaseQuestionReveal(scope: RefObject<HTMLElement | null>) {
           duration: 1.1,
           stagger: 0.1,
           ease: "power4.out",
-          scrollTrigger: { trigger: ".case-question__title", start: "top 78%", once: true },
+          scrollTrigger: { trigger: ".case-question__title", start: "top 78%", ...PLAY_ONCE },
           onComplete: () => split.revert(),
         });
 
