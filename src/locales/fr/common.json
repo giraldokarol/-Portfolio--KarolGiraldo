@@ -76,9 +76,9 @@
     "title": "Des interfaces aux produits",
     "portraitAlt": "Portrait de Karol Giraldo",
     "paragraphs": [
-      "Bonjour, moi c’est Karol, Product Designer avec <strong>près de 10 ans d’expérience en design</strong>, dont <strong>presque 7 en UX/UI et en développement front-end.</strong>",
-      "J’ai conçu des plateformes B2B et des applications web et mobiles dans la mobilité et la banque, souvent pour des produits complexes, riches en données, où la clarté fait toute la différence. Je suis particulièrement attentive aux <strong>design systems, à l’accessibilité</strong> et à ces petits détails qui rendent une interface cohérente.",
-      "Et comme je code aussi, je conçois en pensant au développement : des interfaces qui sont belles, et qui sont réellement développées comme elles ont été pensées."
+      "Bonjour, je suis Karol, Product Designer avec <strong>près de 10 ans d’expérience en design</strong>, dont <strong>sept en UX/UI et en développement front-end.</strong>",
+      "J’ai participé à l’idéation et à la conception de plateformes B2B et d’applications web et mobiles dans les secteurs de la mobilité et de la banque, souvent sur des produits complexes où la hiérarchie et la clarté de l’information font toute la différence. Mon approche repose sur une utilisation rigoureuse des <strong>design systems</strong>, le respect des normes d’<strong>accessibilité numérique</strong> et, surtout, une véritable cohérence entre l’interface et l’identité de marque.",
+      "Mon double profil de designer et de développeuse web me permet de concevoir des interfaces efficaces."
     ]
   },
   "footer": {
@@ -111,7 +111,7 @@
   "contact": {
     "title": "Un projet en tête ?",
     "intro": "Nouvelle opportunité ou projet intéressant : je suis toujours ouverte à la discussion.",
-    "reasonLegend": "Qu’est-ce qui vous amène ?",
+    "reasonLegend": "De quoi souhaitez-vous discuter ?",
     "reasons": {
       "job": "J’ai une offre d’emploi",
       "project": "J’ai un projet en tête",
@@ -189,16 +189,16 @@
   "cases": {
     "interfaceWebApp": {
       "seoTitle": "Interface Web App — étude de cas Flexis · Karol Giraldo",
-      "seoDescription": "Comment j’ai conçu Flexis Interface, une plateforme web qui transforme les données de flotte en décisions claires au quotidien.",
+      "seoDescription": "Étude de cas UX/UI : Flexis Interface, une plateforme web conçue from scratch pour aider les gestionnaires de flotte à prendre des décisions au quotidien.",
       "hero": {
-        "title": "Des données de flotte <br/>aux <accent>décisions du quotidien</accent>",
-        "lead": "Une nouvelle plateforme conçue de zéro pour aider les équipes de flotte à comprendre leurs données et à savoir quoi faire ensuite.",
+        "title": "Rendre les données <br/> de flotte <accent>utiles <br/>  au quotidien</accent>",
+        "lead": "Une plateforme web conçue from scratch pour aider les gestionnaires de flotte à comprendre leurs données et à prioriser leurs actions.",
         "videoLabel": "Enregistrement d’écran du tableau de bord Flexis Interface : disponibilité de la flotte, consommation kilométrique, alertes et carte des véhicules en temps réel.",
         "detailsLabel": "Fiche du projet",
         "details": [
           {
             "label": "Produit",
-            "value": "Flexis Interface"
+            "value": "Flexis Interface Wep App"
           },
           {
             "label": "Rôle",
@@ -215,12 +215,13 @@
         "problem": {
           "number": "(01)",
           "title": "Le problème",
-          "lead": "Les équipes de flotte n’ont jamais eu autant de données, mais aucun moyen clair d’agir."
+          "lead": "Position, batterie, maintenance, disponibilité : les données ne manquaient pas. Ce qui manquait, c’était de savoir par où commencer.",
+          "detail": "Les gestionnaires passaient d’un outil à l’autre, finissaient souvent sur Excel, et réagissaient aux problèmes au lieu de les anticiper : un véhicule immobilisé ou une maintenance oubliée se découvrait souvent trop tard."
         },
         "solution": {
           "number": "(02)",
           "title": "La solution",
-          "lead": "Une nouvelle plateforme qui transforme les données de flotte en priorités et en actions claires."
+          "lead": "Nous avons conçu une plateforme qui rassemble les données de la flotte et les organise par priorité, pour que les gestionnaires sachent quoi traiter en premier et comment agir."
         },
         "cards": [
           {
@@ -242,31 +243,31 @@
       },
       "context": {
         "label": "(Contexte)",
-        "title": "Les flottes électriques : plus de données, et plus à gérer.",
-        "lead": "En plus de la localisation, les gestionnaires suivent désormais la recharge, la batterie, l’entretien, la disponibilité et les coûts. <br/><strong>Flexis</strong> a voulu créer un nouveau produit pour accompagner ce changement."
+        "title": "La gestion de flotte, un environnement de plus en plus complexe.",
+        "lead": "Les gestionnaires de flotte doivent aujourd’hui composer avec un volume croissant de données, des besoins métier variés et des opérations toujours plus complexes. Dans ce contexte, Flexis a entrepris de concevoir une nouvelle plateforme pour centraliser l’information et simplifier la gestion au quotidien."
       },
       "research": {
         "label": "(03)",
         "title": "Recherche",
-        "lead": "Beaucoup d’outils suivent la flotte, aucun n’aide à décider quoi faire ensuite.",
-        "text": "Avant de concevoir quoi que ce soit, j’ai interrogé des experts métier de la gestion de flotte et analysé des outils comme Geotab et Samsara. Trois manques sont ressortis.",
-        "conclusion": "Résultat : les équipes jonglent entre les outils et finissent par tout trier dans Excel.",
+        "lead": "Les outils existants suivent la flotte, mais aident peu à décider quoi traiter en priorité.",
+        "text": "Des entretiens avec des experts métier de la gestion de flotte et l’analyse d’outils comme Geotab et Samsara ont fait ressortir trois manques.",
+        "conclusion": "Conséquence : les gestionnaires passent d’un outil à l’autre et finissent par tout organiser dans Excel.",
         "gapsLabel": "Les trois manques",
         "gapLabel": "Manque {{current}} sur {{total}}",
         "gaps": [
           {
             "number": "01",
-            "text": "<strong>Des données sans priorités</strong> : tout est suivi et signalé, mais rien ne montre ce qui compte le plus.",
+            "text": "<strong>Des données sans hiérarchie</strong> : tout est suivi et remonté, mais rien n'indique ce qui doit être traité en priorité.",
             "alt": "Widgets d’un tableau de bord de flotte côte à côte : un graphique du score de conduite souple, 10 % des véhicules en charge et 1 borne sur 10 utilisée."
           },
           {
             "number": "02",
-            "text": "<strong>Des informations dispersées</strong> : véhicules, conducteurs et recharge sont suivis dans des services séparés.",
+            "text": "<strong>Des informations dispersées</strong> : les véhicules, les conducteurs et la recharge sont gérés dans des outils différents.",
             "alt": "Un utilitaire électrique entouré de cartes séparées : une borne murale du site de Lyon avec deux points de charge disponibles, et 3 bornes sur 10 disponibles."
           },
           {
             "number": "03",
-            "text": "<strong>Un seul utilisateur</strong> : la plupart des produits ne servent que le gestionnaire de flotte.",
+            "text": "<strong>Un seul profil pris en compte</strong> : la plupart des solutions sont pensées uniquement pour le gestionnaire de flotte.",
             "alt": "Sélecteur de rôle avec « Gestionnaire de flotte » choisi ; les autres rôles, répartiteur, conseiller flotte et responsable financier, s’effacent à l’arrière-plan."
           }
         ],
@@ -300,19 +301,19 @@
           {
             "number": "01.",
             "title": "Comprendre",
-            "text": "Entretiens avec des experts et benchmark pour définir chaque module avant de le concevoir.",
+            "text": "Entretiens avec des experts métier et benchmark pour définir chaque module avant sa conception.",
             "alt": "Une conseillère flotte en gilet haute visibilité tenant une tablette, devant un panneau sur les visites mensuelles sur site."
           },
           {
             "number": "02.",
             "title": "Définir",
-            "text": "Avec le Produit et le Business, nous avons décidé quoi construire en premier et cartographié les parcours de la première version.",
+            "text": "Avec les équipes Produit et Métier, choix des fonctionnalités prioritaires et définition des parcours de la première version.",
             "alt": "Tableau d’atelier avec les priorités classées haute, moyenne et basse, la problématique, les hypothèses et les objectifs de recherche."
           },
           {
             "number": "03.",
             "title": "Concevoir et valider",
-            "text": "J’ai revu les wireframes avec les développeurs, des experts et des bêta-testeurs avant de passer à l’UI haute fidélité.",
+            "text": "Wireframes revus avec les développeurs, les experts métier et des bêta-testeurs, avant le passage à l’UI haute fidélité.",
             "alt": "Salle de réunion avec l’écran de gestion des utilisateurs projeté sur un grand écran pendant une séance de revue."
           }
         ]
@@ -325,26 +326,26 @@
         "slideLabel": "Décision {{current}} sur {{total}}",
         "slides": [
           {
-            "title": "Toutes les données <br/>ne méritent pas <br/>la même visibilité.",
+            "title": "Toutes les données ne méritent pas la même visibilité.",
             "items": [
               {
                 "title": "Auditer",
-                "text": "Recensement de chaque donnée issue des véhicules, de la télématique et des opérations."
+                "text": "Inventaire de toutes les données disponibles : véhicules, télématique et opérations."
               },
               {
                 "title": "Prioriser",
-                "text": "Classement de l’information par urgence et par action requise, en séparant ce qui informe de ce qui demande de l’attention."
+                "text": "Classement des informations selon leur urgence et l’action qu’elles demandent, pour distinguer ce qui informe de ce qui nécessite une intervention."
               },
               {
                 "title": "Structurer",
-                "text": "Vue d’ensemble de la flotte → détail du véhicule → action suivante."
+                "text": "Trois niveaux de lecture : la vue d’ensemble de la flotte, le détail du véhicule, puis l’action à mener."
               }
             ],
             "alt": "Écrans de Flexis superposés : le tableau de gestion de la flotte, le panneau de filtres et la page de détail d’un véhicule avec son kilométrage et sa consommation."
           },
           {
-            "title": "Une seule façon <br/>de lire et d’agir, <br/>dans chaque module.",
-            "text": "Sans interface existante sur laquelle m’appuyer, j’ai construit le design system en même temps que le produit. Les éléments récurrents (statuts, alertes, filtres, actions) sont devenus des composants réutilisables : un même signal a toujours le même aspect et le même comportement, et les nouveaux modules n’ajoutent pas de complexité.",
+            "title": "Une expérience cohérente, quel que soit le module.",
+            "text": "En l’absence d’interface existante, le design system a été construit en même temps que le produit. Les éléments récurrents (statuts, alertes, filtres, actions) sont devenus des composants réutilisables : une même information s’affiche et se comporte toujours de la même façon, et l’ajout de nouveaux modules ne complexifie pas l’expérience.",
             "alt": "Composants du design system : boutons, case à cocher, cartes d’indicateurs, alertes, étiquettes de statut et une barre de kilométrage avec un avertissement."
           }
         ]
@@ -353,7 +354,7 @@
         "label": "(06)",
         "title": "Pour conclure",
         "outcome": "Résultat",
-        "statement": "De <strong>zéro</strong> à des <strong>fondations produit</strong> validées.",
+        "statement": "Un produit conçu <strong>from scratch,</strong> validé et prêt à être développé.",
         "projectFor": "Projet pour",
         "logoAlt": "Flexis",
         "stats": [
@@ -366,16 +367,16 @@
             "label": "bêta-testeurs pour valider l’expérience"
           }
         ],
-        "summary": "Une plateforme qui transforme des données de flotte dispersées en actions quotidiennes claires, conçue en un an et prête pour le développement avant le rachat de Flexis.",
+        "summary": "Une plateforme qui rassemble les données de la flotte et aide les gestionnaires à savoir quoi traiter en priorité, conçue from scratch et prête pour le développement.",
         "photoAlt": "Une gestionnaire de flotte en gilet haute visibilité travaille à son bureau, avec l’écran de planification de Flexis sur son moniteur."
       }
     },
     "driverApp": {
       "seoTitle": "Driver App — étude de cas Flexis · Karol Giraldo",
-      "seoDescription": "Comment j’ai conçu Flexis Driver App, une application mobile qui accompagne les livreurs urbains de la prise du véhicule à la fin de la mission.",
+      "seoDescription": "Étude de cas UX/UI : Flexis Driver App, une application mobile conçue from scratch pour simplifier la journée des livreurs urbains.",
       "hero": {
-        "title": "De la prise du véhicule <br/>à la mission accomplie, <br/>en <accent>une seule app</accent>",
-        "lead": "Une application mobile créée de zéro pour aider les livreurs urbains à démarrer leur journée plus vite, mieux conduire et rester connectés à leur flotte.",
+        "title": "Toute la mission <br/> du conducteur, réunie  <br/> dans <accent>une seule app.</accent>",
+        "lead": "Une application mobile conçue from scratch pour simplifier la journée des livreurs urbains, de la prise en charge du véhicule à la fin de leur tournée.",
         "videoLabel": "Enregistrement d’écran de Flexis Driver App : localisation du véhicule attribué sur une carte et lancement de la navigation.",
         "detailsLabel": "Détails du projet",
         "details": [
@@ -398,13 +399,13 @@
         "problem": {
           "number": "(01)",
           "title": "Le problème",
-          "lead": "Les livreurs n’avaient pas d’outil unique pour leur journée, ni de moyen simple de s’associer à leur véhicule.",
+          "lead": "Les livreurs passaient d’un outil à l’autre au quotidien, sans moyen simple d’être associés à leur véhicule.",
           "detail": "Les véhicules étaient suivis en direct dans Interface, mais rien ne permettait de savoir de façon fiable qui conduisait chacun d’eux, ni quand."
         },
         "solution": {
           "number": "(02)",
           "title": "La solution",
-          "lead": "Une seule app pour la journée du livreur, à commencer par une association au véhicule toute simple."
+          "lead": "Une application qui regroupe toutes les étapes de la journée du livreur, de l’association au véhicule jusqu’à la fin de la tournée."
         },
         "cards": [
           {
@@ -418,45 +419,45 @@
             "alt": "Écran de check-in vidéo : le livreur filme l’extérieur de la camionnette pendant l’enregistrement."
           },
           {
-            "title": "Mission du jour intelligente",
-            "text": "Itinéraires et ordre des arrêts optimisés pour consommer moins d’énergie.",
+            "title": "Tournée optimisée",
+            "text": "Itinéraires et ordre des arrêts optimisés pour gagner du temps et consommer moins d’énergie.",
             "alt": "Écran de navigation de la mission : guidage pas à pas sur une carte nocturne, le prochain arrêt et des boutons pour appeler le client ou signaler un incident."
           }
         ]
       },
       "context": {
         "label": "(Contexte)",
-        "title": "Le dernier kilomètre, ce sont des horaires serrés et des camionnettes partagées.",
-        "lead": "Dans la logistique du dernier kilomètre, plusieurs livreurs partagent les mêmes camionnettes, les tournées sont serrées et les véhicules électriques ajoutent une contrainte : l’autonomie. Flexis a créé cette app pour les livreurs de toute l’Europe."
+        "title": "La livraison urbaine, entre délais serrés et véhicules partagés.",
+        "lead": "En livraison urbaine, plusieurs livreurs utilisent les mêmes véhicules, les tournées sont serrées, et l’électrique ajoute une nouvelle contrainte : l’autonomie. Flexis a conçu cette application pour les livreurs partout en Europe."
       },
       "research": {
         "label": "(03)",
         "title": "Recherche",
-        "lead": "Les camionnettes étaient suivies, pas les livreurs.",
-        "text": "Avec des experts métier, nous avons cartographié une journée complète, du dépôt à la dernière livraison, et identifié trois manques :",
+        "lead": "Les outils de gestion de flotte savent où se trouve chaque véhicule. Mais ils ne sont pas pensés pour les livreurs, qui les utilisent pourtant tous les jours.",
+        "text": "Lors d’ateliers avec l’équipe produit et les experts métier, nous avons identifié trois manques dans le quotidien des livreurs :",
         "conclusion": "Résultat : des livreurs peu engagés et une flotte moins productive.",
         "gapsLabel": "Les trois manques",
         "gapLabel": "Manque {{current}} sur {{total}}",
         "gaps": [
           {
             "number": "01.",
-            "text": "<strong>Des outils éparpillés :</strong> les livreurs géraient leurs livraisons avec plusieurs outils, sans information en temps réel.",
-            "alt": "Une camionnette électrique entre trois cartes d’état : véhicule non connecté, véhicule connecté et prêt pour le check-in, et véhicule prêt pour commencer la journée."
+            "text": "<strong>Des outils dispersés :</strong> les livreurs passaient d’un outil à l’autre pour gérer leurs livraisons, sans information en temps réel.",
+            "alt": "Un véhicule utilitaire électrique entouré de trois cartes présentant les différents états de connexion, jusqu’à ce que le véhicule soit prêt à prendre la route."
           },
           {
             "number": "02.",
-            "text": "<strong>Pas pensé pour les livreurs :</strong> les solutions existantes oubliaient l’essentiel de leur journée, comme un onboarding fluide et un accès sécurisé au véhicule.",
-            "alt": "L’écran d’accueil de Driver App avec un guidage pas à pas, une camionnette vue de dessus et une carte « Find Your Vehicle »."
+            "text": "<strong>Des solutions peu adaptées :</strong> il manquait l’essentiel de leur journée, comme une inscription simple et un accès sécurisé au véhicule.",
+            "alt": "L’écran d’accueil de Driver App avec un guidage pas à pas, un véhicule utilitaire électrique vue de dessus et une carte « Find Your Vehicle »."
           },
           {
             "number": "03.",
-            "text": "<strong>Aucun lien livreur–véhicule :</strong> les camionnettes étaient suivies, mais rien ne permettait de savoir clairement qui conduisait chacune d’elles, ni quand.",
-            "alt": "Une camionnette électrique devant une carte « Find Your Vehicle » et une icône de lien."
+            "text": "<strong>Aucune association livreur–véhicule :</strong> les véhicules étaient suivis, mais impossible de savoir qui conduisait lequel, ni à quel moment.",
+            "alt": "Un véhicule utilitaire électrique devant une carte « Find Your Vehicle » et une icône de lien."
           }
         ]
       },
       "question": {
-        "text": "Comment offrir aux livreurs du dernier kilomètre <muted>une seule app intuitive qui simplifie leur quotidien</muted>, de l’accès au véhicule jusqu’à la fin de la tournée ?"
+        "text": "Comment simplifier la journée des livreurs avec <muted>une seule application,</muted> de l’accès au véhicule jusqu’à la fin de la tournée, tout en associant chaque trajet au bon livreur ?"
       },
       "process": {
         "label": "(04)",
@@ -465,20 +466,20 @@
         "steps": [
           {
             "number": "01.",
-            "title": "Cartographier",
-            "text": "le story mapping a transformé les objectifs métier en epics et en user stories, de l’onboarding du livreur au suivi des tournées.",
+            "title": "Structurer",
+            "text": "Le story mapping a permis de traduire les objectifs métier en epics et user stories, de l’inscription du livreur au suivi des tournées.",
             "alt": "Tableau de story mapping pour la planification des missions, avec les besoins des utilisateurs, les types de véhicules et les tournées non attribuées."
           },
           {
             "number": "02.",
             "title": "Prioriser",
-            "text": "avec le Produit et le Métier, nous avons utilisé MoSCoW pour définir le MVP et la version suivante (MMP).",
+            "text": "Avec les équipes Produit et Métier, définition des fonctionnalités essentielles pour la première version et de celles prévues pour la suite.",
             "alt": "Une designer place des post-it sur une paroi vitrée, sous les étapes du parcours du livreur : profil, véhicule, localisation, statistiques et planning."
           },
           {
             "number": "03.",
             "title": "Concevoir et valider",
-            "text": "j’ai cartographié les parcours utilisateurs et validé des maquettes basse fidélité avant le développement.",
+            "text": "Parcours utilisateurs et maquettes basse fidélité, validés avant le développement.",
             "alt": "Un livreur en gilet haute visibilité tient un téléphone affichant l’écran « Session Completed » de Driver App."
           }
         ]
@@ -491,32 +492,32 @@
         "slideLabel": "Décision {{current}} sur {{total}}",
         "slides": [
           {
-            "title": "L’attribution, <br/>c’est là que la journée <br/>commence.",
+            "title": "Tout commence par l’association au véhicule.",
             "paragraphs": [
-              "Rien ne démarre tant que le livreur n’est pas attribué à la camionnette, par QR code, numéro VIN ou clé virtuelle. Ensuite, l’app suit la journée en temps réel :",
-              "<strong>Attribution → Check-in → Prêt à partir → Tournée → Check-out</strong>",
-              "Une seule étape pour le livreur ; pour la flotte, une trace claire de qui a conduit quelle camionnette, et quand."
+              "La journée du livreur démarre dès qu’il est associé à son véhicule, par QR code, numéro VIN ou clé virtuelle. L’app le guide ensuite étape par étape :",
+              "<strong>Association → Check-in → Prêt à partir → Tournée → Check-out</strong>",
+              "Pour le livreur, c’est une seule étape. Pour le gestionnaire de flotte, c’est la garantie de savoir qui a conduit chaque véhicule, et à quel moment."
             ],
             "alt": "Enregistrement d’écran de Driver App qui scanne le numéro VIN d’une camionnette pour y attribuer le livreur, avec un champ pour saisir le code à la main."
           },
           {
-            "title": "Planifier la tournée <br/>selon la batterie.",
+            "title": "Planifier la tournée pour gagner du temps et préserver la batterie.",
             "paragraphs": [
-              "L’app ordonne les arrêts de la journée et propose des itinéraires selon la charge de la camionnette, pour que les livreurs terminent leur tournée en consommant moins d’énergie."
+              "L’app organise l’ordre des arrêts et propose des itinéraires en fonction du temps de trajet et du niveau de charge du véhicule. Les livreurs peuvent ainsi terminer leur tournée plus rapidement, sans craindre de manquer d’autonomie."
             ],
             "alt": "Écrans d’itinéraire de Driver App : une carte nocturne avec le trajet proposé, la liste des 12 arrêts du jour avec leurs horaires, et le prochain client avec des boutons pour l’appeler ou signaler un incident."
           },
           {
-            "title": "Une vidéo plutôt <br/>qu’un état des lieux papier.",
+            "title": "Un état des lieux plus simple et plus rapide.",
             "paragraphs": [
-              "Le livreur filme la camionnette au check-in et au check-out. Un service d’inspection intégré transforme la vidéo en rapport d’état, envoyé directement au gestionnaire de flotte."
+              "Au check-in et au check-out, le livreur filme simplement le véhicule. Un service d’inspection intégré transforme la vidéo en rapport d’état, envoyé directement au gestionnaire de flotte."
             ],
             "alt": "Écran de check-in vidéo : le livreur filme l’extérieur de la camionnette, à côté d’une carte « Start Check-in » et d’icônes d’alerte et d’inspection."
           },
           {
-            "title": "De la même famille <br/>qu’Interface, pensée <br/>pour la route.",
+            "title": "Un design system commun aux deux produits, adapté aux contraintes du terrain.",
             "paragraphs": [
-              "J’ai adapté le design system d’Interface au mobile : des zones tactiles plus grandes, des écrans plus simples et un mode clair et sombre pour les journées qui commencent avant le lever du soleil."
+              "L’app conducteur repose sur les mêmes fondations que la plateforme web (design tokens, composants et icônes), adaptées à un usage en mobilité : zones tactiles élargies pour une utilisation en cabine, écrans allégés pour réduire la charge cognitive pendant la tournée, et deux thèmes, clair et sombre."
             ],
             "alt": "Trois écrans de Driver App en mode clair et sombre : l’accueil avec les outils du véhicule, les réglages avec le choix du thème, et la batterie de la camionnette à 75 %."
           }
@@ -539,15 +540,15 @@
             "label": "thèmes, clair et sombre"
           }
         ],
-        "summary": "Une seule app qui accompagne les livreurs de l’attribution du véhicule jusqu’au check-out, conçue de zéro et prête pour le développement avant le rachat de Flexis.",
+        "summary": "Une application qui accompagne les livreurs de la prise en charge du véhicule jusqu'à la fin de la tournée, conçue from scratch et prête pour le développement.",
         "photoAlt": "Un livreur en gilet haute visibilité sourit en regardant son téléphone, qui affiche Driver App avec la batterie de la camionnette à 75 %, devant une camionnette électrique."
       }
     },
     "creditMutuelCic": {
       "seoTitle": "Crédit Mutuel & CIC — refonte du framework CSS · Karol Giraldo",
-      "seoDescription": "Comment j’ai refondu le framework CSS et les composants de la banque en ligne du Crédit Mutuel et du CIC, pour qu’une même base neutre porte les deux marques.",
+      "seoDescription": "Étude de cas UI & front-end : refonte du framework CSS de l’espace client Crédit Mutuel et CIC, pour l’aligner sur la nouvelle charte du groupe.",
       "hero": {
-        "title": "Une <accent>nouvelle marque</accent> <br/>derrière la connexion",
+        "title": "Faire évoluer l’espace <br/>client avec <accent>la nouvelle <br/>charte</accent> du groupe.",
         "lead": "La refonte du framework CSS et des composants de la banque en ligne du Crédit Mutuel et du CIC.",
         "videoLabel": "Enregistrement d’écran de la page de connexion refondue de la banque en ligne : le formulaire avec ses nouveaux champs et boutons.",
         "detailsLabel": "Détails du projet",
@@ -571,36 +572,36 @@
         "problem": {
           "number": "(01)",
           "title": "Le problème",
-          "lead": "Le site public avait un nouveau look. Une fois connectés, les clients retrouvaient la banque d’avant."
+          "lead": "Le groupe a déployé une nouvelle charte graphique sur l’ensemble de ses supports. Pour l’espace client, l’enjeu était de l’appliquer à un très grand nombre de pages, avec un framework CSS conçu pour l’ancienne charte."
         },
         "solution": {
           "number": "(02)",
           "title": "La solution",
-          "lead": "Une nouvelle version du framework CSS, qui apporte la nouvelle identité à chaque page de l’espace client.*"
+          "lead": "Une nouvelle version du framework CSS, avec des composants mis à jour selon la nouvelle charte et réutilisables dans tout l’espace client.*"
         },
         "cards": [
           {
-            "title": "Plus de 20 composants refondus",
-            "text": "selon la nouvelle charte de marque.",
+            "title": "Plus de 20 composants mis à jour",
+            "text": "pour intégrer la nouvelle charte graphique.",
             "alt": "Composants de l’espace client refondus avec la nouvelle identité, présentés avec une marque fictive."
           },
           {
-            "title": "Un framework, deux marques",
-            "text": "Crédit Mutuel et CIC à partir du même code.",
+            "title": "Un framework commun aux deux marques",
+            "text": "Les mêmes composants s'adaptent à l'identité de Crédit Mutuel et de CIC.",
             "alt": "Les mêmes composants déclinés pour deux marques fictives à partir d’un code commun."
           },
           {
-            "title": "Pensé pour être réutilisé",
-            "text": "par les équipes internes qui construisent chaque page.",
+            "title": "Des composants modulaires et réutilisables",
+            "text": "Une base commune pour toutes les équipes qui développent les parcours de l'espace client.",
             "alt": "Plusieurs pages de l’espace client construites avec les mêmes composants réutilisables, présentées avec une marque fictive."
           }
         ],
-        "note": "*Par souci de confidentialité, tous les visuels de ce cas sont recréés avec des marques fictives. Plus de détails sur demande."
+        "note": "*Projet soumis à confidentialité : les composants présentés ont été recréés à partir de la charte publique des deux banques. Informations complémentaires sur demande."
       },
       "context": {
         "label": "(Contexte)",
-        "title": "90 % de nos composants vivent derrière la connexion.",
-        "lead": "Comptes, crédits, messages avec le conseiller : tout ce que les clients gèrent une fois connectés est construit avec nos composants. Quand les banques ont refondu leur site public, l’espace client devait suivre.",
+        "title": "90 % des composants du framework sont utilisés dans l’espace client.",
+        "lead": "Consultation des comptes, crédits, échanges avec le conseiller : l’essentiel des parcours accessibles après identification repose sur ces composants. Le déploiement de la nouvelle charte graphique du groupe impliquait donc de les moderniser.",
         "cta": {
           "cm": "Découvrir Crédit Mutuel",
           "cic": "Découvrir CIC"
@@ -705,34 +706,34 @@
         ]
       },
       "question": {
-        "text": "Comment <muted>moderniser notre framework</muted> pour que la nouvelle identité fonctionne partout, sans <muted>surcharger les anciens styles</muted> ?"
+        "text": "Comment <muted>moderniser le framework</muted> pour appliquer la nouvelle charte à tous les composants, sans <muted>surcharger les anciens styles</muted> ?"
       },
       "built": {
         "label": "(04)",
-        "title": "Ce que j’ai construit",
-        "lead": "Une base neutre, déclinée par des variables. Plutôt que de construire deux versions de chaque composant, nous avons construit une seule base neutre et laissé les variables porter l’identité de chaque marque.",
+        "title": "Réalisation",
+        "lead": "Une base neutre, déclinée pour chaque marque grâce aux variables. Plutôt que de dupliquer chaque composant pour chaque marque, le framework repose sur une base neutre unique, dont les variables portent l’identité visuelle de Crédit Mutuel et de CIC.",
         "previous": "Précédent",
         "next": "Suivant",
         "slideLabel": "Étape {{current}} sur {{total}}",
         "slides": [
           {
-            "title": "Des composants issus <br/>du nouveau design <br/>public",
-            "text": "À partir des maquettes du site public, nous avons défini les couleurs, les formes et les styles de chaque composant, en gardant la structure des pages, car les changements de structure prennent beaucoup de temps dans une banque.",
+            "title": "Des composants alignés sur la nouvelle charte",
+            "text": "Les couleurs, les formes et les styles de chaque composant ont été déclinés à partir des maquettes du site public. La structure des pages a été conservée : dans un groupe bancaire, toute modification structurelle implique de longs cycles de validation.",
             "alt": "Une maquette de site public fictif à gauche ; à droite, les couleurs, la forme du bouton et la typographie qui en découlent, et le bouton obtenu."
           },
           {
-            "title": "Un thème neutre <br/>par défaut",
-            "text": "Nous avons créé notre propre identité visuelle interne, indépendante du Crédit Mutuel et du CIC, comme style par défaut de chaque composant. Chaque propriété est une variable : utiliser un composant pour le CM ou le CIC revient à changer les valeurs.",
+            "title": "Un thème neutre par défaut",
+            "text": "Chaque composant repose sur une identité visuelle interne, indépendante du Crédit Mutuel et du CIC. Toutes ses propriétés sont des variables : pour l’adapter à l’une ou l’autre marque, il suffit d’en modifier les valeurs.",
             "alt": "Un tableau de variables : couleur principale, arrondi, police des chiffres et bouton, présentés pour les thèmes Par défaut, Banque Alpha et Banque Beta."
           },
           {
-            "title": "Un CSS plus simple <br/>avec des mixins",
-            "text": "Les styles répétés sont devenus des mixins Less, écrits une fois et réutilisés dans tous les composants.",
+            "title": "Des styles communs, écrits une seule fois",
+            "text": "Les styles récurrents ont été regroupés dans des mixins Less, réutilisés dans l’ensemble des composants. Le code est plus léger et plus simple à maintenir.",
             "alt": "Un éditeur de code Less avec un mixin de bouton écrit une fois et utilisé par un bouton principal et un bouton secondaire, à côté des deux boutons obtenus."
           },
           {
-            "title": "Testé avec chaque <br/>service",
-            "text": "Comme la nouvelle version changeait aussi la structure du framework, chaque modification a été testée et validée avec chaque service qui l’utilise.",
+            "title": "Testé et validé avec chaque service",
+            "text": "La nouvelle version modifiant aussi la structure interne du framework, chaque évolution a été testée et validée avec les services qui l’utilisent.",
             "alt": "Une liste de recette des services qui utilisent le framework, quatre validés et un en revue, au-dessus des étapes test, itération et recette."
           }
         ]
@@ -741,13 +742,13 @@
         "label": "(05)",
         "title": "Pour conclure",
         "outcome": "Résultat",
-        "statement": "D’une <strong>nouvelle marque</strong> à chaque page derrière la connexion.",
+        "statement": "La <strong>nouvelle charte</strong> du groupe, intégrée à l'ensemble de <strong>l'espace client</strong>.",
         "projectFor": "Réalisé chez",
         "logoAlt": "Euro-Information",
         "stats": [
           {
             "value": "20+",
-            "label": "composants refondus et codés"
+            "label": "ccomposants modernisés"
           },
           {
             "value": "2",
