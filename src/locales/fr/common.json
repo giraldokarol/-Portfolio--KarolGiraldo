@@ -257,17 +257,17 @@
         "gaps": [
           {
             "number": "01",
-            "text": "<strong>Des données sans hiérarchie</strong> : tout est suivi et remonté, mais rien n’indique ce qui doit être traité en priorité.",
+            "text": "<strong>Des données sans hiérarchie :</strong> tout est suivi et remonté, mais rien n’indique ce qui doit être traité en priorité.",
             "alt": "Widgets d’un tableau de bord de flotte côte à côte : un graphique du score de conduite souple, 10 % des véhicules en charge et 1 borne sur 10 utilisée."
           },
           {
             "number": "02",
-            "text": "<strong>Des informations dispersées</strong> : les véhicules, les conducteurs et la recharge sont gérés dans des outils différents.",
+            "text": "<strong>Des informations dispersées :</strong> les véhicules, les conducteurs et la recharge sont gérés dans des outils différents.",
             "alt": "Un utilitaire électrique entouré de cartes séparées : une borne murale du site de Lyon avec deux points de charge disponibles, et 3 bornes sur 10 disponibles."
           },
           {
             "number": "03",
-            "text": "<strong>Un seul profil pris en compte</strong> : la plupart des solutions sont pensées uniquement pour le gestionnaire de flotte.",
+            "text": "<strong>Un seul profil pris en compte :</strong> la plupart des solutions sont pensées uniquement pour le gestionnaire de flotte.",
             "alt": "Sélecteur de rôle avec « Gestionnaire de flotte » choisi ; les autres rôles, répartiteur, conseiller flotte et responsable financier, s’effacent à l’arrière-plan."
           }
         ],

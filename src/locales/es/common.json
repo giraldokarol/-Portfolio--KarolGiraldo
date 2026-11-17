@@ -256,17 +256,17 @@
         "gaps": [
           {
             "number": "01",
-            "text": "<strong>Datos sin prioridades</strong>: todo se registra y se reporta, pero nada muestra lo que más importa.",
+            "text": "<strong>Datos sin prioridades:</strong> todo se registra y se reporta, pero nada muestra lo que más importa.",
             "alt": "Widgets de un panel de flota uno junto a otro: un gráfico de la puntuación de conducción suave, 10 % de vehículos cargando y 1 de 10 puntos de carga en uso."
           },
           {
             "number": "02",
-            "text": "<strong>Información dispersa</strong>: los datos de vehículos, conductores y carga viven en servicios separados.",
+            "text": "<strong>Información dispersa:</strong> los datos de vehículos, conductores y carga viven en servicios separados.",
             "alt": "Una furgoneta eléctrica rodeada de tarjetas separadas: un cargador de pared del centro de Lyon con dos puntos de carga disponibles, y 3 de 10 puntos de carga disponibles."
           },
           {
             "number": "03",
-            "text": "<strong>Un solo usuario</strong>: la mayoría de los productos solo sirven al gestor de flota.",
+            "text": "<strong>Un solo usuario:</strong> la mayoría de los productos solo sirven al gestor de flota.",
             "alt": "Selector de rol con «Gestor de flota» elegido; los demás roles, planificador, asesor de flota y responsable financiero, se difuminan al fondo."
           }
         ],

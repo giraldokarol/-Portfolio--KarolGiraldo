@@ -258,17 +258,17 @@
         "gaps": [
           {
             "number": "01",
-            "text": "<strong>No clear priorities</strong>: everything is tracked and reported, but nothing shows what needs attention first.",
+            "text": "<strong>No clear priorities:</strong> everything is tracked and reported, but nothing shows what needs attention first.",
             "alt": "Fleet dashboard widgets side by side: a driving smoothness score chart, 10% of vehicles charging and 1 of 10 charge points in use."
           },
           {
             "number": "02",
-            "text": "<strong>Scattered information</strong>: vehicles, drivers and charging are managed in separate tools.",
+            "text": "<strong>Scattered information:</strong> vehicles, drivers and charging are managed in separate tools.",
             "alt": "An electric van surrounded by separate cards: a wallbox at the Lyon hub with two available charge points, and 3 of 10 charge points available."
           },
           {
             "number": "03",
-            "text": "<strong>Built for one role</strong>: most solutions are designed solely for the fleet manager.",
+            "text": "<strong>Built for one role:</strong> most solutions are designed solely for the fleet manager.",
             "alt": "Role picker with Fleet Manager selected; the other roles, Dispatcher, Fleet Advisor and Financial Manager, fade into the background."
           }
         ],
