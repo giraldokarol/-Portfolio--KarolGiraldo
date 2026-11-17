@@ -64,7 +64,7 @@
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC",
-        "description": "Redesigning the CSS framework and components behind the online banking of two major banks, so one neutral base carries both brands."
+        "description": "Redesigning the CSS framework behind the client area of two major French banks, with one neutral base adapted to both brands."
       }
     },
     "frameType": {
@@ -189,10 +189,10 @@
   "cases": {
     "interfaceWebApp": {
       "seoTitle": "Interface Web App — Flexis case study · Karol Giraldo",
-      "seoDescription": "How I designed Flexis Interface, a web platform that turns fleet data into clear daily decisions for fleet managers.",
+      "seoDescription": "UX/UI case study: Flexis Interface, a web platform built from scratch to turn fleet data into clear decisions.",
       "hero": {
         "title": "From fleet data to <br/>clear <accent>daily decisions</accent>",
-        "lead": "A new platform built from scratch to help fleet teams make sense of their data and know what to do next.",
+        "lead": "A web platform built from scratch to help fleet managers make sense of their data and prioritize their actions.",
         "videoLabel": "Screen recording of the Flexis Interface dashboard: fleet availability, mileage consumption, alerts and a live map of vehicles.",
         "detailsLabel": "Project details",
         "details": [
@@ -215,12 +215,14 @@
         "problem": {
           "number": "(01)",
           "title": "The problem",
-          "lead": "Fleet teams have more data than ever, but no clear way to act on it."
+          "lead": "Location, battery, maintenance, availability: there was no shortage of data. What was missing was knowing where to start.",
+          "detail": "Managers switched between tools, often ended up in Excel, and reacted to problems instead of anticipating them."
+
         },
         "solution": {
           "number": "(02)",
           "title": "The solution",
-          "lead": "A new platform that turns fleet data into clear priorities and actions."
+          "lead": "A platform that brings fleet data together and organizes it by priority, so managers know what to handle first and how to act."
         },
         "cards": [
           {
@@ -242,31 +244,31 @@
       },
       "context": {
         "label": "(Context)",
-        "title": "Electric fleets bring more data, and more to manage.",
-        "lead": "On top of location, managers now track charging, battery, maintenance, availability and costs. <br/><strong>Flexis</strong> set out to build a new product for this shift."
+        "title": "Fleet management is becoming increasingly complex.",
+        "lead": "Fleet managers now have to deal with a growing volume of data, varied business needs and increasingly complex operations. Against this backdrop, Flexis set out to build a new platform to centralize information and simplify day-to-day management."
       },
       "research": {
         "label": "(03)",
         "title": "Research",
-        "lead": "Many tools track the fleet, none help decide what to do next.",
-        "text": "Before designing anything, I interviewed fleet business experts and benchmarked tools like Geotab and Samsara. Three gaps stood out.",
-        "conclusion": "As a result, teams jump between tools and end up sorting it out in Excel.",
+        "lead": "Fleet tools show what’s happening, but not what to do about it.",
+        "text": "Interviews with fleet management experts, along with a review of tools like Geotab and Samsara, pointed to three gaps.",
+        "conclusion": "The result: managers bounce between tools and end up piecing everything together in Excel.",
         "gapsLabel": "The three gaps",
         "gapLabel": "Gap {{current}} of {{total}}",
         "gaps": [
           {
             "number": "01",
-            "text": "<strong>Data without priorities</strong>: everything is tracked and reported, but nothing shows what matters most.",
+            "text": "<strong>No clear priorities</strong>: everything is tracked and reported, but nothing shows what needs attention first.",
             "alt": "Fleet dashboard widgets side by side: a driving smoothness score chart, 10% of vehicles charging and 1 of 10 charge points in use."
           },
           {
             "number": "02",
-            "text": "<strong>Scattered across tools</strong>: vehicle, driver and charging information live in separate services.",
+            "text": "<strong>Scattered information</strong>: vehicles, drivers and charging are managed in separate tools.",
             "alt": "An electric van surrounded by separate cards: a wallbox at the Lyon hub with two available charge points, and 3 of 10 charge points available."
           },
           {
             "number": "03",
-            "text": "<strong>One user only</strong>: most products serve the Fleet Manager alone.",
+            "text": "<strong>Built for one role</strong>: most solutions are designed solely for the fleet manager.",
             "alt": "Role picker with Fleet Manager selected; the other roles, Dispatcher, Fleet Advisor and Financial Manager, fade into the background."
           }
         ],
@@ -295,24 +297,24 @@
       "process": {
         "label": "(04)",
         "title": "Process",
-        "lead": "No existing product: every module started from a business goal.",
+        "lead": "With no existing product, every module was shaped around a business goal.",
         "steps": [
           {
             "number": "01.",
             "title": "Understand",
-            "text": "Expert interviews and benchmark to define each module before designing it.",
+            "text": "Interviews with business experts and benchmarking to define each module before designing it.",
             "alt": "A fleet advisor in a high-visibility vest holding a tablet, in front of a board about monthly on-site visits."
           },
           {
             "number": "02.",
             "title": "Define",
-            "text": "With Product and Business, we decided what to build first and mapped the flows for the first release.",
+            "text": "With the Product and Business teams, priority features were selected and the journeys for the first version defined.",
             "alt": "Workshop board with priorities ranked high, medium and low, the problem statement, hypotheses and research goals."
           },
           {
             "number": "03.",
             "title": "Design & validate",
-            "text": "I reviewed wireframes with developers, experts and beta testers before moving to high-fidelity UI.",
+            "text": "Wireframes reviewed with developers, business experts and beta testers before moving to high-fidelity UI.",
             "alt": "Meeting room with the User Management screen projected on a large screen during a review session."
           }
         ]
@@ -325,26 +327,26 @@
         "slideLabel": "Decision {{current}} of {{total}}",
         "slides": [
           {
-            "title": "Not all data <br/>deserves the same <br/>visibility.",
+            "title": "Not all data carries the same weight.",
             "items": [
               {
                 "title": "Audit",
-                "text": "Mapped every data point from vehicles, telematics and operations."
+                "text": "An inventory of all available data: vehicles, telematics and operations."
               },
               {
                 "title": "Prioritize",
-                "text": "Ranked information by urgency and required action, separating what is informative from what needs attention."
+                "text": "Information ranked by urgency and required action, to separate what informs from what needs intervention."
               },
               {
                 "title": "Structure",
-                "text": "Fleet overview → vehicle detail → next action."
+                "text": "Three levels of detail: the fleet overview, the vehicle detail, then the action to take."
               }
             ],
             "alt": "Flexis screens layered on top of each other: the fleet management table, the filter panel and a vehicle detail page with mileage and consumption."
           },
           {
-            "title": "One consistent way to <br/>read and act, across <br/>every module.",
-            "text": "With no existing UI to rely on, I built the design system alongside the product. Recurring patterns (statuses, alerts, filters, actions) became reusable components, so the same signal always looks and behaves the same, and new modules don’t add complexity.",
+            "title": "A design system built alongside the product.",
+            "text": "With no existing interface to build on, the design system was created at the same time as the product. Recurring elements (statuses, alerts, filters, actions) became reusable components: the same information always looks and behaves the same way, and new modules don’t add complexity to the experience.",
             "alt": "Design system components: buttons, checkbox, KPI cards, alerts, status tags and a mileage progress bar with a warning."
           }
         ]
@@ -366,16 +368,16 @@
             "label": "beta testers validating the experience"
           }
         ],
-        "summary": "A platform that turns scattered fleet data into clear daily actions, designed in one year and ready for development before Flexis was acquired.",
+        "summary": "A platform that brings fleet data together and helps managers know what to handle first, built from scratch and ready for development.",
         "photoAlt": "A fleet manager in a high-visibility vest working at her desk, with the Flexis planning screen on her monitor."
       }
     },
     "driverApp": {
       "seoTitle": "Driver App — Flexis case study · Karol Giraldo",
-      "seoDescription": "How I designed the Flexis Driver App, a mobile app that takes urban delivery drivers from vehicle pickup to mission done.",
+      "seoDescription": "UX/UI case study: Flexis Driver App, a mobile app built from scratch to make urban delivery drivers’ days easier.",
       "hero": {
         "title": "From vehicle pickup <br/>to mission done, in <br/><accent>one app</accent>",
-        "lead": "A mobile app built from scratch to help urban delivery drivers start their day faster, drive better and stay connected to their fleet.",
+        "lead": "A mobile app built from scratch to make urban delivery drivers’ days easier, from vehicle pickup to the end of their route.",
         "videoLabel": "Screen recording of the Flexis Driver App: finding the assigned vehicle on a map and starting navigation to it.",
         "detailsLabel": "Project details",
         "details": [
@@ -398,13 +400,13 @@
         "problem": {
           "number": "(01)",
           "title": "The problem",
-          "lead": "Drivers had no single tool for their day, and no clear way to pair with their vehicle.",
-          "detail": "Vehicles were tracked live in Interface, but there was no reliable way to know who was driving each one, and when."
+          "lead": "Drivers switched between multiple tools every day, with no easy way to register which vehicle they were driving.",
+          "detail": "Vehicles were tracked live in Interface, but there was no reliable way to know who was driving each one, or when."
         },
         "solution": {
           "number": "(02)",
           "title": "The solution",
-          "lead": "One app for the driver’s day, starting with a simple vehicle pairing."
+          "lead": "An app that brings every step of a driver’s day into one place, from vehicle pairing to the end of the route."
         },
         "cards": [
           {
@@ -415,48 +417,48 @@
           {
             "title": "Video check-in & check-out",
             "text": "The driver films the vehicle, and an integrated inspection service completes the report.",
-            "alt": "Video check-in screen: the driver films the van from the outside while recording."
+            "alt": "The driver films the vehicle, and an integrated inspection service generates the report."
           },
           {
-            "title": "Smart daily mission",
-            "text": "Routes and stop order optimized to use less energy.",
+            "title": "Optimized routes",
+            "text": "Stop order and routes planned to save time and energy.",
             "alt": "Mission navigation screen: turn-by-turn directions on a night map, the next stop and buttons to call the customer or report an incident."
           }
         ]
       },
       "context": {
         "label": "(Context)",
-        "title": "Last-mile delivery runs on tight schedules and shared vans.",
-        "lead": "In last-mile logistics, several drivers share the same vans, rounds are tight, and electric vehicles add a new constraint: range. Flexis built this app for delivery drivers across Europe."
+        "title": "Urban delivery: tight schedules and shared vehicles.",
+        "lead": "In urban delivery, drivers often share the same vehicles, schedules are tight, and electric vans add a new constraint: range. Flexis built this app for delivery drivers across Europe."
       },
       "research": {
         "label": "(03)",
-        "title": "Research",
-        "lead": "Vans were tracked, drivers weren’t.",
-        "text": "Working with business experts, we mapped a full shift, from depot to last delivery, and found three gaps:",
-        "conclusion": "The result: low driver engagement and lower fleet productivity.",
+        "title": "Discovery",
+        "lead": "Fleet management tools know where every vehicle is, but they weren’t designed for the drivers behind the wheel.",
+        "text": "Workshops with the product team and business experts brought three gaps in drivers’ day-to-day work to light:",
+        "conclusion": "The result: low driver engagement and a less productive fleet.",
         "gapsLabel": "The three gaps",
         "gapLabel": "Gap {{current}} of {{total}}",
         "gaps": [
           {
             "number": "01.",
-            "text": "<strong>Fragmented tools:</strong> drivers managed their deliveries across different tools, without real-time information.",
+            "text": "<strong>Scattered tools:</strong> drivers managed their deliveries across several tools, with no real-time information.",
             "alt": "An electric van between three status cards: vehicle not connected, vehicle connected and ready to check in, and vehicle ready to start the day."
           },
           {
             "number": "02.",
-            "text": "<strong>Not designed for drivers:</strong> existing solutions lacked the basics of a driver’s day, like a smooth onboarding and secure vehicle access.",
+            "text": "<strong>Missing the basics:</strong> existing solutions offered neither a simple sign-up nor secure vehicle access.",
             "alt": "The Driver App home screen with turn-by-turn directions, a van seen from above and a “Find Your Vehicle” card."
           },
           {
             "number": "03.",
-            "text": "<strong>No driver–vehicle pairing:</strong> vans were tracked, but there was no clear way to know who was driving each one, and when.",
+            "text": "<strong>No driver–vehicle pairing:</strong> there was no simple way to link a driver to a vehicle at the start of the day.",
             "alt": "An electric van in front of a “Find Your Vehicle” card and a link icon."
           }
         ]
       },
       "question": {
-        "text": "How might we give last-mile drivers <muted>one intuitive app that simplifies their daily operations</muted>, from vehicle access to the end of the round?"
+        "text": "How might we simplify drivers’ days with a <muted>single app</muted>, from vehicle access to the end of their route, while making sure every trip is linked to the right driver?"
       },
       "process": {
         "label": "(04)",
@@ -466,19 +468,19 @@
           {
             "number": "01.",
             "title": "Map",
-            "text": "story mapping turned the business goals into epics and user stories, from driver onboarding to route monitoring.",
+            "text": "Story mapping turned business goals into epics and user stories, from driver sign-up to route tracking.",
             "alt": "Story mapping board for mission planning, with the user needs, the vehicle types and the unassigned routes."
           },
           {
             "number": "02.",
             "title": "Prioritize",
-            "text": "with Product and Business, we used MoSCoW to define the MVP and the next release (MMP).",
+            "text": "With the Product and Business teams, the essential features were set for the first release, and the rest planned for later.",
             "alt": "A designer arranging sticky notes on a glass wall, under the steps of the driver’s journey: profile, vehicle, location, stats and planning."
           },
           {
             "number": "03.",
             "title": "Design & validate",
-            "text": "I mapped the user flows and validated low-fi mockups before development.",
+            "text": "User flows and low-fidelity mockups, validated before development began.",
             "alt": "A driver in a high-visibility vest holding a phone with the Driver App’s “Session Completed” screen."
           }
         ]
@@ -491,32 +493,32 @@
         "slideLabel": "Decision {{current}} of {{total}}",
         "slides": [
           {
-            "title": "The assignment is <br/>where the shift <br/>begins.",
+            "title": "Everything starts with vehicle pairing.",
             "paragraphs": [
-              "Nothing starts until the driver is assigned to the van, by QR code, VIN or virtual key. Then the app follows the shift as it happens:",
-              "<strong>Assignment → Check-in → Ready to go → Delivery round → Check-out</strong>",
-              "One step for the driver; for the fleet, a clear record of who drove which van, and when."
+              "A driver’s day begins as soon as they’re paired with a vehicle, by QR code, VIN or virtual key. From there, the app guides them step by step:",
+              "<strong>Pairing → Check-in → Ready to go → Route → Check-out</strong>",
+              "For the driver, it’s one simple step. For the fleet manager, it’s how they know who drove each vehicle, and when."
             ],
             "alt": "Screen recording of the Driver App scanning a van’s VIN number to assign the driver to the vehicle, with a field to enter the code manually."
           },
           {
-            "title": "Plan the round <br/>around the battery.",
+            "title": "Route planning that saves time and battery.",
             "paragraphs": [
-              "The app sequences the day’s stops and suggests routes based on the van’s state of charge, so drivers can finish their round with less energy."
+              "The app sets the order of stops and suggests routes based on travel time and the vehicle’s charge level, so drivers can finish their route faster without worrying about running out of range."
             ],
             "alt": "Route screens of the Driver App: a night map with the suggested route, the list of the day’s 12 stops with their times, and the next customer with buttons to call them or report an incident."
           },
           {
-            "title": "A video instead of a <br/>paper inspection.",
+            "title": "A simpler, faster vehicle inspection.",
             "paragraphs": [
-              "The driver films the van at check-in and check-out. An integrated inspection service turns the video into a condition report, sent straight to the fleet manager."
+              "At check-in and check-out, the driver just films the vehicle. An integrated inspection service turns the video into a condition report and sends it straight to the fleet manager."
             ],
             "alt": "Video check-in screen: the driver films the van from the outside, next to a “Start Check-in” card and warning and inspection icons."
           },
           {
-            "title": "Same family as <br/>Interface, built for the <br/>road.",
+            "title": "One design system for both products, adapted to life on the road.",
             "paragraphs": [
-              "I adapted Interface’s design system for mobile: larger touch targets, simpler layouts, and a light and dark mode for shifts that start before sunrise."
+              "The driver app shares the same foundations as the web platform (design tokens, components and icons), adapted for use on the move: larger touch targets for use in the cab, simpler screens to reduce cognitive load on the road, and both light and dark themes."
             ],
             "alt": "Three Driver App screens in light and dark mode: the home screen with the vehicle tools, the settings with the theme picker, and the van’s battery at 75%."
           }
@@ -539,16 +541,16 @@
             "label": "themes, light & dark"
           }
         ],
-        "summary": "One app that takes drivers from vehicle assignment to check-out, designed from scratch and ready for development before Flexis was acquired.",
+        "summary": "An app that supports drivers from vehicle pickup to the end of their route, built from scratch and ready for development.",
         "photoAlt": "A delivery driver in a high-visibility vest smiling at his phone, which shows the Driver App with the van’s battery at 75%, in front of an electric van."
       }
     },
     "creditMutuelCic": {
       "seoTitle": "Crédit Mutuel & CIC — CSS framework redesign · Karol Giraldo",
-      "seoDescription": "How I redesigned the CSS framework and components behind the online banking of Crédit Mutuel and CIC, so one neutral base carries both brands.",
+      "seoDescription": "UI & front-end case study: redesign of the CSS framework behind the Crédit Mutuel and CIC client area, aligning it with the group’s new brand guidelines.",
       "hero": {
-        "title": "Bringing a <accent>new brand</accent> <br/>behind the login",
-        "lead": "The redesign of the CSS framework and components behind the online banking of Crédit Mutuel and CIC.",
+        "title": "Bringing the client area <br/>in line with <accent>the group’s <br/>new brand identity.</accent>",
+        "lead": "The redesign of the CSS framework and components behind Crédit Mutuel and CIC online banking.",
         "videoLabel": "Screen recording of the redesigned online banking login page: the sign-in form with its new inputs and buttons.",
         "detailsLabel": "Project details",
         "details": [
@@ -571,36 +573,36 @@
         "problem": {
           "number": "(01)",
           "title": "The problem",
-          "lead": "The public website had a new look. Once clients logged in, the bank still looked the same as before."
+          "lead": "The group rolled out a new brand identity across all its channels. For the client area, the challenge was to apply it to a very large number of pages, using a CSS framework built for the previous brand guidelines."
         },
         "solution": {
           "number": "(02)",
           "title": "The solution",
-          "lead": "A new version of the CSS framework, bringing the new identity to every page of the client area.*"
+          "lead": "A new version of the CSS framework, with components updated to the new brand guidelines and reusable across the entire client area.*"
         },
         "cards": [
           {
-            "title": "20+ components redesigned",
-            "text": "following the new brand guidelines.",
+            "title": "20+ components updated",
+            "text": "to reflect the new brand guidelines.",
             "alt": "Components of the client area redesigned with the new identity, shown with a fictional brand."
           },
           {
-            "title": "One framework, two brands",
-            "text": "Crédit Mutuel and CIC from the same code.",
+            "title": "One framework for both brands",
+            "text": "The same components adapt to the Crédit Mutuel and CIC identities.",
             "alt": "The same components themed for two fictional brands from one shared codebase."
           },
           {
-            "title": "Built to be reused",
-            "text": "by the internal teams building every page.",
+            "title": "Modular, reusable components",
+            "text": "A shared foundation for every team building client area journeys.",
             "alt": "Several client-area pages assembled from the same reusable components, shown with a fictional brand."
           }
         ],
-        "note": "*Out of respect for confidentiality, all visuals in this case are recreated with fictional brands. More details available on request."
+        "note": "*Confidential project: the components shown were recreated from the two banks’ public brand guidelines and displayed under fictional names. Further details available on request."
       },
       "context": {
         "label": "(Context)",
-        "title": "90% of our components live behind the login.",
-        "lead": "Accounts, loans, messages with the advisor: everything clients manage once logged in is built with our components. When the banks redesigned their public website, the client area had to follow.",
+        "title": "90% of the framework’s components are used in the client area.",
+        "lead": "Account overview, loans, messages with an advisor: most journeys available after login rely on these components. Rolling out the group’s new brand identity therefore meant modernizing them.",
         "cta": {
           "cm": "Visit Crédit Mutuel",
           "cic": "Visit CIC"
@@ -683,18 +685,18 @@
         "label": "(03)",
         "title": "Challenge",
         "lead": "Too many pages to redesign one by one.",
-        "text": "The framework already existed, but it was built for the previous identity. Applying the new design on top of it meant overriding styles page after page, which added complexity with every change.",
+        "text": "The framework already existed, but it had been built for the previous brand identity. Applying the new design on top of it meant overriding styles page after page, adding complexity with every change.",
         "gapsLabel": "The three challenges",
         "gapLabel": "Challenge {{current}} of {{total}}",
         "gaps": [
           {
             "number": "01.",
-            "text": "<strong>A huge client area:</strong> a large number of internal pages built by different teams.",
+            "text": "<strong>A huge client area:</strong> a large number of internal pages, built by different teams.",
             "alt": "A stack of grey page wireframes fading into the background, with a new message from the advisor and a current account line, among small icon buttons."
           },
           {
             "number": "02.",
-            "text": "<strong>Two brands, one codebase:</strong> Crédit Mutuel and CIC share the same components with different visual identities.",
+            "text": "<strong>Two brands, one codebase:</strong> Crédit Mutuel and CIC share the same components, each with its own visual identity.",
             "alt": "The same amount field and button in a neutral grey version, linked by thin lines to two branded versions: Banque Alpha and Banque Beta."
           },
           {
@@ -709,30 +711,30 @@
       },
       "built": {
         "label": "(04)",
-        "title": "What I built",
-        "lead": "A neutral base, themed by variables. Instead of building two versions of each component, we built one neutral base and let variables carry each brand's identity.",
+        "title": "The approach",
+        "lead": "Rather than duplicating every component for each brand, the framework relies on a single neutral base, with variables carrying the visual identity of Crédit Mutuel and CIC.",
         "previous": "Previous",
         "next": "Next",
         "slideLabel": "Step {{current}} of {{total}}",
         "slides": [
           {
-            "title": "Components derived <br/>from the new public <br/>design",
-            "text": "From the public website mockups, we derived the colors, shapes and styles of every component, keeping the existing page structure, since structural changes take a long time in a bank.",
+            "title": "Components aligned with the new brand guidelines",
+            "text": "The colors, shapes and styles of each component were derived from the public website mockups. The page structure was left unchanged: in a banking group, any structural change involves long validation cycles.",
             "alt": "A fictional public website mockup on the left; on the right, the colors, button shape and typography derived from it, and the resulting button."
           },
           {
-            "title": "A neutral default <br/>theme",
-            "text": "We created our own internal visual identity, independent from Crédit Mutuel and CIC, as the default style of every component. Each property is a variable: using a component for CM or CIC only means changing the values.",
+            "title": "A neutral default theme",
+            "text": "Every component is built on an internal visual identity, independent of Crédit Mutuel and CIC. All its properties are variables, so adapting it to either brand simply means changing their values.",
             "alt": "A table of variables: primary color, corner radius, figures font and button, each shown for the Default, Banque Alpha and Banque Beta themes."
           },
           {
-            "title": "Simpler CSS with <br/>mixins",
-            "text": "Repeated styles were turned into Less mixins, written once and reused across components.",
+            "title": "Shared styles, written once",
+            "text": "Recurring styles were grouped into Less mixins and reused across all components, making the code lighter and easier to maintain.",
             "alt": "A Less code editor with a button mixin written once and used by a primary and a secondary button, shown next to the two resulting buttons."
           },
           {
-            "title": "Tested with every <br/>service",
-            "text": "Since the new version also changed the framework’s structure, every change was tested and validated with each service using it.",
+            "title": "Tested and validated with every service",
+            "text": "Since the new version also changed the framework’s internal structure, every update was tested and validated with the services that use it.",
             "alt": "An acceptance checklist of the services using the framework, four validated and one in review, above the steps test, iterate and acceptance."
           }
         ]
@@ -747,14 +749,14 @@
         "stats": [
           {
             "value": "20+",
-            "label": "components redesigned and coded"
+            "label": "components redesigned"
           },
           {
             "value": "2",
             "label": "brands from one framework"
           }
         ],
-        "summary": "A modernized CSS framework that brought the new Crédit Mutuel and CIC identity to the whole client area, and a flexible base ready for future sites.",
+        "summary": "A modernized CSS framework that brings the group’s new brand identity to the entire client area, and provides a flexible foundation for future sites.",
         "photoAlt": "A fictional banking screen that switches between the Default, Banque Alpha and Banque Beta themes: the same account card, field and button with different colors and shapes."
       }
     }

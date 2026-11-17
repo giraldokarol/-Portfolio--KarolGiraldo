@@ -56,7 +56,7 @@
     "items": {
       "driverApp": {
         "name": "Driver App - Flexis",
-        "description": "Repenser l’expérience des conducteurs pour leur permettre d’accéder aux informations du véhicule, de gérer leurs missions et de rester connectés à leur flotte, même sur la route."
+        "description": "Conception from scratch d’une application mobile pour les livreurs, de la prise en charge du véhicule jusqu’à la fin de la tournée."
       },
       "interface": {
         "name": "Interface - Flexis",
@@ -64,7 +64,7 @@
       },
       "cmcic": {
         "name": "Crédit Mutuel & CIC",
-        "description": "Repenser le framework CSS et les composants de la banque en ligne de deux grandes enseignes, pour qu’une même base neutre serve les deux marques."
+        "description": "Refonte du framework CSS de l’espace client Crédit Mutuel et CIC, avec une base neutre déclinée pour les deux marques."
       }
     },
     "frameType": {
@@ -257,7 +257,7 @@
         "gaps": [
           {
             "number": "01",
-            "text": "<strong>Des données sans hiérarchie</strong> : tout est suivi et remonté, mais rien n'indique ce qui doit être traité en priorité.",
+            "text": "<strong>Des données sans hiérarchie</strong> : tout est suivi et remonté, mais rien n’indique ce qui doit être traité en priorité.",
             "alt": "Widgets d’un tableau de bord de flotte côte à côte : un graphique du score de conduite souple, 10 % des véhicules en charge et 1 borne sur 10 utilisée."
           },
           {
@@ -587,16 +587,16 @@
           },
           {
             "title": "Un framework commun aux deux marques",
-            "text": "Les mêmes composants s'adaptent à l'identité de Crédit Mutuel et de CIC.",
+            "text": "Les mêmes composants s’adaptent à l’identité de Crédit Mutuel et de CIC.",
             "alt": "Les mêmes composants déclinés pour deux marques fictives à partir d’un code commun."
           },
           {
             "title": "Des composants modulaires et réutilisables",
-            "text": "Une base commune pour toutes les équipes qui développent les parcours de l'espace client.",
+            "text": "Une base commune pour toutes les équipes qui développent les parcours de l’espace client.",
             "alt": "Plusieurs pages de l’espace client construites avec les mêmes composants réutilisables, présentées avec une marque fictive."
           }
         ],
-        "note": "*Projet soumis à confidentialité : les composants présentés ont été recréés à partir de la charte publique des deux banques. Informations complémentaires sur demande."
+        "note": "*Projet soumis à confidentialité : les composants présentés ont été recréés à partir de la charte publique des deux banques et affichés sous des noms fictifs. Informations complémentaires sur demande."
       },
       "context": {
         "label": "(Contexte)",
@@ -742,13 +742,13 @@
         "label": "(05)",
         "title": "Pour conclure",
         "outcome": "Résultat",
-        "statement": "La <strong>nouvelle charte</strong> du groupe, intégrée à l'ensemble de <strong>l'espace client</strong>.",
+        "statement": "La <strong>nouvelle charte</strong> du groupe, intégrée à l’ensemble de <strong>l’espace client</strong>.",
         "projectFor": "Réalisé chez",
         "logoAlt": "Euro-Information",
         "stats": [
           {
             "value": "20+",
-            "label": "ccomposants modernisés"
+            "label": "composants modernisés"
           },
           {
             "value": "2",
