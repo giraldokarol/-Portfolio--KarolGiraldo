@@ -221,7 +221,7 @@
         "solution": {
           "number": "(02)",
           "title": "La solution",
-          "lead": "Nous avons conçu une plateforme qui rassemble les données de la flotte et les organise par priorité, pour que les gestionnaires sachent quoi traiter en premier et comment agir."
+          "lead": "Une plateforme qui rassemble les données de la flotte et les organise par priorité, pour que les gestionnaires sachent quoi traiter en premier et comment agir."
         },
         "cards": [
           {
@@ -434,7 +434,7 @@
         "label": "(03)",
         "title": "Recherche",
         "lead": "Les outils de gestion de flotte savent où se trouve chaque véhicule. Mais ils ne sont pas pensés pour les livreurs, qui les utilisent pourtant tous les jours.",
-        "text": "Lors d’ateliers avec l’équipe produit et les experts métier, nous avons identifié trois manques dans le quotidien des livreurs :",
+        "text": "Les ateliers menés avec l’équipe produit et les experts métier ont fait ressortir trois manques dans le quotidien des livreurs :",
         "conclusion": "Résultat : des livreurs peu engagés et une flotte moins productive.",
         "gapsLabel": "Les trois manques",
         "gapLabel": "Manque {{current}} sur {{total}}",
@@ -462,7 +462,7 @@
       "process": {
         "label": "(04)",
         "title": "Processus",
-        "lead": "Aucun produit existant : chaque module est parti d’un objectif métier.",
+        "lead": "Sans produit existant, chaque module a été pensé à partir d’un objectif métier.",
         "steps": [
           {
             "number": "01.",
