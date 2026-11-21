@@ -3,6 +3,9 @@
 
 RewriteEngine On
 
+# Nadie puede ver la lista de archivos de una carpeta (p. ej. /videos/) si entra directamente en ella.
+Options -Indexes
+
 # ─── HTTPS y dominio sin www ─────────────────────────────────────────────────────────
 # Siempre https://karolgiraldoescobar.com (igual que SITE_URL en src/config/site.ts).
 RewriteCond %{HTTPS} off [OR]

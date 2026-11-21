@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "status": "PROVISIONAL",
-    "note": "Traduction provisoire écrite par Claude. Karol doit la relire et passer status à \"final\". Les clés qui commencent par _ sont des notes et ne s'affichent jamais."
+    "status": "final",
+    "note": "Textes relus et validés par Karol. Les clés qui commencent par _ sont des notes et ne s’affichent jamais."
   },
   "seo": {
     "title": "Karol Giraldo — Product Designer (UX/UI)",
