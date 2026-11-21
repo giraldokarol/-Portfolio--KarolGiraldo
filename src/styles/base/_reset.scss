@@ -29,6 +29,20 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+
+  // Al llegar a la home con una sección (/es#mi-trayectoria) la página empieza arriba y salta después
+  // (routes/home.tsx): se oculta hasta el salto para que no se vea el hero. .is-jumping la pone un script
+  // en <head> y la quita home.tsx; si el JavaScript fallara, la página aparece sola a los 2,5 s.
+  .is-jumping & {
+    visibility: hidden;
+    animation: jump-fallback 0s 2.5s forwards;
+  }
+}
+
+@keyframes jump-fallback {
+  to {
+    visibility: visible;
+  }
 }
 
 h1,

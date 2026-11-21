@@ -44,13 +44,16 @@ export default function Home() {
   const { locale } = useLoaderData<typeof loader>();
 
   useEffect(() => {
+    // Mientras tanto la página está oculta (is-jumping, en root.tsx): se muestra ya en la sección.
+    const show = () => document.documentElement.classList.remove("is-jumping");
     // El # puede venir en otro idioma o con un id antiguo (#projects): se busca su sección
     // y se salta a su id en el idioma de la página.
     const section = findSection(target.current);
-    if (!section) return;
+    if (!section) return show();
     const timer = window.setTimeout(() => {
       ScrollTrigger.refresh();
       document.getElementById(sectionId(section, locale))?.scrollIntoView({ behavior: "instant" });
+      show();
     }, 400);
     return () => window.clearTimeout(timer);
   }, [locale]);

@@ -34,10 +34,12 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Antes del primer pintado: si el visitante acepta animaciones, el CSS prepara la escena 1
-            del hero (sin que se vea un instante la escena 2). Sin JS o con reduced-motion no hace nada. */}
+            del hero (sin que se vea un instante la escena 2). Sin JS o con reduced-motion no hace nada.
+            Home con una sección en la URL (/es#mi-trayectoria): oculta la página hasta saltar a ella
+            (is-jumping, ver routes/home.tsx). */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `if(matchMedia("(prefers-reduced-motion: no-preference)").matches)document.documentElement.classList.add("has-motion")`,
+            __html: `if(matchMedia("(prefers-reduced-motion: no-preference)").matches)document.documentElement.classList.add("has-motion");if(location.hash.length>1&&/^\\/[a-z]{2}\\/?$/.test(location.pathname))document.documentElement.classList.add("is-jumping")`,
           }}
         />
         <Meta />
