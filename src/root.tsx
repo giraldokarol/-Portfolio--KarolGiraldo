@@ -10,6 +10,9 @@ import { i18nByLocale } from "./i18n/instances";
 import type { Route } from "./+types/root";
 
 export const links: Route.LinksFunction = () => [
+  // Icono para Google (junto al resultado de búsqueda): PNG fijo, sin modo claro/oscuro, que Google no entiende.
+  // Va primero: los navegadores usan los SVG de abajo. public/favicon.ico es la copia para quien lo pide por defecto.
+  { rel: "icon", type: "image/png", sizes: "192x192", href: "/favicon.png" },
   // Icono de la pestaña: uno para el navegador en modo claro y otro para el oscuro (logo claro).
   { rel: "icon", type: "image/svg+xml", href: "/favicon-light.svg", media: "(prefers-color-scheme: light)" },
   { rel: "icon", type: "image/svg+xml", href: "/favicon-dark.svg", media: "(prefers-color-scheme: dark)" },

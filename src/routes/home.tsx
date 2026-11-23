@@ -5,7 +5,7 @@ import { ScrollTrigger } from "@/lib/gsap";
 
 import { isLocale } from "@/i18n/config";
 import { i18nByLocale } from "@/i18n/instances";
-import { alternateLinks, shareMeta } from "@/i18n/seo";
+import { alternateLinks, shareMeta, structuredData } from "@/i18n/seo";
 import { findSection, sectionId } from "@/config/site";
 import Header from "@/components/Header";
 import SocialRail from "@/components/SocialRail";
@@ -32,6 +32,7 @@ export const meta: Route.MetaFunction = ({ loaderData }) => {
     { name: "description", content: t("seo.description") },
     ...alternateLinks(locale),
     ...shareMeta(locale, t("seo.title"), t("seo.description")),
+    ...structuredData(locale),
   ];
 };
 

@@ -8,6 +8,10 @@ export const SITE_URL = "https://karolgiraldoescobar.com";
 
 export const CONTACT_EMAIL = "karol.giraldo9505@gmail.com";
 
+// Nombre completo (ficha para Google, src/i18n/seo.ts) y el corto, el que se usa en la web.
+export const FULL_NAME = "Karol Giraldo Escobar";
+export const SHORT_NAME = "Karol Giraldo";
+
 const LINKEDIN_URL = "https://www.linkedin.com/in/karol-giraldo-escobar/";
 
 export const SOCIAL_LINKS = [
